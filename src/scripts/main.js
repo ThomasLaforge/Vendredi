@@ -14,4 +14,5 @@ let pseudo = 'Thomas';
 let myPlayer = new Player(pseudo);
 let game = new Game(myPlayer, 1);
 
-// console.log(fightCard instanceof CarteCombat);
+// game.start();
+//console.log(myPlayer instanceof Player);

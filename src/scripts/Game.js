@@ -4,24 +4,24 @@ import {Deck} from './Deck';
 import {FightDeck} from './FightDeck';
 import {DangerDeck} from './DangerDeck';
 import {AgingDeck} from './AgingDeck';
-import {PirateDeck} from './Pirate';
+// import {PirateDeck} from './Pirate';
 // import {Deck} from './Deck';
 
 
 class Game {
 	constructor(player, difficulty){
 		this._player = player;
-		this._difficulty = difficulty;
+        this._difficulty = difficulty;
 		// Initialization
 		this._fightDeck = new FightDeck();
 		this._dangerDeck = new DangerDeck();
 		this._agingDeck = new AgingDeck(this._difficulty);
-		this._pirates = this.getPirates(1);
+		// this._pirates = this.getPirates(1);
 	}
 
-	// start(){
-        
-	// }
+	isGameOver(){
+        return this._player.isDead();  
+    }
     
     static getPirates(nb){
         if(nb > 0){

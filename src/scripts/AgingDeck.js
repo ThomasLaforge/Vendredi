@@ -2,7 +2,7 @@ import {Deck} from './Deck';
 
 class AgingDeck extends Deck{
     constructor(){
-        console.log("New AgingDeck");
+        console.log("new aging deck!");
         super();
     }
     

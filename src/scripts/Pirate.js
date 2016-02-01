@@ -1,4 +1,4 @@
-const PIRATESLIST = require('../datas/pirates.json');
+const PIRATESLIST = require('../datas/pirates_cards.json');
 
 class Pirate {
 
