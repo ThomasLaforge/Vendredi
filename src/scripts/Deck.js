@@ -9,13 +9,7 @@ class Deck {
     //pickCards     : return an array with the firts cards of the deck. 
     
     constructor() {
-        var array = [];
-        /*$.each(cities, function(){
-            array.push(new Card(this.name));
-        });*/
-        array = [new Card(2),new Card(3),new Card(1),new Card(4),new Card(2)];
-        this.arrayDeck = array;
-        this.shuffleDeck();
+        this.arrayDeck = [];
         this.arrayDiscard = [];
     }
     
@@ -30,6 +24,7 @@ class Deck {
     }
     
     shuffleDeck(){
+        console.log('shuffle Deck from Deck');
         Deck.shuffle(this.arrayDeck);
     }
     

@@ -1,10 +1,14 @@
 class Card {
-    constructor(f) {
-        this.force = f
+    constructor(name, strenght) {
+        this.strenght = strenght;
     }
     
-    echo(){
-        console.log('test');
+    get name(){
+        return this.name;
+    }
+    
+    set name(){
+        
     }
 }
  

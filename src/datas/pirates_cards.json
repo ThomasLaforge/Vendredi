@@ -1,0 +1,62 @@
+[
+	{
+		"name"        :   "Pirate 1",
+		"strength"    :   "*",
+		"mission"     :   "Combattez toutes les cartes Danger restantes",
+        "freeCards"   :   "*"
+	},
+    {
+		"name"        :   "Pirate 2",
+		"strength"    :   "*",
+		"mission"     :   "Ajoutez 2 points de danger par carte vieillissement ajoutée à votre pile Combat",
+        "freeCards"   :   5
+	},
+    {
+		"name"        :   "Pirate 3",
+		"strength"    :   20,
+		"mission"     :   "",
+        "freeCards"   :   6
+	},
+    {
+		"name"        :   "Pirate 4",
+		"strength"    :   25,
+		"mission"     :   "",
+        "freeCards"   :   7
+	},
+    {
+		"name"        :   "Pirate 5",
+		"strength"    :   16,
+		"mission"     :   "Chaque carte Combat supplémentaire coute 2 points de santé",
+        "freeCards"   :   7
+	},
+    {
+		"name"        :   "Pirate 6",
+		"strength"    :   30,
+		"mission"     :   "",
+        "freeCards"   :   8
+	},
+    {
+		"name"        :   "Pirate 7",
+		"strength"    :   22,
+		"mission"     :   "Comptez uniquement la moitié des cartes Combat dévoilées (les cartes Vieillissement dévoilées doivent être comptées)",
+        "freeCards"   :   9
+	},
+    {
+		"name"        :   "Pirate 8",
+		"strength"    :   35,
+		"mission"     :   "",
+        "freeCards"   :   9
+	},
+    {
+		"name"        :   "Pirate 4",
+		"strength"    :   40,
+		"mission"     :   "",
+        "freeCards"   :   10
+	},
+    {
+		"name"        :   "Pirate 4",
+		"strength"    :   52,
+		"mission"     :   "Chaque carte Combat dévoilée donne +1 point de combat",
+        "freeCards"   :   10
+	}
+]

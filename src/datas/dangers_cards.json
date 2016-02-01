@@ -1,0 +1,298 @@
+[
+    // Notes:
+    //  A partir du nombre de cartes à piocher, il est possible de connaitre la force nécessaire pour chaque niveau:
+    //  - freeCards == 1 : lvl1 => 0, lvl2 => 1, lvl3 => 3
+    //  - freeCards == 2 : lvl1 => 1, lvl2 => 3, lvl3 => 6
+    //  - freeCards == 3 : lvl1 => 2, lvl2 => 5, lvl3 => 8
+    //  - freeCards == 4 : lvl1 => 4, lvl2 => 7, lvl3 => 11
+    //  - freeCards == 5 : lvl1 => 5, lvl2 => 9, lvl3 => 14
+	{
+        "fight":{
+            "name"      :   "Livre",
+            "strenght"  :   0,
+            "power"     :   "Phase -1"
+        },
+        "danger":{
+            "name"      :   "Vers l'épave avec le radeau",
+            "freeCards"     :   1
+        },
+        "number":1
+	},
+	{
+        "fight":{
+            "name"      :   "Nourriture",
+            "strenght"  :   1,
+            "power"     :   "+1PV"
+        },
+        "danger":{
+            "name"      :   "Explore l'île",
+            "freeCards"     :   2
+        },
+        "number":2
+	},
+	{
+        "fight":{
+            "name"      :   "Nourriture",
+            "strenght"  :   2,
+            "power"     :   "+1PV"
+        },
+        "danger":{
+            "name"      :   "Explore l'île davantage",
+            "freeCards"     :   3
+        },
+        "number":1
+	},
+	{
+        "fight":{
+            "name"      :   "Nourriture",
+            "strenght"  :   0,
+            "power"     :   "+1PV"
+        },
+        "danger":{
+            "name"      :   "Vers l'épave avec le radeau",
+            "freeCards"     :   1
+        },
+        "number":2
+	},
+	{
+        "fight":{
+            "name"      :   "Stratégie",
+            "strenght"  :   0,
+            "power"     :   "Echanger x2"
+        },
+        "danger":{
+            "name"      :   "Vers l'épave avec le radeau",
+            "freeCards"     :   1
+        },
+        "number":2
+	},
+	{
+        "fight":{
+            "name"      :   "Stratégie",
+            "strenght"  :   2,
+            "power"     :   "Echanger x1"
+        },
+        "danger":{
+            "name"      :   "Explore l'île davantage",
+            "freeCards"     :   3
+        },
+        "number":1
+	},
+	{
+        "fight":{
+            "name"      :   "Stratégie",
+            "strenght"  :   3,
+            "power"     :   "Echanger x1"
+        },
+        "danger":{
+            "name"      :   "Animaux sauvages",
+            "freeCards"     :   4
+        },
+        "number":1
+	},
+	{
+        "fight":{
+            "name"      :   "Arme",
+            "strenght"  :   4,
+            "power"     :   ""
+        },
+        "danger":{
+            "name"      :   "Cannibales",
+            "freeCards"     :   5
+        },
+        "number":2
+	},
+	{
+        "fight":{
+            "name"      :   "Arme",
+            "strenght"  :   2,
+            "power"     :   ""
+        },
+        "danger":{
+            "name"      :   "Cannibales",
+            "freeCards"     :   2
+        },
+        "number":2
+	},
+	{
+        "fight":{
+            "name"      :   "Imitation",
+            "strenght"  :   0,
+            "power"     :   "Copier x1"
+        },
+        "danger":{
+            "name"      :   "Vers l'épave avec le radeau",
+            "freeCards"     :   1
+        },
+        "number":1
+	},
+	{
+        "fight":{
+            "name"      :   "Imitation",
+            "strenght"  :   1,
+            "power"     :   "Copier x1"
+        },
+        "danger":{
+            "name"      :   "Explore l'île",
+            "freeCards"     :   2
+        },
+        "number":1
+	},
+	{
+        "fight":{
+            "name"      :   "Connaissances",
+            "strenght"  :   3,
+            "power"     :   "Détruire x1"
+        },
+        "danger":{
+            "name"      :   "Animaux sauvages",
+            "freeCards"     :   4
+        },
+        "number":1
+	},
+	{
+        "fight":{
+            "name"      :   "Connaissances",
+            "strenght"  :   2,
+            "power"     :   "Détruire x1"
+        },
+        "danger":{
+            "name"      :   "Explore l'île davantage",
+            "freeCards"     :   3
+        },
+        "number":1
+	},
+	{
+        "fight":{
+            "name"      :   "Connaissances",
+            "strenght"  :   0,
+            "power"     :   "Détruire x1"
+        },
+        "danger":{
+            "name"      :   "Vers l'épave avec le radeau",
+            "freeCards"     :   1
+        },
+        "number":1
+	},
+	{
+        "fight":{
+            "name"      :   "Connaissances",
+            "strenght"  :   1,
+            "power"     :   "Détruire x1"
+        },
+        "danger":{
+            "name"      :   "Explore l'île",
+            "freeCards"     :   2
+        },
+        "number":1
+	},
+	{
+        "fight":{
+            "name"      :   "Equipement",
+            "strenght"  :   0,
+            "power"     :   "+2 Cartes"
+        },
+        "danger":{
+            "name"      :   "Vers l'épave avec le radeau",
+            "freeCards"     :   1
+        },
+        "number":2
+	},
+	{
+        "fight":{
+            "name"      :   "Répétition",
+            "strenght"  :   2,
+            "power"     :   "Doubler x1"
+        },
+        "danger":{
+            "name"      :   "Explore l'île davantage",
+            "freeCards"     :   3
+        },
+        "number":1
+	},
+	{
+        "fight":{
+            "name"      :   "Répétition",
+            "strenght"  :   1,
+            "power"     :   "Doubler x1"
+        },
+        "danger":{
+            "name"      :   "Explore l'île",
+            "freeCards"     :   2
+        },
+        "number":1
+	},
+	{
+        "fight":{
+            "name"      :   "Expérience",
+            "strenght"  :   2,
+            "power"     :   "+1 Carte"
+        },
+        "danger":{
+            "name"      :   "Explore l'île davantage",
+            "freeCards"     :   3
+        },
+        "number":1
+	},
+	{
+        "fight":{
+            "name"      :   "Expérience",
+            "strenght"  :   3,
+            "power"     :   "+1 Carte"
+        },
+        "danger":{
+            "name"      :   "Animaux sauvages",
+            "freeCards"     :   4
+        },
+        "number":1
+	},
+	{
+        "fight":{
+            "name"      :   "Vision",
+            "strenght"  :   2,
+            "power"     :   "Trier 3 cartes"
+        },
+        "danger":{
+            "name"      :   "Explore l'île davantage",
+            "freeCards"     :   3
+        },
+        "number":1
+	},
+	{
+        "fight":{
+            "name"      :   "Vision",
+            "strenght"  :   3,
+            "power"     :   "Trier 3 cartes"
+        },
+        "danger":{
+            "name"      :   "Explore l'île davantage",
+            "freeCards"     :   4
+        },
+        "number":1
+	},
+	{
+        "fight":{
+            "name"      :   "Ruse",
+            "strenght"  :   1,
+            "power"     :   "Sous la pioche x1"
+        },
+        "danger":{
+            "name"      :   "Explore l'île",
+            "freeCards"     :   2
+        },
+        "number":1
+	},
+	{
+        "fight":{
+            "name"      :   "Ruse",
+            "strenght"  :   0,
+            "power"     :   "Sous la pioche x1"
+        },
+        "danger":{
+            "name"      :   "Vers l'épave avec le radeau",
+            "freeCards"     :   1
+        },
+        "number":1
+	},
+
+]
