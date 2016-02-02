@@ -1,10 +1,8 @@
-
-
 import {Deck} from './Deck';
 import {FightDeck} from './FightDeck';
 import {DangerDeck} from './DangerDeck';
 import {AgingDeck} from './AgingDeck';
-// import {PirateDeck} from './Pirate';
+import {PirateDeck} from './PirateDeck';
 // import {Deck} from './Deck';
 
 
@@ -16,31 +14,11 @@ class Game {
 		this._fightDeck = new FightDeck();
 		this._dangerDeck = new DangerDeck();
 		this._agingDeck = new AgingDeck(this._difficulty);
-		// this._pirates = this.getPirates(1);
+		this._pirateDeck = new PirateDeck();
 	}
 
 	isGameOver(){
         return this._player.isDead();  
-    }
-    
-    static getPirates(nb){
-        if(nb > 0){
-            let list = PIRATESLIST;
-            console.log(list);
-            let randomIndex = Math.floor(Math.random() * (0 - list.length -1));
-            let indexes = [ PIRATESLIST[randomIndex] ];
-            // while (indexes.length < nb) {
-                
-            // }
-            
-            let arr = [];
-            indexes.forEach(function(element) {
-                arr.push(element.id);
-            }, this);
-            
-        
-            return arr;
-        }
     }
 
 	/**
