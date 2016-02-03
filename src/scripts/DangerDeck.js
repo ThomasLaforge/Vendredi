@@ -6,6 +6,10 @@ class DangerDeck extends Deck {
 		super();
 	}
     
+    initDeck(){
+        this._arrayDeck = require('../datas/dangers_cards.json');
+    }
+    
 }
 
 export {DangerDeck}

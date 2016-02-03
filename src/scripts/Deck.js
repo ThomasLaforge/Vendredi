@@ -1,20 +1,44 @@
 import {Card} from './Card';
+import {Tools} from './Tools';
 
 class Deck {
     //Constructor   : arrayDeck with all cards, shuffle him, and create a discard array
     //removeCard    : remove a card from the rest of the game
-    //shuffle       : shuffle an in deck
-    //shuffleDeck   : shuffle the arrayDeck
+    //shuffle       : shuffle the arrayDeck
     //length        : give the length of the deck
     //pickCards     : return an array with the firts cards of the deck. 
     
     constructor() {
-        this.arrayDeck = [];
-        this.arrayDiscard = [];
+        this._arrayDeck = [];
+        this._arrayDiscard = [];
+        this.initDeck();
+        this.shuffle();
+    }
+    
+    initDeck(){
+        
+    }
+    
+    // States of arrays : deck and discard
+    
+    isEmpty(){
+        return this.arrayDeck.length <= 0;
+    }
+    
+    isDiscardEmpty(){
+        return this.arrayDiscard.length <= 0;
+    }
+    
+    isFull(){
+        return this.discardEmpty();
+    }
+    
+    length(){
+        return this.arrayDeck.length;
     }
     
     removeCard(card) {
-        var pos = this.arrayDeck.indexOf(Card);
+        var pos = this._arrayDeck.indexOf(Card);
 		if(pos > -1){
 			this.arrayDeck.splice(pos, 1);
 		}
@@ -23,30 +47,17 @@ class Deck {
 		}
     }
     
-    shuffleDeck(){
-        console.log('shuffle Deck from Deck');
-        Deck.shuffle(this.arrayDeck);
+    shuffle(){
+        Tools.shuffle( this.arrayDeck );
     }
     
-    static shuffle(array){
-        var currentIndex = array.length, temporaryValue, randomIndex ;
-        
-        // While there remain elements to shuffle...
-        while (0 !== currentIndex) {
-        
-        // Pick a remaining element...
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        
-        // And swap it with the current element.
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-        }
-    }
-    
-    length(){
-        return this.arrayDeck.length;
+    discardToDeck(){
+        // ajout de la défausse dans la pioche
+        this.deck.concat( this.discard );
+        // Remise à zéro de la défausse
+        this.discard( new Array() );
+        // On mélange le nouveau deck
+        this.shuffle();
     }
     
     pickCards(nbCards){
@@ -60,9 +71,31 @@ class Deck {
     
     discard(arrayOfCard){
         $.each(arrayOfCard, function(){
-            this.discard.push(this); 
+            this.arrayDiscard.push(this); 
         });
     }
+    
+    /**
+	 * Getters and Setters
+	 */
+	
+	// Deck
+	
+	get arrayDeck(){
+		return this._arrayDeck;
+	}
+	set deck(newDeck){
+		this._arrayDeck = newDeck;
+	}
+    
+    // Discard
+	
+	get arrayDiscard(){
+		return this._arrayDiscard;
+	}
+	set arrayDiscard(newDiscard){
+		this._arrayDiscard = newDiscard;
+	}
     
 }
  

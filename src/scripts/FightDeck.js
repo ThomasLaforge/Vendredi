@@ -6,6 +6,10 @@ class FightDeck extends Deck {
 		super();
         
 	}
+    
+    initDeck(){
+        this._arrayDeck = require('../datas/fight_cards.json');
+    }
 }
 
 export {FightDeck}

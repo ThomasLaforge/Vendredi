@@ -1,42 +1,27 @@
 import {Deck} from "./Deck";
-import {Tools} from "./Tools";
-const PIRATESLIST = require('../datas/pirates_cards.json');
 
 class PirateDeck extends Deck{
     constructor(){
         super();
-        console.log('new pirate deck!');
+    }
+    
+    initDeck(){
+        this._arrayDeck = require('../datas/pirates_cards.json');
     }
     
     getPirates(nb){
+        let arr = [];
+        
         if(nb > 0){
-            let list = PIRATESLIST;
-            let arr = [];
-            
-            if(nb > list.length){
-                arr = list;
+            if(nb > this._arrayDeck.length){
+                arr = this._arrayDeck;
             }
             else{
-                let indexes = [];
-                let randomIndex;
-                
-                while (arr.length < nb) {
-                    randomIndex = Tools.getRandomIndexOfArray(list);
-                    
-                    while(indexes.indexOf(randomIndex) != -1){
-                        randomIndex = Tools.getRandomIndexOfArray(list);
-                    }
-                    
-                    indexes.push(randomIndex);
-                    arr.push(list[randomIndex]);
-                }
+                return this._arrayDeck.slice(0, nb);
             }
-            
-            return arr;
         }
-        else{
-            return [];
-        }
+        
+        return arr;
     }
     
 }

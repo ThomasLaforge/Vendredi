@@ -48,13 +48,13 @@
         "freeCards"   :   9
 	},
     {
-		"name"        :   "Pirate 4",
+		"name"        :   "Pirate 9",
 		"strength"    :   40,
 		"mission"     :   "",
         "freeCards"   :   10
 	},
     {
-		"name"        :   "Pirate 4",
+		"name"        :   "Pirate 10",
 		"strength"    :   52,
 		"mission"     :   "Chaque carte Combat dévoilée donne +1 point de combat",
         "freeCards"   :   10
