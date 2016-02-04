@@ -1,33 +1,38 @@
-import {Deck} from './Deck';
-import {FightDeck} from './FightDeck';
-import {DangerDeck} from './DangerDeck';
-import {AgingDeck} from './AgingDeck';
-import {PirateDeck} from './PirateDeck';
+import { Deck }       from './Deck';
+import { FightDeck }  from './FightDeck';
+import { DangerDeck } from './DangerDeck';
+import { AgingDeck }  from './AgingDeck';
+import { PirateDeck } from './PirateDeck';
 // import {Deck} from './Deck';
 
 
 class Game {
-	constructor(player, difficulty){
-		this._player = player;
-        this._difficulty = difficulty;
+	constructor( player, difficulty ){
+		this._player        = player;
+        this._difficulty    = difficulty;
 		// Decks
-		this._fightDeck = new FightDeck();
-		this._dangerDeck = new DangerDeck();
-		this._agingDeck = new AgingDeck(this._difficulty);
-		this._pirateDeck = new PirateDeck();
-        this._pirates = this.pirateDeck.getPirates(2);
-        this._level = 1;
+		this._fightDeck     = new FightDeck();
+		this._dangerDeck    = new DangerDeck();
+		this._agingDeck     = new AgingDeck( this._difficulty );
+		this._pirateDeck    = new PirateDeck();
+        this._pirates       = this.pirateDeck.getPirates( 2 );
+        this._level         = 1;
 	}
 
 	isGameOver(){
         return this._player.isDead();
-    }
-    
+    }    
+        
     drawFightCard(){
-        // Le deck est vide
-            // On ajoute une carte vieillissement dans la défausse 
-            
+        if ( this.fightDeck.isEmpty() ){
+            // On ajoute une carte vieillissement dans la défausse
+            let newAgingCard = this.agingDeck.drawCards( 1 );
+            this.fightDeck.addToDiscard( newAgingCard );
             // On ajoute la défausse au deck et on mélange
+            this.fightDeck.discardToDeck();
+        }
+        
+        return this.fightDeck.drawCards( 1 );
     }
     
     drawDangerCard(){
@@ -53,7 +58,7 @@ class Game {
             }
             else{
                 // On pioche une carte
-                arr.push(this.dangerDeck.pickCards(1));
+                arr.push( this.dangerDeck.pickCards( 1 ) );
             }
         }
         
@@ -69,7 +74,7 @@ class Game {
 	get player(){
 		return this._player;
 	}
-	set player(newPlayer){
+	set player( newPlayer ){
 		this._player = newPlayer;
 	}
 
@@ -77,7 +82,7 @@ class Game {
 	get difficulty(){
 		return this._difficulty;
 	}
-	set difficulty(newDifficulty){
+	set difficulty( newDifficulty ){
 		this._difficulty = newDifficulty;
 	}
     
@@ -85,7 +90,7 @@ class Game {
     get fightDeck(){
         return this._fightDeck;
     }
-    set fightDeck(newFightDeck){
+    set fightDeck( newFightDeck ){
         this._fightDeck = newFightDeck;
     }
     
@@ -93,7 +98,7 @@ class Game {
     get dangerDeck(){
         return this._dangerDeck;
     }
-    set dangerDeck(newDangerDeck){
+    set dangerDeck( newDangerDeck ){
         this._dangerDeck = newDangerDeck;
     }
     
@@ -101,7 +106,7 @@ class Game {
     get agingDeck(){
         return this._agingDeck;
     }
-    set agingDeck(newAgingDeck){
+    set agingDeck( newAgingDeck ){
         this._agingDeck = newAgingDeck;
     }
     
@@ -109,7 +114,7 @@ class Game {
     get pirateDeck(){
         return this._pirateDeck;
     }
-    set pirateDeck(newPirateDeck){
+    set pirateDeck( newPirateDeck ){
         this._pirateDeck = newPirateDeck;
     }
     
@@ -117,7 +122,7 @@ class Game {
     get pirates(){
         return this._pirates;
     }
-    set pirates(newPirates){
+    set pirates( newPirates ){
         this._pirates = newPirates;
     }
 }

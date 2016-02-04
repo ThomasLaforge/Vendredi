@@ -1,7 +1,7 @@
 class Card {
     constructor(name, strenght) {
-        this._name = name;
-        this._strenght = strenght;
+        this._name      = name;
+        this._strenght  = strenght;
     }
     
     get name(){

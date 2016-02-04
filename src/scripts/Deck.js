@@ -6,7 +6,7 @@ class Deck {
     //removeCard    : remove a card from the rest of the game
     //shuffle       : shuffle the arrayDeck
     //length        : give the length of the deck
-    //pickCards     : return an array with the firts cards of the deck. 
+    //drawCards     : return an array with the firts cards of the deck. 
     
     constructor() {
         this._arrayDeck = [];
@@ -60,7 +60,11 @@ class Deck {
         this.shuffle();
     }
     
-    pickCards(nbCards){
+    addToDiscard(arrOfCards){
+        this.discard(arrOfCards);
+    }
+    
+    drawCards(nbCards){
         var res = [];
         for(var i=0;i<nbCards;i++){
             res.push(this.arrayDeck[0]);
@@ -70,8 +74,8 @@ class Deck {
     }
     
     discard(arrayOfCard){
-        $.each(arrayOfCard, function(){
-            this.arrayDiscard.push(this); 
+        arrayOfCard.forEach(function(elt){
+            this.arrayDiscard.push(elt); 
         });
     }
     
