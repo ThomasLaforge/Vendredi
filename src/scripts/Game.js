@@ -24,7 +24,10 @@ class Game {
     }
     
     drawFightCard(){
-        // 
+        // Le deck est vide
+            // On ajoute une carte vieillissement dans la défausse 
+            
+            // On ajoute la défausse au deck et on mélange
     }
     
     drawDangerCard(){
@@ -42,7 +45,9 @@ class Game {
                     // on monte le niveau d'un cran
                     this.level +=1;
                     // on mélange la défausse de carte danger qui devient la pioche
+                    this.dangerDeck.discardToDeck();
                     // on recommence drawDangerCard();
+                    this.drawDangerCard();
                 }
                 // Sinon arr reste vide. Cela indique la fin de la phase d'entrainement.
             }
