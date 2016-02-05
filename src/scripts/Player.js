@@ -24,6 +24,27 @@ class Player {
     isDead(){
         return this._PV < 0;
     }
+    
+    /**
+	 * Getters and Setters
+	 */
+	
+	// Pseudo
+	get pseudo(){
+		return this._pseudo;
+	}
+	set pseudo( newPseudo ){
+		this._pseudo = newPseudo;
+	}
+    
+    // PV
+	get PV(){
+		return this._PV;
+	}
+	set PV( newPV ){
+		this._PV = newPV;
+	}
+    
 }
 
 export {Player}

@@ -3,25 +3,32 @@ import { FightDeck }  from './FightDeck';
 import { DangerDeck } from './DangerDeck';
 import { AgingDeck }  from './AgingDeck';
 import { PirateDeck } from './PirateDeck';
-// import {Deck} from './Deck';
-
+import { UserInterface } from './UserInterface';
 
 class Game {
 	constructor( player, difficulty ){
 		this._player        = player;
         this._difficulty    = difficulty;
-		// Decks
 		this._fightDeck     = new FightDeck();
+        console.log(this.fightDeck);
 		this._dangerDeck    = new DangerDeck();
 		this._agingDeck     = new AgingDeck( this._difficulty );
 		this._pirateDeck    = new PirateDeck();
         this._pirates       = this.pirateDeck.getPirates( 2 );
         this._level         = 1;
+        this._discard       = [];
+        this._UI            = new UserInterface(this);
+        // this._UI.init(this);
 	}
+    
+    test(){
+        this.player.losePV( 3 );
+        this.UI.showPV();
+    }
 
 	isGameOver(){
         return this._player.isDead();
-    }    
+    }
         
     drawFightCard(){
         if ( this.fightDeck.isEmpty() ){
@@ -41,9 +48,9 @@ class Game {
         // Si la pioche contient au moins deux cartes
         if ( this.dangerDeck.length() >= 2 ) {
             // On pioche deux cartes
-            arr.push( this.dangerDeck.pickCards(2) );
+            arr.push( this.dangerDeck.drawCards( 2 ) );
         } 
-        else{
+        else {
             if ( this.dangerDeck.isEmpty() ){
                 // Si le level est infèrieur à 3
                 if ( this.level < 3 ){
@@ -124,6 +131,14 @@ class Game {
     }
     set pirates( newPirates ){
         this._pirates = newPirates;
+    }
+    
+    // UI
+    get UI(){
+        return this._UI;
+    }
+    set UI( newUI ){
+        this._UI = newUI;
     }
 }
 
