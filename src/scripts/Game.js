@@ -29,6 +29,11 @@ class Game {
 	isGameOver(){
         return this._player.isDead();
     }
+    
+    losePV( nbPV ){
+        this.player.losePV( nbPV );
+        this.UI.showPV();
+    }
         
     drawFightCard(){
         if ( this.fightDeck.isEmpty() ){

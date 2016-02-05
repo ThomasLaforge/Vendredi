@@ -8,7 +8,17 @@ class AgingDeck extends Deck{
     }
     
     initDeck(){
-        this._arrayDeck = require( '../datas/aging_cards.json' );
+        let arrRes = [];
+        let arrDatas = require( '../datas/aging_cards.json' );
+        arrDatas.forEach( function( elt ){
+            let number = elt.number;
+            for (var i=0; i<number; i++) {
+                delete elt.number;
+                arrRes.push(elt);
+            }
+        });
+        
+        this._arrayDeck = arrRes;
     }
     
     shuffle(){

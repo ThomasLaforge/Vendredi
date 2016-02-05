@@ -22,7 +22,7 @@ let btnFight = document.getElementById('action-fight');
 // Events
 btnFight.addEventListener('click', function () {
      console.log('click on action fight');
-     game.player.losePV(23);
+     game.losePV(23);
      let isGammeover = game.isGameOver();
      console.log(isGammeover);
 });
