@@ -14,7 +14,7 @@ import { UserInterface } 	from	'./UserInterface';
 let pseudo = 'Thomas';
 let myPlayer = new Player(pseudo);
 let game = new Game(myPlayer, 1);
-game.test();
+game.start();
 
 // DOM
 let btnFight = document.getElementById('action-fight');

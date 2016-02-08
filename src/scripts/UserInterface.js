@@ -13,6 +13,16 @@ class UserInterface {
         this.showNbDangerCards();
     }
     
+    gameOver(){
+        console.log('game over !');
+    }
+    
+    showActualDangerChoice(){
+        this.game.actualDangerChoice.forEach(function(elt){
+            console.log(elt);       
+        });
+    }
+    
     showPV(){
         $('#PV').html(this.game.player.PV);
     }
@@ -23,10 +33,6 @@ class UserInterface {
     
     showNbDangerCards(){
         $('#nbDangerCards').html(this.game.dangerDeck.length());
-    }
-    
-    gameOver(){
-        console.log('gameOver !');
     }
     
     get game(){

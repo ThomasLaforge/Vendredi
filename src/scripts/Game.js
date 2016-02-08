@@ -9,21 +9,45 @@ class Game {
 	constructor( player, difficulty ){
 		this._player        = player;
         this._difficulty    = difficulty;
+        
 		this._fightDeck     = new FightDeck();
-        console.log(this.fightDeck);
 		this._dangerDeck    = new DangerDeck();
 		this._agingDeck     = new AgingDeck( this._difficulty );
 		this._pirateDeck    = new PirateDeck();
         this._pirates       = this.pirateDeck.getPirates( 2 );
+        
         this._level         = 1;
         this._discard       = [];
         this._UI            = new UserInterface(this);
-        // this._UI.init(this);
+        this._training;
+        this._actualDangerChoice = this.drawDangerCard();
 	}
     
-    test(){
-        this.player.losePV( 3 );
-        this.UI.showPV();
+    start(){
+        this.UI.showActualDangerChoice();
+        
+        // while ( !this.isGameOver() ){
+            // Phase d'entrainement
+            // if ( this.level <= 3 ){
+            //     //     Propose deux cartes danger
+            //     // while (  ){
+                    
+            //     // }
+            //     //     Le joueur en choisis une
+            //     // this._training = new Training();
+            //     //     On la combat
+            // }
+            // // Phase des pirates
+            // else{
+                
+            // }
+            
+                    
+        // }
+        
+        // // si ga
+        
+        // this.UI.gameOver();
     }
 
 	isGameOver(){
@@ -144,6 +168,14 @@ class Game {
     }
     set UI( newUI ){
         this._UI = newUI;
+    }
+    
+    // actual dager choice
+    get actualDangerChoice(){
+        return this._actualDangerChoice;
+    }
+    set actualDangerChoice( newActualDangerChoice ){
+        this._actualDangerChoice = newActualDangerChoice;
     }
 }
 

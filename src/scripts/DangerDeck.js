@@ -1,4 +1,5 @@
-import {Deck} from "./Deck";
+import {Deck}   from "./Deck";
+import {Danger} from "./Danger";
 
 class DangerDeck extends Deck {
 	constructor(){
@@ -9,11 +10,11 @@ class DangerDeck extends Deck {
     initDeck(){
         let arrRes = [];
         let arrDatas = require('../datas/dangers_cards.json');
-        arrDatas.forEach( function( elt ){
-            let number = elt.number;
+        arrDatas.forEach( function( obj ){
+            let number = obj.number;
             for (var i=0; i<number; i++) {
-                delete elt.number;
-                arrRes.push(elt);
+                let newDanger = new Danger(obj);
+                arrRes.push(newDanger);
             }
         });
         

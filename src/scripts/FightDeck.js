@@ -1,4 +1,5 @@
-import {Deck} from "./Deck";
+import { Deck }  from "./Deck";
+import { Fight } from "./Fight";
 
 class FightDeck extends Deck {
 	constructor(){
@@ -10,11 +11,11 @@ class FightDeck extends Deck {
     initDeck(){
         let arrRes = [];
         let arrDatas = require('../datas/fight_cards.json');
-        arrDatas.forEach( function( elt ){
-            let number = elt.number;
+        arrDatas.forEach( function( obj ){
+            let number = obj.number;
             for (var i=0; i<number; i++) {
-                delete elt.number;
-                arrRes.push(elt);
+                let newFight = new Fight(obj);
+                arrRes.push(newFight);
             }
         });
         
