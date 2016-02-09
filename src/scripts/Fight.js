@@ -23,6 +23,18 @@ class Fight {
         return playerForce - fightPoints;
     }
     
+    isWon(){
+        return this.result() >= 0;
+    }
+    
+    isLost(){
+        return !this.isWon();
+    }
+    
+    getNumberOfCards(){
+        return this.arrayFightCard.lenght;
+    }
+    
     /**
     * Getters and Setters
     */
