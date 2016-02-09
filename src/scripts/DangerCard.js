@@ -1,7 +1,7 @@
 import { Fight } from './Fight';
 import { Card }  from './Card';
 
-class Danger {
+class DangerCard {
     constructor(obj){
         this._fightCard       = new Fight(obj.fight);
         this._dangerName      = obj.danger.name;
@@ -73,4 +73,4 @@ class Danger {
     }
 }
 
-export { Danger }
+export { DangerCard }

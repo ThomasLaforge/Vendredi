@@ -1,5 +1,5 @@
 import {Deck}   from "./Deck";
-import {Danger} from "./Danger";
+import {DangerCard} from "./DangerCard";
 
 class DangerDeck extends Deck {
 	constructor(){

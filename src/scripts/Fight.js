@@ -1,20 +1,54 @@
-import { Card } from './Card';
+//import { DangerCard } from './DangerCard';
 
-class Fight extends Card {
-    constructor(obj){
-        super(obj);
-        this._power = obj.power;
+class Fight {
+    constructor( danger, level ){
+        this._level = level;
+        this._arrayFightCard = [];
+        this._dangerCard = danger;
     }
     
-    show(){
-        console.log('Card : name => ' + this.name + ', strenght => ' + this. strenght + ', power => ' + this.power);
+    addFightCard( fightCard ){
+        this.addFightCard.push( fightCard );
     }
     
-    get power(){
-        return this._power;
+    result(){
+        // >= 0 if player win ; < 0 if player lose fight 
+        let fightPoints = this.dangerCard.getStrenght( this.level );
+        let playerForce = 0;
+        
+        this.arrayFightCard.forEach(function(fightCard) {
+            playerForce += fightCard.strenght();
+        });
+        
+        return playerForce - fightPoints;
     }
-    set power(newPower){
-        this._power = newPower;
+    
+    /**
+    * Getters and Setters
+    */
+    
+    // DangerCard
+    get dangerCard(){
+        return this._dangerCard;
+    }
+    set dangetCard( newDangerCard ){
+        this._dangerCard = newDangerCard;
+    }
+    
+    // ArrayFightCard
+    get arrayFightCard(){
+        return this._arrayFightCard;
+    }
+    set arrayFightCard( newArrayFightCard ){
+        this._arrayFightCard = newArrayFightCard;
+    }
+    
+    // Level
+    get level(){
+        return this._level;
+    }
+    set level( newLevel ){
+        this._level = newLevel;
     }
 }
 

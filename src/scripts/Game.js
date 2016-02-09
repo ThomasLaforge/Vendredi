@@ -24,7 +24,7 @@ class Game {
 	}
     
     start(){
-        this.UI.showActualDangerChoice();
+        this.UI.update();
         
         // while ( !this.isGameOver() ){
             // Phase d'entrainement
@@ -48,6 +48,28 @@ class Game {
         // // si ga
         
         // this.UI.gameOver();
+        
+        ///////////////////////////////////////////////////////////////
+        ///////////                  ALGO                       ///////
+        ///////////////////////////////////////////////////////////////
+        
+        /*
+        condition de défaite : PV < 1
+        condition de victoire : vaincre les deux pirates
+        
+        2 Phases : 
+            1 - Phase d'entrainement
+            2 - Affrontement avec les pirates
+        
+        1 - Entrainement:
+            3 niveaux qui s'enchainent
+            Choisir un entrainement parmis deux
+            Le réaliser
+       
+        2 - Les pirates
+               
+                
+        */
     }
 
 	isGameOver(){

@@ -13,10 +13,6 @@ class UserInterface {
         this.showNbDangerCards();
     }
     
-    gameOver(){
-        console.log('game over !');
-    }
-    
     showActualDangerChoice(){
         this.game.actualDangerChoice.forEach(function(elt){
             console.log(elt);       

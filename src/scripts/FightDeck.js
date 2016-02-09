@@ -1,5 +1,5 @@
 import { Deck }  from "./Deck";
-import { Fight } from "./Fight";
+import { FightCard } from "./FightCard";
 
 class FightDeck extends Deck {
 	constructor(){
@@ -14,7 +14,7 @@ class FightDeck extends Deck {
         arrDatas.forEach( function( obj ){
             let number = obj.number;
             for (var i=0; i<number; i++) {
-                let newFight = new Fight(obj);
+                let newFight = new FightCard(obj);
                 arrRes.push(newFight);
             }
         });
