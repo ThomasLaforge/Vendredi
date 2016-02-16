@@ -9,20 +9,20 @@ class Player {
     }
     
     addPV(nbPV){
-        this._PV += nbPV;
-        if(this._PV > MAX_PV){
-            this._PV = MAX_PV;
+        this.PV += nbPV;
+        if(this.PV > MAX_PV){
+            this.PV = MAX_PV;
         }
     }
     
     losePV(nbPV){
-        this._PV -= nbPV;
+        this.PV -= nbPV;
         
         return this.isDead();
     }
     
     isDead(){
-        return this._PV < 0;
+        return this.PV < 0;
     }
     
     /**

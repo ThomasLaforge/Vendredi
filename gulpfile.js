@@ -69,9 +69,14 @@ gulp.task('templates', function() {
     .pipe( gulp.dest('dist/') )
 });
 
+gulp.task('copyLib', function() {
+   return gulp.src('src/lib/*.js')
+    .pipe($.plumber())
+    .pipe( gulp.dest('dist/lib/') )
+});
 
 
-gulp.task('build', ['compass', 'js', 'templates', 'images']);
+gulp.task('build', ['compass', 'js', 'templates', 'images', 'copyLib']);
 
 gulp.task('serve', ['build', 'browser-sync'], function () {
   gulp.watch('src/stylesheets/**/*.{scss,sass}',['compass', reload]);

@@ -18,37 +18,11 @@ class Game {
         
         this._level         = 1;
         this._discard       = [];
-        this._UI            = new UserInterface(this);
         this._training;
         this._actualDangerChoice = this.drawDangerCard();
 	}
     
-    start(){
-        this.UI.update();
-        
-        // while ( !this.isGameOver() ){
-            // Phase d'entrainement
-            // if ( this.level <= 3 ){
-            //     //     Propose deux cartes danger
-            //     // while (  ){
-                    
-            //     // }
-            //     //     Le joueur en choisis une
-            //     // this._training = new Training();
-            //     //     On la combat
-            // }
-            // // Phase des pirates
-            // else{
-                
-            // }
-            
-                    
-        // }
-        
-        // // si ga
-        
-        // this.UI.gameOver();
-        
+    start(){        
         ///////////////////////////////////////////////////////////////
         ///////////                  ALGO                       ///////
         ///////////////////////////////////////////////////////////////
@@ -73,12 +47,7 @@ class Game {
     }
 
 	isGameOver(){
-        return this._player.isDead();
-    }
-    
-    losePV( nbPV ){
-        this.player.losePV( nbPV );
-        this.UI.showPV();
+        return this.player.isDead();
     }
         
     drawFightCard(){

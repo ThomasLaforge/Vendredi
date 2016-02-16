@@ -1,22 +1,29 @@
 window.jQuery = window.$ = require('jquery');
+import {Tools} from './Tools';
 
 class UserInterface {
    constructor(game) {
-        console.log('UI initialized!');
         this._game = game;
+        console.log('UI initialized!');
         this.init();
     }
     
     init(){
-        this.showPV();
-        this.showNbFightCards();
-        this.showNbDangerCards();
+        this.showGlobalInfo();
     }
     
     showActualDangerChoice(){
         this.game.actualDangerChoice.forEach(function(elt){
             console.log(elt);       
         });
+    }
+
+    showGlobalInfo(){
+        let gameInfo = {
+            pv : this.game.player.PV,
+        };
+    
+        $('.game-info').render(gameInfo);
     }
     
     showPV(){
