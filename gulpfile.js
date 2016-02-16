@@ -1,12 +1,17 @@
-var gulp        = require('gulp'),
-    $           = require('gulp-load-plugins')(),
-    path        = require('path'),
-    browserSync = require('browser-sync'),
-    through2    = require('through2'),
-    reload      = browserSync.reload,
-    browserify  = require('browserify'),
-    del         = require('del'),
-    argv        = require('yargs').argv;
+var gulp           = require('gulp'),
+    $              = require('gulp-load-plugins')(),
+    path           = require('path'),
+    browserSync    = require('browser-sync'),
+    through2       = require('through2'),
+    reload         = browserSync.reload,
+    browserify     = require('browserify'),
+    del            = require('del'),
+    argv           = require('yargs').argv,
+    gulpBowerFiles = require('gulp-bower-files'),
+    replace        = require('gulp-replace'),
+    mainBowerFiles = require('gulp-main-bower-files'),
+    flatten = require('gulp-flatten');
+    
 
 gulp.task('browser-sync', function() {
   browserSync({
@@ -69,14 +74,15 @@ gulp.task('templates', function() {
     .pipe( gulp.dest('dist/') )
 });
 
-gulp.task('copyLib', function() {
-   return gulp.src('src/lib/*.js')
-    .pipe($.plumber())
-    .pipe( gulp.dest('dist/lib/') )
+
+gulp.task('bower-files', function() {
+    return gulp.src('bower_components/**/*.min.js')
+    .pipe(flatten())
+    .pipe(gulp.dest('dist/lib'));
 });
 
 
-gulp.task('build', ['compass', 'js', 'templates', 'images', 'copyLib']);
+gulp.task('build', ['compass', 'js', 'templates', 'images', 'bower-files']);
 
 gulp.task('serve', ['build', 'browser-sync'], function () {
   gulp.watch('src/stylesheets/**/*.{scss,sass}',['compass', reload]);
