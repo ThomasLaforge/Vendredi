@@ -13,7 +13,7 @@ class DangerDeck extends Deck {
         arrDatas.forEach( function( obj ){
             let number = obj.number;
             for (var i=0; i<number; i++) {
-                let newDanger = new Danger(obj);
+                let newDanger = new DangerCard(obj);
                 arrRes.push(newDanger);
             }
         });
