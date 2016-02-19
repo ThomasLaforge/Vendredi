@@ -19,11 +19,10 @@ class UserInterface {
     }
 
     showGlobalInfo(){
-        let gameInfo = {
-            pv : this.game.player.PV,
-        };
-    
-        $('.game-info').render(gameInfo);
+        this.showPV();
+        this.showActualDangerChoice();
+        this.showNbDangerCards();
+        this.showNbFightCards();
     }
     
     showPV(){
