@@ -5,29 +5,31 @@ class UserInterface {
    constructor(game) {
         this._game = game;
         console.log('UI initialized!');
-        this.init();
+        this.showMainInfos();
     }
     
-    init(){
-        this.showGlobalInfo();
+    showMainInfos(){
+        this.showPV();
+        this.showNbFightCards();
+        this.showNbDangerCards();
+        this.showNbAgingCards();
     }
     
     showActualDangerChoice(){
-        this.game.actualDangerChoice.forEach(function(elt){
-            console.log(elt);       
-        });
-    }
-
-    showGlobalInfo(){
-        let gameInfo = {
-            pv : this.game.player.PV,
-        };
-    
-        $('.game-info').render(gameInfo);
+        let choices = this.game.actualDangerChoice;
+        
+        if ( choices.length == 2) {
+            // Show the form to select one of the two danger cards
+        }
+        else if ( choices.lenght == 1) {
+            // Go to fight view with this card
+        } else {
+            console.log("number of dangers to chose is uncorrect");
+        }
     }
     
     showPV(){
-        $('#PV').html(this.game.player.PV);
+        $('#pv').html(this.game.player.PV);
     }
     
     showNbFightCards(){
@@ -37,6 +39,14 @@ class UserInterface {
     showNbDangerCards(){
         $('#nbDangerCards').html(this.game.dangerDeck.length());
     }
+    
+    showNbAgingCards(){
+        $('#nbAgingCards').html(this.game.agingDeck.length());
+    }
+    
+    /**
+     * Getters / Setters
+     */
     
     get game(){
         return this._game;
