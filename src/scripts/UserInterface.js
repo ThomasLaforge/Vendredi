@@ -27,6 +27,13 @@ class UserInterface {
             console.log("number of dangers to chose is uncorrect");
         }
     }
+
+    showGlobalInfo(){
+        this.showPV();
+        this.showActualDangerChoice();
+        this.showNbDangerCards();
+        this.showNbFightCards();
+    }
     
     showPV(){
         $('#pv').html(this.game.player.PV);

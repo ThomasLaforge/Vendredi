@@ -24,7 +24,7 @@ class Fight {
     }
     
     isWon(){
-        return this.result() >= 0;
+        return this.result() >= 0 && this.getNumberOfCards() >= 1;
     }
     
     isLost(){

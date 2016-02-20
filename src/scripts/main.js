@@ -1,7 +1,7 @@
 // Jquery et bootstrap
-window.jQuery           = window.$ = require('jquery');
-var bootstrap           = require('bootstrap/dist/js/bootstrap');
-// jQuery.fn.render        = Transparency.jQueryPlugin;
+window.jQuery = window.$ = require('jquery');
+var bootstrap = require('bootstrap/dist/js/bootstrap');
+// jQuery.fn.render = Transparency.jQueryPlugin;
 
 // ES6 modules Style
 import { Game 	}         from	'./Game';
@@ -36,6 +36,12 @@ function* gameCycle(){
  }
 } */
 
+
+$('a[data-toggle="tooltip"]').tooltip({
+    animated: 'fade',
+    placement: 'bottom',
+    html: true
+});
 
 // let btnFight = document.getElementById('action-fight');
 // btnFight.addEventListener('click', function () {
