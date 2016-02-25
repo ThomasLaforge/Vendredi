@@ -17,7 +17,7 @@ let myPlayer = new Player(pseudo);
 let game = new Game(myPlayer, 1);
 let UI = new UserInterface(game);
 
-$('a[data-toggle="tooltip"]').tooltip({
+$('a[data-toggle="popover"]').popover({
     animated: 'fade',
     placement: 'bottom',
     html: true
