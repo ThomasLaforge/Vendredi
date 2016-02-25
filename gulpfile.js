@@ -7,10 +7,7 @@ var gulp           = require('gulp'),
     browserify     = require('browserify'),
     del            = require('del'),
     argv           = require('yargs').argv,
-    gulpBowerFiles = require('gulp-bower-files'),
-    replace        = require('gulp-replace'),
-    mainBowerFiles = require('gulp-main-bower-files'),
-    flatten = require('gulp-flatten');
+    flatten        = require('gulp-flatten');
     
 
 gulp.task('browser-sync', function() {
