@@ -18,8 +18,6 @@ class Game {
         
         this._level         = 1;
         this._discard       = [];
-        this._training;
-        this._actualDangerChoice = this.drawDangerCard();
 	}
     
     start(){        

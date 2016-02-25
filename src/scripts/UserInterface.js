@@ -4,8 +4,10 @@ import {Tools} from './Tools';
 class UserInterface {
    constructor(game) {
         this._game = game;
+        this._actualView = 0;
         console.log('UI initialized!');
         this.showMainInfos();
+        this.showChoseDangerCard();
     }
     
     showMainInfos(){
@@ -15,24 +17,16 @@ class UserInterface {
         this.showNbAgingCards();
     }
     
-    showActualDangerChoice(){
-        let choices = this.game.actualDangerChoice;
+    showChoseDangerCard(){
+        let choices = this.game.drawDangerCard();
         
-        if ( choices.length == 2) {
-            // Show the form to select one of the two danger cards
-        }
-        else if ( choices.lenght == 1) {
-            // Go to fight view with this card
+        if ( choices.length == 2 || choices.lenght == 3) {
+            choices.forEach(function(card) {
+                UI_CardManager.drawCard(card);
+            }, this);
         } else {
             console.log("number of dangers to chose is uncorrect");
         }
-    }
-
-    showGlobalInfo(){
-        this.showPV();
-        this.showActualDangerChoice();
-        this.showNbDangerCards();
-        this.showNbFightCards();
     }
     
     showPV(){
