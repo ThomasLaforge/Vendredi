@@ -14,7 +14,13 @@ class Pirate {
 	 * Methods
 	 */
 
-    
+    show(){
+        console.log('Pirate : ');
+    }
+
+    draw( nodeDOM ){
+        
+    }
 
 	/**
 	 * Getters and Setters

@@ -8,6 +8,9 @@ class Card {
         console.log('Card : name => ' + this.name + ', strenght => ' + this. strenght);
     }
     
+    draw(nodeDOM){
+    }
+    
     get name(){
         return this._name;
     }

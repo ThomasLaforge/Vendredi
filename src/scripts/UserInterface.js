@@ -3,26 +3,25 @@ import {Tools} from './Tools';
 
 class UserInterface {
    constructor(game) {
-        this._game = game;
-        this._actualView = 0;
         console.log('UI initialized!');
+        this._game = game;
         this.showMainInfos();
-        this.showChoseDangerCard();
     }
     
     showMainInfos(){
         this.showPV();
+        this.showLevel();
         this.showNbFightCards();
         this.showNbDangerCards();
         this.showNbAgingCards();
     }
     
-    showChoseDangerCard(){
-        let choices = this.game.drawDangerCard();
+    showChoseDangerCard(choices){
+        // let choices = this.game.drawDangerCard();
         
         if ( choices.length == 2 || choices.lenght == 3) {
             choices.forEach(function(card) {
-                UI_CardManager.drawCard(card);
+                card.draw('.danger-choice-card-slots');
             }, this);
         } else {
             console.log("number of dangers to chose is uncorrect");
@@ -30,19 +29,23 @@ class UserInterface {
     }
     
     showPV(){
-        $('#pv').html(this.game.player.PV);
+        $('#pv').html( this.game.player.PV );
+    }
+    
+    showLevel(){
+        $('#level').html( this.game.level );
     }
     
     showNbFightCards(){
-        $('#nbFightCards').html(this.game.fightDeck.length());
+        $('#nbFightCards').html( this.game.fightDeck.length() );
     }
     
     showNbDangerCards(){
-        $('#nbDangerCards').html(this.game.dangerDeck.length());
+        $('#nbDangerCards').html( this.game.dangerDeck.length() );
     }
     
     showNbAgingCards(){
-        $('#nbAgingCards').html(this.game.agingDeck.length());
+        $('#nbAgingCards').html( this.game.agingDeck.length() );
     }
     
     /**

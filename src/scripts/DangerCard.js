@@ -8,13 +8,19 @@ class DangerCard {
         this._dangerFreeCards = obj.danger.freeCards;
     }
     
+   // Console debug
     show(){
         this.fightCard.show();
         console.log('Card Danger : name => ' + this.dangerName + ', strenght => 1 : ' + this.getStrenght(1) + ', 2 : ' + this.getStrenght(2) + ', 3 : ' + this.getStrenght(3));
     }
     
-    getStrenght(lvl){
-        switch (lvl) {
+    // Draw in user interface
+    draw( nodeDOM ){
+        $(nodeDOM).html('Card Danger : name => ' + this.dangerName + ', strenght => 1 : ' + this.getStrenght(1) + ', 2 : ' + this.getStrenght(2) + ', 3 : ' + this.getStrenght(3));
+    }
+    
+    getStrenght( lvl ){
+        switch ( lvl ) {
             case 1:
                 switch (this.dangerFreeCards) {
                     case 1:   return 0; break;

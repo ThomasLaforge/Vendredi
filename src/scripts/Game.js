@@ -18,9 +18,13 @@ class Game {
         
         this._level         = 1;
         this._discard       = [];
+        
+        // Bool Events
+        this._fightCardChose = false;
+        this._fightEnded = true;
 	}
     
-    start(){        
+    /* start(){        
         ///////////////////////////////////////////////////////////////
         ///////////                  ALGO                       ///////
         ///////////////////////////////////////////////////////////////
@@ -42,8 +46,8 @@ class Game {
         2 - Les pirates
                
                 
-        */
     }
+    */
 
 	isGameOver(){
         return this.player.isDead();
@@ -112,6 +116,14 @@ class Game {
 		this._difficulty = newDifficulty;
 	}
     
+    // Level
+    get level(){
+        return this._level;
+    }
+    set level(newLvl){
+        this._level = newLvl;
+    }
+    
     // FightDeck
     get fightDeck(){
         return this._fightDeck;
@@ -166,6 +178,22 @@ class Game {
     }
     set actualDangerChoice( newActualDangerChoice ){
         this._actualDangerChoice = newActualDangerChoice;
+    }
+    
+    // Fight Card Chose
+    get fightCardChose() {
+        return this._fightCardChose;
+    }
+    set fightCardChose( bool ) {
+        this._fightCardChose = bool;
+    }
+    
+    // 
+    get fightEnded() {
+        return this._fightEnded;
+    }
+    set fightEnded( bool ) {
+        this._fightEnded = bool;
     }
 }
 

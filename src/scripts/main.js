@@ -13,10 +13,28 @@ let myPlayer = new Player(pseudo);
 let game     = new Game(myPlayer, 1);
 let UI       = new UserInterface(game);
 
-game.player.PV = 17;
 UI.showMainInfos();
-
-
+/*
+while ( !game.isGameOver() ) {
+    while ( game.level <= 3 ){
+        // Step 1 : Chose a fight card
+        while ( !game.fightCardChose ) {
+            // Do Stuff
+            console.log('in loop 1');   
+        }
+        
+        // Step 2 : Do the fight
+        while ( !game.fightEnded ) {
+            console.log('in loop 2');
+        }
+        
+        if ( game.dangerDeck.isEmpty() ){
+            game.level += 3;
+        }
+    }
+    
+}
+*/
 /*
     es6 generators
 

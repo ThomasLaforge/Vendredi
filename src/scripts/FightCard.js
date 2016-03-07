@@ -10,6 +10,10 @@ class FightCard extends Card {
         console.log('Card : name => ' + this.name + ', strenght => ' + this. strenght + ', power => ' + this.power);
     }
     
+    draw( nodeDOM ){
+        $(nodeDOM).html('Card : name => ' + this.name + ', strenght => ' + this. strenght + ', power => ' + this.power);
+    }
+    
     get power(){
         return this._power;
     }
