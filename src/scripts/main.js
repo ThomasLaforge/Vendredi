@@ -11,9 +11,11 @@ import { UserInterface }  from	'./UserInterface';
 let pseudo   = 'Thomas';
 let myPlayer = new Player(pseudo);
 let game     = new Game(myPlayer, 1);
+
 let UI       = new UserInterface(game);
 
 UI.showMainInfos();
+
 /*
 while ( !game.isGameOver() ) {
     while ( game.level <= 3 ){

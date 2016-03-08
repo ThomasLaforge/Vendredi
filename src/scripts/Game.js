@@ -29,7 +29,6 @@ class Game {
         ///////////                  ALGO                       ///////
         ///////////////////////////////////////////////////////////////
 
-
         /*
         condition de défaite : PV < 1
         condition de victoire : vaincre les deux pirates
