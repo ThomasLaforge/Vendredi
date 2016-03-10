@@ -8,23 +8,22 @@ import { UserInterface } from './UserInterface';
 class Game {
 	constructor( player, difficulty ){
 		this._player        = player;
-        this._difficulty    = difficulty;
-        
+    this._difficulty    = difficulty;
+
 		this._fightDeck     = new FightDeck();
 		this._dangerDeck    = new DangerDeck();
 		this._agingDeck     = new AgingDeck( this._difficulty );
 		this._pirateDeck    = new PirateDeck();
-        this._pirates       = this.pirateDeck.getPirates( 2 );
-        
-        this._level         = 1;
-        this._discard       = [];
-        
-        // Bool Events
-        this._fightCardChose = false;
-        this._fightEnded = true;
+    this._pirates       = this.pirateDeck.getPirates( 2 );
+    this._level         = 1;
+    this._discard       = [];
+
+    // Bool Events
+    this._fightCardChose = false;
+    this._fightEnded = true;
 	}
-    
-    /* start(){        
+
+    /* start(){
         ///////////////////////////////////////////////////////////////
         ///////////                  ALGO                       ///////
         ///////////////////////////////////////////////////////////////
@@ -33,46 +32,46 @@ class Game {
         /*
         condition de défaite : PV < 1
         condition de victoire : vaincre les deux pirates
-        
-        2 Phases : 
+
+        2 Phases :
             1 - Phase d'entrainement
             2 - Affrontement avec les pirates
-        
+
         1 - Entrainement:
             3 niveaux qui s'enchainent
             Choisir un entrainement parmis deux
             Le réaliser
-       
+
         2 - Les pirates
-               
-                
+
+
     }
     */
 
 	isGameOver(){
-        return this.player.isDead();
-    }
-        
-    drawFightCard(){
-        if ( this.fightDeck.isEmpty() ){
-            // On ajoute une carte vieillissement dans la défausse
-            let newAgingCard = this.agingDeck.drawCards( 1 );
-            this.fightDeck.addToDiscard( newAgingCard );
-            // On ajoute la défausse au deck et on mélange
-            this.fightDeck.discardToDeck();
-        }
-        
-        return this.fightDeck.drawCards( 1 );
-    }
-    
+    return this.player.isDead();
+  }
+
+  drawFightCard(){
+      if ( this.fightDeck.isEmpty() ){
+          // On ajoute une carte vieillissement dans la défausse
+          let newAgingCard = this.agingDeck.drawCards( 1 );
+          this.fightDeck.addToDiscard( newAgingCard );
+          // On ajoute la défausse au deck et on mélange
+          this.fightDeck.discardToDeck();
+      }
+
+      return this.fightDeck.drawCards( 1 );
+  }
+
     drawDangerCard(){
         let arr = []; //Tableau de cartes danger à renvoyer. Vide si fin de l'entrainement.
-        
+
         // Si la pioche contient au moins deux cartes
         if ( this.dangerDeck.length() >= 2 ) {
             // On pioche deux cartes
             arr.push( this.dangerDeck.drawCards( 2 ) );
-        } 
+        }
         else {
             if ( this.dangerDeck.isEmpty() ){
                 // Si le level est infèrieur à 3
@@ -91,15 +90,15 @@ class Game {
                 arr.push( this.dangerDeck.pickCards( 1 ) );
             }
         }
-        
+
         return arr;
-            
+
     }
 
 	/**
 	 * Getters and Setters
 	 */
-	
+
 	// Player
 	get player(){
 		return this._player;
@@ -115,7 +114,7 @@ class Game {
 	set difficulty( newDifficulty ){
 		this._difficulty = newDifficulty;
 	}
-    
+
     // Level
     get level(){
         return this._level;
@@ -123,7 +122,7 @@ class Game {
     set level(newLvl){
         this._level = newLvl;
     }
-    
+
     // FightDeck
     get fightDeck(){
         return this._fightDeck;
@@ -131,7 +130,7 @@ class Game {
     set fightDeck( newFightDeck ){
         this._fightDeck = newFightDeck;
     }
-    
+
     // DangerDeck
     get dangerDeck(){
         return this._dangerDeck;
@@ -139,7 +138,7 @@ class Game {
     set dangerDeck( newDangerDeck ){
         this._dangerDeck = newDangerDeck;
     }
-    
+
     // AgingDeck
     get agingDeck(){
         return this._agingDeck;
@@ -147,7 +146,7 @@ class Game {
     set agingDeck( newAgingDeck ){
         this._agingDeck = newAgingDeck;
     }
-    
+
     // PirateDeck
     get pirateDeck(){
         return this._pirateDeck;
@@ -155,7 +154,7 @@ class Game {
     set pirateDeck( newPirateDeck ){
         this._pirateDeck = newPirateDeck;
     }
-    
+
     // Pirates
     get pirates(){
         return this._pirates;
@@ -163,7 +162,7 @@ class Game {
     set pirates( newPirates ){
         this._pirates = newPirates;
     }
-    
+
     // UI
     get UI(){
         return this._UI;
@@ -171,7 +170,7 @@ class Game {
     set UI( newUI ){
         this._UI = newUI;
     }
-    
+
     // actual dager choice
     get actualDangerChoice(){
         return this._actualDangerChoice;
@@ -179,7 +178,7 @@ class Game {
     set actualDangerChoice( newActualDangerChoice ){
         this._actualDangerChoice = newActualDangerChoice;
     }
-    
+
     // Fight Card Chose
     get fightCardChose() {
         return this._fightCardChose;
@@ -187,8 +186,8 @@ class Game {
     set fightCardChose( bool ) {
         this._fightCardChose = bool;
     }
-    
-    // 
+
+    //
     get fightEnded() {
         return this._fightEnded;
     }

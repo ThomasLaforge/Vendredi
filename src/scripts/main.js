@@ -13,26 +13,29 @@ let myPlayer = new Player(pseudo);
 let game     = new Game(myPlayer, 1);
 let UI       = new UserInterface(game);
 
+game.
+
 UI.showMainInfos();
+
 /*
 while ( !game.isGameOver() ) {
     while ( game.level <= 3 ){
         // Step 1 : Chose a fight card
         while ( !game.fightCardChose ) {
             // Do Stuff
-            console.log('in loop 1');   
+            console.log('in loop 1');
         }
-        
+
         // Step 2 : Do the fight
         while ( !game.fightEnded ) {
             console.log('in loop 2');
         }
-        
+
         if ( game.dangerDeck.isEmpty() ){
             game.level += 3;
         }
     }
-    
+
 }
 */
 /*
@@ -50,7 +53,7 @@ function* gameCycle(){
        console.log(2);
         yield; // pause waiting for a parameter to pass into `foo(..)`
        console.log(3);
-        
+
  }
 } */
 
@@ -67,7 +70,7 @@ $('a[data-toggle="popover"]').popover({
 //     this.game.losePV(23);
 //     let isGameover = this.game.isGameOver();
 //     console.log(isGameover);
-// });  
+// });
 
 
 // Function
