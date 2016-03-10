@@ -18,10 +18,10 @@
 
     <div class="container">
         <h1>Vendredi</h1>
-        
-        <br>
-        
-        <div class="game-info">
+
+        <hr>
+
+        <div class="game-info" id="zone-info">
             <div class="info-main">
                 PV :                <span id ="pv"></span>
                 Nb fight cards :    <span id ="nbFightCards"></span>
@@ -30,51 +30,55 @@
                 Level :             <span id ="level"></span>
             </div>
             <div class="info-pirates">
-                pirates :   
-                <a data-toggle="popover" title="<img src='http://getbootstrap.com/apple-touch-icon.png' />">
+                pirates :
+                <!--<a data-toggle="popover" title="<img src='http://getbootstrap.com/apple-touch-icon.png' />">-->
                     <span id="pirates-1">Pirate 1</span>
-                </a>
-                <a data-toggle="popover" title="<img src='http://getbootstrap.com/apple-touch-icon.png' />">
+                <!--</a>-->
+                <!--<a data-toggle="popover" title="<img src='http://getbootstrap.com/apple-touch-icon.png' />">-->
                     <span id="pirates-2">Pirate 2</span>
-                </a>
+                <!--</a>-->
             </div>
         </div>
-        
-        <div class="game-danger-choice">
-            <div class="danger-choice-card-slots">
+
+        <hr>
+
+        <div class="game-danger-choice" id="zone-danger-choice">
+            <div class="danger-choice-card-slots" id="danger-choice-card-slots">
                 <!--
-                    <div class="card-slot-one"></div>
-                    <div class="card-slot-two"></div>
-                    
+                    <div class="card-slot"></div>
+                    <div class="card-slot"></div>
+
                 -->
             </div>
-            
+
             <div class="danger-choice-actions">
                 <button id="btn-action-chose-danger">Choisir !</button>
             </div>
         </div>
-        
-        <div class="game-fight-danger">
-            <div class="fight-danger-card-to-fight"></div>
-            <div class="fight-danger-fight-cards">
-                <!--
-                    <div class="fight-cards-elt"></div>
-                -->
-            </div>
-            
+
+        <div class="game-fight-danger" id="zone-fight-danger">
+            <div class="fight-danger-card-to-fight" id="danger-card-to-fight"></div>
+
             <div class="fight-danger-infos">
                 Force de combat : <span id="fight-danger-strength">0</span> <!-- green if > dangerCard.strengh ; red else -->
             </div>
-            
+
+            <div class="fight-danger-fight-cards">
+              <!--
+                  <div class="fight-cards-elt"></div>
+              -->
+            </div>
+
             <div class="fight-danger-actions">
                 <button class="fight-danger-action-pick">Piocher</button> <!-- Piocher / Piocher (-1PV) -->
                 <button class="fight-danger-action-stop">Stop</button>
             </div>
         </div>
-        
-        
+
+        <!--<div class="game-fight-pirate" id="zone-fight-pirate"></div>        -->
+
     </div>
-    
+
     <!-- - - - - - - - -->
     <!--    Scripts    -->
     <!-- - - - - - - - -->

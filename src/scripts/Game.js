@@ -1,5 +1,6 @@
 import { Deck }       from './Deck';
 import { FightDeck }  from './FightDeck';
+import { Fight }  from './Fight';
 import { DangerDeck } from './DangerDeck';
 import { AgingDeck }  from './AgingDeck';
 import { PirateDeck } from './PirateDeck';
@@ -15,19 +16,18 @@ class Game {
 		this._agingDeck     = new AgingDeck( this._difficulty );
 		this._pirateDeck    = new PirateDeck();
     this._pirates       = this.pirateDeck.getPirates( 2 );
+
     this._level         = 1;
     this._discard       = [];
 
     // Bool Events
-    this._fightCardChose = false;
-    this._fightEnded = true;
+    this._fight = null;
 	}
 
     /* start(){
         ///////////////////////////////////////////////////////////////
         ///////////                  ALGO                       ///////
         ///////////////////////////////////////////////////////////////
-
 
         /*
         condition de défaite : PV < 1
@@ -64,36 +64,57 @@ class Game {
       return this.fightDeck.drawCards( 1 );
   }
 
-    drawDangerCard(){
-        let arr = []; //Tableau de cartes danger à renvoyer. Vide si fin de l'entrainement.
+  drawDangerCard(){
+      let arr = []; //Tableau de cartes danger à renvoyer. Vide si fin de l'entrainement.
 
-        // Si la pioche contient au moins deux cartes
-        if ( this.dangerDeck.length() >= 2 ) {
-            // On pioche deux cartes
-            arr.push( this.dangerDeck.drawCards( 2 ) );
-        }
-        else {
-            if ( this.dangerDeck.isEmpty() ){
-                // Si le level est infèrieur à 3
-                if ( this.level < 3 ){
-                    // on monte le niveau d'un cran
-                    this.level +=1;
-                    // on mélange la défausse de carte danger qui devient la pioche
-                    this.dangerDeck.discardToDeck();
-                    // on recommence drawDangerCard();
-                    this.drawDangerCard();
-                }
-                // Sinon arr reste vide. Cela indique la fin de la phase d'entrainement.
-            }
-            else{
-                // On pioche une carte
-                arr.push( this.dangerDeck.pickCards( 1 ) );
-            }
-        }
+      // Si la pioche contient au moins deux cartes
+      if ( this.dangerDeck.length() >= 2 ) {
+          // On pioche deux cartes
+          arr = ( this.dangerDeck.drawCards( 2 ) );
+      }
+      else {
+          if ( this.dangerDeck.isEmpty() ){
+              // Si le level est infèrieur à 3
+              if ( this.level < 3 ){
+                  // on monte le niveau d'un cran
+                  this.level +=1;
+                  // on mélange la défausse de carte danger qui devient la pioche
+                  this.dangerDeck.discardToDeck();
+                  // on recommence drawDangerCard();
+                  this.drawDangerCard();
+              }
+              // Sinon arr reste vide. Cela indique la fin de la phase d'entrainement.
+          }
+          else{
+              // On pioche une carte
+              arr = ( this.dangerDeck.pickCards( 1 ) );
+          }
+      }
 
-        return arr;
+      return arr;
 
-    }
+  }
+
+  startFight( dangerCard ){
+      this.fight = new Fight( dangerCard, this.level );
+  }
+
+  addCardToFight( fightCard ){
+      this.fight.addCardToFight( fightCard );
+  }
+
+
+  endFight(){
+      let resultFight = this.fight.result();
+
+      // If fight is lost => lose 1 PV for each fight point missing
+      if ( this.fight.isLost() ) {
+        this.player.addPV( resultFight );
+      }
+
+      // Reset actual fight
+      this.fight = null;
+  }
 
 	/**
 	 * Getters and Setters
@@ -171,29 +192,14 @@ class Game {
         this._UI = newUI;
     }
 
-    // actual dager choice
-    get actualDangerChoice(){
-        return this._actualDangerChoice;
+    // actual fight
+    get fight(){
+        return this._fight;
     }
-    set actualDangerChoice( newActualDangerChoice ){
-        this._actualDangerChoice = newActualDangerChoice;
-    }
-
-    // Fight Card Chose
-    get fightCardChose() {
-        return this._fightCardChose;
-    }
-    set fightCardChose( bool ) {
-        this._fightCardChose = bool;
+    set fight( newFight ){
+        this._fight = newFight;
     }
 
-    //
-    get fightEnded() {
-        return this._fightEnded;
-    }
-    set fightEnded( bool ) {
-        this._fightEnded = bool;
-    }
 }
 
 export { Game }
