@@ -1,25 +1,25 @@
-import { Fight } from './Fight';
+import { FightCard } from './FightCard';
 import { Card }  from './Card';
 
 class DangerCard {
     constructor(obj){
-        this._fightCard       = new Fight(obj.fight);
+        this._fightCard       = new FightCard(obj.fight);
         this._dangerName      = obj.danger.name;
         this._dangerFreeCards = obj.danger.freeCards;
     }
-    
+
    // Console debug
     show(){
         this.fightCard.show();
-        console.log('Card Danger : name => ' + this.dangerName + ', strenght => 1 : ' + this.getStrenght(1) + ', 2 : ' + this.getStrenght(2) + ', 3 : ' + this.getStrenght(3));
+        console.log('Card Danger : name => ' + this.dangerName + ', strength => 1 : ' + this.getStrength(1) + ', 2 : ' + this.getStrength(2) + ', 3 : ' + this.getStrength(3));
     }
-    
+
     // Draw in user interface
     draw( nodeDOM ){
-        $(nodeDOM).html('Card Danger : name => ' + this.dangerName + ', strenght => 1 : ' + this.getStrenght(1) + ', 2 : ' + this.getStrenght(2) + ', 3 : ' + this.getStrenght(3));
+        $(nodeDOM).append('<div class="card-slot">Card Danger : name => ' + this.dangerName + ', strength => 1 : ' + this.getStrength(1) + ', 2 : ' + this.getStrength(2) + ', 3 : ' + this.getStrength(3) + '</div>');
     }
-    
-    getStrenght( lvl ){
+
+    getStrength( lvl ){
         switch ( lvl ) {
             case 1:
                 switch (this.dangerFreeCards) {
@@ -41,7 +41,7 @@ class DangerCard {
                     default: return 30; break;
                 }
                 break;
-                
+
             case 3:
                 switch (this.dangerFreeCards) {
                     case 1:  return 3;  break;
@@ -52,25 +52,25 @@ class DangerCard {
                     default: return 31; break;
                 }
                 break;
-                
+
             default: return 32; break;
         }
     }
-    
+
     get fightCard(){
         return this._fightCard;
     }
     set fightCard( newFightCard ){
         this._fightCard = newFightCard;
     }
-    
+
     get dangerFreeCards(){
         return this._dangerFreeCards;
     }
     set dangerFreeCards( newDangerFreeCards ){
         this._dangerFreeCards = newDangerFreeCards;
     }
-    
+
     get dangerName(){
         return this._dangerName;
     }

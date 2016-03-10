@@ -11,10 +11,42 @@ import { UserInterface }  from	'./UserInterface';
 let pseudo   = 'Thomas';
 let myPlayer = new Player(pseudo);
 let game     = new Game(myPlayer, 1);
-
 let UI       = new UserInterface(game);
+let dangerCardChoice = [];
 
-UI.showMainInfos();
+//////////////////
+// Etat initial //
+//////////////////
+
+// Draw and show danger cards
+dangerCardChoice = game.drawDangerCard();
+dangerCardChoice.forEach(function(element) {
+    element.draw('#danger-choice-card-slots');
+}, this);
+
+////////////////
+// Evenements //
+////////////////
+
+// Select a card in danger card choice zone
+$('body').on('click', '.card-slot', function(){
+  $('.card-slot').removeClass('danger-card-selected');
+  $(this).addClass('danger-card-selected');
+});
+
+// Chose a card in danger card choice zone
+$('body').on('click', '#btn-action-chose-danger', function(){
+  if ( $('.danger-card-selected').length > 0 ) {
+    let indexDangerCardChoice = $('.danger-card-selected').index();
+    game.startFight( dangerCardChoice[indexDangerCardChoice] );
+
+    // Clean UI : danger card choice zone
+    UI.cleanDangerCardChoiceZone();
+    // Hide danger card choice zone
+    UI.hideDangerCardChoiceZone();
+    UI.showFightZone();
+  }
+});
 
 /*
 while ( !game.isGameOver() ) {
@@ -22,40 +54,23 @@ while ( !game.isGameOver() ) {
         // Step 1 : Chose a fight card
         while ( !game.fightCardChose ) {
             // Do Stuff
-            console.log('in loop 1');   
+            console.log('in loop 1');
         }
-        
+
         // Step 2 : Do the fight
         while ( !game.fightEnded ) {
             console.log('in loop 2');
         }
-        
+
         if ( game.dangerDeck.isEmpty() ){
             game.level += 3;
         }
     }
-    
+
 }
 */
-/*
-    es6 generators
 
-let gameProcess = gameCycle();
-gameProcess.next();
-gameProcess.next();
-
-function* gameCycle(){
- while(true){
-     console.log(1);
-        yield;
-         // just pause
-       console.log(2);
-        yield; // pause waiting for a parameter to pass into `foo(..)`
-       console.log(3);
-        
- }
-} */
-
+// Interface
 
 $('a[data-toggle="popover"]').popover({
     animated: 'fade',
@@ -63,17 +78,4 @@ $('a[data-toggle="popover"]').popover({
     html: true
 });
 
-// let btnFight = document.getElementById('action-fight');
-// btnFight.addEventListener('click', function () {
-//     console.log('click on action fight');
-//     this.game.losePV(23);
-//     let isGameover = this.game.isGameOver();
-//     console.log(isGameover);
-// });  
-
-
-// Function
-
-
-// game.start();
 //console.log(myPlayer instanceof Player);
