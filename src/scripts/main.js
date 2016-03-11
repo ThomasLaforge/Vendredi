@@ -47,6 +47,7 @@ $('body').on('click', '#btn-action-chose-danger', function(){
     // Hide danger card choice zone
     UI.hideDangerCardChoiceZone();
     UI.showFightZone();
+
   }
 });
 
