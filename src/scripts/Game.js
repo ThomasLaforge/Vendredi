@@ -61,7 +61,7 @@ class Game {
           this.fightDeck.discardToDeck();
       }
 
-      return this.fightDeck.drawCards( 1 );
+      return this.fightDeck.drawOneCard();
   }
 
   drawDangerCard(){
@@ -92,17 +92,17 @@ class Game {
       }
 
       return arr;
-
   }
 
   startFight( dangerCard ){
       this.fight = new Fight( dangerCard, this.level );
+      this.addCardToFight();
   }
 
-  addCardToFight( fightCard ){
-      this.fight.addCardToFight( fightCard );
+  addCardToFight(){
+      let fightCard = this.drawFightCard();
+      this.fight.addFightCard( fightCard );
   }
-
 
   endFight(){
       let resultFight = this.fight.result();
@@ -114,6 +114,8 @@ class Game {
 
       // Reset actual fight
       this.fight = null;
+
+      return resultFight;
   }
 
 	/**

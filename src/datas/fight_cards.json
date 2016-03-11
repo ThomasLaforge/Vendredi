@@ -1,31 +1,31 @@
 [
     {
 		"name" :"Distrait",
-		"strenght":-1,
+		"strength":-1,
 		"power": null,
         "number": 5
 	},
     {
 		"name" :"Mange",
-		"strenght":0,
+		"strength":0,
 		"power": "+2PV",
         "number": 1
 	},
     {
 		"name" :"Faible",
-		"strenght":0,
+		"strength":0,
 		"power": null,
         "number" : 8
 	},
     {
 		"name" :"Concentré",
-		"strenght":1,
+		"strength":1,
 		"power": null,
         "number": 3
 	},
     {
 		"name" :"Ingénieux",
-		"strenght":2,
+		"strength":2,
 		"power": null,
         "number": 1
 	}

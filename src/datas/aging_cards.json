@@ -3,21 +3,21 @@
 	{
 		"name" :"Affamé",
 		"power":"-2PV",
-		"strenght":0,
+		"strength":0,
         "lvl":2,
         "number":1
 	},
 	{
 		"name" :"Idiot",
 		"power":"",
-		"strenght":-4,
+		"strength":-4,
         "lvl":2,
         "number":1
 	},
 	{
 		"name" :"Suicidaire",
 		"power":"",
-		"strenght":-5,
+		"strength":-5,
         "lvl":2,
         "number":1
 	},
@@ -25,42 +25,42 @@
 	{
 		"name" :"A faim",
 		"power":"-1PV",
-		"strenght":0,
+		"strength":0,
         "lvl":1,
         "number":1
 	},
 	{
 		"name" :"Très fatigué",
 		"power":"Arrêt",
-		"strenght":0,
+		"strength":0,
         "lvl":1,
         "number":1
 	},
 	{
 		"name" :"Apeuré",
 		"power":"La carte la plus forte = 0",
-		"strenght":0,
+		"strength":0,
         "lvl":1,
         "number":2
 	},
 	{
 		"name" :"Distrait",
 		"power":"",
-		"strenght":-1,
+		"strength":-1,
         "lvl":1,
         "number":1
 	},
 	{
 		"name" :"Stupide",
 		"power":"",
-		"strenght":-2,
+		"strength":-2,
         "lvl":1,
         "number":2
 	},
 	{
 		"name" :"Très stupide",
 		"power":"",
-		"strenght":-3,
+		"strength":-3,
         "lvl":1,
         "number":1
 	}

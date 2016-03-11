@@ -3,11 +3,9 @@ import { FightCard } from "./FightCard";
 
 class FightDeck extends Deck {
 	constructor(){
-        console.log('new fight deck!');
 		super();
-        
 	}
-    
+
     initDeck(){
         let arrRes = [];
         let arrDatas = require('../datas/fight_cards.json');
@@ -18,9 +16,9 @@ class FightDeck extends Deck {
                 arrRes.push(newFight);
             }
         });
-        
+
         this._arrayDeck = arrRes;
-        
+
     }
 }
 

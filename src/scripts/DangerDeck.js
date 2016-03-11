@@ -3,10 +3,9 @@ import {DangerCard} from "./DangerCard";
 
 class DangerDeck extends Deck {
 	constructor(){
-        console.log('new danger deck!');
 		super();
 	}
-    
+
     initDeck(){
         let arrRes = [];
         let arrDatas = require('../datas/dangers_cards.json');
@@ -17,10 +16,10 @@ class DangerDeck extends Deck {
                 arrRes.push(newDanger);
             }
         });
-        
+
         this._arrayDeck = arrRes;
     }
-    
+
 }
 
 export {DangerDeck}

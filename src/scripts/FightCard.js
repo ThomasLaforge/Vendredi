@@ -5,15 +5,15 @@ class FightCard extends Card {
         super(obj);
         this._power = obj.power;
     }
-    
+
     show(){
-        console.log('Card : name => ' + this.name + ', strenght => ' + this. strenght + ', power => ' + this.power);
+        console.log('Card : name => ' + this.name + ', strength => ' + this. strength + ', power => ' + this.power);
     }
-    
+
     draw( nodeDOM ){
-        $(nodeDOM).html('Card : name => ' + this.name + ', strenght => ' + this. strenght + ', power => ' + this.power);
+        $(nodeDOM).append('<div>Card : name => ' + this.name + ', strength => ' + this. strength + ', power => ' + this.power + '</div>');
     }
-    
+
     get power(){
         return this._power;
     }

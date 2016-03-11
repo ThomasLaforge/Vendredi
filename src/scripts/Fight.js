@@ -8,17 +8,23 @@ class Fight {
     }
 
     addFightCard( fightCard ){
-        this.addFightCard.push( fightCard );
+        this.arrayFightCard.push( fightCard );
+    }
+
+    getPlayerForce(){
+        let playerForce = 0;
+
+        this.arrayFightCard.forEach(function(fightCard) {
+            playerForce += fightCard.strength;
+        });
+
+        return playerForce;
     }
 
     result(){
         // >= 0 if player win ; < 0 if player lose fight
         let fightPoints = this.dangerCard.getStrength( this.level );
-        let playerForce = 0;
-
-        this.arrayFightCard.forEach(function(fightCard) {
-            playerForce += fightCard.strenght();
-        });
+        let playerForce = this.getPlayerForce();
 
         return playerForce - fightPoints;
     }

@@ -16,7 +16,7 @@ class DangerCard {
 
     // Draw in user interface
     draw( nodeDOM ){
-        $(nodeDOM).append('<div class="card-slot">Card Danger : name => ' + this.dangerName + ', strength => 1 : ' + this.getStrength(1) + ', 2 : ' + this.getStrength(2) + ', 3 : ' + this.getStrength(3) + '</div>');
+        $(nodeDOM).append('<div class="card-slot">Card Danger : name => ' + this.dangerName + ', strength => 1 : ' + this.getStrength(1) + ', 2 : ' + this.getStrength(2) + ', 3 : ' + this.getStrength(3) + ', FreeCards => ' + this.dangerFreeCards + '</div>');
     }
 
     getStrength( lvl ){

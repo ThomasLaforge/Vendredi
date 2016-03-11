@@ -9,7 +9,7 @@
 	{
         "fight":{
             "name"      :   "Livre",
-            "strenght"  :   0,
+            "strength"  :   0,
             "power"     :   "Phase -1"
         },
         "danger":{
@@ -21,7 +21,7 @@
 	{
         "fight":{
             "name"      :   "Nourriture",
-            "strenght"  :   1,
+            "strength"  :   1,
             "power"     :   "+1PV"
         },
         "danger":{
@@ -33,7 +33,7 @@
 	{
         "fight":{
             "name"      :   "Nourriture",
-            "strenght"  :   2,
+            "strength"  :   2,
             "power"     :   "+1PV"
         },
         "danger":{
@@ -45,7 +45,7 @@
 	{
         "fight":{
             "name"      :   "Nourriture",
-            "strenght"  :   0,
+            "strength"  :   0,
             "power"     :   "+1PV"
         },
         "danger":{
@@ -57,7 +57,7 @@
 	{
         "fight":{
             "name"      :   "Stratégie",
-            "strenght"  :   0,
+            "strength"  :   0,
             "power"     :   "Echanger x2"
         },
         "danger":{
@@ -69,7 +69,7 @@
 	{
         "fight":{
             "name"      :   "Stratégie",
-            "strenght"  :   2,
+            "strength"  :   2,
             "power"     :   "Echanger x1"
         },
         "danger":{
@@ -81,7 +81,7 @@
 	{
         "fight":{
             "name"      :   "Stratégie",
-            "strenght"  :   3,
+            "strength"  :   3,
             "power"     :   "Echanger x1"
         },
         "danger":{
@@ -93,7 +93,7 @@
 	{
         "fight":{
             "name"      :   "Arme",
-            "strenght"  :   4,
+            "strength"  :   4,
             "power"     :   ""
         },
         "danger":{
@@ -105,7 +105,7 @@
 	{
         "fight":{
             "name"      :   "Arme",
-            "strenght"  :   2,
+            "strength"  :   2,
             "power"     :   ""
         },
         "danger":{
@@ -117,7 +117,7 @@
 	{
         "fight":{
             "name"      :   "Imitation",
-            "strenght"  :   0,
+            "strength"  :   0,
             "power"     :   "Copier x1"
         },
         "danger":{
@@ -129,7 +129,7 @@
 	{
         "fight":{
             "name"      :   "Imitation",
-            "strenght"  :   1,
+            "strength"  :   1,
             "power"     :   "Copier x1"
         },
         "danger":{
@@ -141,7 +141,7 @@
 	{
         "fight":{
             "name"      :   "Connaissances",
-            "strenght"  :   3,
+            "strength"  :   3,
             "power"     :   "Détruire x1"
         },
         "danger":{
@@ -153,7 +153,7 @@
 	{
         "fight":{
             "name"      :   "Connaissances",
-            "strenght"  :   2,
+            "strength"  :   2,
             "power"     :   "Détruire x1"
         },
         "danger":{
@@ -165,7 +165,7 @@
 	{
         "fight":{
             "name"      :   "Connaissances",
-            "strenght"  :   0,
+            "strength"  :   0,
             "power"     :   "Détruire x1"
         },
         "danger":{
@@ -177,7 +177,7 @@
 	{
         "fight":{
             "name"      :   "Connaissances",
-            "strenght"  :   1,
+            "strength"  :   1,
             "power"     :   "Détruire x1"
         },
         "danger":{
@@ -189,7 +189,7 @@
 	{
         "fight":{
             "name"      :   "Equipement",
-            "strenght"  :   0,
+            "strength"  :   0,
             "power"     :   "+2 Cartes"
         },
         "danger":{
@@ -201,7 +201,7 @@
 	{
         "fight":{
             "name"      :   "Répétition",
-            "strenght"  :   2,
+            "strength"  :   2,
             "power"     :   "Doubler x1"
         },
         "danger":{
@@ -213,7 +213,7 @@
 	{
         "fight":{
             "name"      :   "Répétition",
-            "strenght"  :   1,
+            "strength"  :   1,
             "power"     :   "Doubler x1"
         },
         "danger":{
@@ -225,7 +225,7 @@
 	{
         "fight":{
             "name"      :   "Expérience",
-            "strenght"  :   2,
+            "strength"  :   2,
             "power"     :   "+1 Carte"
         },
         "danger":{
@@ -237,7 +237,7 @@
 	{
         "fight":{
             "name"      :   "Expérience",
-            "strenght"  :   3,
+            "strength"  :   3,
             "power"     :   "+1 Carte"
         },
         "danger":{
@@ -249,7 +249,7 @@
 	{
         "fight":{
             "name"      :   "Vision",
-            "strenght"  :   2,
+            "strength"  :   2,
             "power"     :   "Trier 3 cartes"
         },
         "danger":{
@@ -261,7 +261,7 @@
 	{
         "fight":{
             "name"      :   "Vision",
-            "strenght"  :   3,
+            "strength"  :   3,
             "power"     :   "Trier 3 cartes"
         },
         "danger":{
@@ -273,7 +273,7 @@
 	{
         "fight":{
             "name"      :   "Ruse",
-            "strenght"  :   1,
+            "strength"  :   1,
             "power"     :   "Sous la pioche x1"
         },
         "danger":{
@@ -285,7 +285,7 @@
 	{
         "fight":{
             "name"      :   "Ruse",
-            "strenght"  :   0,
+            "strength"  :   0,
             "power"     :   "Sous la pioche x1"
         },
         "danger":{
