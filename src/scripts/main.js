@@ -86,6 +86,10 @@ $('body' ).on('click', '#btn-stop-fight', function(){
     }
 });
 
+$('body' ).on('click', '.fight-danger-fight-cards div', function(){
+    console.log('click on fight card played!');
+});
+
 // Ask player to delete cards if fight is lost
 $('body').on('click', '#btn-delete-fight-cards', function(){
     let cardsToDelete = [];

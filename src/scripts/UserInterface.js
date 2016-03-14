@@ -1,5 +1,6 @@
 window.jQuery = window.$ = require('jquery');
 import {Tools} from './Tools';
+import {Game} from './Game';
 
 class UserInterface {
   constructor(game) {
@@ -102,7 +103,8 @@ class UserInterface {
     $('#btn-pick-fight-card').hide();
     $('#btn-stop-fight').hide();
     $('#btn-delete-fight-cards').show();
-    console.log('Asked if the player wants to delete a card');
+    //console.log( this.game.fight.arrayFightCard );
+    console.log( this.game.fight.getSumOfCostToDelete() );
   }
 
   /**

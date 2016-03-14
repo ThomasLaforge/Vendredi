@@ -4,6 +4,7 @@ import {Tools} from './Tools';
 class AgingDeck extends Deck{
     constructor(){
         super();
+        this._costToDelete = 2;
     }
 
     initDeck(){

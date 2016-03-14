@@ -41,6 +41,17 @@ class Fight {
         return this.arrayFightCard.length;
     }
 
+
+    getSumOfCostToDelete(){
+        let sum = 0;
+
+        this.arrayFightCard.forEach( function( elt ){
+            sum += elt.costToDelete;
+        });
+
+        return sum;
+    }
+
     /**
     * Getters and Setters
     */

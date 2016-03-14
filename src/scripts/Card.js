@@ -2,6 +2,7 @@ class Card {
     constructor(obj) {
         this._name      = obj.name;
         this._strength  = obj.strength;
+        this._costToDelete = 1;
     }
 
     show(){
@@ -23,6 +24,13 @@ class Card {
     }
     set strength(newStrength){
         this._strength = newStrength;
+    }
+
+    get costToDelete(){
+        return this._costToDelete;
+    }
+    set costToDelete( newCostToDelete ){
+        this._costToDelete = newCostToDelete;
     }
 }
 
