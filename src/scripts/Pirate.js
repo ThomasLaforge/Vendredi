@@ -19,7 +19,7 @@ class Pirate {
     }
 
     draw( nodeDOM ){
-        
+
     }
 
 	/**
@@ -36,7 +36,7 @@ class Pirate {
 	}
 
 	// nbFreeCards
-	
+
 	get nbFreeCards(){
 		return this._nbFreeCards;
 	}
@@ -45,7 +45,7 @@ class Pirate {
 	}
 
 	// power
-	
+
 	get power(){
 		return this._power;
 	}

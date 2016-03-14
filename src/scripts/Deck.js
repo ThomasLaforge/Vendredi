@@ -81,7 +81,7 @@ class Deck {
           return res;
     }
 
-    discard(arrayOfCard){
+    discard( arrayOfCard ){
         arrayOfCard.forEach( card =>
             this.arrayDiscard.push( card )
         );

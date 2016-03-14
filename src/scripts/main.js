@@ -41,7 +41,6 @@ $('body').on('click', '#btn-action-chose-danger', function(){
     game.startFight( dangerCardChoice[indexDangerCardChoice] );
     //Discard other card
     game.dangerDeck.discard( [ dangerCardChoice [ 1 - indexDangerCardChoice ] ] );
-    console.log(game.dangerDeck.arrayDiscard);
     // Clean UI : danger card choice zone
     UI.cleanDangerCardChoiceZone();
     // Hide danger card choice zone
@@ -69,11 +68,14 @@ $('body' ).on('click', '#btn-pick-fight-card', function(){
 });
 
 // Stop the fight
-$('body' ).on('click', 'btn-stop-fight', function(){
+$('body' ).on('click', '#btn-stop-fight', function(){
     if ( game.fight ){
-        if ( game.fight.result() >= 0 ){
-            let arrayOfCardsToDiscard = game.fight.arrayFightCard.push( game.fight.dangerCard );
-            game.fightDeck.addToDiscard( arrayOfCardsToDiscard );
+        if ( game.fight.isWon() ){
+            game.endFightWon();
+            UI.hideFightZone();
+            dangerCardChoice = game.drawDangerCard();
+            UI.showChoseDangerCard( dangerCardChoice );
+            console.log(game.fightDeck);
         }
         else{
             game.player.losePV( Math.abs( game.fight.result() ) );
@@ -82,6 +84,16 @@ $('body' ).on('click', 'btn-stop-fight', function(){
             }
         }
     }
+});
+
+// Ask player to delete cards if fight is lost
+$('body').on('click', '#btn-delete-fight-cards', function(){
+    let cardsToDelete = [];
+    game.endFightLost( cardsToDelete );
+
+    UI.hideFightZone();
+    dangerCardChoice = game.drawDangerCard();
+    UI.showChoseDangerCard( dangerCardChoice );
 });
 
 // Watchers
@@ -94,7 +106,9 @@ watch(game, function(){
 });
 
 watch(game, "_fight", function(){
-  UI.updateFightZone();
+  if(game.fight){
+    UI.updateFightZone();
+  }
 });
 /*
 while ( !game.isGameOver() ) {

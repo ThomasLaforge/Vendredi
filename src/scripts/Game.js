@@ -104,18 +104,25 @@ class Game {
       this.fight.addFightCard( fightCard );
   }
 
-  endFight(){
-      let resultFight = this.fight.result();
+  endFightWon(){
+      this.fight.arrayFightCard.push( this.fight.dangerCard );
+      let arrayOfCardsToDiscard = this.fight.arrayFightCard.slice();
+      console.log(arrayOfCardsToDiscard);
+      this.fightDeck.addToDiscard( arrayOfCardsToDiscard );
 
-      // If fight is lost => lose 1 PV for each fight point missing
-      if ( this.fight.isLost() ) {
-        this.player.addPV( resultFight );
-      }
+      this.resetFight();
+  }
 
-      // Reset actual fight
+  endFightLost( cardsToDelete ){
+      cardsToDelete.forEach( card =>
+          this.discard.push( card )
+      );
+
+      this.resetFight();
+  }
+
+  resetFight(){
       this.fight = null;
-
-      return resultFight;
   }
 
 	/**
@@ -200,6 +207,14 @@ class Game {
     }
     set fight( newFight ){
         this._fight = newFight;
+    }
+
+    // Discard
+    get discard(){
+        return this._discard;
+    }
+    set discard( newDiscard ){
+        this._discard = newDiscard;
     }
 
 }

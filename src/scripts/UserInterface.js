@@ -46,7 +46,7 @@ class UserInterface {
   }
 
   cleanDangerCardChoiceZone(){
-    $('#danger-choice-card-slots').html();
+    $('#danger-choice-card-slots').empty();
   }
 
   hideDangerCardChoiceZone(){
@@ -55,6 +55,7 @@ class UserInterface {
 
   showChoseDangerCard(choices){
     // let choices = this.game.drawDangerCard();
+    $('#zone-danger-choice').show();
 
     if ( choices.length == 1 || choices.length == 2 ) {
       choices.forEach(function(card) {
@@ -70,6 +71,10 @@ class UserInterface {
   showFightZone(){
     this.updateFightZone();
     $('#zone-fight-danger').show();
+    $('#btn-pick-fight-card').show();
+    $('#btn-stop-fight').show();
+    $('#btn-delete-fight-cards').hide();
+
   }
 
   updateFightZone(){
@@ -83,14 +88,20 @@ class UserInterface {
     if ( this.game.fight.arrayFightCard.length >= this.game.fight.dangerCard.dangerFreeCards ) {
       $('#btn-pick-fight-card').html( 'Piocher (-1 PV)' );
     }
+    else{
+      $('#btn-pick-fight-card').html( 'Piocher' );
+    }
   }
 
   resetFightZone(){
-    $('#danger-card-to-fight').html('');
-    $('.fight-danger-fight-cards').html('');
+    $('#danger-card-to-fight').empty();
+    $('.fight-danger-fight-cards').empty();
   }
 
   askPlayerDeleteCards(){
+    $('#btn-pick-fight-card').hide();
+    $('#btn-stop-fight').hide();
+    $('#btn-delete-fight-cards').show();
     console.log('Asked if the player wants to delete a card');
   }
 
