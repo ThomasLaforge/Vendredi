@@ -53,46 +53,58 @@ $('body').on('click', '#btn-action-chose-danger', function(){
 // Pick a fight card
 $('body' ).on('click', '#btn-pick-fight-card', function(){
     if( game.fight ){
-        if ( game.fightDeck.isEmpty() ){
-            console.log("no more cards in fight deck. You have to end ur fight !");
-        }
-        else {
-          let fightCard = game.drawFightCard();
-          game.fight.addFightCard( fightCard );
+        let fightCard = game.drawFightCard();
+        game.fight.addFightCard( fightCard );
 
-          if ( game.fight.arrayFightCard.length > game.fight.dangerCard.dangerFreeCards ) {
+        if ( game.fight.arrayFightCard.length > game.fight.dangerCard.dangerFreeCards ) {
             game.player.losePV( 1 );
-          }
         }
     }
 });
 
 // Stop the fight
 $('body' ).on('click', '#btn-stop-fight', function(){
-    if ( game.fight ){
-        if ( game.fight.isWon() ){
-            game.endFightWon();
-            UI.hideFightZone();
-            dangerCardChoice = game.drawDangerCard();
-            UI.showChoseDangerCard( dangerCardChoice );
-            console.log(game.fightDeck);
-        }
-        else{
-            game.player.losePV( Math.abs( game.fight.result() ) );
-            if ( !game.isGameOver() ) {
-                UI.askPlayerDeleteCards();
-            }
-        }
+  if ( game.fight ){
+    game.fight.finish();
+    if ( game.fight.isWon() ){
+      game.endFightWon();
+      UI.hideFightZone();
+      dangerCardChoice = game.drawDangerCard();
+      UI.showChoseDangerCard( dangerCardChoice );
     }
+    else{
+      game.player.losePV( Math.abs( game.fight.result() ) );
+      if ( !game.isGameOver() ) {
+        UI.askPlayerDeleteCards();
+      }
+    }
+  }
 });
 
 $('body' ).on('click', '.fight-danger-fight-cards div', function(){
-    console.log('click on fight card played!');
+    if( game.fight.finished ){
+        $(this).addClass('end-fight-card-to-delete');
+    }
+    else{
+        console.log('click on fight card played! (in fight)');
+    }
+});
+
+$('body' ).on('click', '.end-fight-card-to-delete', function(){
+    $(this).removeClass('end-fight-card-to-delete');
 });
 
 // Ask player to delete cards if fight is lost
 $('body').on('click', '#btn-delete-fight-cards', function(){
     let cardsToDelete = [];
+    let $cardsToDelete = $('.end-fight-card-to-delete');
+
+    $cardsToDelete.each( function(){
+        let index = $(this).index();
+        cardsToDelete.push( game.fight.arrayFightCard[index] );
+        game.fight.arrayFightCard.splice( index, 1 );
+    });
+
     game.endFightLost( cardsToDelete );
 
     UI.hideFightZone();
@@ -103,9 +115,12 @@ $('body').on('click', '#btn-delete-fight-cards', function(){
 // Watchers
 
 watch(game, function(){
-  UI.updateMainInfos();
   if ( game.isGameOver() ){
       console.log('The game is over !');
+      $('body').unbind();
+  }
+  else{
+      UI.updateMainInfos();
   }
 });
 
@@ -114,6 +129,7 @@ watch(game, "_fight", function(){
     UI.updateFightZone();
   }
 });
+
 /*
 while ( !game.isGameOver() ) {
     while ( game.level <= 3 ){

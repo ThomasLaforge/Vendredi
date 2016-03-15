@@ -37,31 +37,17 @@ class Deck {
         return this.arrayDeck.length;
     }
 
-    removeCard(card) {
-        var pos = this._arrayDeck.indexOf(Card);
-        if(pos > -1){
-          this.arrayDeck.splice(pos, 1);
-        }
-        else{
-          console.log('Tentative de suppression d\'une carte qui n\'est pas présente dans la main');
-        }
-    }
-
     shuffle(){
         Tools.shuffle( this.arrayDeck );
     }
 
     discardToDeck(){
         // ajout de la défausse dans la pioche
-        this.arrayDeck.concat( this.arrayDiscard );
+        this.arrayDeck = this.arrayDiscard;
         // Remise à zéro de la défausse
-        this.discard( new Array() );
+        this.arrayDiscard = [];
         // On mélange le nouveau deck
         this.shuffle();
-    }
-
-    addToDiscard( arrOfCards ){
-        this.discard( arrOfCards );
     }
 
     // Missing control if empty
@@ -85,7 +71,13 @@ class Deck {
         else {
             this.discardToDeck();
             // on recommence drawDangerCard();
-            res = this.drawOneCard();
+            if ( this.length() >= 1 ) {
+                res = this.arrayDeck[ 0 ];
+                this.arrayDeck.splice( 0, 1 );
+            }
+            else{
+                res = false;
+            }
         }
 
         return res;
@@ -97,6 +89,20 @@ class Deck {
         );
     }
 
+    addToDiscard( arrOfCards ){
+        this.discard( arrOfCards );
+    }
+
+    removeCard( card ) {
+        let pos = this.arrayDeck.indexOf( card );
+        if(pos > -1){
+            this.arrayDeck.splice(pos, 1);
+        }
+        else{
+            console.log('Tentative de suppression d\'une carte qui n\'est pas présente dans la main');
+        }
+    }
+
     /**
 	 * Getters and Setters
 	 */
@@ -106,7 +112,7 @@ class Deck {
 	get arrayDeck(){
 		return this._arrayDeck;
 	}
-	set deck(newDeck){
+	set arrayDeck(newDeck){
 		this._arrayDeck = newDeck;
 	}
 

@@ -5,6 +5,7 @@ class Fight {
         this._level = level;
         this._arrayFightCard = [];
         this._dangerCard = danger;
+        this._finished = false;
     }
 
     addFightCard( fightCard ){
@@ -41,6 +42,9 @@ class Fight {
         return this.arrayFightCard.length;
     }
 
+    finish(){
+        this.finished = true;
+    }
 
     getSumOfCostToDelete(){
         let sum = 0;
@@ -78,6 +82,14 @@ class Fight {
     }
     set level( newLevel ){
         this._level = newLevel;
+    }
+
+    // Finished
+    get finished(){
+        return this._finished;
+    }
+    set finished( newFinished ){
+        this._finished = newFinished;
     }
 }
 

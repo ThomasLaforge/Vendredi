@@ -18,10 +18,10 @@ class Game {
     this._pirates       = this.pirateDeck.getPirates( 2 );
 
     this._level         = 1;
-    this._discard       = [];
+    this._arrayDiscard  = [];
 
     // Bool Events
-    this._fight = null;
+    this._fight         = null;
 	}
 
     /* start(){
@@ -81,13 +81,13 @@ class Game {
                   // on mélange la défausse de carte danger qui devient la pioche
                   this.dangerDeck.discardToDeck();
                   // on recommence drawDangerCard();
-                  this.drawDangerCard();
+                  arr = this.drawDangerCard();
               }
               // Sinon arr reste vide. Cela indique la fin de la phase d'entrainement.
           }
           else{
               // On pioche une carte
-              arr = ( this.dangerDeck.pickCards( 1 ) );
+              arr = [ this.dangerDeck.drawOneCard() ];
           }
       }
 
@@ -107,22 +107,35 @@ class Game {
   endFightWon(){
       this.fight.arrayFightCard.push( this.fight.dangerCard );
       let arrayOfCardsToDiscard = this.fight.arrayFightCard.slice();
-      console.log(arrayOfCardsToDiscard);
       this.fightDeck.addToDiscard( arrayOfCardsToDiscard );
+    console.log(this.dangerDeck.arrayDiscard);
 
       this.resetFight();
   }
 
   endFightLost( cardsToDelete ){
-      cardsToDelete.forEach( card =>
-          this.discard.push( card )
-      );
+      // Delete cards from game
+      cardsToDelete.forEach( card => {
+          this.discard( card );
+          //remove this card from fight.arrayFightCard
+          //this.fight.arrayFightCard
+      });
+
+      // put back cards of fight in differents decks
+      // danger card
+      this.dangerDeck.discard( [this.fight.dangerCard] );
+      // fight cards
+      this.fightDeck.discard( this.fight.arrayFightCard );
 
       this.resetFight();
   }
 
   resetFight(){
       this.fight = null;
+  }
+
+  discard( arrayOfCards ){
+      this.arrayDiscard.push( arrayOfCards );
   }
 
 	/**
@@ -210,11 +223,11 @@ class Game {
     }
 
     // Discard
-    get discard(){
-        return this._discard;
+    get arrayDiscard(){
+        return this._arrayDiscard;
     }
-    set discard( newDiscard ){
-        this._discard = newDiscard;
+    set arrayDiscard( newDiscard ){
+        this._arrayDiscard = newDiscard;
     }
 
 }

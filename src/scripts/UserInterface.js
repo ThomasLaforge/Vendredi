@@ -57,7 +57,7 @@ class UserInterface {
   showChoseDangerCard(choices){
     // let choices = this.game.drawDangerCard();
     $('#zone-danger-choice').show();
-
+    console.log(choices);
     if ( choices.length == 1 || choices.length == 2 ) {
       choices.forEach(function(card) {
         card.draw('.danger-choice-card-slots');
@@ -81,7 +81,7 @@ class UserInterface {
   updateFightZone(){
     this.resetFightZone();
     this.game.fight.dangerCard.draw( '#danger-card-to-fight' );
-    this.game.fight.arrayFightCard.forEach(function(card){
+    this.game.fight.arrayFightCard.forEach( function( card ){
         card.draw(".fight-danger-fight-cards");
     });
     $('#fight-danger-strength').html(this.game.fight.getPlayerForce());
@@ -104,7 +104,7 @@ class UserInterface {
     $('#btn-stop-fight').hide();
     $('#btn-delete-fight-cards').show();
     //console.log( this.game.fight.arrayFightCard );
-    console.log( this.game.fight.getSumOfCostToDelete() );
+    //console.log( this.game.fight.getSumOfCostToDelete() );
   }
 
   /**
