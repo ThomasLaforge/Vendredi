@@ -64,21 +64,31 @@ class Deck {
         this.discard( arrOfCards );
     }
 
+    // Missing control if empty
     drawCards( nbCards ){
         var res = [];
         for( var i=0; i < nbCards; i++ ){
-            res.push(this.arrayDeck[0]);
-            this.arrayDeck.splice(0,1);
+            res.push( this.drawOneCard() );
         }
 
         return res;
     }
 
+    // Missing control if empty
     drawOneCard(){
-          let res = this.arrayDeck[0];
-          this.arrayDeck.splice(0,1);
+        let res;
 
-          return res;
+        if ( this.length() >= 1 ) {
+            res = this.arrayDeck[0];
+            this.arrayDeck.splice( 0, 1 );
+        }
+        else {
+            this.discardToDeck();
+            // on recommence drawDangerCard();
+            res = this.drawOneCard();
+        }
+
+        return res;
     }
 
     discard( arrayOfCard ){
