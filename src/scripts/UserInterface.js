@@ -1,6 +1,9 @@
 window.jQuery = window.$ = require('jquery');
 import {Tools} from './Tools';
 import {Game} from './Game';
+import {FightCard} from './FightCard';
+import {DangerCard} from './DangerCard';
+import {AgingCard} from './AgingCard';
 
 class UserInterface {
   constructor(game) {
@@ -57,7 +60,6 @@ class UserInterface {
   showChoseDangerCard(choices){
     // let choices = this.game.drawDangerCard();
     $('#zone-danger-choice').show();
-    console.log(choices);
     if ( choices.length == 1 || choices.length == 2 ) {
       choices.forEach(function(card) {
         card.draw('.danger-choice-card-slots');
@@ -82,9 +84,17 @@ class UserInterface {
     this.resetFightZone();
     this.game.fight.dangerCard.draw( '#danger-card-to-fight' );
     this.game.fight.arrayFightCard.forEach( function( card ){
-        card.draw(".fight-danger-fight-cards");
+        if ( card instanceof FightCard || card instanceof AgingCard) {
+            card.draw(".fight-danger-fight-cards");
+        }
+        else if ( card instanceof DangerCard ) {
+            card.fightCard.draw(".fight-danger-fight-cards");
+        }
+        else{
+            console.log('Try to draw a card but not a danger card or fight card.');
+        }
     });
-    $('#fight-danger-strength').html(this.game.fight.getPlayerForce());
+    $('#fight-danger-temporary-result').html( this.game.fight.result() );
 
     if ( this.game.fight.arrayFightCard.length >= this.game.fight.dangerCard.dangerFreeCards ) {
       $('#btn-pick-fight-card').html( 'Piocher (-1 PV)' );

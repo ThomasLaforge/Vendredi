@@ -17,6 +17,8 @@ class DangerDeck extends Deck {
             }
         });
 
+
+
         this._arrayDeck = arrRes;
     }
 

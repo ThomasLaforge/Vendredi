@@ -1,13 +1,10 @@
-const PIRATESLIST = require('../datas/pirates_cards.json');
-
 class Pirate {
 
-	constructor(name, strength, nbFreeCards, power){
-		console.log('New pirate !');
-		this._name = name;
-		this._strength = strength;
-		this._nbFreeCards = nbFreeCards;
-		this._power = power;
+	constructor( obj ){
+		this._name = obj.name;
+		this._strength = obj.strength;
+		this._nbFreeCards = obj.nbFreeCards;
+		this._power = obj.power;
 	}
 
 	/**
@@ -25,6 +22,13 @@ class Pirate {
 	/**
 	 * Getters and Setters
 	 */
+
+  get name(){
+    return this._name;
+  }
+  set name( newName ){
+    this._name = newName;
+  }
 
 	// strength
 

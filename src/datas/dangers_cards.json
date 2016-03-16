@@ -41,7 +41,7 @@
             "freeCards"     :   3
         },
         "number":1
-	}/*,
+	},
 	{
         "fight":{
             "name"      :   "Nourriture",
@@ -94,7 +94,7 @@
         "fight":{
             "name"      :   "Arme",
             "strength"  :   4,
-            "power"     :   ""
+            "power"     :   null
         },
         "danger":{
             "name"      :   "Cannibales",
@@ -106,7 +106,7 @@
         "fight":{
             "name"      :   "Arme",
             "strength"  :   2,
-            "power"     :   ""
+            "power"     :   null
         },
         "danger":{
             "name"      :   "Cannibales",
@@ -294,5 +294,4 @@
         },
         "number":1
 	}
-*/
 ]

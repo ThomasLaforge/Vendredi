@@ -138,7 +138,28 @@ class Game {
       this.arrayDiscard.push( arrayOfCards );
   }
 
-	/**
+  usePower( card ){
+      if ( card.power ) {
+        switch( card.power ) {
+          case '+2PV':
+            this.player.addPV( 2 );
+            break;
+          case '+1PV':
+            this.player.addPV( 1 );
+            break;
+          case '-1PV':
+            this.player.losePV( 1 );
+            break;
+          case '-2PV':
+            this.player.losePV( 2 );
+            break;
+          default:
+            console.log("use power not coded for the moment");
+        }
+      }
+  }
+
+  /**
 	 * Getters and Setters
 	 */
 

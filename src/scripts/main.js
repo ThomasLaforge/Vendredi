@@ -86,30 +86,51 @@ $('body' ).on('click', '.fight-danger-fight-cards div', function(){
         $(this).addClass('end-fight-card-to-delete');
     }
     else{
-        console.log('click on fight card played! (in fight)');
+        let index = $(this).index();
+        let cardSelected = game.fight.arrayFightCard[ index ];$
+        if( cardSelected.power ){
+            game.usePower( cardSelected );
+            $(this).addClass('fight-card-power-used');
+        }
+        else{
+          console.log('click on fight card played! (in fight)');
+        }
     }
 });
 
 $('body' ).on('click', '.end-fight-card-to-delete', function(){
-    $(this).removeClass('end-fight-card-to-delete');
+  $(this).removeClass('end-fight-card-to-delete');
 });
 
 // Ask player to delete cards if fight is lost
 $('body').on('click', '#btn-delete-fight-cards', function(){
     let cardsToDelete = [];
     let $cardsToDelete = $('.end-fight-card-to-delete');
+    let totalCostOfCardsToDelete = 0;
+    console.log($cardsToDelete);
 
-    $cardsToDelete.each( function(){
-        let index = $(this).index();
-        cardsToDelete.push( game.fight.arrayFightCard[index] );
-        game.fight.arrayFightCard.splice( index, 1 );
+    $cardsToDelete.each( function () {
+        let index = $( this ).index();
+        let card = game.fight.arrayFightCard[ index ];
+        totalCostOfCardsToDelete += card.costToDelete;
     });
 
-    game.endFightLost( cardsToDelete );
+    if ( Math.abs( game.fight.result() ) >= totalCostOfCardsToDelete ) {
+        $cardsToDelete.each( function () {
+            let index = $( this ).index();
+            cardsToDelete.push( game.fight.arrayFightCard[ index ] );
+            game.fight.arrayFightCard.splice( index, 1 );
+        } );
 
-    UI.hideFightZone();
-    dangerCardChoice = game.drawDangerCard();
-    UI.showChoseDangerCard( dangerCardChoice );
+        game.endFightLost( cardsToDelete );
+
+        UI.hideFightZone();
+        dangerCardChoice = game.drawDangerCard();
+        UI.showChoseDangerCard( dangerCardChoice );
+    }
+    else{
+        console.log("Trop de cartes à supprimer");
+    }
 });
 
 // Watchers

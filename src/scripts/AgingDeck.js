@@ -1,20 +1,20 @@
 import {Deck}  from './Deck';
 import {Tools} from './Tools';
+import {AgingCard} from './AgingCard';
 
 class AgingDeck extends Deck{
     constructor(){
         super();
-        this._costToDelete = 2;
     }
 
     initDeck(){
         let arrRes = [];
         let arrDatas = require( '../datas/aging_cards.json' );
-        arrDatas.forEach( function( elt ){
-            let number = elt.number;
+        arrDatas.forEach( function( obj ){
+            let number = obj.number;
             for (var i=0; i<number; i++) {
-                delete elt.number;
-                arrRes.push(elt);
+                let newAgingCard = new AgingCard( obj );
+                arrRes.push( newAgingCard );
             }
         });
 

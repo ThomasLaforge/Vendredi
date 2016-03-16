@@ -9,32 +9,32 @@
 	},
 	{
 		"name" :"Idiot",
-		"power":"",
+		"power": null,
 		"strength":-4,
         "lvl":2,
         "number":1
 	},
 	{
 		"name" :"Suicidaire",
-		"power":"",
+		"power": null,
 		"strength":-5,
-        "lvl":2,
-        "number":1
+    "lvl":2,
+    "number":1
 	},
     // Normales (lvl == 1)
 	{
 		"name" :"A faim",
 		"power":"-1PV",
 		"strength":0,
-        "lvl":1,
-        "number":1
+    "lvl":1,
+    "number":1
 	},
 	{
 		"name" :"Très fatigué",
-		"power":"Arrêt",
+		"power":"Stop",
 		"strength":0,
-        "lvl":1,
-        "number":1
+    "lvl":1,
+    "number":1
 	},
 	{
 		"name" :"Apeuré",
@@ -45,21 +45,21 @@
 	},
 	{
 		"name" :"Distrait",
-		"power":"",
+		"power": null,
 		"strength":-1,
         "lvl":1,
         "number":1
 	},
 	{
 		"name" :"Stupide",
-		"power":"",
+		"power": null,
 		"strength":-2,
         "lvl":1,
         "number":2
 	},
 	{
 		"name" :"Très stupide",
-		"power":"",
+		"power": null,
 		"strength":-3,
         "lvl":1,
         "number":1
