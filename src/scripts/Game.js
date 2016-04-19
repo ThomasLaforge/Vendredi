@@ -1,7 +1,9 @@
 import { Deck }       from './Deck';
 import { FightDeck }  from './FightDeck';
 import { Fight }  from './Fight';
+import { FightCard }  from './FightCard';
 import { DangerDeck } from './DangerDeck';
+import { DangerCard } from './DangerCard';
 import { AgingDeck }  from './AgingDeck';
 import { PirateDeck } from './PirateDeck';
 import { UserInterface } from './UserInterface';
@@ -108,7 +110,6 @@ class Game {
       this.fight.arrayFightCard.push( this.fight.dangerCard );
       let arrayOfCardsToDiscard = this.fight.arrayFightCard.slice();
       this.fightDeck.addToDiscard( arrayOfCardsToDiscard );
-    console.log(this.dangerDeck.arrayDiscard);
 
       this.resetFight();
   }
@@ -138,7 +139,23 @@ class Game {
       this.arrayDiscard.push( arrayOfCards );
   }
 
-  usePower( card ){
+  usePower( selectedCard ) {
+
+      let card;
+      let isFightCard   = selectedCard instanceof FightCard;
+      let isDangerCard  = selectedCard instanceof DangerCard;
+
+      //Cast selectCard in fightCard
+      if ( isDangerCard ) {
+          card = selectedCard.fightCard;
+      }
+      else if ( isFightCard ) {
+          card = selectedCard;
+      }
+      else{
+          return false;
+      }
+
       if ( card.power ) {
         switch( card.power ) {
           case '+2PV':

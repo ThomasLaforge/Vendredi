@@ -8,8 +8,14 @@ import {AgingCard} from './AgingCard';
 class UserInterface {
   constructor(game) {
     this._game = game;
+    this._dangerCardChoice = [];
     this.updateMainInfos();
     this.hideFightZone();
+    this.eventsDeclaration();
+    this.dangerCardChoice = this.game.drawDangerCard();
+    this.dangerCardChoice.forEach(function(element) {
+      element.draw('#danger-choice-card-slots');
+    }, this);
   }
 
   /*
@@ -118,6 +124,120 @@ class UserInterface {
   }
 
   /**
+  * Events
+  * */
+
+  eventsDeclaration(){
+    let UI = this;
+    let game = this.game;
+
+    // Select a card in danger card choice zone
+    $('body').on('click', '.game-danger-choice .card-slot', function(){
+      $('.card-slot').removeClass('danger-card-selected');
+      $(this).addClass('danger-card-selected');
+    });
+
+    // Chose a card in danger card choice zone
+    $('body').on('click', '#btn-action-chose-danger', function(){
+      if ( $('.danger-card-selected').length > 0 ) {
+        let indexDangerCardChoice = $('.danger-card-selected').index();
+        game.startFight( UI.dangerCardChoice[indexDangerCardChoice] );
+        //Discard other card
+        game.dangerDeck.discard( [ UI.dangerCardChoice [ 1 - indexDangerCardChoice ] ] );
+        // Clean this : danger card choice zone
+        UI.cleanDangerCardChoiceZone();
+        // Hide danger card choice zone
+        UI.hideDangerCardChoiceZone();
+        UI.showFightZone();
+
+      }
+    });
+
+    // Pick a fight card
+    $('body' ).on('click', '#btn-pick-fight-card', function(){
+      if( game.fight ){
+        let fightCard = game.drawFightCard();
+        game.fight.addFightCard( fightCard );
+
+        if ( game.fight.arrayFightCard.length > game.fight.dangerCard.dangerFreeCards ) {
+          game.player.losePV( 1 );
+        }
+      }
+    });
+
+    // Stop the fight
+    $('body' ).on('click', '#btn-stop-fight', function(){
+      if ( game.fight ){
+        game.fight.finish();
+        if ( game.fight.isWon() ){
+          game.endFightWon();
+          UI.hideFightZone();
+          UI.dangerCardChoice = game.drawDangerCard();
+          UI.showChoseDangerCard( UI.dangerCardChoice );
+        }
+        else{
+          game.player.losePV( Math.abs( game.fight.result() ) );
+          if ( !game.isGameOver() ) {
+            UI.askPlayerDeleteCards();
+          }
+        }
+      }
+    });
+
+    $('body' ).on('click', '.fight-danger-fight-cards div', function(){
+      if( game.fight.finished ){
+        $(this).addClass('end-fight-card-to-delete');
+      }
+
+      else{
+        let index = $(this).index();
+        let cardSelected = game.fight.arrayFightCard[ index ];
+        if( cardSelected.power ){
+          game.usePower( cardSelected );
+          $(this).addClass('fight-card-power-used');
+        }
+        else{
+          console.log('click on fight card played! (in fight)');
+        }
+      }
+    });
+
+    $('body' ).on('click', '.end-fight-card-to-delete', function(){
+      $(this).removeClass('end-fight-card-to-delete');
+    });
+
+    // Ask player to delete cards if fight is lost
+    $('body').on('click', '#btn-delete-fight-cards', function(){
+      let cardsToDelete = [];
+      let $cardsToDelete = $('.end-fight-card-to-delete');
+      let totalCostOfCardsToDelete = 0;
+
+      $cardsToDelete.each( function () {
+        let index = $( this ).index();
+        let card = game.fight.arrayFightCard[ index ];
+        totalCostOfCardsToDelete += card.costToDelete;
+      });
+
+      if ( Math.abs( game.fight.result() ) >= totalCostOfCardsToDelete ) {
+        $cardsToDelete.each( function () {
+          let index = $( this ).index();
+          cardsToDelete.push( game.fight.arrayFightCard[ index ] );
+          game.fight.arrayFightCard.splice( index, 1 );
+        } );
+
+        game.endFightLost( cardsToDelete );
+
+        UI.hideFightZone();
+        UI.dangerCardChoice = game.drawDangerCard();
+        UI.showChoseDangerCard( UI.dangerCardChoice );
+      }
+      else{
+        console.log("Trop de cartes à supprimer");
+      }
+    });
+  }
+
+  /**
   * Getters / Setters
   */
 
@@ -126,6 +246,13 @@ class UserInterface {
   }
   set game(newGame){
     this._game = newGame;
+  }
+
+  get dangerCardChoice(){
+    return this._dangerCardChoice;
+  }
+  set dangerCardChoice( newDangerCardChoice ){
+    this._dangerCardChoice = newDangerCardChoice;
   }
 
 }
