@@ -54,7 +54,9 @@ class Deck {
     drawCards( nbCards ){
         var res = [];
         for( var i=0; i < nbCards; i++ ){
-            res.push( this.drawOneCard() );
+            if(this.arrayDeck.length > 0){
+                res.push( this.drawOneCard() );
+            }
         }
 
         return res;

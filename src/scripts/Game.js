@@ -67,33 +67,20 @@ class Game {
   }
 
   drawDangerCard(){
-      let arr = []; //Tableau de cartes danger à renvoyer. Vide si fin de l'entrainement.
+    let arr = []; //Tableau de cartes danger à renvoyer. Vide si fin de l'entrainement.
 
-      // Si la pioche contient au moins deux cartes
-      if ( this.dangerDeck.length() >= 2 ) {
-          // On pioche deux cartes
-          arr = ( this.dangerDeck.drawCards( 2 ) );
-      }
-      else {
-          if ( this.dangerDeck.isEmpty() ){
-              // Si le level est infèrieur à 3
-              if ( this.level < 3 ){
-                  // on monte le niveau d'un cran
-                  this.level +=1;
-                  // on mélange la défausse de carte danger qui devient la pioche
-                  this.dangerDeck.discardToDeck();
-                  // on recommence drawDangerCard();
-                  arr = this.drawDangerCard();
-              }
-              // Sinon arr reste vide. Cela indique la fin de la phase d'entrainement.
-          }
-          else{
-              // On pioche une carte
-              arr = [ this.dangerDeck.drawOneCard() ];
-          }
-      }
+		if(this.level < 4){
+			// On pioche deux cartes
+			arr = ( this.dangerDeck.drawCards( 2 ) );
+			if ( this.dangerDeck.isEmpty() ){
+					// on monte le niveau d'un cran
+					this.level++;
+					// on mélange la défausse de carte danger qui devient la pioche
+					this.dangerDeck.discardToDeck();
+			}
+		}
 
-      return arr;
+    return arr;
   }
 
   startFight( dangerCard ){

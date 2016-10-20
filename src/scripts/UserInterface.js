@@ -25,6 +25,7 @@ class UserInterface {
   updateMainInfos(){
     this.showPV();
     this.showLevel();
+    this.showPirates();
     this.showNbFightCards();
     this.showNbDangerCards();
     this.showNbAgingCards();
@@ -37,6 +38,19 @@ class UserInterface {
   showLevel(){
     let levelValue = this.game.level > 3 ? 'pirates' : this.game.level;
     $('#level').html( levelValue );
+  }
+  showPirates(){
+    $('#pirates-list').empty();
+    this.game.pirates.forEach( (pirate, i) => {
+      $('#pirates-list').append(
+        `
+          <li>
+              <span id="pirates-${ i + 1 }-name">${pirate.name}</span>
+              <p id="pirates-${ i + 1 }-power">${pirate.mission}</p>
+          </li>   
+        `
+      );  
+    });
   }
   showNbFightCards(){
     $('#nbFightCards').html( this.game.fightDeck.length() );
@@ -52,6 +66,10 @@ class UserInterface {
   * Show / hide / clean zones
   */
 
+  showGameOver(){
+    console.log('UI : showGameOver');
+  }
+
   hideFightZone(){
     $('#zone-fight-danger').hide();
   }
@@ -65,14 +83,23 @@ class UserInterface {
   }
 
   showChoseDangerCard(choices){
+    console.log('choices', choices);
     // let choices = this.game.drawDangerCard();
-    $('#zone-danger-choice').show();
-    if ( choices.length == 1 || choices.length == 2 ) {
-      choices.forEach(function(card) {
-        card.draw('.danger-choice-card-slots');
-      }, this);
-    } else {
-      console.log("number of dangers to chose is uncorrect");
+    if( choices.length > 0 ){
+      $('#zone-danger-choice').show();
+      if ( choices.length == 1 || choices.length == 2 ) {
+        choices.forEach(function(card) {
+          card.draw('.danger-choice-card-slots');
+        }, this);
+      } else {
+        console.log("number of dangers to chose is uncorrect");
+      }
+    }
+    else{
+      //Pirate's hour
+      // Show pirate zone
+      console.log('show pirate zone cause training is over');
+      this.showPiratesZone();
     }
   }
 
@@ -84,7 +111,7 @@ class UserInterface {
     $('#btn-pick-fight-card').show();
     $('#btn-stop-fight').show();
     $('#btn-delete-fight-cards').hide();
-
+    $('#btn-dont-delete-fight-cards').hide();
   }
 
   updateFightZone(){
@@ -120,9 +147,22 @@ class UserInterface {
     $('#btn-pick-fight-card').hide();
     $('#btn-stop-fight').hide();
     $('#btn-delete-fight-cards').show();
+    $('#btn-dont-delete-fight-cards').show();
     //console.log( this.game.fight.arrayFightCard );
     //console.log( this.game.fight.getSumOfCostToDelete() );
   }
+
+  // Pirates Zone
+  showPiratesZone(){
+    this.hideFightZone();
+    console.log('hide fight zone to show pirates');
+    this.showPiratesChoice();
+  }
+
+  showPiratesChoice(){
+    
+  }
+
 
   /**
   * Events
@@ -239,6 +279,14 @@ class UserInterface {
       else{
         console.log("Trop de cartes à supprimer");
       }
+    });
+
+    $('body').on('click', '#btn-dont-delete-fight-cards', function(){
+      let noCard = [];
+      game.endFightLost(noCard);
+      UI.hideFightZone();
+      UI.dangerCardChoice = game.drawDangerCard();
+      UI.showChoseDangerCard( UI.dangerCardChoice );
     });
   }
 

@@ -4,7 +4,7 @@ class Pirate {
 		this._name = obj.name;
 		this._strength = obj.strength;
 		this._nbFreeCards = obj.nbFreeCards;
-		this._power = obj.power;
+		this._mission = obj.mission;
 	}
 
 	/**
@@ -50,11 +50,11 @@ class Pirate {
 
 	// power
 
-	get power(){
-		return this._power;
+	get mission(){
+		return this._mission;
 	}
-	set power(newPower){
-		this._power = newPower;
+	set mission(newMission){
+		this._mission = newMission;
 	}
 }
 

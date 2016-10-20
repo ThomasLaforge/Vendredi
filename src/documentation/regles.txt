@@ -1,0 +1,54 @@
+But du jeu: 
+Vous êtes Vendredi, et vous devez aidez Robinson (qui est très con et peu apte à la survie sur une île déserte) à affronter les pirates et quitter l'île. 
+Vous partez avec un deck plutôt faible, et vous allez affronter des périls, d'abord en perdant souvent (ce qui vous permettra d'éliminer vos cartes faibles) et en gagant un peu, puis de plus en plus souvent, ce qui vous apportera de nouvelles cartes améliorant votre deck. 
+
+Mise en place: 
+Mélangez les 18 cartes de Départ (avec Robinson d'un côté et une palissade vierge de l'autre) 
+Mélangez les 3 cartes de Vieillissement Avancé (avec Robinson d'un côté et une palissade avec un visage blanc de l'autre) 
+Retirez du jeu la carte de vieillissement (avec Robinson d'un côté et une palissade avec un visage marron de l'autre) Très Stupide (-3), mélangez les autres, et placez-les sur les cartes de Vieillissement Avancé 
+Mélangez les cartes de Péril (avec Robinson d'un côté et des illustrations de l'autre). 
+Mélangez les cartes de Pirate (avec les bateaux pirates) et révélez-en deux. Ce sont les deux boss de fin à affronter et vaincre pour gagner. Les autres peuvent retourner dans la boîte. 
+Prenez 20 points de vie. 
+Les cartes vertes, jaunes et rouge ne sont que des aides-mémoires pour vous rappeler dans quelle phase vous êtes. On démarre en phase verte. 
+
+Déroulement: 
+- Piochez deux cartes Péril. Choisissez-en une à affronter et défausser l'autre. 
+- Le chiffre blanc en bas à gauche (côté illustration) vous donne le nombre de carte que vous pouvez piocher de votre deck sans payer de point de vie. une fois ce chiffre atteint, vous pouvez piocher une carte supplémentaire en payant un point de vie. 
+- Après avoir pioché une carte (gratuite ou pas), vous pouvez choisir de mettre fin au combat. Si la somme des forces (le chiffre en haut côté Robinson) des cartes piochées est supérieure ou égale à la force du péril (au début, le chiffre dans le rond vert en bas à droite côté illustration), vous avez remporté le combat, vous mettez dans votre défausse les cartes jouées et la carte de péril (elle est par la suite utilisée du côté Robinson, améliorant ainsi votre deck). Elle vient s'ajouter à votre deck. Dans le cas contraire, vous perdez le combat, et autant de points de vie que la différence entre votre force et la force du péril; le péril va dans la défausse des cartes péril; chaque point de vie que vous avez perdu vous permet d'éliminer une de vos cartes de votre jeu, et ainsi de l'améliorer en virant les mauvaises cartes (note: il faut deux points de vie pour éliminer une carte de Vieillissement). 
+- Entre deux pioches de cartes, ou avant de déclarer la fin du combat, vous pouvez utiliser la capacité d'une ou plusieurs des cartes que vous avez déjà jouées. Chaque capacité ne peut être utilisée qu'une fois par carte par combat. 
+- Une fois le combat résolu, on repart au début: on pioche deux cartes Périls, on en choisit une à affronter, on pioche des cartes gratuites et/ou payantes... 
+- Lorsque la pioche des périls est épuisée, on reprend les périls défaussés et on les mélange afin de former une nouvelle pioche. On passe à ce moment en niveau jaune, et on utilise donc le chiffre dans le rond jaune du péril. 
+- Cas particulier: si il ne reste qu'un carte dans le deck de péril, vous pouvez la regardez, et choisir de l'affronter ou bien de la défausser et de passer directement au niveau suivant. 
+- Lorsque la pioche des Périls est épuisée une deuxième fois, on passe en niveau rouge 
+- Lorsque la pioche des Périls est épuisée une troisième fois, on passe aux boss de fin de niveaux: les pirates. On affronte les pirate un par un, comme les périls (cartes gratuites + cartes en payant un point de vie), à la différence qu'on ne peut pas déclarer la fin du combat si on est moins fort que les pirates: il faut être plus fort. 
+- On est éliminé lorsqu'on a -1 point de vie (à 0, on est toujours en vie). 
+- Si vous piocher la dernière carte de votre deck, vous prenez votre défausse, y ajoutez la première carte de Vieillissement sans la regarder, mélangez le tout, et paf, vous avez un deck tout neuf. 
+
+Après, il y a les capacités des cartes Robinson, des cartes de Vieillissement et des pirates: 
+
+Cartes Périls devenues Robinson: 
+- +x points de vie => ça semble clair 
+- +x cartes => vous pouvez piocher x cartes supplémentaires gratuitement (et déclarer la fin du combat entre deux cartes, on le rappelle) 
+- échanger x cartes: mettez une de vos cartes déjà jouées dans la défausse (vous pouvez défausser une carte dont vous avez déjà utilisée la capacité) et piochez-en une autre gratuitement. On ne peut pas échanger la carte qui déclenche cet effet; si il y a plusieurs échanges, on peut échanger la carte que l'on vient de piocher, mais on ne peut pas déclencher d'autre effet tant que tous les échanges ne sont pas finis. 
+- trier 3 cartes: prendre les trois première cartes du deck, en défaussez-une, mettre les deux autres sur le dessus du deck: 
+- détruire un carte: choisissez une de vos cartes déjà jouée, et retournez-là. Elle à une force de 0, et si elle est encore en jeu à la fin du combat, elle est retirée du jeu 
+- copier: copier l'effet d'une autre carte 
+- doubler: doubler la force d'une autre carte. Il est interdit d'utiliser plusieurs fois cet effet sur la même carte 
+- niveau -1: si vous êtes au niveau jaune (resp. rouge), la force du péril que vous affronter est réduite à la force du niveau vert (resp. jaune). N'a pas d'effet sur les périls niveau vert ni sur les pirates 
+
+Cartes Vieillissement: 
+- stop: si vous piochez cette carte parmi les cartes gratuites données par le Péril ou le Pirate, vous cessez immédiatement de piocher des cartes gratuites 
+- plus forte carte=0: la plus forte carte jouée est de force 0 (une seule carte affectée si plusieurs sont de force identiques) 
+- -x points de vie: si la carte est encore en jeu à la fin du combat, vous perdez x points de vie 
+
+Cartes Pirates: 
+- Chaque carte piochée coûte deux points de vie au lieu d'un 
+- Le Pirate à autant de force que deux fois le nombre de cartes de Vieillissement que vous avez ajouté dans votre deck au cours de la partie. La force du pirate est déterminée au début du combat et ne change pas si vous rajoutez des cartes de Vieillissement pendant le combat 
+- Affrontez le reste de l'île: prenez toutes les cartes Périls restant dans la défausse, faites la somme des cartes gratuites pour savoir combien vous pouvez piocher de cartes gratuitement, et la somme des chiffres rouges pour avoir la force de l'ennemi 
+- Chacune des cartes piochées à +1 de force 
+- Seule la moitié des cartes piochées est compté pour la combat 
+
+Pour augmenter la difficulté: 
+Level 2: A la mise ne place, ajoutez la première carte de Vieillissement à votre deck 
+Level 3: Level 2 + Ajoutez la carte Très Stupide aux cartes de Vieillissement 
+Level 4 (le niveau normal): Level 3 + 18 points de vie au départ
