@@ -16,44 +16,46 @@ class DangerCard {
 
     // Draw in user interface
     draw( nodeDOM ){
-        $(nodeDOM).append('<div class="card-slot">Card Danger : name => ' + this.dangerName + ', strength => 1 : ' + this.getStrength(1) + ', 2 : ' + this.getStrength(2) + ', 3 : ' + this.getStrength(3) + ', FreeCards => ' + this.dangerFreeCards + '</div>');
+        $(nodeDOM).append(`
+        <div class="card-slot card-danger">
+            Card Danger : name => ${this.dangerName}, strength => 1 : ${this.getStrength(1)}, 2 : ${this.getStrength(2)}, 3 : ${this.getStrength(3)}, FreeCards => ${this.dangerFreeCards}
+        </div>
+        `);
     }
 
     getStrength( lvl ){
         switch ( lvl ) {
             case 1:
                 switch (this.dangerFreeCards) {
-                    case 1:   return 0; break;
-                    case 2:   return 1; break;
-                    case 3:   return 2; break;
-                    case 4:   return 4; break;
-                    case 5:   return 5; break;
-                    default: return 29; break;
+                    case 1:   return 0;
+                    case 2:   return 1;
+                    case 3:   return 2;
+                    case 4:   return 4;
+                    case 5:   return 5;
+                    default: return 29;
                 }
-                break;
+            
             case 2:
                 switch (this.dangerFreeCards) {
-                    case 1:   return 1; break;
-                    case 2:   return 3; break;
-                    case 3:   return 5; break;
-                    case 4:   return 7; break;
-                    case 5:   return 9; break;
-                    default: return 30; break;
+                    case 1:   return 1;
+                    case 2:   return 3;
+                    case 3:   return 5;
+                    case 4:   return 7;
+                    case 5:   return 9;
+                    default: return 30;
                 }
-                break;
+            
 
             case 3:
                 switch (this.dangerFreeCards) {
-                    case 1:  return 3;  break;
-                    case 2:  return 6;  break;
-                    case 3:  return 8;  break;
-                    case 4:  return 11; break;
-                    case 5:  return 14; break;
-                    default: return 31; break;
+                    case 1:  return 3; 
+                    case 2:  return 6; 
+                    case 3:  return 8; 
+                    case 4:  return 11;
+                    case 5:  return 14;
+                    default: return 31;
                 }
-                break;
-
-            default: return 32; break;
+            default: return 32;
         }
     }
 

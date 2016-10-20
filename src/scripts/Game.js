@@ -10,20 +10,20 @@ import { UserInterface } from './UserInterface';
 
 class Game {
 	constructor( player, difficulty ){
-		this._player        = player;
-    this._difficulty    = difficulty;
+        this._player        = player;
+        this._difficulty    = difficulty;
 
-		this._fightDeck     = new FightDeck();
-		this._dangerDeck    = new DangerDeck();
-		this._agingDeck     = new AgingDeck( this._difficulty );
-		this._pirateDeck    = new PirateDeck();
-    this._pirates       = this.pirateDeck.getPirates( 2 );
+        this._fightDeck     = new FightDeck();
+        this._dangerDeck    = new DangerDeck();
+        this._agingDeck     = new AgingDeck( this._difficulty );
+        this._pirateDeck    = new PirateDeck();
+        this._pirates       = this.pirateDeck.getPirates( 2 );
 
-    this._level         = 1;
-    this._arrayDiscard  = [];
+        this._level         = 3;
+        this._arrayDiscard  = [];
 
-    // Bool Events
-    this._fight         = null;
+        // Bool Events
+        this._fight         = null;
 	}
 
     /* start(){

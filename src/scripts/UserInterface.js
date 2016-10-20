@@ -35,7 +35,8 @@ class UserInterface {
     $('#pv').html( this.game.player.PV );
   }
   showLevel(){
-    $('#level').html( this.game.level );
+    let levelValue = this.game.level > 3 ? 'pirates' : this.game.level;
+    $('#level').html( levelValue );
   }
   showNbFightCards(){
     $('#nbFightCards').html( this.game.fightDeck.length() );
@@ -184,6 +185,7 @@ class UserInterface {
       }
     });
 
+    // Use power of card
     $('body' ).on('click', '.fight-danger-fight-cards div', function(){
       if( game.fight.finished ){
         $(this).addClass('end-fight-card-to-delete');
@@ -193,8 +195,11 @@ class UserInterface {
         let index = $(this).index();
         let cardSelected = game.fight.arrayFightCard[ index ];
         if( cardSelected.power ){
-          game.usePower( cardSelected );
-          $(this).addClass('fight-card-power-used');
+          // If power not already used
+          if(!$(this).hasClass('fight-card-power-used')){
+            game.usePower( cardSelected );
+            $(this).addClass('fight-card-power-used');
+          }
         }
         else{
           console.log('click on fight card played! (in fight)');

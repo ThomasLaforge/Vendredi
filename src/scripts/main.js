@@ -20,7 +20,7 @@ watch(game, function(){
       console.log('The game is over !');
       $('body').unbind();
   }
-  else{
+  else {
       UI.updateMainInfos();
   }
 });
@@ -30,6 +30,7 @@ watch(game, "_fight", function(){
     UI.updateFightZone();
   }
 });
+
 
 /*
     es6 generators
