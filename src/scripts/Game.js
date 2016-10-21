@@ -10,20 +10,29 @@ import { UserInterface } from './UserInterface';
 
 class Game {
 	constructor( player, difficulty ){
-        this._player        = player;
-        this._difficulty    = difficulty;
+        this.player        = player;
+        this.difficulty    = difficulty;
 
-        this._fightDeck     = new FightDeck();
-        this._dangerDeck    = new DangerDeck();
-        this._agingDeck     = new AgingDeck( this._difficulty );
-        this._pirateDeck    = new PirateDeck();
-        this._pirates       = this.pirateDeck.getPirates( 2 );
+        // Si la difficulté est de 4 alors la partie commence avec 18 PV au lieu de 20 => on perd 2 PV
+        if(this.difficulty === 4){
+            this.player.losePV(2);
+        }
 
-        this._level         = 3;
-        this._arrayDiscard  = [];
+        this.fightDeck     = new FightDeck();
+        this.dangerDeck    = new DangerDeck();
+        this.agingDeck     = new AgingDeck( this.difficulty );
+        if(this.difficulty > 1){
+            this.fightDeck.addCard(this.agingDeck.drawCards(1));
+        }
+
+        this.pirateDeck    = new PirateDeck();
+        this.pirates       = this.pirateDeck.getPirates( 2 );
+
+        this.level         = 3;
+        this.arrayDiscard  = [];
 
         // Bool Events
-        this._fight         = null;
+        this.fight         = null;
 	}
 
     /* start(){

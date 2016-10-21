@@ -3,17 +3,23 @@ import {Tools} from './Tools';
 import {AgingCard} from './AgingCard';
 
 class AgingDeck extends Deck{
-    constructor(){
+
+    constructor(difficulty){
         super();
+        this.initDeck();
+        if(difficulty < 3){
+            this.arrayDeck.pop();
+        }
+        this.shuffle();        
     }
 
     initDeck(){
         let arrRes = [];
         let arrDatas = require( '../datas/aging_cards.json' );
-        arrDatas.forEach( function( obj ){
+        arrDatas.forEach( (obj) => {
             let number = obj.number;
+            let newAgingCard = new AgingCard( obj );
             for (var i=0; i<number; i++) {
-                let newAgingCard = new AgingCard( obj );
                 arrRes.push( newAgingCard );
             }
         });
