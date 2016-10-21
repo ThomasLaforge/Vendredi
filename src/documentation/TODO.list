@@ -1,0 +1,47 @@
+TODO LIST JEU VENDREDI
+
+STEP 1 : Finir l'implémentation de la phase de combat des pirates
+
+STEP 2 : Implémenter les capacités des cartes Robinson, des cartes de Vieillissement et des pirates (*** en début de ligne une fois implémentée)
+
+    Fight Cards: 
+    - +x points de vie => ça semble clair 
+    - +x cartes => vous pouvez piocher x cartes supplémentaires gratuitement (et déclarer la fin du combat entre deux cartes, on le rappelle) 
+    - échanger x cartes: mettez une de vos cartes déjà jouées dans la défausse (vous pouvez défausser une carte dont vous avez déjà utilisée la capacité) et piochez-en une autre gratuitement. On ne peut pas échanger la carte qui déclenche cet effet; si il y a plusieurs échanges, on peut échanger la carte que l'on vient de piocher, mais on ne peut pas déclencher d'autre effet tant que tous les échanges ne sont pas finis. 
+    - trier 3 cartes: prendre les trois première cartes du deck, en défaussez-une, mettre les deux autres sur le dessus du deck: 
+    - détruire un carte: choisissez une de vos cartes déjà jouée, et retournez-là. Elle à une force de 0, et si elle est encore en jeu à la fin du combat, elle est retirée du jeu 
+    - copier: copier l'effet d'une autre carte 
+    - doubler: doubler la force d'une autre carte. Il est interdit d'utiliser plusieurs fois cet effet sur la même carte 
+    - niveau -1: si vous êtes au niveau jaune (resp. rouge), la force du péril que vous affronter est réduite à la force du niveau vert (resp. jaune). N'a pas d'effet sur les périls niveau vert ni sur les pirates 
+
+    Aging Cards: 
+    - stop: si vous piochez cette carte parmi les cartes gratuites données par le Péril ou le Pirate, vous cessez immédiatement de piocher des cartes gratuites 
+    - plus forte carte=0: la plus forte carte jouée est de force 0 (une seule carte affectée si plusieurs sont de force identiques) 
+    - -x points de vie: si la carte est encore en jeu à la fin du combat, vous perdez x points de vie 
+
+    Pirates Cards: 
+    - Chaque carte piochée coûte deux points de vie au lieu d'un 
+    - Le Pirate à autant de force que deux fois le nombre de cartes de Vieillissement que vous avez ajouté dans votre deck au cours de la partie. La force du pirate est déterminée au début du combat et ne change pas si vous rajoutez des cartes de Vieillissement pendant le combat 
+    - Affrontez le reste de l'île: prenez toutes les cartes Périls restant dans la défausse, faites la somme des cartes gratuites pour savoir combien vous pouvez piocher de cartes gratuitement, et la somme des chiffres rouges pour avoir la force de l'ennemi 
+    - Chacune des cartes piochées à +1 de force 
+    - Seule la moitié des cartes piochées est compté pour la combat
+
+STEP 3 : Modifier le modèle en typescript
+    a) Rename all js files 
+    WINDOWS+R -> cmd -> cd wamp/www/vendredi/src/scripts -> ren *.js *.ts
+    b) modify gulpfile
+    c) import librairies like jquery from DOM
+
+STEP 4 : Historique
+    2 solutions:
+        1 - save : save action by action (auto save during the game)
+            load : replay game step by step
+        2 - save : on demand (user and/or timer and/or on big step, etc...)
+            load : reload all data in all objects
+
+    - chose solution: 2
+    - model
+    - enregistrement de l'Historique
+    - Chargement d'une partie à partir d'un id de partie
+
+STEP 5 : Recréer le projet en React
