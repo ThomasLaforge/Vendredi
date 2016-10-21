@@ -18,7 +18,7 @@ let UI       = new UserInterface(game);
 watch(game, function(){
   if ( game.isGameOver() ){
       console.log('The game is over !');
-      this.UI.showGameOver();
+      UI.showGameOver();
       $('body').unbind();
   }
   else {
