@@ -87,10 +87,14 @@ class UserInterface {
     // let choices = this.game.drawDangerCard();
     if( choices.length > 0 ){
       $('#zone-danger-choice').show();
-      if ( choices.length == 1 || choices.length == 2 ) {
+      if ( choices.length === 1 || choices.length === 2 ) {
         choices.forEach(function(card) {
           card.draw('.danger-choice-card-slots');
         }, this);
+        if(choices.length === 1){
+          // - Cas particulier: si il ne reste qu'un carte dans le deck de péril, vous pouvez la regardez, et choisir de l'affronter ou bien de la défausser et de passer directement au niveau suivant. 
+          //TODO
+        }
       } else {
         console.log("number of dangers to chose is uncorrect");
       }
@@ -171,6 +175,7 @@ class UserInterface {
   eventsDeclaration(){
     let UI = this;
     let game = this.game;
+    // TODO: Replace UI and game objects : http://stackoverflow.com/questions/36915875/javascript-arrow-functions-this-in-event-handler
 
     // Select a card in danger card choice zone
     $('body').on('click', '.game-danger-choice .card-slot', function(){
