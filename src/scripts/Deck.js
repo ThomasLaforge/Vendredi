@@ -41,6 +41,11 @@ class Deck {
         Tools.shuffle( this.arrayDeck );
     }
 
+    addCard(card){
+        this.arrayDeck.push(card);
+        this.arrayDeck.shuffle();
+    }
+
     discardToDeck(){
         // ajout de la défausse dans la pioche
         this.arrayDeck = this.arrayDiscard;
