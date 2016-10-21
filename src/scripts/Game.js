@@ -35,162 +35,137 @@ class Game {
         this.fight         = null;
 	}
 
-    /* start(){
-        ///////////////////////////////////////////////////////////////
-        ///////////                  ALGO                       ///////
-        ///////////////////////////////////////////////////////////////
-
-        /*
-        condition de défaite : PV < 1
-        condition de victoire : vaincre les deux pirates
-
-        2 Phases :
-            1 - Phase d'entrainement
-            2 - Affrontement avec les pirates
-
-        1 - Entrainement:
-            3 niveaux qui s'enchainent
-            Choisir un entrainement parmis deux
-            Le réaliser
-
-        2 - Les pirates
-
-
-    }
-    */
-
 	isGameOver(){
-    return this.player.isDead();
-  }
+        return this.player.isDead();
+    }
 
-  drawFightCard(){
-      if ( this.fightDeck.isEmpty() ){
-          // On ajoute une carte vieillissement dans la défausse
-          let newAgingCard = this.agingDeck.drawCards( 1 );
-          this.fightDeck.addToDiscard( newAgingCard );
-          // On ajoute la défausse au deck et on mélange
-          this.fightDeck.discardToDeck();
-      }
+    drawFightCard(){
+        if ( this.fightDeck.isEmpty() ){
+            // On ajoute une carte vieillissement dans la défausse
+            let newAgingCard = this.agingDeck.drawCards( 1 );
+            this.fightDeck.addToDiscard( newAgingCard );
+            // On ajoute la défausse au deck et on mélange
+            this.fightDeck.discardToDeck();
+        }
 
-      return this.fightDeck.drawOneCard();
-  }
+        return this.fightDeck.drawOneCard();
+    }
 
-  drawDangerCard(){
-    let arr = []; //Tableau de cartes danger à renvoyer. Vide si fin de l'entrainement.
+    drawDangerCard(){
+        let arr = []; //Tableau de cartes danger à renvoyer. Vide si fin de l'entrainement.
 
-		if(this.level < 4){
-			// On pioche deux cartes
-			arr = ( this.dangerDeck.drawCards( 2 ) );
-			if ( this.dangerDeck.isEmpty() ){
-					// on monte le niveau d'un cran
-					this.level++;
-					// on mélange la défausse de carte danger qui devient la pioche
-					this.dangerDeck.discardToDeck();
-			}
-		}
+        if(this.level < 4){
+            // On pioche deux cartes
+            arr = ( this.dangerDeck.drawCards( 2 ) );
+            if ( this.dangerDeck.isEmpty() ){
+                    // on monte le niveau d'un cran
+                    this.level++;
+                    // on mélange la défausse de carte danger qui devient la pioche
+                    this.dangerDeck.discardToDeck();
+            }
+        }
 
     return arr;
-  }
+    }
 
-  startFight( dangerCard ){
-      this.fight = new Fight( dangerCard, this.level );
-      this.addCardToFight();
-  }
+    startFight( dangerCard ){
+        this.fight = new Fight( dangerCard, this.level );
+        this.addCardToFight();
+    }
 
-  addCardToFight(){
-      let fightCard = this.drawFightCard();
-      this.fight.addFightCard( fightCard );
-  }
+    addCardToFight(){
+        let fightCard = this.drawFightCard();
+        this.fight.addFightCard( fightCard );
+    }
 
-  endFightWon(){
-      this.fight.arrayFightCard.push( this.fight.dangerCard );
-      let arrayOfCardsToDiscard = this.fight.arrayFightCard.slice();
-      this.fightDeck.addToDiscard( arrayOfCardsToDiscard );
+    endFightWon(){
+        this.fight.arrayFightCard.push( this.fight.dangerCard );
+        let arrayOfCardsToDiscard = this.fight.arrayFightCard.slice();
+        this.fightDeck.addToDiscard( arrayOfCardsToDiscard );
 
-      this.resetFight();
-  }
+        this.resetFight();
+    }
 
-  endFightLost( cardsToDelete ){
-      // Delete cards from game
-      cardsToDelete.forEach( card => {
-          this.discard( card );
-          //remove this card from fight.arrayFightCard
-          //this.fight.arrayFightCard
-      });
+    endFightLost( cardsToDelete ){
+        // Delete cards from game
+        cardsToDelete.forEach( card => {
+            this.discard( card );
+            //remove this card from fight.arrayFightCard
+            //this.fight.arrayFightCard
+        });
 
-      // put back cards of fight in differents decks
-      // danger card
-      this.dangerDeck.discard( [this.fight.dangerCard] );
-      // fight cards
-      this.fightDeck.discard( this.fight.arrayFightCard );
+        // put back cards of fight in differents decks
+        // danger card
+        this.dangerDeck.discard( [this.fight.dangerCard] );
+        // fight cards
+        this.fightDeck.discard( this.fight.arrayFightCard );
 
-      this.resetFight();
-  }
+        this.resetFight();
+    }
 
-  resetFight(){
-      this.fight = null;
-  }
+    resetFight(){
+        this.fight = null;
+    }
 
-  discard( arrayOfCards ){
-      this.arrayDiscard.push( arrayOfCards );
-  }
+    discard( arrayOfCards ){
+        this.arrayDiscard.push( arrayOfCards );
+    }
 
-  usePower( selectedCard ) {
+    usePower( selectedCard ) {
+        let card;
+        let isFightCard   = selectedCard instanceof FightCard;
+        let isDangerCard  = selectedCard instanceof DangerCard;
 
-      let card;
-      let isFightCard   = selectedCard instanceof FightCard;
-      let isDangerCard  = selectedCard instanceof DangerCard;
-
-      //Cast selectCard in fightCard
-      if ( isDangerCard ) {
-          card = selectedCard.fightCard;
-      }
-      else if ( isFightCard ) {
-          card = selectedCard;
-      }
-      else{
-          return false;
-      }
-
-      if ( card.power ) {
-        switch( card.power ) {
-          case '+2PV':
-            this.player.addPV( 2 );
-            break;
-          case '+1PV':
-            this.player.addPV( 1 );
-            break;
-          case '-1PV':
-            this.player.losePV( 1 );
-            break;
-          case '-2PV':
-            this.player.losePV( 2 );
-            break;
-          default:
-            console.log("use power not coded for the moment");
+        //Cast selectCard in fightCard
+        if ( isDangerCard ) {
+            card = selectedCard.fightCard;
         }
-      }
-  }
+        else if ( isFightCard ) {
+            card = selectedCard;
+        }
+        else{
+            return false;
+        }
 
-  /**
-	 * Getters and Setters
-	 */
+        if ( card.power ) {
+            switch( card.power ) {
+                case '+2PV':
+                    this.player.addPV( 2 );
+                    break;
+                case '+1PV':
+                    this.player.addPV( 1 );
+                    break;
+                case '-1PV':
+                    this.player.losePV( 1 );
+                    break;
+                case '-2PV':
+                    this.player.losePV( 2 );
+                    break;
+                default:
+                console.log("use power not coded for the moment");
+            }
+        }
+    }
 
-	// Player
-	get player(){
-		return this._player;
-	}
-	set player( newPlayer ){
-		this._player = newPlayer;
-	}
+    /**
+     * Getters and Setters
+     */
 
-	// Difficulty
-	get difficulty(){
-		return this._difficulty;
-	}
-	set difficulty( newDifficulty ){
-		this._difficulty = newDifficulty;
-	}
+    // Player
+    get player(){
+        return this._player;
+    }
+    set player( newPlayer ){
+        this._player = newPlayer;
+    }
+
+    // Difficulty
+    get difficulty(){
+        return this._difficulty;
+    }
+    set difficulty( newDifficulty ){
+        this._difficulty = newDifficulty;
+    }
 
     // Level
     get level(){
