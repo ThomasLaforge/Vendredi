@@ -12,44 +12,74 @@
     border:1px red solid;
 
     .danger-card-definition{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
         height: 50%;
         border-bottom: 1px red solid;
 
+        background-image: url("../images/bg_danger_card_phase_danger.jpg"); 
+        background-size:     cover;                      /* <------ */
+        background-repeat:   no-repeat;
+        background-position: center center;
+
         .card-danger-name{
-            margin-bottom: 10px;
+            height: 20px;
+            line-height: 20px;
 
-            text-align: center
+            width: 90%;
+            margin: 0 auto;
+            background-color: rgba(#FFFFFF, 0.7);
+            text-align: center;
         }
 
-        .card-danger-strength{
-            .card-danger-strength-lvl{
-                height: 25px;
-                width: 25px;
-                margin-bottom: 5px;
+        .card-danger-details{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            
+            .card-danger-strength{
+                .card-danger-strength-lvl{
+                    height: 25px;
+                    width: 25px;
+                    margin-bottom: 5px;
 
-                border: 1px green solid;
-                border-radius: 25px;
-                
-                text-align: center;
+                    border: 1px green solid;
+                    border-radius: 25px;
+                    
+                    text-align: center;
+                }
+                .card-danger-strength-1{ background-color: green; }
+                .card-danger-strength-2{ background-color: yellow; }
+                .card-danger-strength-3{ background-color: red; }
             }
-            .card-danger-strength-1{ background-color: green; }
-            .card-danger-strength-2{ background-color: yellow; }
-            .card-danger-strength-3{ background-color: red; }
-        }
 
-        .card-danger-freecards{
-            color:white;
-            text-shadow: green 1px 1px, green -1px 1px, green -1px -1px, green 1px -1px;
+            .card-danger-freecards{
+                width:30px;
+                height:30px;
+                line-height:30px;
+                background-color: rgba(#FFFFFF, 0.7);
+                text-align: center;
+                border-radius:12px;
+                margin:0 0 5px 12px;
+
+                color:white;
+                text-shadow: green 1px 1px, green -1px 1px, green -1px -1px, green 1px -1px;
+            }
         }
     }
 
     .card-danger-fight-definition{
         // transform: rotate(180deg);
         height: 50%;
-
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         
         .card-danger-fight-main-info{
             display: flex;
+            justify-content: space-between;
             
             .card-danger-fight-strength{
                 font-weight: bold;
