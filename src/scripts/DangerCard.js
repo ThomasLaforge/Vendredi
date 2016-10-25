@@ -18,7 +18,27 @@ class DangerCard {
     draw( nodeDOM ){
         $(nodeDOM).append(`
         <div class="card-slot card-danger">
-            Card Danger : name => ${this.dangerName}, strength => 1 : ${this.getStrength(1)}, 2 : ${this.getStrength(2)}, 3 : ${this.getStrength(3)}, FreeCards => ${this.dangerFreeCards}
+            <!-- danger definition -->
+            <div class="danger-card-definition">
+                <div class="card-danger-name">${this.dangerName}</div>
+                <div clas="card-danger-details">
+                    <div class="card-danger-strength">
+                        <div class="card-danger-strength-lvl card-danger-strength-1">${this.getStrength(1)}</div>
+                        <div class="card-danger-strength-lvl card-danger-strength-2">${this.getStrength(2)}</div>
+                        <div class="card-danger-strength-lvl card-danger-strength-3">${this.getStrength(3)}</div>
+                    </div>
+                    <div class="card-danger-freecards">${this.dangerFreeCards}</div>
+                </div>
+            </div>
+            <!-- fight definition -->
+            <div class="card-danger-fight-definition">
+                <div class="card-danger-fight-main-info">
+                    <div class="card-danger-fight-strength">${this.fightCard.strength}</div>
+                    <div class="card-danger-fight-name">${this.fightCard.name}</div>
+                    <div class="card-danger-fight-destroycost">${this.fightCard.costToDelete}</div>
+                </div>
+                <div class="card-danger-fight-power">${this.fightCard.power ? this.fightCard.power : '...'}</div>
+            </div>
         </div>
         `);
     }

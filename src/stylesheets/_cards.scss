@@ -1,0 +1,77 @@
+// Pirates
+
+// Aging
+
+// Fight
+
+// Danger
+.card-danger{
+    width:200px;
+    height:280px;
+
+    border:1px red solid;
+
+    .danger-card-definition{
+        height: 50%;
+        border-bottom: 1px red solid;
+
+        .card-danger-name{
+            margin-bottom: 10px;
+
+            text-align: center
+        }
+
+        .card-danger-strength{
+            .card-danger-strength-lvl{
+                height: 25px;
+                width: 25px;
+                margin-bottom: 5px;
+
+                border: 1px green solid;
+                border-radius: 25px;
+                
+                text-align: center;
+            }
+            .card-danger-strength-1{ background-color: green; }
+            .card-danger-strength-2{ background-color: yellow; }
+            .card-danger-strength-3{ background-color: red; }
+        }
+
+        .card-danger-freecards{
+            color:white;
+            text-shadow: green 1px 1px, green -1px 1px, green -1px -1px, green 1px -1px;
+        }
+    }
+
+    .card-danger-fight-definition{
+        // transform: rotate(180deg);
+        height: 50%;
+
+        
+        .card-danger-fight-main-info{
+            display: flex;
+            
+            .card-danger-fight-strength{
+                font-weight: bold;
+            }
+        }
+
+        .card-danger-fight-power{
+            color:blue;
+        }
+
+
+    }
+}
+
+// Selected
+
+.danger-card-selected, .end-fight-card-to-delete{
+    // outline: 1px solid lawngreen;
+    animation:pulse 1.5s infinite alternate;
+}
+
+@keyframes pulse {
+  from { box-shadow:0px 0px 10px 4px lawngreen; }
+  to { box-shadow:0px 0px 5px 5px yellowgreen; }
+}
