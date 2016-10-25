@@ -21,13 +21,13 @@ class DangerCard {
             <!-- danger definition -->
             <div class="danger-card-definition">
                 <div class="card-danger-name">${this.dangerName}</div>
-                <div clas="card-danger-details">
-                    <div class="card-danger-strength">
-                        <div class="card-danger-strength-lvl card-danger-strength-1">${this.getStrength(1)}</div>
-                        <div class="card-danger-strength-lvl card-danger-strength-2">${this.getStrength(2)}</div>
-                        <div class="card-danger-strength-lvl card-danger-strength-3">${this.getStrength(3)}</div>
-                    </div>
+                <div class="card-danger-details">
                     <div class="card-danger-freecards">${this.dangerFreeCards}</div>
+                    <div class="card-danger-strength">
+                        <div class="card-danger-strength-lvl card-danger-strength-3">${this.getStrength(3)}</div>
+                        <div class="card-danger-strength-lvl card-danger-strength-2">${this.getStrength(2)}</div>
+                        <div class="card-danger-strength-lvl card-danger-strength-1">${this.getStrength(1)}</div>
+                    </div>
                 </div>
             </div>
             <!-- fight definition -->
