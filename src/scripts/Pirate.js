@@ -3,7 +3,7 @@ class Pirate {
 	constructor( obj ){
 		this._name = obj.name;
 		this._strength = obj.strength;
-		this._nbFreeCards = obj.nbFreeCards;
+		this._nbFreeCards = obj.freeCards;
 		this._mission = obj.mission;
 	}
 
