@@ -30,6 +30,8 @@ class DangerCard {
                     </div>
                 </div>
             </div>
+
+            <div class="bambou-separation"></div>
             <!-- fight definition -->
             <div class="card-danger-fight-definition">
                 <div class="card-danger-fight-main-info">

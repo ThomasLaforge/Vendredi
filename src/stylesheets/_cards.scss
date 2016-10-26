@@ -9,15 +9,15 @@
     width:200px;
     height:280px;
 
-    border:1px red solid;
+    border:5px solid rgba(gray,0.15);
+    border-radius:5px;
 
     .danger-card-definition{
         display: flex;
         flex-direction: column;
         justify-content: space-between;
 
-        height: 50%;
-        border-bottom: 1px red solid;
+        height: 48%;
 
         background-image: url("../images/bg_danger_card_phase_danger.jpg"); 
         background-size:     cover;                      /* <------ */
@@ -42,6 +42,7 @@
             .card-danger-strength{
                 .card-danger-strength-lvl{
                     height: 25px;
+                    line-height: 25px;
                     width: 25px;
                     margin-bottom: 5px;
 
@@ -49,6 +50,7 @@
                     border-radius: 25px;
                     
                     text-align: center;
+                    font-weight: bold;
                 }
                 .card-danger-strength-1{ background-color: green; }
                 .card-danger-strength-2{ background-color: yellow; }
@@ -65,28 +67,81 @@
                 margin:0 0 5px 12px;
 
                 color:white;
-                text-shadow: green 1px 1px, green -1px 1px, green -1px -1px, green 1px -1px;
+                text-shadow: green 1.2px 1.2px, green -1.2px 1.2px, green -1.2px -1.2px, green 1.2px -1.2px;
             }
         }
     }
 
+    .bambou-separation{
+        height:4%;
+        background-image: url("../images/texture_bambou.jpg"); 
+        background-size:     cover;                      /* <------ */
+        background-repeat:   no-repeat;
+        background-position: center center;
+    }
+
     .card-danger-fight-definition{
         // transform: rotate(180deg);
-        height: 50%;
+        height: 48%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+
+        background-image: url("../images/robinson.jpg"); 
+        background-size:     cover;                      /* <------ */
+        background-repeat:   no-repeat;
+        background-position: center center;
         
+        // transform:rotate(180deg);
+
         .card-danger-fight-main-info{
             display: flex;
             justify-content: space-between;
             
             .card-danger-fight-strength{
+                margin-left: 5px;
+                margin-top: 5px;
                 font-weight: bold;
+                width:30px;
+                height:30px;
+                line-height:30px;
+                background-color: rgba(#FFFFFF, 0.7);
+                font-size:20px;
+                text-align: center;
+                border-radius:10px;
+            }
+
+            .card-danger-fight-name{
+                width:50%;
+                text-align: center;
+                margin-left:-5px;
+                height:20px;
+                line-height:20px;
+                background-color: rgba(#FFFFFF, 0.7);
+            }
+
+            .card-danger-fight-destroycost{
+                width:20px;                
+                height: 20px;
+                line-height: 20px;
+                text-align: center;
+                margin-right:10px;
+                margin-top:5px;
+
+                background-color: rgba(orange, 0.7);
+                border:1px green solid;
+                border-radius:20px;
+
+                color:lightgrey;
+
             }
         }
 
         .card-danger-fight-power{
+            text-align: center;
+            width:50%;
+            background-color: rgba(#FFFFFF, 0.7);
+            margin: 0 auto;
             color:blue;
         }
 
