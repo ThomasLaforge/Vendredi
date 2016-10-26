@@ -34,3 +34,17 @@ h1, .title-top{
     justify-content: space-around;
   }
 }
+
+.zone-fight-danger{
+  display:flex;
+  flex-direction: column;
+
+  .fight-danger-card-list{
+    display: flex;
+    flex-direction: row;
+  }
+
+  //.fight-danger-fight-cards{
+
+  //}
+}
