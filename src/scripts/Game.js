@@ -54,18 +54,20 @@ class Game {
     drawDangerCard(){
         let arr = []; //Tableau de cartes danger à renvoyer. Vide si fin de l'entrainement.
 
+        if ( this.dangerDeck.isEmpty() ){
+            // on monte le niveau d'un cran
+            this.level++;
+            // on mélange la défausse de carte danger qui devient la pioche
+            this.dangerDeck.discardToDeck();
+        }
+        
         if(this.level < 4){
             // On pioche deux cartes
             arr = ( this.dangerDeck.drawCards( 2 ) );
-            if ( this.dangerDeck.isEmpty() ){
-                    // on monte le niveau d'un cran
-                    this.level++;
-                    // on mélange la défausse de carte danger qui devient la pioche
-                    this.dangerDeck.discardToDeck();
-            }
         }
+        
 
-    return arr;
+        return arr;
     }
 
     startFight( dangerCard ){
