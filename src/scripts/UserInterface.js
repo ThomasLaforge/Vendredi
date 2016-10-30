@@ -37,7 +37,7 @@ class UserInterface {
   }
   showLevel(){
     let levelValue = this.game.level > 3 ? 'pirates' : this.game.level;
-    $('#level').html( levelValue );
+    $('#level').html( levelValue ).addClass('level-value-' + this.game.level);
   }
   showPirates(){
     $('#pirates-list').empty();

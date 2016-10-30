@@ -11,7 +11,11 @@ h1, .title-top{
 }
 
 .fight-card-power-used{
-  outline: 1px solid lightskyblue;
+  outline: 1px solid green;
+}
+
+.game-info{
+  display: flex;
 }
 
 .game-danger-choice{

@@ -3,6 +3,43 @@
 // Aging
 
 // Fight
+.fight-card{
+    border: 1px lightblue solid;
+    display: flex;
+
+    .fight-card-strength{
+        width:30%;
+        text-align: center;
+    }
+
+    .figth-card-power{
+        width:70%;
+    }
+
+}
+
+.fight-danger-fight-cards{
+    .fight-card{
+        border: 1px lightblue solid;
+        flex-direction: row-reverse;
+
+        .figth-card-power-bonus{
+            color:lightblue;
+        }
+
+        .figth-card-power-malus{
+            color:red;
+        }
+    }
+}
+
+.fight-danger-fight-used{
+    
+    .fight-card{
+        border: 1px lightblue solid;
+        flex-direction: row;
+    }
+}
 
 // Danger
 .card-danger{
@@ -151,7 +188,11 @@
 
 // Selected
 
-.danger-card-selected, .end-fight-card-to-delete{
+.end-fight-card-to-delete{
+    border:1px solid red;
+}
+
+.danger-card-selected{
     // outline: 1px solid lawngreen;
     animation:pulse 1.5s infinite alternate;
 }

@@ -22,18 +22,33 @@
         <hr>
 
         <div class="game-info" id="zone-info">
-            <div class="info-main">
-                PV :                <span id ="pv"></span>
-                Nb fight cards :    <span id ="nbFightCards"></span>
-                Nb danger cards :   <span id ="nbDangerCards"></span>
-                Nb aging cards :    <span id ="nbAgingCards"></span>
-                Level :             <span id ="level"></span>
-            </div>
             <div class="info-pirates">
                 pirates :
                 <!--<a data-toggle="popover" title="<img src='http://getbootstrap.com/apple-touch-icon.png' />">-->
                     <ul id="pirates-list"></ul>
                 <!--</a>-->
+            </div>
+
+            <div class="info-main">
+                <div class='info-main-pv info-main-elt'>
+                    <div id ="pv" class='info-main-value'></div>
+                </div>
+                <div class='info-main-fight-cards info-main-elt'>
+                    <div id ="nbFightCards" class='info-main-value'></div>
+                    <div class='info-main-subject'>Fight cards</div>
+                </div>
+                <div class='info-main-danger-cards info-main-elt'>
+                    <div id ="nbDangerCards" class='info-main-value'></div>
+                    <div class='info-main-subject'>Danger cards</div>
+                </div>
+                <div class='info-main-aging-cards info-main-elt'>
+                    <div id ="nbAgingCards" class='info-main-value'></div>
+                    <div class='info-main-subject'>Aging cards</div>
+                </div>
+                <div class='info-main-level info-main-elt'>
+                    <div id ="level" class='info-main-value level-value-2'></div>
+                    <div class='info-main-subject'>Level</div>
+                </div>
             </div>
         </div>
 
