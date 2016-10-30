@@ -146,6 +146,7 @@ class Game {
                 default:
                 console.log("use power not coded for the moment");
             }
+            this.fight.useCard(card);
         }
     }
 

@@ -132,7 +132,21 @@ class UserInterface {
             console.log('Try to draw a card but not a danger card or fight card.');
         }
     });
-    $('#fight-danger-temporary-result').html( this.game.fight.result() );
+
+    this.game.fight.arrayFightCardUsed.forEach( function( card ){
+        if ( card instanceof FightCard || card instanceof AgingCard) {
+            card.draw(".fight-danger-fight-cards-used");
+        }
+        else if ( card instanceof DangerCard ) {
+            card.fightCard.draw(".fight-danger-fight-cards-used");
+        }
+        else{
+            console.log('Try to draw a card but not a danger card or fight card.');
+        }
+    });
+
+    let classToAdd = this.game.fight.result() >= 0 ? 'fight-danger-temporary-result-success' : 'fight-danger-temporary-result-negative';
+    $('#fight-danger-temporary-result').html( this.game.fight.result() ).addClass(classToAdd);
 
     if ( this.game.fight.arrayFightCard.length >= this.game.fight.dangerCard.dangerFreeCards ) {
       $('#btn-pick-fight-card').html( 'Piocher (-1 PV)' );
@@ -223,7 +237,9 @@ class UserInterface {
           // If power not already used
           if(!$(this).hasClass('fight-card-power-used')){
             game.usePower( cardSelected );
-            $(this).addClass('fight-card-power-used');
+            // $(this).addClass('fight-card-power-used');
+            let fightCardPlayed = $(this);
+            $(this).detach().appendTo('.fight-danger-fight-cards-used');
           }
         }
         else{

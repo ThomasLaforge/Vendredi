@@ -4,12 +4,21 @@ class Fight {
     constructor( danger, level ){
         this._level = level;
         this._arrayFightCard = [];
+        this._arrayFightCardUsed = [];
         this._dangerCard = danger;
         this._finished = false;
     }
 
     addFightCard( fightCard ){
         this.arrayFightCard.push( fightCard );
+    }
+
+    useCard(card){
+        let indexCard = this.arrayFightCard.indexOf(card);
+        if(indexCard > -1){
+            this.arrayFightCard.splice(indexCard, 1);
+            this.arrayFightCardUsed.push(card);
+        }
     }
 
     getPlayerForce(){
@@ -90,6 +99,14 @@ class Fight {
     }
     set finished( newFinished ){
         this._finished = newFinished;
+    }
+
+    // arrayFightCardUsed
+    get arrayFightCardUsed(){
+        return this._arrayFightCardUsed;
+    }
+    set arrayFightCardUsed(newArray){
+        return this._arrayFightCardUsed = newArray;
     }
 }
 
