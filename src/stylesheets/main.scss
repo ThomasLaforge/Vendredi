@@ -40,16 +40,41 @@ h1, .title-top{
   }
 }
 
-.zone-fight-danger{
+.game-fight-danger{
   display:flex;
   flex-direction: column;
 
-  .fight-danger-card-list{
+  .fight-danger-card-to-fight{
+    margin:auto;
+  }
+  .fight-player-interface{
+    margin-top:30px;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+
+    .fight-danger-fight-cards, .fight-danger-fight-cards-used{  
+        display: flex;
+        flex-direction: column;
+        width: 38%;
+    }
+        
+    .fight-result-info-and-actions{
+      width:20%;
+      text-align: center;
+
+      #fight-danger-temporary-result{
+        font-weight: bold;
+        font-size:20px;
+      }
+
+      .fight-danger-temporary-result-success{
+        color: $success;
+      }
+
+      .fight-danger-temporary-result-negative{
+        color: $lose;
+      }
+    }
   }
-
-  //.fight-danger-fight-cards{
-
-  //}
 }

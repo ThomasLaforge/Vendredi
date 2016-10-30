@@ -211,31 +211,11 @@ class UserInterface {
       }
     });
 
-    // Stop the fight
-    $('body' ).on('click', '#btn-stop-fight', function(){
-      if ( game.fight ){
-        game.fight.finish();
-        if ( game.fight.isWon() ){
-          game.endFightWon();
-          UI.hideFightZone();
-          UI.dangerCardChoice = game.drawDangerCard();
-          UI.showChoseDangerCard( UI.dangerCardChoice );
-        }
-        else{
-          game.player.losePV( Math.abs( game.fight.result() ) );
-          if ( !game.isGameOver() ) {
-            UI.askPlayerDeleteCards();
-          }
-        }
-      }
-    });
-
     // Use power of card
-    $('body' ).on('click', '.fight-danger-fight-cards div', function(){
+    $('body' ).on('click', '.fight-danger-fight-cards .fight-card', function(){
       if( game.fight.finished ){
         $(this).addClass('end-fight-card-to-delete');
       }
-
       else{
         let index = $(this).index();
         let cardSelected = game.fight.arrayFightCard[ index ];
@@ -255,6 +235,26 @@ class UserInterface {
     $('body' ).on('click', '.end-fight-card-to-delete', function(){
       $(this).removeClass('end-fight-card-to-delete');
     });
+
+    // Stop the fight
+    $('body' ).on('click', '#btn-stop-fight', function(){
+      if ( game.fight ){
+        game.fight.finish();
+        if ( game.fight.isWon() ){
+          game.endFightWon();
+          UI.hideFightZone();
+          UI.dangerCardChoice = game.drawDangerCard();
+          UI.showChoseDangerCard( UI.dangerCardChoice );
+        }
+        else{
+          game.player.losePV( Math.abs( game.fight.result() ) );
+          if ( !game.isGameOver() ) {
+            UI.askPlayerDeleteCards();
+          }
+        }
+      }
+    });
+
 
     // Ask player to delete cards if fight is lost
     $('body').on('click', '#btn-delete-fight-cards', function(){

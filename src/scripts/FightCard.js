@@ -11,7 +11,12 @@ class FightCard extends Card {
     }
 
     draw( nodeDOM ){
-        $(nodeDOM).append('<div>Card : name => ' + this.name + ', strength => ' + this. strength + ', power => ' + this.power + '</div>');
+        $(nodeDOM).append(`
+            <div class="fight-card">
+               <div class="fight-card-strength">${this. strength}</div>
+               <div class="fight-card-power">${this.power ? this.power : ''}</div>
+            </div>
+        `);
     }
 
     get power(){

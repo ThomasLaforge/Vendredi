@@ -67,32 +67,33 @@
             </div>
         </div>
 
-        <div class="game-fight-danger" id="zone-fight-danger">
-            <div class="fight-danger-card-list">
+        <div class="game-fight-danger" id="zone-fight-danger">               
+            <div class="fight-danger-card-to-fight" id="danger-card-to-fight"></div>
+            <div class="fight-player-interface">
                 <div class="fight-danger-fight-cards">
                 <!--
                     <div class="fight-cards-elt"></div>
                 -->
+                </div>
+
+                <div class="fight-result-info-and-actions">
+                    <div class="fight-danger-infos">
+                        <span id="fight-danger-temporary-result">0</span> <!-- green if > dangerCard.strengh ; red else -->
+                    </div>
+
+                    <div class="fight-danger-actions">
+                        <button class="fight-danger-action" id="btn-pick-fight-card">Piocher</button> <!-- Piocher / Piocher (-1PV) -->
+                        <button class="fight-danger-action" id="btn-stop-fight">Stop</button>
+                        <button class="fight-danger-action" id="btn-delete-fight-cards">Delete Card(s)</button>
+                        <button class="fight-danger-action" id="btn-dont-delete-fight-cards">Keep them</button>
+                    </div>
                 </div>
                 
-                <div class="fight-danger-card-to-fight" id="danger-card-to-fight"></div>
-
-                <div class="fight-danger-fight-cards">
+                <div class="fight-danger-fight-cards-used">
                 <!--
                     <div class="fight-cards-elt"></div>
                 -->
                 </div>
-            </div>
-
-            <div class="fight-danger-infos">
-                Actual fight issue: <span id="fight-danger-temporary-result">0</span> <!-- green if > dangerCard.strengh ; red else -->
-            </div>
-
-            <div class="fight-danger-actions">
-                <button class="fight-danger-action" id="btn-pick-fight-card">Piocher</button> <!-- Piocher / Piocher (-1PV) -->
-                <button class="fight-danger-action" id="btn-stop-fight">Stop</button>
-                <button class="fight-danger-action" id="btn-delete-fight-cards">Delete Card(s)</button>
-                <button class="fight-danger-action" id="btn-dont-delete-fight-cards">Keep them</button>
             </div>
         </div>
 
