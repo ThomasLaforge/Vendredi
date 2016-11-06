@@ -1,60 +1,60 @@
 [
 	{
-		"name"        :   "Pirate 1",
-		"strength"    :   "*",
+		"name"        :   "Jack Sparrow",
+		"strength"    :   null,
 		"mission"     :   "Combattez toutes les cartes Danger restantes",
-        "freeCards"   :   "*"
+        "freeCards"   :   null
 	},
     {
-		"name"        :   "Pirate 2",
-		"strength"    :   "*",
+		"name"        :   "Davy Jones",
+		"strength"    :   null,
 		"mission"     :   "Ajoutez 2 points de danger par carte vieillissement ajoutée à votre pile Combat",
         "freeCards"   :   5
 	},
     {
-		"name"        :   "Pirate 3",
+		"name"        :   "William Turner",
 		"strength"    :   20,
-		"mission"     :   "",
+		"mission"     :   null,
         "freeCards"   :   6
 	},
     {
-		"name"        :   "Pirate 4",
+		"name"        :   "Hector Barbossa",
 		"strength"    :   25,
-		"mission"     :   "",
+		"mission"     :   null,
         "freeCards"   :   7
 	},
     {
-		"name"        :   "Pirate 5",
+		"name"        :   "Elisabeth Swann",
 		"strength"    :   16,
 		"mission"     :   "Chaque carte Combat supplémentaire coute 2 points de santé",
         "freeCards"   :   7
 	},
     {
-		"name"        :   "Pirate 6",
+		"name"        :   "Barbe Noire",
 		"strength"    :   30,
-		"mission"     :   "",
+		"mission"     :   null,
         "freeCards"   :   8
 	},
     {
-		"name"        :   "Pirate 7",
+		"name"        :   "Barbe Rousse",
 		"strength"    :   22,
 		"mission"     :   "Comptez uniquement la moitié des cartes Combat dévoilées (les cartes Vieillissement dévoilées doivent être comptées)",
         "freeCards"   :   9
 	},
     {
-		"name"        :   "Pirate 8",
+		"name"        :   "Capitaine Crochet",
 		"strength"    :   35,
-		"mission"     :   "",
+		"mission"     :   null,
         "freeCards"   :   9
 	},
     {
-		"name"        :   "Pirate 9",
+		"name"        :   "Capitaine Fracasse",
 		"strength"    :   40,
-		"mission"     :   "",
+		"mission"     :   null,
         "freeCards"   :   10
 	},
     {
-		"name"        :   "Pirate 10",
+		"name"        :   "Capitaine Haddock",
 		"strength"    :   52,
 		"mission"     :   "Chaque carte Combat dévoilée donne +1 point de combat",
         "freeCards"   :   10
