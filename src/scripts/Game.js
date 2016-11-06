@@ -161,8 +161,15 @@ class Game {
                 case '-2PV':
                     this.player.losePV( 2 );
                     break;
+                case '+1 Carte':
+                    this.addCardToFight();
+                    break;
+                case '+2 Cartes':
+                    this.addCardToFight();
+                    break;
                 default:
-                console.log("use power not coded for the moment");
+                    console.log("use power not coded for the moment");
+                    break;
             }
             this.fight.useCard(card);
         }
