@@ -29,16 +29,18 @@ class Game {
 
         this.pirateDeck    = new PirateDeck();
         this.pirates       = this.pirateDeck.getPirates( 2 );
+        this.actualPirate  = this.pirates[0];
 
-        this.level         = 3;
+        this.level         = 1;
         this.arrayDiscard  = [];
 
         // Bool Events
         this.fight         = null;
+        this.gameOver      = false;
 	}
 
 	isGameOver(){
-        return this.player.isDead();
+        return this.gameOver || this.player.isDead();
     }
 
     drawFightCard(){
@@ -234,6 +236,14 @@ class Game {
         this._pirates = newPirates;
     }
 
+    get actualPirate(){
+        return this._actualPirate;
+    }
+
+    set actualPirate( newActualPirate){
+        this._actualPirate = newActualPirate;
+    }
+
     // UI
     get UI(){
         return this._UI;
@@ -248,6 +258,14 @@ class Game {
     }
     set fight( newFight ){
         this._fight = newFight;
+    }
+
+    // game over boolean
+    get gameOver(){
+        return this._gameOver;
+    }
+    set gameOver( bool ){
+        this._gameOver = bool;
     }
 
     // Discard

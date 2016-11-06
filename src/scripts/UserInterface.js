@@ -62,6 +62,7 @@ class UserInterface {
   */
 
   showGameOver(){
+    alert('Game Over! Try Again');
     console.log('UI : showGameOver');
   }
 
@@ -142,9 +143,9 @@ class UserInterface {
     });
 
     let classToAdd = this.game.fight.result() >= 0 ? 'fight-danger-temporary-result-success' : 'fight-danger-temporary-result-negative';
-    $('#fight-danger-temporary-result').html( this.game.fight.result() ).addClass(classToAdd);
+    $('#fight-danger-temporary-result').removeClass('fight-danger-temporary-result-success fight-danger-temporary-result-negative').html( this.game.fight.result() ).addClass(classToAdd);
 
-    if ( this.game.fight.arrayFightCard.length >= this.game.fight.dangerCard.dangerFreeCards ) {
+    if ( this.game.fight.arrayFightCard.length >= this.game.fight.cardToFight.nbFreeCards ) {
       $('#btn-pick-fight-card').html( 'Piocher (-1 PV)' );
     }
     else{
@@ -155,6 +156,7 @@ class UserInterface {
   resetFightZone(){
     $('#danger-card-to-fight').empty();
     $('.fight-danger-fight-cards').empty();
+    $('.fight-danger-fight-cards-used').empty();
   }
 
   askPlayerDeleteCards(){
@@ -215,14 +217,14 @@ class UserInterface {
         let fightCard = game.drawFightCard();
         game.fight.addFightCard( fightCard );
 
-        if ( game.fight.arrayFightCard.length > game.fight.dangerCard.dangerFreeCards ) {
+        if ( game.fight.arrayFightCard.length > game.fight.cardToFight.nbFreeCards ) {
           game.player.losePV( 1 );
         }
       }
     });
 
     // Use power of card
-    $('body' ).on('click', '.fight-danger-fight-cards .fight-card', function(){
+    $('body' ).on('click', '.fight-danger-fight-cards .fight-card, .fight-danger-fight-cards-used .fight-card', function(){
       if( game.fight.finished ){
         $(this).addClass('end-fight-card-to-delete');
       }
