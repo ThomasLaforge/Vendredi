@@ -16,7 +16,16 @@ class Pirate {
     }
 
     draw( nodeDOM ){
-
+		$(nodeDOM).append(`
+			<div class="pirate-card">
+				<div class="pirate-card-info-zone">
+					<div class="pirate-card-nbFreeCards">${this.nbFreeCards ? this.nbFreeCards : '*'}</div>
+					<div class="pirate-card-name">${this.name}</div>
+					<div class="pirate-card-strength">${this.strength ? this.strength : '*'}</div>
+				</div>
+				<div class="pirate-card-mission">${this.mission ? this.mission : '...'}</div>
+			</div>
+		`);
     }
 
 	/**

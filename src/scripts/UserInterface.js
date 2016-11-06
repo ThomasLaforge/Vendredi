@@ -37,19 +37,12 @@ class UserInterface {
   }
   showLevel(){
     let levelValue = this.game.level > 3 ? 'pirates' : this.game.level;
-    $('#level').html( levelValue ).addClass('level-value-' + this.game.level);
+    $('#level').html( levelValue ).addClass('level-value-' + levelValue);
   }
   showPirates(){
     $('#pirates-list').empty();
     this.game.pirates.forEach( (pirate, i) => {
-      $('#pirates-list').append(
-        `
-          <li>
-              <span id="pirates-${ i + 1 }-name">${pirate.name}</span>
-              <p id="pirates-${ i + 1 }-power">${pirate.mission}</p>
-          </li>   
-        `
-      );  
+      pirate.draw('#pirates-list');
     });
   }
   showNbFightCards(){
