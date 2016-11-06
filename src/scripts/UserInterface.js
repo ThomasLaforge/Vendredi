@@ -2,6 +2,8 @@ window.jQuery = window.$ = require('jquery');
 import {Tools} from './Tools';
 import {Game} from './Game';
 import {FightCard} from './FightCard';
+import {PirateFight} from './PirateFight';
+import {DangerFight} from './DangerFight';
 import {DangerCard} from './DangerCard';
 import {AgingCard} from './AgingCard';
 
@@ -96,7 +98,8 @@ class UserInterface {
       //Pirate's hour
       // Show pirate zone
       console.log('show pirate zone cause training is over');
-      this.showPiratesZone();
+      this.game.fight = new PirateFight(this.game.actualPirate);
+      this.showFightZone();
     }
   }
 
@@ -113,7 +116,7 @@ class UserInterface {
 
   updateFightZone(){
     this.resetFightZone();
-    this.game.fight.dangerCard.draw( '#danger-card-to-fight' );
+    this.game.fight.cardToFight.draw( '#danger-card-to-fight' );
     this.game.fight.arrayFightCard.forEach( function( card ){
         if ( card instanceof FightCard || card instanceof AgingCard) {
             card.draw(".fight-danger-fight-cards");

@@ -1,11 +1,13 @@
 import { Deck }       from './Deck';
 import { FightDeck }  from './FightDeck';
-import { Fight }  from './Fight';
+import { DangerFight }  from './DangerFight';
+import { PirateFight }  from './PirateFight';
 import { FightCard }  from './FightCard';
 import { DangerDeck } from './DangerDeck';
 import { DangerCard } from './DangerCard';
 import { AgingDeck }  from './AgingDeck';
 import { PirateDeck } from './PirateDeck';
+import { Pirate } from './Pirate';
 import { UserInterface } from './UserInterface';
 
 class Game {
@@ -70,8 +72,16 @@ class Game {
         return arr;
     }
 
-    startFight( dangerCard ){
-        this.fight = new Fight( dangerCard, this.level );
+    startFight( card ){
+        if(card instanceof DangerCard){
+            this.fight = new DangerFight( card, this.level );
+        }
+        else if(card instanceof Pirate){
+            this.fight = new PirateFight( card );
+        }
+        else{
+            throw new Error("Type of card to fight is not Pirate or Danger !");
+        }
         this.addCardToFight();
     }
 
@@ -81,28 +91,34 @@ class Game {
     }
 
     endFightWon(){
-        this.fight.arrayFightCard.push( this.fight.dangerCard );
-        let arrayOfCardsToDiscard = this.fight.arrayFightCard.slice();
-        this.fightDeck.addToDiscard( arrayOfCardsToDiscard );
+        if(this.fight instanceof DangerFight ){
+            this.fight.arrayFightCard.push( this.fight.dangerCard );
+            let arrayOfCardsToDiscard = this.fight.arrayFightCard.slice();
+            this.fightDeck.addToDiscard( arrayOfCardsToDiscard );
+        }
 
         this.resetFight();
     }
 
     endFightLost( cardsToDelete ){
-        // Delete cards from game
-        cardsToDelete.forEach( card => {
-            this.discard( card );
-            //remove this card from fight.arrayFightCard
-            //this.fight.arrayFightCard
-        });
+        if(this.fight instanceof DangerFight){        
+            // Delete cards from game
+            cardsToDelete.forEach( card => {
+                this.discard( card );
+                //remove this card from fight.arrayFightCard
+                //this.fight.arrayFightCard
+            });
 
-        // put back cards of fight in differents decks
-        // danger card
-        this.dangerDeck.discard( [this.fight.dangerCard] );
-        // fight cards
-        this.fightDeck.discard( this.fight.arrayFightCard );
-
-        this.resetFight();
+            // put back cards of fight in differents decks
+            // danger card
+            this.dangerDeck.discard( [this.fight.dangerCard] );
+            // fight cards
+            this.fightDeck.discard( this.fight.arrayFightCard );
+            this.resetFight();
+        }
+        else{
+            this.gameOver = true;
+        }
     }
 
     resetFight(){

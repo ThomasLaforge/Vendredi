@@ -1,11 +1,10 @@
-//import { DangerCard } from './DangerCard';
+//import { cardToFight } from './cardToFight';
 
 class Fight {
-    constructor( danger, level ){
-        this._level = level;
+    constructor( card ){
         this._arrayFightCard = [];
         this._arrayFightCardUsed = [];
-        this._dangerCard = danger;
+        this._cardToFight = card;
         this._finished = false;
     }
 
@@ -33,14 +32,14 @@ class Fight {
 
     result(){
         // >= 0 if player win ; < 0 if player lose fight
-        let fightPoints = this.dangerCard.getStrength( this.level );
+        let fightPoints = this.getStrengthCardToFight();
         let playerForce = this.getPlayerForce();
 
         return playerForce - fightPoints;
     }
 
     isWon(){
-        return this.result() >= 0 && this.getNumberOfCards() >= 1;
+        return this.result() >= 0 && this.getNumberOfCards() > 0;
     }
 
     isLost(){
@@ -69,12 +68,12 @@ class Fight {
     * Getters and Setters
     */
 
-    // DangerCard
-    get dangerCard(){
-        return this._dangerCard;
+    // cardToFight
+    get cardToFight(){
+        return this._cardToFight;
     }
-    set dangetCard( newDangerCard ){
-        this._dangerCard = newDangerCard;
+    set dangetCard( newcardToFight ){
+        this._cardToFight = newcardToFight;
     }
 
     // ArrayFightCard
@@ -83,14 +82,6 @@ class Fight {
     }
     set arrayFightCard( newArrayFightCard ){
         this._arrayFightCard = newArrayFightCard;
-    }
-
-    // Level
-    get level(){
-        return this._level;
-    }
-    set level( newLevel ){
-        this._level = newLevel;
     }
 
     // Finished
