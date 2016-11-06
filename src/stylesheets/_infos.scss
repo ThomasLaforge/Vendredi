@@ -33,6 +33,8 @@
 
 
 #level{
+    color:white;
+    
     width:60px;
     height: 60px;
     border-radius:5px;
@@ -44,6 +46,7 @@
 .level-value-1{ background-color: $level-1; }
 .level-value-2{ background-color: $level-2; }
 .level-value-3{ background-color: $level-3; }
+.level-value-pirate{ background-color: $level-pirates; }
 
 #pv{
     width:60px;
