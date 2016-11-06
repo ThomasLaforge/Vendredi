@@ -1,5 +1,73 @@
-// Pirates
+@import 'colors';
 
+// Pirates
+$heightPirateCard : 200px;
+$heightPirateCardMission : 40px;
+
+.pirate-card{
+    width: 350px;
+    height: $heightPirateCard;
+
+    border:5px solid rgba(gray,0.15);
+    border-radius:5px;
+    
+    margin-bottom:5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .pirate-card-info-zone{
+        display: flex;
+        justify-content: space-between;
+
+        background-image: url("../images/pirate.jpg"); 
+        background-size:     cover;                      /* <------ */
+        background-repeat:   no-repeat;
+        background-position: center center;
+
+        height: $heightPirateCard - $heightPirateCardMission;
+        text-align: center;
+        padding-top:5px;
+
+        .pirate-card-name{
+            width:60%;
+            height:30px; 
+            line-height:30px;
+
+            background-color: $bg_card_name;
+        }
+        .pirate-card-nbFreeCards{
+            width:35px;
+            height:35px;
+            line-height:35px;
+            background-color: rgba(#FFFFFF, 0.7);
+            border-radius:12px;
+            margin:0 0 5px 12px;
+
+            color:white;
+            text-shadow: green 1.2px 1.2px, green -1.2px 1.2px, green -1.2px -1.2px, green 1.2px -1.2px;
+        }
+        .pirate-card-strength{
+            width:20%;
+
+            font-size: 25px;
+            font-weight: bold;
+            color: red;
+        }
+    }
+
+    .pirate-card-mission{
+        height:$heightPirateCardMission;
+        line-height: $heightPirateCardMission;
+        text-align: center;
+        font-style: italic;
+        font-size: 12px;
+
+        background-color: $bg_pirate_mission;
+    }
+
+}
 // Aging
 
 // Fight
@@ -67,7 +135,7 @@
 
             width: 90%;
             margin: 0 auto;
-            background-color: rgba(#FFFFFF, 0.7);
+            background-color: $bg_card_name;
             text-align: center;
         }
 
