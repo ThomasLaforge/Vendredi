@@ -1,11 +1,11 @@
 TODO LIST JEU VENDREDI
 
-STEP 0 : Design
+* STEP 0 : Design
     - add level class when shown level in info zone
     - Create a color sass class:
         - add level color : 1, 2, 3, pirates(black)
 
-STEP 1 : Finir l'implémentation de la phase de combat des pirates
+* STEP 1 : Finir l'implémentation de la phase de combat des pirates
 
 STEP 2 : Implémenter les capacités des cartes Robinson, des cartes de Vieillissement et des pirates (*** en début de ligne une fois implémentée)
 
