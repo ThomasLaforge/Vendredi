@@ -1,10 +1,11 @@
 class Pirate {
 
 	constructor( obj ){
-		this._name = obj.name;
-		this._strength = obj.strength;
-		this._nbFreeCards = obj.freeCards;
-		this._mission = obj.mission;
+		this.id = obj.id;
+		this.name = obj.name;
+		this.strength = obj.strength;
+		this.nbFreeCards = obj.freeCards;
+		this.mission = obj.mission;
 	}
 
 	/**
@@ -32,12 +33,19 @@ class Pirate {
 	 * Getters and Setters
 	 */
 
-  get name(){
-    return this._name;
-  }
-  set name( newName ){
-    this._name = newName;
-  }
+	get name(){
+		return this._name;
+	}
+	set name( newName ){
+		this._name = newName;
+	}
+
+	get id(){
+		return this._id;
+	}
+	set id( newid ){
+		this._id = newid;
+	}
 
 	// strength
 

@@ -1,59 +1,69 @@
 [
 	{
+		"id"		  :	  0,
 		"name"        :   "Jack Sparrow",
 		"strength"    :   null,
 		"mission"     :   "Combattez toutes les cartes Danger restantes",
         "freeCards"   :   null
 	},
     {
+		"id"		  :	  1,
 		"name"        :   "Davy Jones",
 		"strength"    :   null,
 		"mission"     :   "Ajoutez 2 points de danger par carte vieillissement ajoutée à votre pile Combat",
         "freeCards"   :   5
 	},
     {
+		"id"		  :	  2,
 		"name"        :   "William Turner",
 		"strength"    :   20,
 		"mission"     :   null,
         "freeCards"   :   6
 	},
     {
+		"id"		  :	  3,
 		"name"        :   "Hector Barbossa",
 		"strength"    :   25,
 		"mission"     :   null,
         "freeCards"   :   7
 	},
     {
+		"id"		  :	  4,
 		"name"        :   "Elisabeth Swann",
 		"strength"    :   16,
 		"mission"     :   "Chaque carte Combat supplémentaire coute 2 points de santé",
         "freeCards"   :   7
 	},
     {
+		"id"		  :	  5,
 		"name"        :   "Barbe Noire",
 		"strength"    :   30,
 		"mission"     :   null,
         "freeCards"   :   8
 	},
     {
+		"id"		  :	  6,
 		"name"        :   "Barbe Rousse",
 		"strength"    :   22,
 		"mission"     :   "Comptez uniquement la moitié des cartes Combat dévoilées (les cartes Vieillissement dévoilées doivent être comptées)",
         "freeCards"   :   9
 	},
     {
+		"id"		  :	  7,
 		"name"        :   "Capitaine Crochet",
 		"strength"    :   35,
 		"mission"     :   null,
         "freeCards"   :   9
 	},
     {
+		"id"		  :	  8,
 		"name"        :   "Capitaine Fracasse",
 		"strength"    :   40,
 		"mission"     :   null,
         "freeCards"   :   10
 	},
     {
+		"id"		  :	  9,
 		"name"        :   "Capitaine Haddock",
 		"strength"    :   52,
 		"mission"     :   "Chaque carte Combat dévoilée donne +1 point de combat",
