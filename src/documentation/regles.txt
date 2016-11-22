@@ -7,7 +7,7 @@ Mélangez les 18 cartes de Départ (avec Robinson d'un côté et une palissade v
 Mélangez les 3 cartes de Vieillissement Avancé (avec Robinson d'un côté et une palissade avec un visage blanc de l'autre) 
 Retirez du jeu la carte de vieillissement (avec Robinson d'un côté et une palissade avec un visage marron de l'autre) Très Stupide (-3), mélangez les autres, et placez-les sur les cartes de Vieillissement Avancé 
 Mélangez les cartes de Péril (avec Robinson d'un côté et des illustrations de l'autre). 
-Mélangez les cartes de Pirate (avec les bateaux pirates) et révélez-en deux. Ce sont les deux boss de fin à affronter et vaincre pour gagner. Les autres peuvent retourner dans la boîte. 
+Mélangez les cartes de PirateCard (avec les bateaux pirates) et révélez-en deux. Ce sont les deux boss de fin à affronter et vaincre pour gagner. Les autres peuvent retourner dans la boîte. 
 Prenez 20 points de vie. 
 Les cartes vertes, jaunes et rouge ne sont que des aides-mémoires pour vous rappeler dans quelle phase vous êtes. On démarre en phase verte. 
 
@@ -37,13 +37,13 @@ Cartes Périls devenues Robinson:
 - niveau -1: si vous êtes au niveau jaune (resp. rouge), la force du péril que vous affronter est réduite à la force du niveau vert (resp. jaune). N'a pas d'effet sur les périls niveau vert ni sur les pirates 
 
 Cartes Vieillissement: 
-- stop: si vous piochez cette carte parmi les cartes gratuites données par le Péril ou le Pirate, vous cessez immédiatement de piocher des cartes gratuites 
+- stop: si vous piochez cette carte parmi les cartes gratuites données par le Péril ou le PirateCard, vous cessez immédiatement de piocher des cartes gratuites 
 - plus forte carte=0: la plus forte carte jouée est de force 0 (une seule carte affectée si plusieurs sont de force identiques) 
 - -x points de vie: si la carte est encore en jeu à la fin du combat, vous perdez x points de vie 
 
 Cartes Pirates: 
 - Chaque carte piochée coûte deux points de vie au lieu d'un 
-- Le Pirate à autant de force que deux fois le nombre de cartes de Vieillissement que vous avez ajouté dans votre deck au cours de la partie. La force du pirate est déterminée au début du combat et ne change pas si vous rajoutez des cartes de Vieillissement pendant le combat 
+- Le PirateCard à autant de force que deux fois le nombre de cartes de Vieillissement que vous avez ajouté dans votre deck au cours de la partie. La force du pirate est déterminée au début du combat et ne change pas si vous rajoutez des cartes de Vieillissement pendant le combat 
 - Affrontez le reste de l'île: prenez toutes les cartes Périls restant dans la défausse, faites la somme des cartes gratuites pour savoir combien vous pouvez piocher de cartes gratuitement, et la somme des chiffres rouges pour avoir la force de l'ennemi 
 - Chacune des cartes piochées à +1 de force 
 - Seule la moitié des cartes piochées est compté pour la combat 

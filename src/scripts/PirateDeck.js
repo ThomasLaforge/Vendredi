@@ -1,5 +1,5 @@
 import {Deck} from "./Deck";
-import {Pirate} from "./Pirate";
+import {PirateCard} from "./PirateCard";
 
 class PirateDeck extends Deck{
     constructor(){
@@ -10,7 +10,7 @@ class PirateDeck extends Deck{
         let arrRes = [];
         let arrDatas = require( '../datas/pirates_cards.json' );
         arrDatas.forEach( function( obj ){
-            let newPirate = new Pirate( obj );
+            let newPirate = new PirateCard( obj );
             arrRes.push( newPirate );
         });
 

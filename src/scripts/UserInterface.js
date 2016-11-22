@@ -96,7 +96,7 @@ class UserInterface {
       }
     }
     else{
-      //Pirate's hour
+      //PirateCard's hour
       // Show pirate zone
       console.log('show pirate zone cause training is over');
       this.game.fight = new PirateFight(this.game.actualPirate);

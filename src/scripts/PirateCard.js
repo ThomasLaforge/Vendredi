@@ -1,11 +1,11 @@
-class Pirate {
+class PirateCard {
 
 	constructor( obj ){
-		this.id = obj.id;
-		this.name = obj.name;
-		this.strength = obj.strength;
-		this.nbFreeCards = obj.freeCards;
-		this.mission = obj.mission;
+		this._id = obj.id;
+		this._name = obj.name;
+		this._strength = obj.strength;
+		this._nbFreeCards = obj.freeCards;
+		this._mission = obj.mission;
 	}
 
 	/**
@@ -13,7 +13,7 @@ class Pirate {
 	 */
 
     show(){
-        console.log('Pirate : ');
+        console.log('PirateCard : ');
     }
 
     draw( nodeDOM ){
@@ -75,4 +75,4 @@ class Pirate {
 	}
 }
 
-export { Pirate }
+export { PirateCard }

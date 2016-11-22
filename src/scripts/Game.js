@@ -7,7 +7,7 @@ import { DangerDeck } from './DangerDeck';
 import { DangerCard } from './DangerCard';
 import { AgingDeck }  from './AgingDeck';
 import { PirateDeck } from './PirateDeck';
-import { Pirate } from './Pirate';
+import { PirateCard } from './PirateCard';
 import { UserInterface } from './UserInterface';
 
 class Game {
@@ -29,7 +29,7 @@ class Game {
 
         this.pirateDeck    = new PirateDeck();
         this.pirates       = this.pirateDeck.getPirates( 2 );
-        this.actualPirate  = this.pirates[0];
+        this.actualPirateI = this.pirates[0];
 
         this.level         = 1;
         this.arrayDiscard  = [];
@@ -78,11 +78,11 @@ class Game {
         if(card instanceof DangerCard){
             this.fight = new DangerFight( card, this.level );
         }
-        else if(card instanceof Pirate){
+        else if(card instanceof PirateCard){
             this.fight = new PirateFight( card );
         }
         else{
-            throw new Error("Type of card to fight is not Pirate or Danger !");
+            throw new Error("Type of card to fight is not PirateCard or Danger !");
         }
         this.addCardToFight();
     }
@@ -179,6 +179,15 @@ class Game {
      * Getters and Setters
      */
 
+    actualPirate(){
+        if(this.actualPirateI < this.pirates.length){
+            return this.pirates[this.actualPirateI];
+        }
+        else{
+            this.gameOver = true;
+        }
+    }
+
     // Player
     get player(){
         return this._player;
@@ -243,12 +252,12 @@ class Game {
         this._pirates = newPirates;
     }
 
-    get actualPirate(){
-        return this._actualPirate;
+    get actualPirateI(){
+        return this._actualPirateI;
     }
 
-    set actualPirate( newActualPirate){
-        this._actualPirate = newActualPirate;
+    set actualPirateI( newActualPirateI){
+        this._actualPirateI = newActualPirateI;
     }
 
     // UI
