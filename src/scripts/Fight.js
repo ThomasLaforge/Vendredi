@@ -23,6 +23,7 @@ class Fight {
     getPlayerForce(){
         let playerForce = 0;
 
+        this.arrayFightCard.concat(this.arrayFightCardUsed);
         this.arrayFightCard.forEach(function(fightCard) {
             playerForce += fightCard.strength;
         });
