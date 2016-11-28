@@ -9,7 +9,7 @@ class DangerDeck extends Deck {
     initDeck(){
         let arrRes = [];
         let arrDatas = require('../datas/dangers_cards.json');
-        arrDatas.forEach( function( obj ){
+        arrDatas.forEach( (obj) => {
             let number = obj.number;
             for (var i=0; i<number; i++) {
                 let newDanger = new DangerCard(obj);

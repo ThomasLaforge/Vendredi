@@ -1,5 +1,15 @@
 import { Fight } from './Fight';
 
+/* 
+Powers :
+- Chaque carte piochée coûte deux points de vie au lieu d'un 
+- Le PirateCard à autant de force que deux fois le nombre de cartes de Vieillissement que vous avez ajouté dans votre deck au cours de la partie. La force du pirate est déterminée au début du combat et ne change pas si vous rajoutez des cartes de Vieillissement pendant le combat 
+- Affrontez le reste de l'île: prenez toutes les cartes Périls restant dans la défausse, faites la somme des cartes gratuites pour savoir combien vous pouvez piocher de cartes gratuitement, et la somme des chiffres rouges pour avoir la force de l'ennemi 
+- Chacune des cartes piochées à +1 de force 
+- Seule la moitié des cartes piochées est compté pour la combat
+
+*/
+
 class PirateFight extends Fight {
     constructor( card ){
         super(card);

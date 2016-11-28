@@ -9,7 +9,7 @@ class PirateDeck extends Deck{
     initDeck(){
         let arrRes = [];
         let arrDatas = require( '../datas/pirates_cards.json' );
-        arrDatas.forEach( function( obj ){
+        arrDatas.forEach( (obj) => {
             let newPirate = new PirateCard( obj );
             arrRes.push( newPirate );
         });

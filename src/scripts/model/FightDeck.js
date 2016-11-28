@@ -9,7 +9,7 @@ class FightDeck extends Deck {
     initDeck(){
         let arrRes = [];
         let arrDatas = require('../datas/fight_cards.json');
-        arrDatas.forEach( function( obj ){
+        arrDatas.forEach( (obj) => {
             let number = obj.number;
             for (var i=0; i<number; i++) {
                 let newFight = new FightCard(obj);

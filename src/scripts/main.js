@@ -4,9 +4,9 @@ var bootstrap = require('bootstrap/dist/js/bootstrap');
 // jQuery.fn.render = Transparency.jQueryPlugin;
 
 // ES6 modules Style
-import { Game 	}         from	'./Game';
-import { Player }         from	'./Player';
-import { UserInterface }  from	'./UserInterface';
+import { Game 	}         from	'./model/Game';
+import { Player }         from	'./model/Player';
+import { UserInterface }  from	'./model/UserInterface';
 
 let pseudo   = 'Thomas';
 let myPlayer = new Player(pseudo);

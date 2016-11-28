@@ -24,7 +24,7 @@ class Fight {
         let playerForce = 0;
 
         this.arrayFightCard.concat(this.arrayFightCardUsed);
-        this.arrayFightCard.forEach(function(fightCard) {
+        this.arrayFightCard.forEach( fightCard => {
             playerForce += fightCard.strength;
         });
 
@@ -58,7 +58,7 @@ class Fight {
     getSumOfCostToDelete(){
         let sum = 0;
 
-        this.arrayFightCard.forEach( function( elt ){
+        this.arrayFightCard.forEach( elt => {
             sum += elt.costToDelete;
         });
 

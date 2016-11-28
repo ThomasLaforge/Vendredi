@@ -15,7 +15,7 @@ class UserInterface {
     this.hideFightZone();
     this.eventsDeclaration();
     this.dangerCardChoice = this.game.drawDangerCard();
-    this.dangerCardChoice.forEach(function(element) {
+    this.dangerCardChoice.forEach( (element) => {
       element.draw('#danger-choice-card-slots');
     }, this);
   }
@@ -84,7 +84,7 @@ class UserInterface {
     if( choices.length > 0 ){
       $('#zone-danger-choice').show();
       if ( choices.length === 1 || choices.length === 2 ) {
-        choices.forEach(function(card) {
+        choices.forEach( (card) => {
           card.draw('.danger-choice-card-slots');
         }, this);
         if(choices.length === 1){
