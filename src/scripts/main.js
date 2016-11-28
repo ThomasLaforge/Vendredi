@@ -15,7 +15,7 @@ let UI       = new UserInterface(game);
 
 // Watchers
 
-watch(game, function(){
+watch(game, () => { 
   if ( game.isGameOver() ){
       console.log('The game is over !');
       UI.showGameOver();
@@ -26,7 +26,7 @@ watch(game, function(){
   }
 });
 
-watch(game, "_fight", function(){
+watch(game, "_fight", () => {
   if(game.fight){
     UI.updateFightZone();
   }
