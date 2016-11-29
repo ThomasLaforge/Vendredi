@@ -3,13 +3,13 @@ import {Card} from './Card';
 class Tools {
     constructor(){}
     
-    static getRandomIndexofArray(arr){
+    static getRandomIndexofArray(arr:Array<any>){
         return Math.floor(Math.random() * (0 + arr.length -1));
     }
     
     static shuffle(array : Array<Card>){
         if(array){
-            var currentIndex = array.length, temporaryValue, randomIndex ;
+            var currentIndex = array.length, temporaryValue:Card, randomIndex:number ;
             
             // While there remain elements to shuffle...
             while (0 !== currentIndex) {
@@ -27,7 +27,7 @@ class Tools {
         
     }
     
-    static cloneObject(obj) {
+    static cloneObject(obj:Object) {
         if (obj === null || typeof obj !== 'object') {
             return obj;
         }

@@ -13,7 +13,7 @@ import { PirateDeck }   from './PirateDeck';
 import { PirateCard }   from './PirateCard';
 import { UserInterface } from './UserInterface';
 import { Player }        from './Player';
-import { GameDifficulty } from './Definitions';
+import { GameDifficulty, FightCardPower } from './Vendredi';
 
 class Game {
 
@@ -109,7 +109,7 @@ class Game {
 
     endFightWon(){
         if(this.fight instanceof DangerFight ){
-            this.fight.arrayFightCard.push( this.fight.dangerCard );
+            this.fight.arrayFightCard.push( this.fight.cardToFight.fightCard );
             let arrayOfCardsToDiscard = this.fight.arrayFightCard.slice();
             this.fightDeck.addToDiscard( arrayOfCardsToDiscard );
         }
@@ -120,11 +120,9 @@ class Game {
     endFightLost( cardsToDelete : Array<DangerCard|FightCard|AgingCard> ){
         if(this.fight instanceof DangerFight){        
             // Delete cards from game
-            cardsToDelete.forEach( (card : DangerCard|FightCard|AgingCard) => {
-                this.discard( card );
-                //remove this card from fight.arrayFightCard
-                //this.fight.arrayFightCard
-            });
+            this.discard( cardsToDelete );
+            //remove this card from fight.arrayFightCard
+            //this.fight.arrayFightCard
 
             // put back cards of fight in differents decks
             // danger card
@@ -138,48 +136,36 @@ class Game {
         }
     }
 
-    resetFight(){
+    resetFight() : void {
         this.fight = null;
     }
 
-    discard( arrayOfCards : Array<Card> ){
+    discard( arrayOfCards : Array<Card|DangerCard> ) : void{
         this.arrayOfRemovedCards.concat( arrayOfCards );
     }
 
-    usePower( selectedCard : DangerCard|FightCard) {
-        let card : FightCard;
-        let isFightCard   = selectedCard instanceof FightCard;
-        let isDangerCard  = selectedCard instanceof DangerCard;
-
-        //Cast selectCard in fightCard
-        if ( isDangerCard ) {
-            card = selectedCard.fightCard;
-        }
-        else if ( isFightCard ) {
-            card = selectedCard;
-        }
-        else{
-            return false;
-        }
+    usePower( selectedCard : DangerCard|FightCard): void {
+        let card : FightCard|DangerCard;
+        card = selectedCard instanceof DangerCard ? selectedCard.fightCard : selectedCard;
 
         if ( card.power ) {
             switch( card.power ) {
-                case '+2PV':
+                case FightCardPower.GetTwoPV:
                     this.player.addPV( 2 );
                     break;
-                case '+1PV':
+                case FightCardPower.GetOnePV:
                     this.player.addPV( 1 );
                     break;
-                case '-1PV':
+                case FightCardPower.LoseOnePV:
                     this.player.losePV( 1 );
                     break;
-                case '-2PV':
+                case FightCardPower.LoseTwoPV:
                     this.player.losePV( 2 );
                     break;
-                case '+1 Carte':
+                case FightCardPower.GetOneCard:
                     this.addCardToFight();
                     break;
-                case '+2 Cartes':
+                case FightCardPower.GetTwoCard:
                     this.addCardToFight();
                     break;
                 default:

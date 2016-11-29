@@ -1,23 +1,20 @@
-import { FightCard } from './FightCard';
+import { PlayableCard } from './PlayableCard';
+import { AgingCardInterface, AgingCardPower, AgingLevel } from './Vendredi'
 
-class AgingCard extends FightCard {
-  private power;
-  private costToDelete;
+class AgingCard extends PlayableCard implements AgingCardInterface{
 
-  constructor(obj){
-    super(obj);
-    this.power = obj.power;
-    this.costToDelete = 2;
-  }
+    constructor(name:string, strength:number,  readonly costToDelete: number = 2, readonly power: AgingCardPower|null, readonly level : AgingLevel ){
+        super(name, strength, costToDelete);
+    }
 
-  draw( nodeDOM ){
-    $(nodeDOM).append(`
-      <div class="fight-card">
-        <div class="fight-card-strength">${this. strength}</div>
-        <div class="fight-card-power ${this.power ? 'fight-card-power-malus ">' + this.power : '">'}</div>
-      </div>
-    `);
-  }
+    draw( nodeDOM : string){
+        $(nodeDOM).append(`
+        <div class="fight-card">
+            <div class="fight-card-strength">${this. strength}</div>
+            <div class="fight-card-power ${this.power ? 'fight-card-power-malus ">' + this.power : '">'}</div>
+        </div>
+        `);
+    }
 }
 
 export { AgingCard }

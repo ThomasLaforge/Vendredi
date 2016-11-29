@@ -1,27 +1,14 @@
-class Card {
-    private name;
-    protected strength;
-    protected costToDelete;
+import {CardInterface} from './Vendredi';
 
-    constructor(obj) {
-        this.name      = obj.name;
-        this.strength  = obj.strength;
-        this.costToDelete = 1;
-    }
+abstract class Card implements CardInterface {
+
+    constructor(public name:string, public strength:number) {}
 
     show(){
         console.log('Card : name => ' + this.name + ', strength => ' + this. strength);
     }
 
-    draw(nodeDOM){
-    }
-
-    getStrength(){
-        return this.strength;
-    }
-
-    getCostToDelete(){
-        return this.costToDelete();
+    draw(nodeDOM : string){
     }
 }
 

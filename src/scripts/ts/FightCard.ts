@@ -1,16 +1,17 @@
-import { Card } from './Card';
+import { PlayableCard } from './PlayableCard';
+import { FightCardInterface, FightCardPower } from './Vendredi';
 
-class FightCard extends Card {
-    constructor(obj){
-        super(obj);
-        this._power = obj.power;
+class FightCard extends PlayableCard implements FightCardInterface {
+
+    constructor(name:string, strength:number, readonly costToDelete:number = 1, readonly power: FightCardPower|null ){
+        super(name, strength, costToDelete);
     }
 
     show(){
         console.log('Card : name => ' + this.name + ', strength => ' + this. strength + ', power => ' + this.power);
     }
 
-    draw( nodeDOM ){
+    draw( nodeDOM:string ){
         $(nodeDOM).append(`
             <div class="fight-card">
                <div class="fight-card-strength">${this. strength}</div>
@@ -19,12 +20,6 @@ class FightCard extends Card {
         `);
     }
 
-    get power(){
-        return this._power;
-    }
-    set power(newPower){
-        this._power = newPower;
-    }
 }
 
 export { FightCard }

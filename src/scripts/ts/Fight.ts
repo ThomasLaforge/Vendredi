@@ -1,12 +1,13 @@
-import { Card } from './Card';
+import { PlayableCard } from './PlayableCard';
 import { PirateCard } from './PirateCard';
 import { DangerCard } from './DangerCard';
 import { FightCard } from './FightCard';
 import { AgingCard } from './AgingCard';
+import { FightInterface } from './Vendredi';
 
-class Fight {
+abstract class Fight implements FightInterface {
 
-    constructor( private cardToFight : PirateCard|DangerCard, protected arrayFightCard : Array<FightCard|AgingCard> = [], protected arrayFightCardUsed : Array<FightCard|AgingCard> = [], private finished : boolean = false ){}
+    constructor( public cardToFight : PirateCard|DangerCard, public arrayFightCard : Array<PlayableCard> = [], public arrayFightCardUsed : Array<PlayableCard> = [], public finished : boolean = false ){}
 
     addFightCard( fightCard : FightCard|AgingCard ){
         this.arrayFightCard.push( fightCard );
@@ -21,11 +22,11 @@ class Fight {
     }
 
     getPlayerForce(){
-        let playerForce = 0;
+        let playerForce: number = 0;
 
         this.arrayFightCard.concat(this.arrayFightCardUsed);
         this.arrayFightCard.forEach( fightCard => {
-            playerForce += fightCard.getStrength();
+            playerForce += fightCard.strength;
         });
 
         return playerForce;
@@ -59,7 +60,7 @@ class Fight {
         let sum = 0;
 
         this.arrayFightCard.forEach( (card : FightCard|AgingCard) => {
-            sum += card.getCostToDelete();
+            sum += card.costToDelete;
         });
 
         return sum;

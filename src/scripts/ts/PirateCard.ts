@@ -1,17 +1,10 @@
-class PirateCard {
+import { Card } from './Card';
+import { PirateCardInterface, PirateMission } from './vendredi';
 
-	private id;
-	private name;
-	private strength;
-	private nbFreeCards;
-	private mission;
+class PirateCard extends Card implements PirateCardInterface {
 
-	constructor( obj ){
-		this.id = obj.id;
-		this.name = obj.name;
-		this.strength = obj.strength;
-		this.nbFreeCards = obj.freeCards;
-		this.mission = obj.mission;
+	constructor( name: string, strength: number, readonly id: number, readonly mission: PirateMission|null, readonly freeCards: number){
+		super(name, strength);
 	}
 
 	/**
@@ -19,14 +12,14 @@ class PirateCard {
 	 */
 
     show(){
-        console.log('PirateCard : ');
+        console.log('PirateCard : ', this);
     }
 
-    draw( nodeDOM ){
+    draw( nodeDOM:string ){
 		$(nodeDOM).append(`
 			<div class="pirate-card">
 				<div class="pirate-card-info-zone">
-					<div class="pirate-card-nbFreeCards">${this.nbFreeCards ? this.nbFreeCards : '*'}</div>
+					<div class="pirate-card-nbFreeCards">${this.freeCards ? this.freeCards : '*'}</div>
 					<div class="pirate-card-name">${this.name}</div>
 					<div class="pirate-card-strength">${this.strength ? this.strength : '*'}</div>
 				</div>

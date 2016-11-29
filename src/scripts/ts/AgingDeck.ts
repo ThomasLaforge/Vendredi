@@ -1,20 +1,21 @@
 import {Deck}  from './Deck';
 import {Tools} from './Tools';
+import {GameDifficulty} from './Vendredi';
 import {AgingCard} from './AgingCard';
 
 class AgingDeck extends Deck{
 
-    constructor(difficulty){
+    constructor(difficulty : GameDifficulty){
         super();
         this.initDeck();
-        if(difficulty < 3){
+        if(difficulty < GameDifficulty.HARD){
             this.arrayDeck.pop();
         }
         this.shuffle();        
     }
 
     initDeck(){
-        let arrRes = [];
+        let arrRes : Array<AgingCard> = [];
         let arrDatas = require( '../datas/aging_cards.json' );
         arrDatas.forEach( (obj) => {
             let number = obj.number;

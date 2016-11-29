@@ -1,21 +1,14 @@
 import { Fight } from './Fight';
+import { DangerCard } from './DangerCard';
+import { GameLevel } from './Vendredi';
 
 class DangerFight extends Fight {
-    constructor( card, level ){
-        super(card);
-        this._level = level;
+    constructor( danger:DangerCard, public level: GameLevel ){
+        super(danger);
     }
 
     getStrengthCardToFight(){
         return this.cardToFight.getStrength(this.level);
-    }
-
-    // Level
-    get level(){
-        return this._level;
-    }
-    set level( newLevel ){
-        this._level = newLevel;
     }
 }
 
