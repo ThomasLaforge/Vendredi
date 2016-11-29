@@ -1,5 +1,7 @@
 import {Deck} from "./Deck";
 import {PirateCard} from "./PirateCard";
+import {Tools} from './Tools';
+import {jsonDataPirate} from './Vendredi';
 
 class PirateDeck extends Deck{
     constructor(){
@@ -7,25 +9,26 @@ class PirateDeck extends Deck{
     }
 
     initDeck(){
-        let arrRes = [];
+        let arrRes:Array<PirateCard> = [];
         let arrDatas = require( '../datas/pirates_cards.json' );
-        arrDatas.forEach( (obj) => {
-            let newPirate = new PirateCard( obj );
+        arrDatas.forEach( (obj: jsonDataPirate) => {
+            let mission = obj.mission ? Tools.getPirateMissionFromString(obj.mission) : null;
+            let newPirate = new PirateCard(obj.name, obj.strength, obj.id, mission, obj.freeCards);
             arrRes.push( newPirate );
         });
 
-        this._arrayDeck = arrRes;
+        this.arrayDeck = arrRes;
     }
 
-    getPirates(nb){
-        let arr = [];
+    getPirates(nb: number){
+        let arr:Array<PirateCard> = [];
 
         if(nb > 0){
-            if(nb > this._arrayDeck.length){
-                arr = this._arrayDeck;
+            if(nb > this.arrayDeck.length){
+                arr = this.arrayDeck;
             }
             else{
-                return this._arrayDeck.slice(0, nb);
+                return this.arrayDeck.slice(0, nb);
             }
         }
 

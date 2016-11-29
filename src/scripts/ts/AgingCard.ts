@@ -3,7 +3,7 @@ import { AgingCardInterface, AgingCardPower, AgingLevel } from './Vendredi'
 
 class AgingCard extends PlayableCard implements AgingCardInterface{
 
-    constructor(name:string, strength:number,  readonly costToDelete: number = 2, readonly power: AgingCardPower|null, readonly level : AgingLevel ){
+    constructor(name:string, strength:number, readonly power: AgingCardPower|null, readonly level : AgingLevel,  readonly costToDelete: number = 2 ){
         super(name, strength, costToDelete);
     }
 

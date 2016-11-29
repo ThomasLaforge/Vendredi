@@ -20,19 +20,22 @@ export enum FightCardPower{
     CopyTwo,
     GetOnePV,
     GetTwoPV,
-    LoseOnePV,
-    LoseTwoPV,
     GetOneCard,
-    GetTwoCard
-
+    GetTwoCard,
+    PreviousPhase,
+    SwapOne,
+    SwapTwo,
+    Destroy,
+    Double,
+    UnderTheDeck,
+    SortThreeCards
 }
 
 export enum AgingCardPower{
-
-}
-
-export enum DangerCardPower{
-
+    LoseOnePV,
+    LoseTwoPV,
+    Stop,
+    MaxEqualsZero
 }
 
 export enum GameDifficulty{
@@ -74,6 +77,8 @@ export interface PlayableCardInterface extends CardInterface {
 
 export interface PirateCardInterface {
     id		  :	  number
+    name      :   string
+    strength  :   number
     mission   :   PirateMission|null
     freeCards :   number
 }
@@ -101,4 +106,40 @@ export interface FightInterface {
 
 export interface PirateFightInterface {
     cardToFight: PirateCard
+}
+
+export interface jsonDataPirate {
+    id		  :	  number
+    name      :   string
+    strength  :   number
+    mission   :   string|null
+    freeCards :   number
+}
+
+export interface jsonDataAging {
+    name     : string,
+    power    : string|null,
+    strength : number,
+    level    : number,
+    number   : number
+}
+
+export interface jsonDataDanger {
+    fight : {
+        name      : string,
+        strength  : number,
+        power     : string|null
+    },
+    danger : {
+        name      : string,
+        freeCards : number
+    },
+    number : number
+}
+
+export interface jsonDataFight {
+    name     : string,
+    strength : number,
+    power    : string|null,
+    number   : number
 }

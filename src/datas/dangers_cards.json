@@ -142,7 +142,7 @@
         "fight":{
             "name"      :   "Connaissances",
             "strength"  :   3,
-            "power"     :   "Détruire x1"
+            "power"     :   "Détruire"
         },
         "danger":{
             "name"      :   "Animaux sauvages",
@@ -154,7 +154,7 @@
         "fight":{
             "name"      :   "Connaissances",
             "strength"  :   2,
-            "power"     :   "Détruire x1"
+            "power"     :   "Détruire"
         },
         "danger":{
             "name"      :   "Explore l'île davantage",
@@ -166,7 +166,7 @@
         "fight":{
             "name"      :   "Connaissances",
             "strength"  :   0,
-            "power"     :   "Détruire x1"
+            "power"     :   "Détruire"
         },
         "danger":{
             "name"      :   "Vers l'épave avec le radeau",
@@ -178,7 +178,7 @@
         "fight":{
             "name"      :   "Connaissances",
             "strength"  :   1,
-            "power"     :   "Détruire x1"
+            "power"     :   "Détruire"
         },
         "danger":{
             "name"      :   "Explore l'île",
@@ -202,7 +202,7 @@
         "fight":{
             "name"      :   "Répétition",
             "strength"  :   2,
-            "power"     :   "Doubler x1"
+            "power"     :   "Doubler"
         },
         "danger":{
             "name"      :   "Explore l'île davantage",
@@ -214,7 +214,7 @@
         "fight":{
             "name"      :   "Répétition",
             "strength"  :   1,
-            "power"     :   "Doubler x1"
+            "power"     :   "Doubler"
         },
         "danger":{
             "name"      :   "Explore l'île",
@@ -274,7 +274,7 @@
         "fight":{
             "name"      :   "Ruse",
             "strength"  :   1,
-            "power"     :   "Sous la pioche x1"
+            "power"     :   "Sous la pioche"
         },
         "danger":{
             "name"      :   "Explore l'île",
@@ -286,7 +286,7 @@
         "fight":{
             "name"      :   "Ruse",
             "strength"  :   0,
-            "power"     :   "Sous la pioche x1"
+            "power"     :   "Sous la pioche"
         },
         "danger":{
             "name"      :   "Vers l'épave avec le radeau",

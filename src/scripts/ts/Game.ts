@@ -1,5 +1,6 @@
 import { Deck }         from './Deck';
 import { Card }         from './Card';
+import { PlayableCard }         from './PlayableCard';
 import { Fight }        from './Fight';
 import { FightDeck }    from './FightDeck';
 import { DangerFight }  from './DangerFight';
@@ -25,7 +26,7 @@ class Game {
     private pirates       : Array<PirateCard>;
     private actualPirate  : PirateCard;
     private level         : number;
-    private arrayOfRemovedCards  : Array<Card>;
+    private arrayOfRemovedCards  : Array<PlayableCard|DangerCard>;
     private fight         : Fight;
 
 	constructor( private player : Player, private difficulty = GameDifficulty.EASY ){
@@ -140,7 +141,7 @@ class Game {
         this.fight = null;
     }
 
-    discard( arrayOfCards : Array<Card|DangerCard> ) : void{
+    discard( arrayOfCards : Array<PlayableCard|DangerCard> ) : void{
         this.arrayOfRemovedCards.concat( arrayOfCards );
     }
 
@@ -155,12 +156,6 @@ class Game {
                     break;
                 case FightCardPower.GetOnePV:
                     this.player.addPV( 1 );
-                    break;
-                case FightCardPower.LoseOnePV:
-                    this.player.losePV( 1 );
-                    break;
-                case FightCardPower.LoseTwoPV:
-                    this.player.losePV( 2 );
                     break;
                 case FightCardPower.GetOneCard:
                     this.addCardToFight();

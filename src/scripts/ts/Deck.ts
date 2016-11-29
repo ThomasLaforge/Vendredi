@@ -8,8 +8,8 @@ class Deck {
     //length        : give the length of the deck
     //drawCards     : return an array with the firts cards of the deck.
 
-    protected arrayDeck : Array<Card>;
-    protected arrayDiscard : Array<Card>;
+    protected arrayDeck : Array<any>;
+    protected arrayDiscard : Array<any>;
 
     constructor() {
         this.arrayDeck = [];
@@ -44,7 +44,7 @@ class Deck {
         Tools.shuffle( this.arrayDeck );
     }
 
-    addCard(card){
+    addCard(card:any){
         this.arrayDeck.push(card);
         this.shuffle();
     }
@@ -59,8 +59,8 @@ class Deck {
     }
 
     // Missing control if empty
-    drawCards( nbCards ){
-        var res = [];
+    drawCards( nbCards:number ){
+        var res: Array<any> = [];
         for( var i=0; i < nbCards; i++ ){
             if(this.arrayDeck.length > 0){
                 res.push( this.drawOneCard() );
@@ -72,7 +72,7 @@ class Deck {
 
     // Missing control if empty
     drawOneCard(){
-        let res;
+        let res:any ;
 
         if ( this.length() >= 1 ) {
             res = this.arrayDeck[0];
@@ -93,17 +93,17 @@ class Deck {
         return res;
     }
 
-    discard( arrayOfCard ){
+    discard( arrayOfCard: Array<any> ){
         arrayOfCard.forEach( card =>
             this.arrayDiscard.push( card )
         );
     }
 
-    addToDiscard( arrOfCards ){
+    addToDiscard( arrOfCards: Array<any> ){
         this.discard( arrOfCards );
     }
 
-    removeCard( card ) {
+    removeCard( card:any ) {
         let pos = this.arrayDeck.indexOf( card );
         if(pos > -1){
             this.arrayDeck.splice(pos, 1);

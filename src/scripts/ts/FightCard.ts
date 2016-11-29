@@ -3,7 +3,7 @@ import { FightCardInterface, FightCardPower } from './Vendredi';
 
 class FightCard extends PlayableCard implements FightCardInterface {
 
-    constructor(name:string, strength:number, readonly costToDelete:number = 1, readonly power: FightCardPower|null ){
+    constructor(name:string, strength:number, readonly power: FightCardPower|null, readonly costToDelete:number = 1 ){
         super(name, strength, costToDelete);
     }
 
