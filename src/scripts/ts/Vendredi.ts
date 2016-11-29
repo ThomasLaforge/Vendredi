@@ -94,7 +94,11 @@ export interface DangerCardInterface {
 }
 
 export interface FightInterface {
-    cardToFight: DangerCard|PirateCard
+    cardToFight: any
     arrayFightCard:Array<Card>
     finished: boolean
+}
+
+export interface PirateFightInterface {
+    cardToFight: PirateCard
 }

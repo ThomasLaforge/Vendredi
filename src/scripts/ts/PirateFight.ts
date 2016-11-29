@@ -1,5 +1,6 @@
 import { Fight } from './Fight';
 import {PirateCard} from './PirateCard';
+import {PirateFightInterface} from './Vendredi';
 /* 
 Powers :
 - Chaque carte piochée coûte deux points de vie au lieu d'un 
@@ -10,7 +11,7 @@ Powers :
 
 */
 
-class PirateFight extends Fight {
+class PirateFight extends Fight implements PirateFightInterface {
     constructor( card : PirateCard ){
         super(card);
     }

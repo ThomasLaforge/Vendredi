@@ -7,7 +7,7 @@ import { FightInterface } from './Vendredi';
 
 abstract class Fight implements FightInterface {
 
-    constructor( public cardToFight : PirateCard|DangerCard, public arrayFightCard : Array<PlayableCard> = [], public arrayFightCardUsed : Array<PlayableCard> = [], public finished : boolean = false ){}
+    constructor( public cardToFight : any, public arrayFightCard : Array<PlayableCard> = [], public arrayFightCardUsed : Array<PlayableCard> = [], public finished : boolean = false ){}
 
     addFightCard( fightCard : FightCard|AgingCard ){
         this.arrayFightCard.push( fightCard );
