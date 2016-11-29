@@ -7,10 +7,16 @@ TODO LIST JEU VENDREDI
 
 * STEP 1 : Finir l'implémentation de la phase de combat des pirates
 
-STEP 2 : Implémenter les capacités des cartes Robinson, des cartes de Vieillissement et des pirates (*** en début de ligne une fois implémentée)
+STEP 2 : Modifier le modèle en typescript
+    a) Rename all js files 
+    WINDOWS+R -> cmd -> cd wamp/www/vendredi/src/scripts -> ren *.js *.ts
+    b) modify gulpfile
+    c) import librairies like jquery from DOM
+
+STEP 3 : Implémenter les capacités des cartes Robinson, des cartes de Vieillissement et des pirates (*** en début de ligne une fois implémentée)
 
     Fight Cards: 
-    - +x points de vie => ça semble clair 
+    * - +x points de vie => ça semble clair 
     - +x cartes => vous pouvez piocher x cartes supplémentaires gratuitement (et déclarer la fin du combat entre deux cartes, on le rappelle) 
     - échanger x cartes: mettez une de vos cartes déjà jouées dans la défausse (vous pouvez défausser une carte dont vous avez déjà utilisée la capacité) et piochez-en une autre gratuitement. On ne peut pas échanger la carte qui déclenche cet effet; si il y a plusieurs échanges, on peut échanger la carte que l'on vient de piocher, mais on ne peut pas déclencher d'autre effet tant que tous les échanges ne sont pas finis. 
     - trier 3 cartes: prendre les trois première cartes du deck, en défaussez-une, mettre les deux autres sur le dessus du deck: 
@@ -30,12 +36,6 @@ STEP 2 : Implémenter les capacités des cartes Robinson, des cartes de Vieillis
     - Affrontez le reste de l'île: prenez toutes les cartes Périls restant dans la défausse, faites la somme des cartes gratuites pour savoir combien vous pouvez piocher de cartes gratuitement, et la somme des chiffres rouges pour avoir la force de l'ennemi 
     - Chacune des cartes piochées à +1 de force 
     - Seule la moitié des cartes piochées est compté pour la combat
-
-STEP 3 : Modifier le modèle en typescript
-    a) Rename all js files 
-    WINDOWS+R -> cmd -> cd wamp/www/vendredi/src/scripts -> ren *.js *.ts
-    b) modify gulpfile
-    c) import librairies like jquery from DOM
 
 STEP 4 : Historique
     2 solutions:

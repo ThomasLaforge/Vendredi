@@ -1,0 +1,195 @@
+import { Deck }         from './Deck';
+import { Card }         from './Card';
+import { Fight }        from './Fight';
+import { FightDeck }    from './FightDeck';
+import { DangerFight }  from './DangerFight';
+import { PirateFight }  from './PirateFight';
+import { FightCard }    from './FightCard';
+import { DangerDeck }   from './DangerDeck';
+import { DangerCard }   from './DangerCard';
+import { AgingDeck }    from './AgingDeck';
+import { AgingCard }    from './AgingCard';
+import { PirateDeck }   from './PirateDeck';
+import { PirateCard }   from './PirateCard';
+import { UserInterface } from './UserInterface';
+import { Player }        from './Player';
+import { GameDifficulty } from './Definitions';
+
+class Game {
+
+    private fightDeck     : FightDeck;
+    private dangerDeck    : DangerDeck;
+    private agingDeck     : AgingDeck;
+    private pirateDeck    : PirateDeck;
+    private gameOver      : boolean;
+    private pirates       : Array<PirateCard>;
+    private actualPirate  : PirateCard;
+    private level         : number;
+    private arrayOfRemovedCards  : Array<Card>;
+    private fight         : Fight;
+
+	constructor( private player : Player, private difficulty = GameDifficulty.EASY ){
+        this.player        = player;
+        this.difficulty    = difficulty;
+
+        // Si la difficulté est de 4 alors la partie commence avec 18 PV au lieu de 20 => on perd 2 PV
+        if(this.difficulty === 4){
+            this.player.losePV(2);
+        }
+
+        this.fightDeck     = new FightDeck();
+        this.dangerDeck    = new DangerDeck();
+        this.agingDeck     = new AgingDeck( this.difficulty );
+        if(this.difficulty > 1){
+            this.fightDeck.addCard(this.agingDeck.drawCards(1));
+        }
+
+        this.pirateDeck    = new PirateDeck();
+        this.pirates       = this.pirateDeck.getPirates( 2 );
+        this.actualPirate = this.pirates[0];
+
+        this.level         = 1;
+        this.arrayOfRemovedCards  = [];
+        this.fight         = null;
+        this.gameOver      = false;
+	}
+
+	isGameOver(){
+        return this.gameOver || this.player.isDead();
+    }
+
+    drawFightCard(){
+        if ( this.fightDeck.isEmpty() ){
+            // On ajoute une carte vieillissement dans la défausse
+            let newAgingCard = this.agingDeck.drawCards( 1 );
+            this.fightDeck.addToDiscard( newAgingCard );
+            // On ajoute la défausse au deck et on mélange
+            this.fightDeck.discardToDeck();
+        }
+
+        return this.fightDeck.drawOneCard();
+    }
+
+    drawDangerCard(){
+        let arr:Array<DangerCard> = []; //Tableau de cartes danger à renvoyer. Vide si fin de l'entrainement.
+
+        if ( this.dangerDeck.isEmpty() ){
+            // on monte le niveau d'un cran
+            this.level++;
+            // on mélange la défausse de carte danger qui devient la pioche
+            this.dangerDeck.discardToDeck();
+        }
+        
+        if(this.level < 4){
+            // On pioche deux cartes
+            arr = ( this.dangerDeck.drawCards( 2 ) );
+        }
+        
+
+        return arr;
+    }
+
+    startFight( card:DangerCard|PirateCard ){
+        if(card instanceof DangerCard){
+            this.fight = new DangerFight( card, this.level );
+        }
+        else if(card instanceof PirateCard){
+            this.fight = new PirateFight( card );
+        }
+        else{
+            throw new Error("Type of card to fight is not PirateCard or Danger !");
+        }
+        this.addCardToFight();
+    }
+
+    addCardToFight(){
+        let fightCard = this.drawFightCard();
+        this.fight.addFightCard( fightCard );
+    }
+
+    endFightWon(){
+        if(this.fight instanceof DangerFight ){
+            this.fight.arrayFightCard.push( this.fight.dangerCard );
+            let arrayOfCardsToDiscard = this.fight.arrayFightCard.slice();
+            this.fightDeck.addToDiscard( arrayOfCardsToDiscard );
+        }
+
+        this.resetFight();
+    }
+
+    endFightLost( cardsToDelete : Array<DangerCard|FightCard|AgingCard> ){
+        if(this.fight instanceof DangerFight){        
+            // Delete cards from game
+            cardsToDelete.forEach( (card : DangerCard|FightCard|AgingCard) => {
+                this.discard( card );
+                //remove this card from fight.arrayFightCard
+                //this.fight.arrayFightCard
+            });
+
+            // put back cards of fight in differents decks
+            // danger card
+            this.dangerDeck.discard( [ this.fight.getCardToFight() ] );
+            // fight cards
+            this.fightDeck.discard( this.fight.getAllFightCards() );
+            this.resetFight();
+        }
+        else{
+            this.gameOver = true;
+        }
+    }
+
+    resetFight(){
+        this.fight = null;
+    }
+
+    discard( arrayOfCards : Array<Card> ){
+        this.arrayOfRemovedCards.concat( arrayOfCards );
+    }
+
+    usePower( selectedCard : DangerCard|FightCard) {
+        let card : FightCard;
+        let isFightCard   = selectedCard instanceof FightCard;
+        let isDangerCard  = selectedCard instanceof DangerCard;
+
+        //Cast selectCard in fightCard
+        if ( isDangerCard ) {
+            card = selectedCard.fightCard;
+        }
+        else if ( isFightCard ) {
+            card = selectedCard;
+        }
+        else{
+            return false;
+        }
+
+        if ( card.power ) {
+            switch( card.power ) {
+                case '+2PV':
+                    this.player.addPV( 2 );
+                    break;
+                case '+1PV':
+                    this.player.addPV( 1 );
+                    break;
+                case '-1PV':
+                    this.player.losePV( 1 );
+                    break;
+                case '-2PV':
+                    this.player.losePV( 2 );
+                    break;
+                case '+1 Carte':
+                    this.addCardToFight();
+                    break;
+                case '+2 Cartes':
+                    this.addCardToFight();
+                    break;
+                default:
+                    console.log("use power not coded for the moment");
+                    break;
+            }
+            this.fight.useCard(card);
+        }
+    }
+
+}
+
+export { Game }

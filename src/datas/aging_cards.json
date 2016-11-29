@@ -1,67 +1,67 @@
 [
-    // Difficiles (lvl == 2)
+    // Difficiles (level == 2)
 	{
 		"name" :"Affamé",
 		"power":"-2PV",
 		"strength":0,
-        "lvl":2,
+        "level":2,
         "number":1
 	},
 	{
 		"name" :"Idiot",
 		"power": null,
 		"strength":-4,
-        "lvl":2,
+        "level":2,
         "number":1
 	},
 	{
 		"name" :"Suicidaire",
 		"power": null,
 		"strength":-5,
-    "lvl":2,
-    "number":1
+		"level":2,
+		"number":1
 	},
-    // Normales (lvl == 1)
+    // Normales (level == 1)
 	{
 		"name" :"A faim",
 		"power":"-1PV",
 		"strength":0,
-    "lvl":1,
-    "number":1
+		"level":1,
+		"number":1
 	},
 	{
 		"name" :"Très fatigué",
 		"power":"Stop",
 		"strength":0,
-    "lvl":1,
-    "number":1
+		"level":1,
+		"number":1
 	},
 	{
 		"name" :"Apeuré",
 		"power":"La carte la plus forte = 0",
 		"strength":0,
-        "lvl":1,
+        "level":1,
         "number":2
 	},
 	{
 		"name" :"Distrait",
 		"power": null,
 		"strength":-1,
-        "lvl":1,
+        "level":1,
         "number":1
 	},
 	{
 		"name" :"Stupide",
 		"power": null,
 		"strength":-2,
-        "lvl":1,
+        "level":1,
         "number":2
 	},
 	{
 		"name" :"Très stupide",
 		"power": null,
 		"strength":-3,
-        "lvl":1,
+        "level":1,
         "number":1
 	}
 ]
