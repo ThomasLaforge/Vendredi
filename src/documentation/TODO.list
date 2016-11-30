@@ -8,12 +8,14 @@ TODO LIST JEU VENDREDI
 * STEP 1 : Finir l'implémentation de la phase de combat des pirates
 
 STEP 2 : Modifier le modèle en typescript
-    a) Rename all js files 
+*   a) Rename all js files 
     WINDOWS+R -> cmd -> cd wamp/www/vendredi/src/scripts -> ren *.js *.ts
-    b) modify gulpfile
+*   b) modify gulpfile
     c) import librairies like jquery from DOM
 
-STEP 3 : Implémenter les capacités des cartes Robinson, des cartes de Vieillissement et des pirates (*** en début de ligne une fois implémentée)
+STEP 3 : Recréer le projet en React/Vue js
+
+STEP 4 : Implémenter les capacités des cartes Robinson, des cartes de Vieillissement et des pirates (*** en début de ligne une fois implémentée)
 
     Fight Cards: 
     * - +x points de vie => ça semble clair 
@@ -37,7 +39,7 @@ STEP 3 : Implémenter les capacités des cartes Robinson, des cartes de Vieillis
     - Chacune des cartes piochées à +1 de force 
     - Seule la moitié des cartes piochées est compté pour la combat
 
-STEP 4 : Historique
+STEP 5 : Historique
     2 solutions:
         1 - save : save action by action (auto save during the game)
             load : replay game step by step
@@ -48,5 +50,3 @@ STEP 4 : Historique
     - model
     - enregistrement de l'Historique
     - Chargement d'une partie à partir d'un id de partie
-
-STEP 5 : Recréer le projet en React

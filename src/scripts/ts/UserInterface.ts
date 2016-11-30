@@ -1,4 +1,3 @@
-window.jQuery = window.$ = require('jquery');
 import {Tools} from './Tools';
 import {Game} from './Game';
 import {FightCard} from './FightCard';
@@ -8,9 +7,9 @@ import {DangerCard} from './DangerCard';
 import {AgingCard} from './AgingCard';
 
 class UserInterface {
-  constructor(game) {
-    this._game = game;
-    this._dangerCardChoice = [];
+  constructor( private _game:Game, private _dangerCardChoice:Array<any>) {
+    this.game = _game;
+    this.dangerCardChoice = [];
     this.updateMainInfos();
     this.hideFightZone();
     this.eventsDeclaration();
@@ -25,7 +24,7 @@ class UserInterface {
   */
 
   updateMainInfos(){
-    this.showPV();
+    // this.showPV();
     this.showLevel();
     this.showPirates();
     this.showNbFightCards();
