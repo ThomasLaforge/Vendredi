@@ -1,5 +1,7 @@
-node_modules
-dist
+/node_modules/
 .sass-cache
 bower_components
 .idea
+npm-debug.log
+/dist/
+/typings/

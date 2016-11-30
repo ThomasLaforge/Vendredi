@@ -18,20 +18,20 @@ import { GameDifficulty, FightCardPower } from './Vendredi';
 
 class Game {
 
-    private fightDeck     : FightDeck;
-    private dangerDeck    : DangerDeck;
-    private agingDeck     : AgingDeck;
-    private pirateDeck    : PirateDeck;
-    private gameOver      : boolean;
-    private pirates       : Array<PirateCard>;
-    private actualPirate  : PirateCard;
-    private level         : number;
-    private arrayOfRemovedCards  : Array<PlayableCard|DangerCard>;
-    private fight         : Fight;
+    private _fightDeck     : FightDeck;
+    private _dangerDeck    : DangerDeck;
+    private _agingDeck     : AgingDeck;
+    private _pirateDeck    : PirateDeck;
+    private _gameOver      : boolean;
+    private _pirates       : Array<PirateCard>;
+    private _actualPirate  : PirateCard;
+    private _level         : number;
+    private _arrayOfRemovedCards  : Array<PlayableCard|DangerCard>;
+    private _fight         : Fight;
 
-	constructor( private player : Player, private difficulty = GameDifficulty.EASY ){
-        this.player        = player;
-        this.difficulty    = difficulty;
+	constructor( private _player : Player, private _difficulty = GameDifficulty.EASY ){
+        this.player        = _player;
+        this.difficulty    = _difficulty;
 
         // Si la difficulté est de 4 alors la partie commence avec 18 PV au lieu de 20 => on perd 2 PV
         if(this.difficulty === 4){
@@ -169,6 +169,79 @@ class Game {
             }
             this.fight.useCard(card);
         }
+    }
+
+    get player(){
+        return this._player;
+    }
+    set player(newPlayer){
+        this._player = newPlayer;
+    }
+    get difficulty(){
+        return this._difficulty;
+    }
+    set difficulty(newDifficulty){
+        this._difficulty = newDifficulty;
+    }
+    get fightDeck() {
+        return this._fightDeck;
+    }
+    set fightDeck(newfightDeck){
+        this._fightDeck = newfightDeck;   
+    }
+    get dangerDeck() {
+        return this._dangerDeck;
+    }
+    set dangerDeck(newdangerDeck){
+        this._dangerDeck = newdangerDeck;
+    }
+    get agingDeck() {
+        return this._agingDeck;
+    }
+    set agingDeck(newagingDeck){
+        this._agingDeck = newagingDeck;   
+    }
+    get pirateDeck() {
+        return this._pirateDeck;
+    }
+    set pirateDeck(newpirateDeck){
+        this._pirateDeck = newpirateDeck;
+    }
+    get gameOver() {
+        return this._gameOver;
+    }
+    set gameOver(newgameOver){
+        this._gameOver = newgameOver;
+    }
+    get pirates() {
+        return this._pirates;
+    }
+    set pirates(newpirates){
+        this._pirates = newpirates;
+    }
+    get actualPirate() {
+        return this._actualPirate;
+    }
+    set actualPirate(newactualPirate){
+        this._actualPirate = newactualPirate;   
+    }
+    get level() {
+        return this._level;
+    }
+    set level(newlevel){
+        this._level = newlevel;
+    }
+    get arrayOfRemovedCards() {
+        return this._arrayOfRemovedCards;
+    }
+    set arrayOfRemovedCards(newarrayOfRemovedCards){
+        this._arrayOfRemovedCards = newarrayOfRemovedCards;   
+    }
+    get fight() {
+        return this._fight;
+    }
+    set fight(newfight){
+        this._fight = newfight;
     }
 
 }
