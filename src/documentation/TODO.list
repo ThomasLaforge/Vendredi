@@ -13,9 +13,13 @@ STEP 2 : Modifier le modèle en typescript
 *   b) modify gulpfile
     c) import librairies like jquery from DOM
 
-STEP 3 : Recréer le projet en React/Vue js
+STEP 3 : Recréer le projet en Vue js
 
-STEP 4 : Implémenter les capacités des cartes Robinson, des cartes de Vieillissement et des pirates (*** en début de ligne une fois implémentée)
+STEP 4 : Utiliser Lodash
+    - installer lodash et ses typings
+    - utiliser les méthodes
+
+STEP 5 : Implémenter les capacités des cartes Robinson, des cartes de Vieillissement et des pirates (*** en début de ligne une fois implémentée)
 
     Fight Cards: 
     * - +x points de vie => ça semble clair 
@@ -39,7 +43,7 @@ STEP 4 : Implémenter les capacités des cartes Robinson, des cartes de Vieillis
     - Chacune des cartes piochées à +1 de force 
     - Seule la moitié des cartes piochées est compté pour la combat
 
-STEP 5 : Historique
+STEP 6 : Historique
     2 solutions:
         1 - save : save action by action (auto save during the game)
             load : replay game step by step

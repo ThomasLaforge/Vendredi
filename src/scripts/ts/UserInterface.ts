@@ -34,11 +34,11 @@ class UserInterface {
 
   // updateMainInfos sub functions
   showPV(){
-    $('#pv').html( this.game.player.PV );
+    $('#pv').html( this.game.player.PV.toString() );
   }
   showLevel(){
     let levelValue = this.game.level > 3 ? 'pirates' : this.game.level;
-    $('#level').html( levelValue ).addClass('level-value-' + levelValue);
+    $('#level').html( levelValue.toString() ).addClass('level-value-' + levelValue);
   }
   showPirates(){
     $('#pirates-list').empty();
@@ -47,13 +47,13 @@ class UserInterface {
     });
   }
   showNbFightCards(){
-    $('#nbFightCards').html( this.game.fightDeck.length() );
+    $('#nbFightCards').html( this.game.fightDeck.length().toString() );
   }
   showNbDangerCards(){
-    $('#nbDangerCards').html( this.game.dangerDeck.length() );
+    $('#nbDangerCards').html( this.game.dangerDeck.length().toString() );
   }
   showNbAgingCards(){
-    $('#nbAgingCards').html( this.game.agingDeck.length() );
+    $('#nbAgingCards').html( this.game.agingDeck.length().toString() );
   }
 
   /*
@@ -77,13 +77,13 @@ class UserInterface {
     $('#zone-danger-choice').hide();
   }
 
-  showChoseDangerCard(choices){
+  showChoseDangerCard(choices:Array<DangerCard>){
     console.log('choices', choices);
     // let choices = this.game.drawDangerCard();
     if( choices.length > 0 ){
       $('#zone-danger-choice').show();
       if ( choices.length === 1 || choices.length === 2 ) {
-        choices.forEach( (card) => {
+        choices.forEach( (card:DangerCard) => {
           card.draw('.danger-choice-card-slots');
         }, this);
         if(choices.length === 1){
@@ -142,7 +142,7 @@ class UserInterface {
     });
 
     let classToAdd = this.game.fight.result() >= 0 ? 'fight-danger-temporary-result-success' : 'fight-danger-temporary-result-negative';
-    $('#fight-danger-temporary-result').removeClass('fight-danger-temporary-result-success fight-danger-temporary-result-negative').html( this.game.fight.result() ).addClass(classToAdd);
+    $('#fight-danger-temporary-result').removeClass('fight-danger-temporary-result-success fight-danger-temporary-result-negative').html( this.game.fight.result().toString() ).addClass(classToAdd);
 
     if ( this.game.fight.arrayFightCard.length >= this.game.fight.cardToFight.nbFreeCards ) {
       $('#btn-pick-fight-card').html( 'Piocher (-1 PV)' );

@@ -25,20 +25,6 @@ class Tools {
                 array[randomIndex] = temporaryValue;
             }
         }
-        
-    }
-    
-    static cloneObject(obj:Object) {
-        if (obj === null || typeof obj !== 'object') {
-            return obj;
-        }
-
-        var temp = obj.constructor(); // give temp the original obj's constructor
-        for (var key in obj) {
-            temp[key] = Tools.cloneObject(obj[key]);
-        }
-
-        return temp;
     }
 
     static getFightPowerFromString(powerName : string) : FightCardPower|null {
