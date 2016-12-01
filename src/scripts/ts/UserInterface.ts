@@ -7,7 +7,7 @@ import {DangerCard} from './DangerCard';
 import {AgingCard} from './AgingCard';
 
 class UserInterface {
-  constructor( private _game:Game, private _dangerCardChoice:Array<any>) {
+  constructor( private _game:Game) {
     this.game = _game;
     this.dangerCardChoice = [];
     this.updateMainInfos();

@@ -39,26 +39,25 @@ gulp.task('ts',  ()=>  {
         .js.pipe(gulp.dest("dist/js"));
 });
 
-// gulp.task('js', () => {
-//   return gulp.src('src/scripts/*.js')
-//     .pipe($.plumber())
-//     .pipe(through2.obj( (file, enc, next) => {
-//       browserify(file.path, { debug: true })
-//         .transform(require('babelify'))
-//         .transform(require('debowerify'))
-//         .bundle( (err, res) => {
-//           if (err) { return next(err); }
-//           file.contents = res;
-//             next(null, file);
-//         });
-//       }))
-//       .on('error', (error) => {
-//         console.log(error.stack);
-//         this.emit('end')
-//     })
-//   .pipe( $.rename('app.js'))
-//   .pipe( gulp.dest('dist/scripts/'));
-// });
+gulp.task('js', () => {
+  return gulp.src('dist/js/**/*.js')
+    .pipe($.plumber())
+    .pipe(through2.obj( (file, enc, next) => {
+      browserify(file.path, { debug: true })
+        .transform(require('babelify'))
+        .transform(require('debowerify'))
+        .bundle( (err, res) => {
+          if (err) { return next(err); }
+          file.contents = res;
+            next(null, file);
+        });
+      }))
+      .on('error', (error) => {
+        console.log(error.stack);
+    })
+  .pipe( $.rename('app.js'))
+  .pipe( gulp.dest('dist/scripts/'));
+});
 
 
 gulp.task('clean', (cb) => {
@@ -87,7 +86,7 @@ gulp.task('bower-files', () => {
 });
 
 
-gulp.task('build', ['compass', 'ts', 'templates', 'images', 'bower-files']);
+gulp.task('build', ['compass', 'ts', 'js', 'templates', 'images', 'bower-files']);
 
 gulp.task('serve', ['build', 'browser-sync'], () => {
   gulp.watch('src/stylesheets/**/*.{scss,sass}',['compass', reload]);

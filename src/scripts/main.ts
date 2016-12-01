@@ -10,26 +10,26 @@ import { UserInterface }  from	'./ts/UserInterface';
 let pseudo   = 'Thomas';
 let myPlayer = new Player(pseudo);
 let game     = new Game(myPlayer, 1);
-// let UI       = new UserInterface(game);
+let UI       = new UserInterface(game);
 
-// // Watchers
+// Watchers
 
-// watch(game, () => { 
-//   if ( game.isGameOver() ){
-//       console.log('The game is over !');
-//       UI.showGameOver();
-//       $('body').unbind();
-//   }
-//   else {
-//       UI.updateMainInfos();
-//   }
-// });
+watch(game, () => { 
+  if ( game.isGameOver() ){
+      console.log('The game is over !');
+      UI.showGameOver();
+      $('body').unbind();
+  }
+  else {
+      UI.updateMainInfos();
+  }
+});
 
-// watch(game, "_fight", () => {
-//   if(game.fight){
-//     UI.updateFightZone();
-//   }
-// });
+watch(game, "_fight", () => {
+  if(game.fight){
+    UI.updateFightZone();
+  }
+});
 
 // Interface
 
@@ -39,9 +39,9 @@ let game     = new Game(myPlayer, 1);
 //     html: true
 // });
 
-var app = new Vue({
-    el: '#pv',
-    data: {
-        PV: game.player.PV 
-    }
-})
+// var app = new Vue({
+//     el: '#pv',
+//     data: {
+//         PV: game.player.PV 
+//     }
+// })
