@@ -10,7 +10,7 @@ class PirateDeck extends Deck{
 
     initDeck(){
         let arrRes:Array<PirateCard> = [];
-        let arrDatas = require( '../datas/pirates_cards.json' );
+        let arrDatas = require( '../../datas/pirates_cards.json' );
         arrDatas.forEach( (obj: jsonDataPirate) => {
             let mission = obj.mission ? Tools.getPirateMissionFromString(obj.mission) : null;
             let newPirate = new PirateCard(obj.name, obj.strength, obj.id, mission, obj.freeCards);

@@ -1,5 +1,5 @@
 import { Card } from './Card';
-import { PirateCardInterface, PirateMission } from './vendredi';
+import { PirateCardInterface, PirateMission } from './Vendredi';
 
 class PirateCard extends Card implements PirateCardInterface {
 

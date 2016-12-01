@@ -1,11 +1,10 @@
 // Jquery et bootstrap
 var bootstrap = require('bootstrap/dist/js/bootstrap');
-// jQuery.fn.render = Transparency.jQueryPlugin;
 
 // ES6 modules Style
-import { Game 	}         from	'./ts/Game';
-import { Player }         from	'./ts/Player';
-import { UserInterface }  from	'./ts/UserInterface';
+import { Game 	}         from	'./modules/Game';
+import { Player }         from	'./modules/Player';
+import { UserInterface }  from	'./modules/UserInterface';
 
 let pseudo   = 'Thomas';
 let myPlayer = new Player(pseudo);
@@ -39,9 +38,9 @@ watch(game, "_fight", () => {
 //     html: true
 // });
 
-// var app = new Vue({
-//     el: '#pv',
-//     data: {
-//         PV: game.player.PV 
-//     }
-// })
+var app = new Vue({
+    el: '#pv',
+    data: {
+        PV: game.player.PV 
+    }
+})

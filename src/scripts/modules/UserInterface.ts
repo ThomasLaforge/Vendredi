@@ -7,8 +7,9 @@ import {DangerCard} from './DangerCard';
 import {AgingCard} from './AgingCard';
 
 class UserInterface {
+  private _dangerCardChoice = [];
+
   constructor( private _game:Game) {
-    this.game = _game;
     this.dangerCardChoice = [];
     this.updateMainInfos();
     this.hideFightZone();
@@ -230,18 +231,18 @@ class UserInterface {
       else{
         let index = $(this).index();
         let cardSelected = game.fight.arrayFightCard[ index ];
-        if( cardSelected.power ){
-          // If power not already used
-          if(!$(this).hasClass('fight-card-power-used')){
-            game.usePower( cardSelected );
-            // $(this).addClass('fight-card-power-used');
-            let fightCardPlayed = $(this);
-            $(this).detach().appendTo('.fight-danger-fight-cards-used');
-          }
-        }
-        else{
-          console.log('click on fight card played! (in fight)');
-        }
+        // if( cardSelected.power ){
+        //   // If power not already used
+        //   if(!$(this).hasClass('fight-card-power-used')){
+        //     game.usePower( cardSelected );
+        //     // $(this).addClass('fight-card-power-used');
+        //     let fightCardPlayed = $(this);
+        //     $(this).detach().appendTo('.fight-danger-fight-cards-used');
+        //   }
+        // }
+        // else{
+        //   console.log('click on fight card played! (in fight)');
+        // }
       }
     });
 

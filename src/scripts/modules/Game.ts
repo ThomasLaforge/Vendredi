@@ -12,7 +12,6 @@ import { AgingDeck }    from './AgingDeck';
 import { AgingCard }    from './AgingCard';
 import { PirateDeck }   from './PirateDeck';
 import { PirateCard }   from './PirateCard';
-import { UserInterface } from './UserInterface';
 import { Player }        from './Player';
 import { GameDifficulty, FightCardPower } from './Vendredi';
 
