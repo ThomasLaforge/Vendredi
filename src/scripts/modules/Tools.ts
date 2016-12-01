@@ -1,30 +1,12 @@
 import {Card} from './Card';
 import {FightCardPower, AgingCardPower, PirateMission} from './Vendredi';
+import * as _ from 'lodash';
 
 class Tools {
     constructor(){}
     
     static getRandomIndexofArray(arr:Array<any>){
         return Math.floor(Math.random() * (0 + arr.length -1));
-    }
-    
-    static shuffle(array : Array<Card>){
-        if(array){
-            var currentIndex = array.length, temporaryValue:Card, randomIndex:number ;
-            
-            // While there remain elements to shuffle...
-            while (0 !== currentIndex) {
-                
-                // Pick a remaining element...
-                randomIndex = Math.floor(Math.random() * currentIndex);
-                currentIndex -= 1;
-                
-                // And swap it with the current element.
-                temporaryValue = array[currentIndex];
-                array[currentIndex] = array[randomIndex];
-                array[randomIndex] = temporaryValue;
-            }
-        }
     }
 
     static getFightPowerFromString(powerName : string) : FightCardPower|null {

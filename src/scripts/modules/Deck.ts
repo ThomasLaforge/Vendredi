@@ -1,5 +1,6 @@
 import {Card} from './Card';
 import {Tools} from './Tools';
+import * as _ from 'lodash';
 
 class Deck {
     //Constructor   : arrayDeck with all cards, shuffle him, and create a discard array
@@ -41,7 +42,7 @@ class Deck {
     }
 
     shuffle(){
-        Tools.shuffle( this.arrayDeck );
+        _.shuffle( this.arrayDeck );
     }
 
     addCard(card:any){

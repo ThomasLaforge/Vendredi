@@ -1,5 +1,6 @@
 import {Deck}  from './Deck';
 import {Tools} from './Tools';
+import * as _ from 'lodash';
 import {AgingCard} from './AgingCard';
 import {GameDifficulty, jsonDataAging} from './Vendredi';
 
@@ -33,8 +34,8 @@ class AgingDeck extends Deck{
         let arrEasy = this.arrayDeck.slice( 0, 3 );
         let arrHard = this.arrayDeck.slice( 3, this.arrayDeck.length );
 
-        Tools.shuffle( arrEasy );
-        Tools.shuffle( arrHard );
+        _.shuffle( arrEasy );
+        _.shuffle( arrHard );
 
         // Put easier cards in first positions to get picked
         this.arrayDeck = arrHard.concat( arrEasy );
