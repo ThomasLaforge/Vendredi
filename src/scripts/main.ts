@@ -41,6 +41,12 @@ watch(game, "_fight", () => {
 var app = new Vue({
     el: '#pv',
     data: {
-        PV: game.player.PV 
+        game : game
+    },
+
+    methods: {
+    losePV: function (event) {
+      game.player.losePV(1);
     }
+  }
 })

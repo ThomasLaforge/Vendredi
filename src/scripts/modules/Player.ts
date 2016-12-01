@@ -14,7 +14,8 @@ class Player implements PlayerInterface {
     }
 
     losePV(nbPV : number):void{
-        this.PV -= nbPV;
+        if(this.PV>=0)
+            this.PV -= nbPV;
     }
 
     isDead():boolean{

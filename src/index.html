@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Vendredi</title>
@@ -8,8 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="stylesheets/main.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  </head>
-  <body><!--[if lt IE 8]>
+</head>
+
+<body>
+    <!--[if lt IE 8]>
     <p class="browsehappy">
       You are using an <strong>outdated</strong> browser.
       Please <a href="http://browsehappy.com/">upgrade your browser</a>
@@ -25,28 +28,29 @@
             <div id="pirates-list" class="info-pirates">
                 <!--pirates :-->
                 <!--<a data-toggle="popover" title="<img src='http://getbootstrap.com/apple-touch-icon.png' />">-->
-                    <!--<ul id="pirates-list"></ul>-->
+                <!--<ul id="pirates-list"></ul>-->
                 <!--</a>-->
             </div>
 
             <div class="info-main">
-                <div class='info-main-pv info-main-elt'>
-                    <div id ="pv" class='info-main-value'>{{ PV }}</div>
+                <div class='info-main-pv info-main-elt' id="pv">
+                    <div class='info-main-value'>{{ game.player.PV }}</div>
+                    <button @click="losePV">LosePV</button>
                 </div>
                 <div class='info-main-fight-cards info-main-elt'>
-                    <div id ="nbFightCards" class='info-main-value'></div>
+                    <div id="nbFightCards" class='info-main-value'></div>
                     <div class='info-main-subject'>Fight cards</div>
                 </div>
                 <div class='info-main-danger-cards info-main-elt'>
-                    <div id ="nbDangerCards" class='info-main-value'></div>
+                    <div id="nbDangerCards" class='info-main-value'></div>
                     <div class='info-main-subject'>Danger cards</div>
                 </div>
                 <div class='info-main-aging-cards info-main-elt'>
-                    <div id ="nbAgingCards" class='info-main-value'></div>
+                    <div id="nbAgingCards" class='info-main-value'></div>
                     <div class='info-main-subject'>Aging cards</div>
                 </div>
                 <div class='info-main-level info-main-elt'>
-                    <div id ="level" class='info-main-value'></div>
+                    <div id="level" class='info-main-value'></div>
                     <div class='info-main-subject'>Level</div>
                 </div>
             </div>
@@ -67,30 +71,32 @@
             </div>
         </div>
 
-        <div class="game-fight-danger" id="zone-fight-danger">               
+        <div class="game-fight-danger" id="zone-fight-danger">
             <div class="fight-danger-card-to-fight" id="danger-card-to-fight"></div>
             <div class="fight-player-interface">
                 <div class="fight-danger-fight-cards">
-                <!--
+                    <!--
                     <div class="fight-cards-elt"></div>
                 -->
                 </div>
 
                 <div class="fight-result-info-and-actions">
                     <div class="fight-danger-infos">
-                        <span id="fight-danger-temporary-result">0</span> <!-- green if > dangerCard.strengh ; red else -->
+                        <span id="fight-danger-temporary-result">0</span>
+                        <!-- green if > dangerCard.strengh ; red else -->
                     </div>
 
                     <div class="fight-danger-actions">
-                        <button class="fight-danger-action" id="btn-pick-fight-card">Piocher</button> <!-- Piocher / Piocher (-1PV) -->
+                        <button class="fight-danger-action" id="btn-pick-fight-card">Piocher</button>
+                        <!-- Piocher / Piocher (-1PV) -->
                         <button class="fight-danger-action" id="btn-stop-fight">Stop</button>
                         <button class="fight-danger-action" id="btn-delete-fight-cards">Delete Card(s)</button>
                         <button class="fight-danger-action" id="btn-dont-delete-fight-cards">Keep them</button>
                     </div>
                 </div>
-                
+
                 <div class="fight-danger-fight-cards-used">
-                <!--
+                    <!--
                     <div class="fight-cards-elt"></div>
                 -->
                 </div>
@@ -118,5 +124,6 @@
       ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>-->
 
-  </body>
+</body>
+
 </html>
