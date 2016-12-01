@@ -46,7 +46,7 @@ var app = new Vue({
 
     methods: {
     losePV: function (event) {
-      game.player.losePV(1);
+      game.loseOnePV();
     }
   }
 })

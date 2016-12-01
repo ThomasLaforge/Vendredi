@@ -54,6 +54,10 @@ class Game {
         this.gameOver      = false;
 	}
 
+    loseOnePV(){
+        this.player.losePV(1);
+    }
+
 	isGameOver(){
         return this.gameOver || this.player.isDead();
     }
