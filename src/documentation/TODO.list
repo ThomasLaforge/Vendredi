@@ -11,15 +11,14 @@ STEP 2 : Modifier le modèle en typescript
 *   a) Rename all js files 
     WINDOWS+R -> cmd -> cd wamp/www/vendredi/src/scripts -> ren *.js *.ts
 *   b) modify gulpfile
-    c) import librairies like jquery from DOM
+*    c) import librairies like jquery from DOM
 
-STEP 3 : Recréer le projet en Vue js
 
-STEP 4 : Utiliser Lodash
-    - installer lodash et ses typings
+STEP 3 : Utiliser Lodash
+*    - installer lodash et ses typings
     - utiliser les méthodes
 
-STEP 5 : Implémenter les capacités des cartes Robinson, des cartes de Vieillissement et des pirates (*** en début de ligne une fois implémentée)
+STEP 4 : Implémenter les capacités des cartes Robinson, des cartes de Vieillissement et des pirates (*** en début de ligne une fois implémentée)
 
     Fight Cards: 
     * - +x points de vie => ça semble clair 
@@ -42,6 +41,8 @@ STEP 5 : Implémenter les capacités des cartes Robinson, des cartes de Vieillis
     - Affrontez le reste de l'île: prenez toutes les cartes Périls restant dans la défausse, faites la somme des cartes gratuites pour savoir combien vous pouvez piocher de cartes gratuitement, et la somme des chiffres rouges pour avoir la force de l'ennemi 
     - Chacune des cartes piochées à +1 de force 
     - Seule la moitié des cartes piochées est compté pour la combat
+
+STEP 5 : Recréer le projet en Vue js
 
 STEP 6 : Historique
     2 solutions:
