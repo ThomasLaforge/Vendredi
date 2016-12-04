@@ -10,6 +10,7 @@ abstract class Card implements CardInterface {
 
     draw(nodeDOM : string){
     }
+
 }
 
 export { Card };

@@ -1,4 +1,5 @@
 import { Card } from './Card';
+import { Tools } from './Tools';
 import { PirateCardInterface, PirateMission } from './Vendredi';
 
 class PirateCard extends Card implements PirateCardInterface {
@@ -13,6 +14,10 @@ class PirateCard extends Card implements PirateCardInterface {
 
     show(){
         console.log('PirateCard : ', this);
+    }
+
+	missionName(){
+        return Tools.getPirateMissionName(this.mission);
     }
 
 }

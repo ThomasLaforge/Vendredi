@@ -28,6 +28,25 @@ class Tools {
         }
     }
 
+    static getFightPowerName(powerName : FightCardPower|null) : string {
+        switch (powerName) {
+            case FightCardPower.GetOnePV: return  '+1PV' ;
+            case FightCardPower.GetTwoPV: return  '+2PV' ;
+            case FightCardPower.CopyOne: return  'Copier x1' ;
+            case FightCardPower.CopyTwo: return  'Copier x2' ;
+            case FightCardPower.PreviousPhase: return  'Phase -1'; 
+            case FightCardPower.SwapOne: return  'Echanger x1' ;
+            case FightCardPower.SwapTwo: return  'Echanger x2' ;
+            case FightCardPower.Destroy: return  'Détruire' ;
+            case FightCardPower.GetOneCard: return  '+1 Cartes' ;
+            case FightCardPower.GetTwoCard: return  '+2 Cartes' ;
+            case FightCardPower.Double: return  'Doubler' ;
+            case FightCardPower.SortThreeCards: return  'Trier 3 cartes' ;
+            case FightCardPower.UnderTheDeck: return  'Sous la pioche' ;        
+            default: return '';
+        }
+    }
+
     static getAgingPowerFromString(powerName : string) : AgingCardPower|null {
         switch (powerName) {
             case '-1PV': return AgingCardPower.LoseOnePV;
@@ -35,6 +54,16 @@ class Tools {
             case 'La carte la plus forte = 0': return AgingCardPower.MaxEqualsZero;
             case 'Stop': return AgingCardPower.Stop; 
             default: return null;
+        }
+    }
+
+    static getAgingPowerName(powerName : AgingCardPower|null) : string {
+        switch (powerName) {
+            case AgingCardPower.LoseOnePV: return  '-1PV';
+            case AgingCardPower.LoseTwoPV: return  '-2PV';
+            case AgingCardPower.MaxEqualsZero: return  'La carte la plus forte = 0';
+            case AgingCardPower.Stop: return  'Stop'; 
+            default: return '';
         }
     }
     
@@ -46,6 +75,17 @@ class Tools {
             case 'Ajoutez 2 points de danger par carte vieillissement ajoutée à votre pile Combat': return PirateMission.AddTwoDangerPointByAgingCardInFigthAddToFightDeck; 
             case 'Combattez toutes les cartes Danger restantes': return PirateMission.FightAllDangerCards; 
             default: return null;
+        }
+    }
+
+    static getPirateMissionName(missionName : PirateMission) : string {
+        switch (missionName) {
+            case PirateMission.EachCardGiveOneFightPoint : return  'Chaque carte Combat dévoilée donne +1 point de combat' ;
+            case PirateMission.KeepOnlyHalfCards : return  'Comptez uniquement la moitié des cartes Combat dévoilées (les cartes Vieillissement dévoilées doivent être comptées)';
+            case PirateMission.EachPayedCardCostTwo : return  'Chaque carte Combat supplémentaire coute 2 points de santé' ;
+            case PirateMission.AddTwoDangerPointByAgingCardInFigthAddToFightDeck : return  'Ajoutez 2 points de danger par carte vieillissement ajoutée à votre pile Combat' ; 
+            case PirateMission.FightAllDangerCards : return  'Combattez toutes les cartes Danger restantes' ; 
+            default: return '';
         }
     }
 }

@@ -39,7 +39,13 @@ let game     = new Game(myPlayer, 1);
 
 let dangerCard = {
     template: '#danger-card',
-    props : ['danger', 'class']
+    props : ['danger', 'selected'],
+    methods: {
+        select(){
+            console.log('select this card')
+            this.$emit('select', this.index);
+        }
+    }
 }
 
 let pirateCard = {
@@ -85,7 +91,13 @@ let gameDangerChoice = {
     },
     data : function() {
         return {
-            selectedDanger : 0
+            currentSelected : 0
+        }
+    },
+    methods:{
+        changeSelectedIndex(index){
+            console.log('change on parent', index)
+            this.currentSelected = index;
         }
     }
 };

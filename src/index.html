@@ -26,6 +26,7 @@
 
         <div id="app">
             <game-info :game="game"></game-info>
+            <hr>
             <game-danger-choice :danger-choice="game.dangerChoiceCards" v-if="!game.fight"></game-danger-choice>
             <game-fight :fight="game.fight" v-if="game.fight"></game-fight>
         </div>
@@ -67,8 +68,8 @@
         <template id="game-danger-choice">
             <div class="game-danger-choice" id="zone-danger-choice">
                 <div class="danger-choice-card-slots" id="danger-choice-card-slots">
-                    <div v-for="danger in dangerChoice">
-                        <danger-card :danger="danger" class="danger-card-selected"></danger-card>
+                    <div v-for="(danger, index) in dangerChoice">
+                        <danger-card :danger="danger" :selected="index === currentSelected ? true : false" @select="changeSelectedIndex(index)"></danger-card>
                     </div>
                 </div>
 
@@ -79,7 +80,7 @@
         </template>
 
         <template id="danger-card">
-            <div class="card-slot card-danger">
+            <div class="card-slot card-danger" :class="selected === true ? 'danger-card-selected' : '' " @click="select">
                 <!-- danger definition -->
                 <div class="danger-card-definition">
                     <div class="card-danger-name">{{danger.name}}</div>
@@ -101,7 +102,7 @@
                         <div class="card-danger-fight-name">{{danger.fightCard.name}}</div>
                         <div class="card-danger-fight-destroycost">{{danger.fightCard.costToDelete}}</div>
                     </div>
-                    <div class="card-danger-fight-power">{{danger.fightCard.power ? danger.fightCard.power : '...'}}</div>
+                    <div class="card-danger-fight-power">{{danger.fightCard.power ? danger.powerName() : '...'}}</div>
                 </div>
             </div>
         </template>
@@ -113,7 +114,7 @@
 					<div class="pirate-card-name">{{pirate.name}}</div>
 					<div class="pirate-card-strength">{{pirate.strength ? pirate.strength : '*'}}</div>
 				</div>
-				<div class="pirate-card-mission">{{pirate.mission ? pirate.mission : '...'}}</div>
+				<div class="pirate-card-mission">{{pirate.mission ? pirate.missionName() : '...'}}</div>
 			</div>
         </template>
 

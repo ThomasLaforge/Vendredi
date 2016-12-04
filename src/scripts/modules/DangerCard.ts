@@ -1,4 +1,5 @@
 import { FightCard } from './FightCard';
+import { Tools } from './Tools';
 import { Card } from './Card';
 import { DangerCardInterface, FightCardInterface, GameLevel } from './Vendredi';
 
@@ -46,6 +47,10 @@ class DangerCard implements DangerCardInterface {
                 }
             default: return 32;
         }
+    }
+
+    powerName(){
+        return Tools.getFightPowerName(this.fightCard.power);
     }
 
 }
