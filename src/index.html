@@ -27,7 +27,7 @@
         <div id="app">
             <game-info :game="game"></game-info>
             <hr>
-            <game-danger-choice :danger-choice="game.dangerChoiceCards" v-if="!game.fight"></game-danger-choice>
+            <game-danger-choice :danger-choice="game.dangerChoiceCards" v-if="!game.fight" @chose="startFight"></game-danger-choice>
             <game-fight :fight="game.fight" v-if="game.fight"></game-fight>
         </div>
 
@@ -74,7 +74,7 @@
                 </div>
 
                 <div class="danger-choice-actions">
-                    <button id="btn-action-chose-danger">Choisir !</button>
+                    <button id="btn-action-chose-danger" @click="chose">Choisir !</button>
                 </div>
             </div>
         </template>
@@ -120,17 +120,19 @@
 
         <template id="game-fight">
             <div class="game-fight-danger" id="zone-fight-danger">
-                <div class="fight-danger-card-to-fight" id="danger-card-to-fight"></div>
+                <div class="fight-danger-card-to-fight" id="danger-card-to-fight">
+                    <danger-card :danger="cardToFight"></danger-card>                    
+                </div>
                 <div class="fight-player-interface">
-                    <div class="fight-danger-fight-cards">
-
+                    <div class="fight-danger-fight-cards" v-for="(card, index) in fightCardPlayed">
+                        {{index}}
                         <div class="fight-cards-elt"></div>
 
                     </div>
 
                     <div class="fight-result-info-and-actions">
                         <div class="fight-danger-infos">
-                            <span id="fight-danger-temporary-result">0</span>
+                            <span id="fight-danger-temporary-result">{{result}}</span>
                         </div>
 
                         <div class="fight-danger-actions">

@@ -106,6 +106,7 @@ class Game {
         else{
             throw new Error("Type of card to fight is not PirateCard or Danger !");
         }
+        // Each fight start with one card played
         this.addCardToFight();
     }
 

@@ -5,6 +5,7 @@
 import { Game 	}         from	'./modules/Game';
 import { Player }         from	'./modules/Player';
 import { UserInterface }  from	'./modules/UserInterface';
+import { DangerFight }  from	'./modules/DangerFight';
 
 let pseudo   = 'Thomas';
 let myPlayer = new Player(pseudo);
@@ -42,7 +43,6 @@ let dangerCard = {
     props : ['danger', 'selected'],
     methods: {
         select(){
-            console.log('select this card')
             this.$emit('select', this.index);
         }
     }
@@ -53,14 +53,14 @@ let pirateCard = {
     props : ['pirate']
 }
 
+let playableCard = {
+    template : '#playable-card',
+    props : ['card']
+}
+
 let gameInfo = {
     props : ['game'],
     template : '#zone-info',
-    methods : {
-        loseOnePV : function() {
-            this.game.player.losePV(1)
-        }
-    },
     computed: {
         nbFightCardsInDeck: () => {
             return game.fightDeck.length()
@@ -96,22 +96,37 @@ let gameDangerChoice = {
     },
     methods:{
         changeSelectedIndex(index){
-            console.log('change on parent', index)
             this.currentSelected = index;
+        },
+        chose(){
+            this.$emit('chose', this.currentSelected);
         }
     }
 };
 
 let gameFight = {
-    props : ['game'],
+    props : ['fight'],
     template : '#game-fight',
+    components : {
+        dangerCard
+    },
+    data : function(){
+        console.log(this.fight);
+        return {
+            cardToFight : this.fight.cardToFight,
+            result : this.fight.result(),
+            fightCardPlayed : this.fight.arrayFightCard
+        }
+    }
 }
 
 var app = new Vue({
     el: '#app',
-    data: {
-        game : game,
-        dangerChoice : game.dangerChoiceCards
+    data: () => {
+        return {
+            game : game,
+            dangerChoice : game.dangerChoiceCards
+        }
     },
     components:{
         gameInfo,
@@ -119,5 +134,8 @@ var app = new Vue({
         gameFight
     },
     methods: {
+        startFight(index){
+            game.startFight(game.dangerChoiceCards[index]);
+        }
     }
 })
