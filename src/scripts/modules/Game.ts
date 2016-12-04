@@ -27,6 +27,7 @@ class Game {
     private _level         : number;
     private _arrayOfRemovedCards  : Array<PlayableCard|DangerCard>;
     private _fight         : Fight;
+    private _dangerChoiceCards : Array<DangerCard>;
 
 	constructor( private _player : Player, private _difficulty = GameDifficulty.EASY ){
         this.player        = _player;
@@ -50,6 +51,8 @@ class Game {
 
         this.level         = 1;
         this.arrayOfRemovedCards  = [];
+        this.dangerChoiceCards = this.drawDangerCard();
+        console.log(this.dangerChoiceCards)
         this.fight         = null;
         this.gameOver      = false;
 	}
@@ -245,6 +248,12 @@ class Game {
     }
     set fight(newfight){
         this._fight = newfight;
+    }
+    get dangerChoiceCards(){
+        return this._dangerChoiceCards;
+    }
+    set dangerChoiceCards(newdangerChoiceCards){
+        this._dangerChoiceCards = newdangerChoiceCards;
     }
 
 }
