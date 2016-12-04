@@ -15,19 +15,6 @@ class PirateCard extends Card implements PirateCardInterface {
         console.log('PirateCard : ', this);
     }
 
-    draw( nodeDOM:string ){
-		$(nodeDOM).append(`
-			<div class="pirate-card">
-				<div class="pirate-card-info-zone">
-					<div class="pirate-card-nbFreeCards">${this.freeCards ? this.freeCards : '*'}</div>
-					<div class="pirate-card-name">${this.name}</div>
-					<div class="pirate-card-strength">${this.strength ? this.strength : '*'}</div>
-				</div>
-				<div class="pirate-card-mission">${this.mission ? this.mission : '...'}</div>
-			</div>
-		`);
-    }
-
 }
 
 export { PirateCard }

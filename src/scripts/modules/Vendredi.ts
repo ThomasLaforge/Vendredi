@@ -67,7 +67,6 @@ export interface PlayerInterface {
 export interface CardInterface{
     name: string
     strength : number
-    draw(nodeDom:string):void
     show():void
 }
 
