@@ -1,5 +1,5 @@
 // Jquery et bootstrap
-var bootstrap = require('bootstrap/dist/js/bootstrap');
+// var bootstrap = require('bootstrap/dist/js/bootstrap');
 
 // ES6 modules Style
 import { Game 	}         from	'./modules/Game';
@@ -13,22 +13,22 @@ let UI       = new UserInterface(game);
 
 // Watchers
 
-watch(game, () => { 
-  if ( game.isGameOver() ){
-      console.log('The game is over !');
-      UI.showGameOver();
-      $('body').unbind();
-  }
-  else {
-      UI.updateMainInfos();
-  }
-});
+// watch(game, () => { 
+//   if ( game.isGameOver() ){
+//       console.log('The game is over !');
+//       UI.showGameOver();
+//       $('body').unbind();
+//   }
+//   else {
+//       UI.updateMainInfos();
+//   }
+// });
 
-watch(game, "_fight", () => {
-  if(game.fight){
-    UI.updateFightZone();
-  }
-});
+// watch(game, "_fight", () => {
+//   if(game.fight){
+//     UI.updateFightZone();
+//   }
+// });
 
 // Interface
 // $('a[data-toggle="popover"]').popover({
