@@ -9,7 +9,7 @@ import { UserInterface }  from	'./modules/UserInterface';
 let pseudo   = 'Thomas';
 let myPlayer = new Player(pseudo);
 let game     = new Game(myPlayer, 1);
-let UI       = new UserInterface(game);
+// let UI       = new UserInterface(game);
 
 // Watchers
 
