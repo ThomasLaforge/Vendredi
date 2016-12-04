@@ -26,35 +26,36 @@
 
         <div id="app">
             <game-info :game="game"></game-info>
+            <game-danger-choice :danger-choice="game.dangerChoiceCards" v-if="!game.fight"></game-danger-choice>
+            <game-fight :fight="game.fight" v-if="game.fight"></game-fight>
         </div>
 
 
-        <template id="test" v-on:loseOnePV="losePV">
+        <!--<template id="test" v-on:loseOnePV="losePV">
             <button @click="loseOnePV">LosePV</button>
-        </template>
+        </template>-->
 
-        <template id="zone-info" v-on:loseOnePV="losePV">
+        <template id="zone-info">
             <div class="game-info">
-                <div class="info-main ">
-                    <div class='info-main-pv info-main-elt' id="pv ">
-                        <div class='info-main-value'>{{ PV }}</div>
-                        <!--<button @click="loseOnePV ">LosePV</button>-->
+                <div class="info-main">
+                    <div class="info-main-pv info-main-elt" id="pv">
+                        <div class="info-main-value">{{ PV }}</div>
                     </div>
-                    <div class='info-main-fight-cards info-main-elt'>
-                        <div id="nbFightCards " class='info-main-value'>{{ nbFightCardsInDeck }}</div>
-                        <div class='info-main-subject'>Fight cards</div>
+                    <div class="info-main-fight-cards info-main-elt">
+                        <div id="nbFightCards" class="info-main-value">{{ nbFightCardsInDeck }}</div>
+                        <div class="info-main-subject">Fight cards</div>
                     </div>
-                    <div class='info-main-danger-cards info-main-elt'>
-                        <div id="nbDangerCards " class='info-main-value'>{{ nbDangerCardsInDeck }}</div>
-                        <div class='info-main-subject'>Danger cards</div>
+                    <div class="info-main-danger-cards info-main-elt">
+                        <div id="nbDangerCards" class='info-main-value'>{{ nbDangerCardsInDeck }}</div>
+                        <div class="info-main-subject">Danger cards</div>
                     </div>
-                    <div class='info-main-aging-cards info-main-elt'>
-                        <div id="nbAgingCards " class='info-main-value'>{{ nbAgingCardsInDeck }}</div>
-                        <div class='info-main-subject'>Aging cards</div>
+                    <div class="info-main-aging-cards info-main-elt">
+                        <div id="nbAgingCards" class="info-main-value">{{ nbAgingCardsInDeck }}</div>
+                        <div class="info-main-subject">Aging cards</div>
                     </div>
-                    <div class='info-main-level info-main-elt'>
-                        <div id="level " class='info-main-value'>{{ level }}</div>
-                        <div class='info-main-subject'>Level</div>
+                    <div class="info-main-level info-main-elt">
+                        <div id="level" class="info-main-value">{{ level }}</div>
+                        <div class="info-main-subject">Level</div>
                     </div>
                 </div>
                 <div id="pirates-list" v-for="pirate in game.pirates">
@@ -64,11 +65,15 @@
         </template>
 
         <template id="game-danger-choice">
-            <div class="game-danger-choice " id="zone-danger-choice ">
-                <div class="danger-choice-card-slots " id="danger-choice-card-slots "></div>
+            <div class="game-danger-choice" id="zone-danger-choice">
+                <div class="danger-choice-card-slots" id="danger-choice-card-slots">
+                    <div v-for="danger in dangerChoice">
+                        <danger-card :danger="danger" class="danger-card-selected"></danger-card>
+                    </div>
+                </div>
 
-                <div class="danger-choice-actions ">
-                    <button id="btn-action-chose-danger ">Choisir !</button>
+                <div class="danger-choice-actions">
+                    <button id="btn-action-chose-danger">Choisir !</button>
                 </div>
             </div>
         </template>
@@ -113,30 +118,30 @@
         </template>
 
         <template id="game-fight">
-            <div class="game-fight-danger " id="zone-fight-danger ">
-                <div class="fight-danger-card-to-fight " id="danger-card-to-fight "></div>
-                <div class="fight-player-interface ">
-                    <div class="fight-danger-fight-cards ">
+            <div class="game-fight-danger" id="zone-fight-danger">
+                <div class="fight-danger-card-to-fight" id="danger-card-to-fight"></div>
+                <div class="fight-player-interface">
+                    <div class="fight-danger-fight-cards">
 
-                        <div class="fight-cards-elt "></div>
+                        <div class="fight-cards-elt"></div>
 
                     </div>
 
-                    <div class="fight-result-info-and-actions ">
-                        <div class="fight-danger-infos ">
-                            <span id="fight-danger-temporary-result ">0</span>
+                    <div class="fight-result-info-and-actions">
+                        <div class="fight-danger-infos">
+                            <span id="fight-danger-temporary-result">0</span>
                         </div>
 
-                        <div class="fight-danger-actions ">
-                            <button class="fight-danger-action " id="btn-pick-fight-card ">Piocher</button>
-                            <button class="fight-danger-action " id="btn-stop-fight ">Stop</button>
-                            <button class="fight-danger-action " id="btn-delete-fight-cards ">Delete Card(s)</button>
-                            <button class="fight-danger-action " id="btn-dont-delete-fight-cards ">Keep them</button>
+                        <div class="fight-danger-actions">
+                            <button class="fight-danger-action" id="btn-pick-fight-card">Piocher</button>
+                            <button class="fight-danger-action" id="btn-stop-fight">Stop</button>
+                            <button class="fight-danger-action" id="btn-delete-fight-cards">Delete Card(s)</button>
+                            <button class="fight-danger-action" id="btn-dont-delete-fight-cards">Keep them</button>
                         </div>
                     </div>
 
-                    <div class="fight-danger-fight-cards-used ">
-                        <div class="fight-cards-elt "></div>
+                    <div class="fight-danger-fight-cards-used">
+                        <div class="fight-cards-elt"></div>
                     </div>
                 </div>
             </div>

@@ -37,7 +37,6 @@ let game     = new Game(myPlayer, 1);
 //     html: true
 // });
 
-Vue.component('gameInfo', {
 let dangerCard = {
     template: '#danger-card',
     props : ['danger', 'class']
@@ -48,33 +47,9 @@ let pirateCard = {
     props : ['pirate']
 }
 
+let gameInfo = {
     props : ['game'],
-    template : `
-    <div class="game-info">
-        <div class="info-main ">
-            <div class='info-main-pv info-main-elt' id="pv ">
-                <div class='info-main-value'>{{ PV }}</div>
-                <!--<button @click="loseOnePV ">LosePV</button>-->
-            </div>
-            <div class='info-main-fight-cards info-main-elt'>
-                <div id="nbFightCards " class='info-main-value'>{{ nbFightCardsInDeck }}</div>
-                <div class='info-main-subject'>Fight cards</div>
-            </div>
-            <div class='info-main-danger-cards info-main-elt'>
-                <div id="nbDangerCards " class='info-main-value'>{{ nbDangerCardsInDeck }}</div>
-                <div class='info-main-subject'>Danger cards</div>
-            </div>
-            <div class='info-main-aging-cards info-main-elt'>
-                <div id="nbAgingCards " class='info-main-value'>{{ nbAgingCardsInDeck }}</div>
-                <div class='info-main-subject'>Aging cards</div>
-            </div>
-            <div class='info-main-level info-main-elt'>
-                <div id="level " class='info-main-value'>{{ level }}</div>
-                <div class='info-main-subject'>Level</div>
-            </div>
-        </div>
-    </div>
-    `,
+    template : '#zone-info',
     methods : {
         loseOnePV : function() {
             this.game.player.losePV(1)
@@ -96,13 +71,40 @@ let pirateCard = {
         PV : () => {
             return game.player.PV
         }
+    },
+    components : {
+        pirateCard
     }
-});
+};
+
+let gameDangerChoice = {
+    props : ['dangerChoice'],
+    template : '#game-danger-choice',
+    components:{
+        dangerCard
+    },
+    data : function() {
+        return {
+            selectedDanger : 0
+        }
+    }
+};
+
+let gameFight = {
+    props : ['game'],
+    template : '#game-fight',
+}
 
 var app = new Vue({
     el: '#app',
     data: {
-        game : game
+        game : game,
+        dangerChoice : game.dangerChoiceCards
+    },
+    components:{
+        gameInfo,
+        gameDangerChoice,
+        gameFight
     },
     methods: {
     }
