@@ -57,6 +57,9 @@
                         <div class='info-main-subject'>Level</div>
                     </div>
                 </div>
+                <div id="pirates-list" v-for="pirate in game.pirates">
+                    <pirate-card :pirate="pirate"></pirate-card>
+                </div>
             </div>
         </template>
 
@@ -68,6 +71,45 @@
                     <button id="btn-action-chose-danger ">Choisir !</button>
                 </div>
             </div>
+        </template>
+
+        <template id="danger-card">
+            <div class="card-slot card-danger">
+                <!-- danger definition -->
+                <div class="danger-card-definition">
+                    <div class="card-danger-name">{{danger.name}}</div>
+                    <div class="card-danger-details">
+                        <div class="card-danger-freecards">{{danger.freeCards}}</div>
+                        <div class="card-danger-strength">
+                            <div class="card-danger-strength-lvl card-danger-strength-3">{{danger.getStrength(3)}}</div>
+                            <div class="card-danger-strength-lvl card-danger-strength-2">{{danger.getStrength(2)}}</div>
+                            <div class="card-danger-strength-lvl card-danger-strength-1">{{danger.getStrength(1)}}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bambou-separation"></div>
+                <!-- fight definition -->
+                <div class="card-danger-fight-definition">
+                    <div class="card-danger-fight-main-info">
+                        <div class="card-danger-fight-strength">{{danger.fightCard.strength}}</div>
+                        <div class="card-danger-fight-name">{{danger.fightCard.name}}</div>
+                        <div class="card-danger-fight-destroycost">{{danger.fightCard.costToDelete}}</div>
+                    </div>
+                    <div class="card-danger-fight-power">{{danger.fightCard.power ? danger.fightCard.power : '...'}}</div>
+                </div>
+            </div>
+        </template>
+
+        <template id="pirate-card">
+            <div class="pirate-card">
+				<div class="pirate-card-info-zone">
+					<div class="pirate-card-nbFreeCards">{{pirate.freeCards ? pirate.freeCards : '*'}}</div>
+					<div class="pirate-card-name">{{pirate.name}}</div>
+					<div class="pirate-card-strength">{{pirate.strength ? pirate.strength : '*'}}</div>
+				</div>
+				<div class="pirate-card-mission">{{pirate.mission ? pirate.mission : '...'}}</div>
+			</div>
         </template>
 
         <template id="game-fight">

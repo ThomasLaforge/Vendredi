@@ -38,6 +38,16 @@ let game     = new Game(myPlayer, 1);
 // });
 
 Vue.component('gameInfo', {
+let dangerCard = {
+    template: '#danger-card',
+    props : ['danger', 'class']
+}
+
+let pirateCard = {
+    template: '#pirate-card',
+    props : ['pirate']
+}
+
     props : ['game'],
     template : `
     <div class="game-info">
