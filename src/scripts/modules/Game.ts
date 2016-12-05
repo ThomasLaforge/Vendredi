@@ -13,7 +13,7 @@ import { AgingCard }    from './AgingCard';
 import { PirateDeck }   from './PirateDeck';
 import { PirateCard }   from './PirateCard';
 import { Player }        from './Player';
-import { GameDifficulty, FightCardPower } from './Vendredi';
+import { GameDifficulty, GameLevel, FightCardPower } from './Vendredi';
 
 class Game {
 
@@ -49,7 +49,7 @@ class Game {
         this.pirates       = this.pirateDeck.getPirates( 2 );
         this.actualPirate = this.pirates[0];
 
-        this.level         = 1;
+        this.level         = GameLevel.FirstRound;
         this.arrayOfRemovedCards  = [];
         this.drawDangerCard();
         this.fight         = null;

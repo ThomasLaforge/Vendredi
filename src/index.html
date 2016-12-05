@@ -25,7 +25,7 @@
         <hr>
 
         <div id="app">
-            <game-info :game="game" :pv="2"></game-info>
+            <game-info :game="game"></game-info>
             <game-over v-if="game.gameOver"></game-over>
             <hr>
             <game-danger-choice :danger-choice="dangerChoice" v-if="!game.fight" @chose="startFight"></game-danger-choice>
