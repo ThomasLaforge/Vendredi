@@ -12,6 +12,10 @@ class PirateCard extends Card implements PirateCardInterface {
 	 * Methods
 	 */
 
+	getStrength(){
+		return 0;
+	}
+
     show(){
         console.log('PirateCard : ', this);
     }

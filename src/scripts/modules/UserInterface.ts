@@ -14,7 +14,7 @@ class UserInterface {
     this.updateMainInfos();
     this.hideFightZone();
     this.eventsDeclaration();
-    this.dangerCardChoice = this.game.drawDangerCard();
+    this.game.drawDangerCard();
     this.dangerCardChoice.forEach( (element) => {
       element.draw('#danger-choice-card-slots');
     }, this);

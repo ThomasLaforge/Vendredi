@@ -51,8 +51,7 @@ class Game {
 
         this.level         = 1;
         this.arrayOfRemovedCards  = [];
-        this.dangerChoiceCards = this.drawDangerCard();
-        console.log(this.dangerChoiceCards)
+        this.drawDangerCard();
         this.fight         = null;
         this.gameOver      = false;
 	}
@@ -66,6 +65,10 @@ class Game {
     }
 
     drawFightCard(){
+        if ( this.fight.getNumberOfCards() > this.fight.cardToFight.freeCards ){
+            console.log('lose One PV')
+            this.loseOnePV();
+        }
         if ( this.fightDeck.isEmpty() ){
             // On ajoute une carte vieillissement dans la défausse
             let newAgingCard = this.agingDeck.drawCards( 1 );
@@ -93,7 +96,7 @@ class Game {
         }
         
 
-        return arr;
+        this.dangerChoiceCards = arr;
     }
 
     startFight( card:DangerCard|PirateCard ){

@@ -11,15 +11,6 @@ class FightCard extends PlayableCard implements FightCardInterface {
         console.log('Card : name => ' + this.name + ', strength => ' + this. strength + ', power => ' + this.power);
     }
 
-    draw( nodeDOM:string ){
-        $(nodeDOM).append(`
-            <div class="fight-card">
-               <div class="fight-card-strength">${this. strength}</div>
-               <div class="fight-card-power">${this.power ? this.power : ''}</div>
-            </div>
-        `);
-    }
-
 }
 
 export { FightCard }

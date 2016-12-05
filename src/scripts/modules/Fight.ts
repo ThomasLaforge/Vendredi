@@ -7,7 +7,7 @@ import { FightInterface } from './Vendredi';
 
 abstract class Fight implements FightInterface {
 
-    constructor( public cardToFight : any, public arrayFightCard : Array<PlayableCard> = [], public arrayFightCardUsed : Array<PlayableCard> = [], public finished : boolean = false ){}
+    constructor( public cardToFight : PirateCard|DangerCard, public arrayFightCard : Array<PlayableCard> = [], public arrayFightCardUsed : Array<PlayableCard> = [], public finished : boolean = false ){}
 
     addFightCard( fightCard : FightCard|AgingCard ){
         this.arrayFightCard.push( fightCard );
@@ -32,16 +32,18 @@ abstract class Fight implements FightInterface {
         return playerForce;
     }
 
-    result(){
+    abstract getStrengthCardToFight() : number
+
+    updateResult(){
         // >= 0 if player win ; < 0 if player lose fight
-        let fightPoints = 0; //this.getStrengthCardToFight();
+        let fightPoints = this.getStrengthCardToFight();
         let playerForce = this.getPlayerForce();
 
         return playerForce - fightPoints;
     }
 
     isWon(){
-        return this.result() >= 0 && this.getNumberOfCards() > 0;
+        return this.updateResult() >= 0 && this.getNumberOfCards() > 0;
     }
 
     isLost(){

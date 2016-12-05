@@ -2,7 +2,7 @@ import {Card} from './Card';
 import {Tools} from './Tools';
 import * as _ from 'lodash';
 
-class Deck {
+abstract class Deck {
     //Constructor   : arrayDeck with all cards, shuffle him, and create a discard array
     //removeCard    : remove a card from the rest of the game
     //shuffle       : shuffle the arrayDeck
@@ -19,9 +19,7 @@ class Deck {
         this.shuffle();
     }
 
-    initDeck(){
-
-    }
+    initDeck(){}
 
     // States of arrays : deck and discard
 
@@ -42,7 +40,7 @@ class Deck {
     }
 
     shuffle(){
-        _.shuffle( this.arrayDeck );
+        this.arrayDeck = _.shuffle( this.arrayDeck );
     }
 
     addCard(card:any){

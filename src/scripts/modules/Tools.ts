@@ -1,4 +1,5 @@
 import {Card} from './Card';
+import {PlayableCard} from './PlayableCard';
 import {FightCardPower, AgingCardPower, PirateMission} from './Vendredi';
 import * as _ from 'lodash';
 
@@ -87,6 +88,11 @@ class Tools {
             case PirateMission.FightAllDangerCards : return  'Combattez toutes les cartes Danger restantes' ; 
             default: return '';
         }
+    }
+
+    static getPowerName(power:FightCardPower|AgingCardPower): string {
+        if (typeof power === "FightCardPower") return this.getFightPowerName(power);
+        if (typeof power === "AgingCardPower") return this.getAgingPowerName(power);
     }
 }
 

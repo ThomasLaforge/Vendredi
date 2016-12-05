@@ -71,8 +71,13 @@ export interface CardInterface{
 }
 
 export interface PlayableCardInterface extends CardInterface {
-    costToDelete:number
+    costToDelete : number,
+    power        : FightCardPower|AgingCardPower|null
 }
+
+// export interface CardToFightInterface extends CardInterface {
+//     power        : FightCardPower|AgingCardPower|null
+// }
 
 export interface PirateCardInterface {
     id		  :	  number
@@ -87,7 +92,7 @@ export interface AgingCardInterface extends PlayableCardInterface{
     level    : AgingLevel
 }
 
-export interface FightCardInterface extends PlayableCardInterface{
+export interface FightCardInterface extends PlayableCardInterface {
 	power   : FightCardPower|null
 }
 
@@ -98,13 +103,17 @@ export interface DangerCardInterface {
 }
 
 export interface FightInterface {
-    cardToFight: any
+    cardToFight: PirateCard|DangerCard
     arrayFightCard:Array<Card>
     finished: boolean
 }
 
-export interface PirateFightInterface {
+export interface PirateFightInterface extends FightInterface {
     cardToFight: PirateCard
+}
+
+export interface DangerFightInterface extends FightInterface {
+    cardToFight: DangerCard
 }
 
 export interface jsonDataPirate {

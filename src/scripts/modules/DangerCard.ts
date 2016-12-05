@@ -5,7 +5,7 @@ import { DangerCardInterface, FightCardInterface, GameLevel } from './Vendredi';
 
 class DangerCard implements DangerCardInterface {
 
-    constructor(readonly fightCard: FightCardInterface, readonly name: string, readonly freeCards: number) { }
+    constructor(readonly fightCard: FightCard, readonly name: string, readonly freeCards: number) { }
 
     // Console debug
     show() {
@@ -50,7 +50,7 @@ class DangerCard implements DangerCardInterface {
     }
 
     powerName(){
-        return Tools.getFightPowerName(this.fightCard.power);
+        return this.fightCard.powerName;
     }
 
 }

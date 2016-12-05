@@ -1,8 +1,8 @@
 import { Fight } from './Fight';
 import { DangerCard } from './DangerCard';
-import { GameLevel } from './Vendredi';
+import { GameLevel,DangerFightInterface } from './Vendredi';
 
-class DangerFight extends Fight {
+class DangerFight extends Fight implements DangerFightInterface {
     constructor( danger:DangerCard, public level: GameLevel ){
         super(danger);
     }
