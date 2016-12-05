@@ -1,30 +1,45 @@
 TODO LIST JEU VENDREDI
 
-* STEP 0 : Design
-    - add level class when shown level in info zone
-    - Create a color sass class:
-        - add level color : 1, 2, 3, pirates(black)
+Design
+*   - add level class when shown level in info zone
+*   - create a color sass class:
+*       - add level color : 1, 2, 3, pirates(black)
+    - fix level
+    - update positioning with new Vue templates
+-----------------------------------------------------------------------------------------
 
-* STEP 1 : Finir l'implémentation de la phase de combat des pirates
+Finir l'implémentation de la phase de combat des pirates
 
-STEP 2 : Modifier le modèle en typescript
+-----------------------------------------------------------------------------------------
+
+Modifier le modèle en typescript
 *   a) Rename all js files 
     WINDOWS+R -> cmd -> cd wamp/www/vendredi/src/scripts -> ren *.js *.ts
 *   b) modify gulpfile
-*    c) import librairies like jquery from DOM
+*   c) import librairies like jquery from DOM
+*   d) import typings
 
+-----------------------------------------------------------------------------------------
 
-STEP 3 : Utiliser Lodash
+Utiliser Lodash
 *   - installer lodash et ses typings
     - utiliser les méthodes
 
-STEP 4 : Recréer le projet en Vue js
+-----------------------------------------------------------------------------------------
+
+Recréer le projet en Vue js
 *   - installer VueJs
 *   - implémenter les templates
 *   - créer les templates
     - implémenter les components
+*   - replace let by const on components definitions
+    - exports components in module on directory : /scripts/Vue (change gulpfile/or not)
+    - refactor templates in index.html
+    - test one file components in vue (change gulpfile)
 
-STEP 5 : Implémenter les capacités des cartes Robinson, des cartes de Vieillissement et des pirates (*** en début de ligne une fois implémentée)
+-----------------------------------------------------------------------------------------
+
+Implémenter les capacités des cartes Robinson, des cartes de Vieillissement et des pirates
 
     Fight Cards: 
     * - +x points de vie => ça semble clair 
@@ -47,8 +62,10 @@ STEP 5 : Implémenter les capacités des cartes Robinson, des cartes de Vieillis
     - Affrontez le reste de l'île: prenez toutes les cartes Périls restant dans la défausse, faites la somme des cartes gratuites pour savoir combien vous pouvez piocher de cartes gratuitement, et la somme des chiffres rouges pour avoir la force de l'ennemi 
     - Chacune des cartes piochées à +1 de force 
     - Seule la moitié des cartes piochées est compté pour la combat
+ 
+-----------------------------------------------------------------------------------------
 
-STEP 6 : Historique
+Historique
     2 solutions:
         1 - save : save action by action (auto save during the game)
             load : replay game step by step
