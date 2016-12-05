@@ -7,13 +7,15 @@ let template = `
         <danger-card :danger="cardToFight"></danger-card>                    
     </div>
     <div class="fight-player-interface">
-        <div class="fight-danger-fight-cards" v-for="(card, index) in fightCardPlayed">
-            <playable-card :card="card"></playable-card>
+        <div class="fight-danger-fight-cards">
+            <playable-card v-for="(card, index) in fightCardPlayed" :card="card"></playable-card>
         </div>
 
         <div class="fight-result-info-and-actions">
             <div class="fight-danger-infos">
-                <span id="fight-danger-temporary-result">{{result}}</span>
+                <span id="fight-danger-temporary-result" :class="fight.getResult() >= 0 ? 'fight-danger-temporary-result-success' : 'fight-danger-temporary-result-negative'">
+                    {{fight.getResult()}}
+                </span>
             </div>
 
             <div class="fight-danger-actions">
@@ -24,8 +26,8 @@ let template = `
             </div>
         </div>
 
-        <div class="fight-danger-fight-cards-used" v-for="(card, index) in fightCardPlayedAndUsed">
-            <playable-card :card="card"></playable-card>
+        <div class="fight-danger-fight-cards-used">
+            <playable-card v-for="(card, index) in fightCardPlayedAndUsed" :card="card"></playable-card>
         </div>
     </div>
 </div>
@@ -41,17 +43,15 @@ const gameFight = {
     data : function(){
         return {
             cardToFight : this.fight.cardToFight,
-            result : this.fight.updateResult(),
             fightCardPlayed : this.fight.arrayFightCard,
             fightCardPlayedAndUsed : this.fight.arrayFightCardUsed,
-            finished : this.fight.finished,
+            finished : this.fight.finished
         }
     },
     methods : {
         pickFightCard(){
             console.log('draw')
-            this.$emit('draw')
-            this.result = this.fight.updateResult()
+            this.$emit('draw')            
         },
         stopFight(){
             console.log('stopFight')

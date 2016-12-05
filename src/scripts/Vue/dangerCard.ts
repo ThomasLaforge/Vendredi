@@ -1,3 +1,5 @@
+import { GameLevel } from '../modules/Vendredi'
+
 let template = `
     <div class="card-slot card-danger" :class="selected === true ? 'danger-card-selected' : '' " @click="select">
         <!-- danger definition -->
@@ -6,9 +8,9 @@ let template = `
             <div class="card-danger-details">
                 <div class="card-danger-freecards">{{danger.freeCards}}</div>
                 <div class="card-danger-strength">
-                    <div class="card-danger-strength-lvl card-danger-strength-3">{{danger.getStrength(3)}}</div>
-                    <div class="card-danger-strength-lvl card-danger-strength-2">{{danger.getStrength(2)}}</div>
-                    <div class="card-danger-strength-lvl card-danger-strength-1">{{danger.getStrength(1)}}</div>
+                    <div class="card-danger-strength-lvl card-danger-strength-3">{{danger.getStrength(thirdLevel)}}</div>
+                    <div class="card-danger-strength-lvl card-danger-strength-2">{{danger.getStrength(secondeLevel)}}</div>
+                    <div class="card-danger-strength-lvl card-danger-strength-1">{{danger.getStrength(firstLevel)}}</div>
                 </div>
             </div>
         </div>
@@ -28,7 +30,22 @@ let template = `
 
 const dangerCard = {
     template: template,
-    props : ['danger', 'selected'],
+    props : {
+        danger : {
+            type : Object
+        },
+        selected : {
+            type : Boolean,
+            default : () => { return false }
+        }
+    },
+    data : () => {
+        return {
+            firstLevel : GameLevel.FirstRound,
+            secondeLevel : GameLevel.SecondRound,
+            thirdLevel : GameLevel.ThirdRound,
+        }
+    },
     methods: {
         select(){
             console.log('card : i\'m selected')

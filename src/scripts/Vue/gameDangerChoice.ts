@@ -3,9 +3,7 @@ import { dangerCard } from './dangerCard'
 let template = `
 <div class="game-danger-choice" id="zone-danger-choice">
     <div class="danger-choice-card-slots" id="danger-choice-card-slots">
-        <div v-for="(danger, index) in dangerChoice">
-            <danger-card :danger="danger" :selected="index === currentSelected ? true : false" @select="changeSelectedIndex(index)"></danger-card>
-        </div>
+        <danger-card v-for="(danger, index) in dangerChoice" :danger="danger" :selected="index === currentSelected ? true : false" @select="changeSelectedIndex(index)"></danger-card>
     </div>
 
     <div class="danger-choice-actions">
