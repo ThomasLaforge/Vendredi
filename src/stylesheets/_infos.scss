@@ -10,9 +10,22 @@
     color:white;
 }
 
-.info-main{
-    width:50%;
+#pirates-list{
     display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    .pirates-list-elt{
+        width : 50%;
+    }
+
+    padding-bottom: 20px;
+}
+
+.info-main{
+    width:100%;
+    display: flex;
+    justify-content: space-between;
 
     .info-main-elt{
         width:20%;
@@ -26,11 +39,6 @@
         }
     }
 }
-
-.info-pirates{
-    width:50%;
-}
-
 
 #level{
     color:white;
@@ -46,13 +54,14 @@
 .level-value-1{ background-color: $level-1; }
 .level-value-2{ background-color: $level-2; }
 .level-value-3{ background-color: $level-3; }
-.level-value-pirate{ background-color: $level-pirates; }
+.level-value-pirates{ background-color: $level-pirates; }
 
 #pv{
     width:60px;
     height:60px;
     line-height: 60px;
     text-align: center;
+    margin:auto;
     color:white;    
     
     background-image: url("../images/coeur.jpg"); 

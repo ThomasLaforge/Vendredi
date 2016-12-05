@@ -18,6 +18,7 @@ h1, .title-top{
 
 .game-info{
   display: flex;
+  flex-direction: column;
 }
 
 .game-danger-choice{
