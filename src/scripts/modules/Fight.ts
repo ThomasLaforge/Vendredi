@@ -34,7 +34,7 @@ abstract class Fight implements FightInterface {
 
     abstract getStrengthCardToFight() : number
 
-    updateResult(){
+    getResult(){
         // >= 0 if player win ; < 0 if player lose fight
         let fightPoints = this.getStrengthCardToFight();
         let playerForce = this.getPlayerForce();
@@ -43,7 +43,7 @@ abstract class Fight implements FightInterface {
     }
 
     isWon(){
-        return this.updateResult() >= 0 && this.getNumberOfCards() > 0;
+        return this.getResult() >= 0 && this.getNumberOfCards() > 0;
     }
 
     isLost(){

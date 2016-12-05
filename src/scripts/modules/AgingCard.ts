@@ -1,4 +1,5 @@
 import { PlayableCard } from './PlayableCard';
+import { Tools } from './Tools';
 import { AgingCardInterface, AgingCardPower, AgingLevel } from './Vendredi'
 
 class AgingCard extends PlayableCard implements AgingCardInterface{
@@ -7,13 +8,8 @@ class AgingCard extends PlayableCard implements AgingCardInterface{
         super(name, strength, costToDelete, power);
     }
 
-    draw( nodeDOM : string){
-        $(nodeDOM).append(`
-        <div class="fight-card">
-            <div class="fight-card-strength">${this. strength}</div>
-            <div class="fight-card-power ${this.power ? 'fight-card-power-malus ">' + this.power : '">'}</div>
-        </div>
-        `);
+    get powerName(){
+        return Tools.getAgingPowerName(this.power)
     }
 }
 

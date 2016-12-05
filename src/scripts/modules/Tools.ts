@@ -29,8 +29,9 @@ class Tools {
         }
     }
 
-    static getFightPowerName(powerName : FightCardPower|null) : string {
-        switch (powerName) {
+    static getFightPowerName(power : FightCardPower|null) : string {
+        console.log(power)
+        switch (power) {
             case FightCardPower.GetOnePV: return  '+1PV' ;
             case FightCardPower.GetTwoPV: return  '+2PV' ;
             case FightCardPower.CopyOne: return  'Copier x1' ;
@@ -90,10 +91,10 @@ class Tools {
         }
     }
 
-    static getPowerName(power:FightCardPower|AgingCardPower): string {
-        if (typeof power === "FightCardPower") return this.getFightPowerName(power);
-        if (typeof power === "AgingCardPower") return this.getAgingPowerName(power);
-    }
+    // static getPowerName(power:FightCardPower|AgingCardPower): string {
+    //     if (FightCardPower instanceof power) { console.log(power); return this.getFightPowerName(power)};
+    //     if (typeof power === "AgingCardPower") { return this.getAgingPowerName(power)};
+    // }
 }
 
 export {Tools}
