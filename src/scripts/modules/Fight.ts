@@ -51,7 +51,17 @@ abstract class Fight implements FightInterface {
     }
 
     getNumberOfCards(){
-        return this.arrayFightCard.length;
+        return this.arrayFightCard.concat(this.arrayFightCardUsed).length;
+    }
+
+    getFightCardsByIndex(arrOfIndexOfCardsToDelete : Array<number>){
+        let res = [];
+
+        arrOfIndexOfCardsToDelete.forEach( (currentIndex) => {
+            res.push(this.getAllFightCards()[currentIndex]);
+        })
+
+        return res;
     }
 
     finish(){

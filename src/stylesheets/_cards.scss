@@ -1,273 +1,236 @@
 @import 'colors';
-
 // Pirates
-$heightPirateCard : 200px;
-$heightPirateCardMission : 40px;
-
-.pirate-card{
+$heightPirateCard: 200px;
+$heightPirateCardMission: 40px;
+.pirate-card {
     width: 350px;
     height: $heightPirateCard;
-
-    border:5px solid rgba(gray,0.15);
-    border-radius:5px;
-    
+    border: 5px solid rgba(gray, 0.15);
+    border-radius: 5px;
     margin: auto;
-    margin-bottom:5px;
-    
-
+    margin-bottom: 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-    .pirate-card-info-zone{
+    .pirate-card-info-zone {
         display: flex;
         justify-content: space-between;
-
-        background-image: url("../images/pirate.jpg"); 
-        background-size:     cover;                      /* <------ */
-        background-repeat:   no-repeat;
+        background-image: url("../images/pirate.jpg");
+        background-size: cover;
+        /* <------ */
+        background-repeat: no-repeat;
         background-position: center center;
-
         height: $heightPirateCard - $heightPirateCardMission;
         text-align: center;
-        padding-top:5px;
-
-        .pirate-card-name{
-            width:60%;
-            height:30px; 
-            line-height:30px;
-
+        padding-top: 5px;
+        .pirate-card-name {
+            width: 60%;
+            height: 30px;
+            line-height: 30px;
             background-color: $bg_card_name;
         }
-        .pirate-card-nbFreeCards{
-            width:35px;
-            height:35px;
-            line-height:35px;
+        .pirate-card-nbFreeCards {
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
             background-color: rgba(#FFFFFF, 0.7);
-            border-radius:12px;
-            margin:0 0 5px 12px;
-
-            color:white;
+            border-radius: 12px;
+            margin: 0 0 5px 12px;
+            color: white;
             text-shadow: green 1.2px 1.2px, green -1.2px 1.2px, green -1.2px -1.2px, green 1.2px -1.2px;
         }
-        .pirate-card-strength{
-            width:20%;
-
+        .pirate-card-strength {
+            width: 20%;
             font-size: 25px;
             font-weight: bold;
             color: red;
         }
     }
-
-    .pirate-card-mission{
-        height:$heightPirateCardMission;
+    .pirate-card-mission {
+        height: $heightPirateCardMission;
         line-height: $heightPirateCardMission;
         text-align: center;
         font-style: italic;
         font-size: 12px;
-
         background-color: $bg_pirate_mission;
     }
-
 }
-// Aging
 
+// Aging
 // Fight
-.fight-card{
+.fight-card {
     border: 1px lightblue solid;
     display: flex;
-
-    .fight-card-strength{
-        width:30%;
+    .fight-card-strength {
+        width: 30%;
         text-align: center;
     }
-
-    .figth-card-power{
-        width:70%;
+    .figth-card-power {
+        width: 70%;
     }
-
 }
 
-.fight-danger-fight-cards{
-    .fight-card{
+.fight-danger-fight-cards {
+    .fight-card {
         border: 1px lightblue solid;
         flex-direction: row-reverse;
-
-        .figth-card-power-bonus{
-            color:lightblue;
+        .figth-card-power-bonus {
+            color: lightblue;
         }
-
-        .figth-card-power-malus{
-            color:red;
+        .figth-card-power-malus {
+            color: red;
         }
     }
 }
 
-.fight-danger-fight-used{
-    
-    .fight-card{
-        border: 1px lightblue solid;
-        flex-direction: row;
-    }
+.fight-danger-fight-used {
+    border: 1px green solid;
+    flex-direction: row;
 }
 
 // Danger
-.card-danger{
-    width:200px;
-    height:280px;
-
-    border:5px solid rgba(gray,0.15);
-    border-radius:5px;
-
-    .danger-card-definition{
+.card-danger {
+    width: 200px;
+    height: 280px;
+    border: 5px solid rgba(gray, 0.15);
+    border-radius: 5px;
+    .danger-card-definition {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-
         height: 48%;
-
-        background-image: url("../images/bg_danger_card_phase_danger.jpg"); 
-        background-size:     cover;                      /* <------ */
-        background-repeat:   no-repeat;
+        background-image: url("../images/bg_danger_card_phase_danger.jpg");
+        background-size: cover;
+        /* <------ */
+        background-repeat: no-repeat;
         background-position: center center;
-
-        .card-danger-name{
+        .card-danger-name {
             height: 20px;
             line-height: 20px;
-
             width: 90%;
             margin: 0 auto;
             background-color: $bg_card_name;
             text-align: center;
         }
-
-        .card-danger-details{
+        .card-danger-details {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            
-            .card-danger-strength{
-                .card-danger-strength-lvl{
+            .card-danger-strength {
+                .card-danger-strength-lvl {
                     height: 25px;
                     line-height: 25px;
                     width: 25px;
                     margin-bottom: 5px;
-
                     border: 1px green solid;
                     border-radius: 25px;
-                    
                     text-align: center;
                     font-weight: bold;
                 }
-                .card-danger-strength-1{ background-color: green; }
-                .card-danger-strength-2{ background-color: yellow; }
-                .card-danger-strength-3{ background-color: red; }
+                .card-danger-strength-1 {
+                    background-color: green;
+                }
+                .card-danger-strength-2 {
+                    background-color: yellow;
+                }
+                .card-danger-strength-3 {
+                    background-color: red;
+                }
             }
-
-            .card-danger-freecards{
-                width:30px;
-                height:30px;
-                line-height:30px;
+            .card-danger-freecards {
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
                 background-color: rgba(#FFFFFF, 0.7);
                 text-align: center;
-                border-radius:12px;
-                margin:0 0 5px 12px;
-
-                color:white;
+                border-radius: 12px;
+                margin: 0 0 5px 12px;
+                color: white;
                 text-shadow: green 1.2px 1.2px, green -1.2px 1.2px, green -1.2px -1.2px, green 1.2px -1.2px;
             }
         }
     }
-
-    .bambou-separation{
-        height:4%;
-        background-image: url("../images/texture_bambou.jpg"); 
-        background-size:     cover;                      /* <------ */
-        background-repeat:   no-repeat;
+    .bambou-separation {
+        height: 4%;
+        background-image: url("../images/texture_bambou.jpg");
+        background-size: cover;
+        /* <------ */
+        background-repeat: no-repeat;
         background-position: center center;
     }
-
-    .card-danger-fight-definition{
+    .card-danger-fight-definition {
         // transform: rotate(180deg);
         height: 48%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-
-        background-image: url("../images/robinson.jpg"); 
-        background-size:     cover;                      /* <------ */
-        background-repeat:   no-repeat;
+        background-image: url("../images/robinson.jpg");
+        background-size: cover;
+        /* <------ */
+        background-repeat: no-repeat;
         background-position: center center;
-        
         // transform:rotate(180deg);
-
-        .card-danger-fight-main-info{
+        .card-danger-fight-main-info {
             display: flex;
             justify-content: space-between;
-            
-            .card-danger-fight-strength{
+            .card-danger-fight-strength {
                 margin-left: 5px;
                 margin-top: 5px;
                 font-weight: bold;
-                width:30px;
-                height:30px;
-                line-height:30px;
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
                 background-color: rgba(#FFFFFF, 0.7);
-                font-size:20px;
+                font-size: 20px;
                 text-align: center;
-                border-radius:10px;
+                border-radius: 10px;
             }
-
-            .card-danger-fight-name{
-                width:50%;
+            .card-danger-fight-name {
+                width: 50%;
                 text-align: center;
-                margin-left:-5px;
-                height:20px;
-                line-height:20px;
+                margin-left: -5px;
+                height: 20px;
+                line-height: 20px;
                 background-color: rgba(#FFFFFF, 0.7);
             }
-
-            .card-danger-fight-destroycost{
-                width:20px;                
+            .card-danger-fight-destroycost {
+                width: 20px;
                 height: 20px;
                 line-height: 20px;
                 text-align: center;
-                margin-right:10px;
-                margin-top:5px;
-
+                margin-right: 10px;
+                margin-top: 5px;
                 background-color: rgba(orange, 0.7);
-                border:2px green solid;
-                border-radius:20px;
-
-                color:lightgrey;
-
+                border: 2px green solid;
+                border-radius: 20px;
+                color: lightgrey;
             }
         }
-
-        .card-danger-fight-power{
+        .card-danger-fight-power {
             text-align: center;
-            width:50%;
+            width: 50%;
             background-color: rgba(#FFFFFF, 0.7);
             margin: 0 auto;
-            color:blue;
+            color: blue;
         }
-
-
     }
 }
 
 // Selected
-
-.end-fight-card-to-delete{
-    border:1px solid red;
+.end-fight-card-to-delete {
+    border: 1px solid red;
 }
 
-.danger-card-selected{
+.danger-card-selected {
     // outline: 1px solid lawngreen;
-    animation:pulse 1.5s infinite alternate;
+    animation: pulse 1.5s infinite alternate;
 }
 
 @keyframes pulse {
-  from { box-shadow:0px 0px 10px 4px lawngreen; }
-  to { box-shadow:0px 0px 5px 5px yellowgreen; }
+    from {
+        box-shadow: 0px 0px 10px 4px lawngreen;
+    }
+    to {
+        box-shadow: 0px 0px 5px 5px yellowgreen;
+    }
 }

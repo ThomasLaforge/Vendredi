@@ -25,8 +25,6 @@ let app = new Vue({
     data: () => {
         return {
             game : game,
-            dangerChoice : game.dangerChoiceCards,
-            fight : game.fight
         }
     },
     components:{
@@ -36,15 +34,19 @@ let app = new Vue({
         gameOver
     },
     methods: {
-        startFight(index){
-            game.startFight(this.dangerChoice[index]);
-        },
-        reset(){
-            console.log('reset fight and draw cards or pirate')
-            game.drawDangerCard();
-        },
         addCardToFight(){
-            game.addCardToFight();
+            this.game.addCardToFight();
+        },
+        startFight(index){
+            this.game.startFight(this.game.dangerChoiceCards[index]);
+        },
+        stopFight(){
+            this.game.stopFight();
+        },
+        endFightLost(arrOfIndexOfCardsToDelete){
+            let cardsToDelete = this.game.fight.getFightCardsByIndex(arrOfIndexOfCardsToDelete);
+            this.game.endFightLost(cardsToDelete);
+            console.log(this.game.arrayOfRemovedCards)
         }
     }
 })

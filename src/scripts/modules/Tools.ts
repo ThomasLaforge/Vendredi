@@ -91,6 +91,16 @@ class Tools {
         }
     }
 
+    static getTotalCostToDelete(arrCardsToDelete: Array<PlayableCard>) : number {
+        let sum = 0;
+
+        arrCardsToDelete.forEach( (card : PlayableCard) => {
+            sum += card.costToDelete;
+        });
+        
+        return sum;
+    }
+
     // static getPowerName(power:FightCardPower|AgingCardPower): string {
     //     if (FightCardPower instanceof power) { console.log(power); return this.getFightPowerName(power)};
     //     if (typeof power === "AgingCardPower") { return this.getAgingPowerName(power)};

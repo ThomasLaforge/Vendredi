@@ -1,14 +1,16 @@
 import { dangerCard } from './dangerCard'
-import { playableCard } from './playableCard' 
+import { playableCard } from './playableCard'
+import { Tools } from '../modules/Tools'
+import * as _ from 'lodash'
 
 let template = `
 <div class="game-fight-danger" id="zone-fight-danger">
     <div class="fight-danger-card-to-fight" id="danger-card-to-fight">
-        <danger-card :danger="cardToFight"></danger-card>                    
+        <danger-card :danger="fight.cardToFight"></danger-card>                    
     </div>
     <div class="fight-player-interface">
         <div class="fight-danger-fight-cards">
-            <playable-card v-for="(card, index) in fightCardPlayed" :card="card"></playable-card>
+            <playable-card v-for="(card, index) in fight.arrayFightCard" :card="card" :in-fight="!fight.finished" :selectedToDelete="cardsToDelete.indexOf(card) != -1" @cardToDelete="addCardToDelete"></playable-card>
         </div>
 
         <div class="fight-result-info-and-actions">
@@ -19,15 +21,15 @@ let template = `
             </div>
 
             <div class="fight-danger-actions">
-                <button class="fight-danger-action" id="btn-pick-fight-card" @click="pickFightCard" v-if="!finished">Piocher</button>
-                <button class="fight-danger-action" id="btn-stop-fight" @click="stopFight" v-if="!finished">Stop</button>
-                <button class="fight-danger-action" id="btn-delete-fight-cards" @click="deleteCards" v-if="finished">Delete Card(s)</button>
-                <button class="fight-danger-action" id="btn-dont-delete-fight-cards" @click="dontDelete" v-if="finished">Keep them</button>
+                <button class="fight-danger-action" id="btn-pick-fight-card" @click="pickFightCard" v-if="!fight.finished">Piocher{{fight.getNumberOfCards() >= fight.cardToFight.freeCards ? ' + 1': ''}}</button>
+                <button class="fight-danger-action" id="btn-stop-fight" @click="stopFight" v-if="!fight.finished">Stop</button>
+                <button class="fight-danger-action" id="btn-delete-fight-cards" @click="deleteCards" v-if="fight.finished">Delete Card(s)</button>
+                <button class="fight-danger-action" id="btn-dont-delete-fight-cards" @click="dontDelete" v-if="fight.finished">Keep them</button>
             </div>
         </div>
 
         <div class="fight-danger-fight-cards-used">
-            <playable-card v-for="(card, index) in fightCardPlayedAndUsed" :card="card"></playable-card>
+            <playable-card v-for="(card, index) in fight.arrayFightCardUsed" :card="card" :in-fight="!fight.finished"></playable-card>
         </div>
     </div>
 </div>
@@ -42,10 +44,7 @@ const gameFight = {
     },
     data : function(){
         return {
-            cardToFight : this.fight.cardToFight,
-            fightCardPlayed : this.fight.arrayFightCard,
-            fightCardPlayedAndUsed : this.fight.arrayFightCardUsed,
-            finished : this.fight.finished
+            cardsToDelete : []
         }
     },
     methods : {
@@ -55,21 +54,34 @@ const gameFight = {
         },
         stopFight(){
             console.log('stopFight')
-            if(this.fight.isWon()){
-                this.$emit('fightClosed')
-            }
-            else{
-                this.$emit('stopFight')
-            }
+            this.$emit('stop')
         },
         deleteCards(){
             console.log('deleteCards')
-            this.$emit('fightClosed')
+            this.$emit('fight-closed', this.cardsToDelete.slice())
         },
         dontDelete(){
             console.log('dontDelete')
-            this.$emit('fightClosed')            
+            this.$emit('fight-closed', [])            
         },
+        addCardToDelete(card){
+            let cardExists = this.fight.getAllFightCards().indexOf(card) != -1;
+            // Juste check if this card exists
+            if(cardExists){
+                let index = this.cardsToDelete.indexOf(card); 
+                if(index == -1){
+                    let costToDeleteThisOne = card.costToDelete;
+                    let actualTotalCostToDelete = Tools.getTotalCostToDelete(this.cardsToDelete.slice());
+                    let canAddIt = actualTotalCostToDelete + actualTotalCostToDelete <= Math.abs(this.fight.getResult());
+                    if(canAddIt){
+                        this.cardsToDelete.push(card);
+                    }
+                }
+                else{
+                    this.cardsToDelete.splice(index,1);
+                }
+            }
+        }
     }
 }
 

@@ -32,7 +32,7 @@ let template = `
 `
 
 const gameInfo = {
-    props : ['game',],
+    props : ['game'],
     template : template,
     components : {
         pirateCard

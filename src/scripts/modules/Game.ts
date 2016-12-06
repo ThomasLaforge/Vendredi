@@ -65,7 +65,7 @@ class Game {
     }
 
     drawFightCard(){
-        if ( this.fight.getNumberOfCards() > this.fight.cardToFight.freeCards ){
+        if ( this.fight.getNumberOfCards() >= this.fight.cardToFight.freeCards ){
             this.loseOnePV();
             console.log('lose One PV', this.player.PV)
         }
@@ -118,14 +118,27 @@ class Game {
         this.fight.addFightCard( fightCard );
     }
 
+    stopFight(){
+        this.fight.finish();
+        let result = this.fight.getResult();
+        if( result >= 0 ) {
+            this.endFightWon();
+        }
+        else{
+            this.player.losePV(Math.abs(result));
+        }
+    }
+
     endFightWon(){
         if(this.fight instanceof DangerFight ){
+            console.log('Game : danger fight won');
             this.fight.arrayFightCard.push( this.fight.cardToFight.fightCard );
             let arrayOfCardsToDiscard = this.fight.arrayFightCard.slice();
             this.fightDeck.addToDiscard( arrayOfCardsToDiscard );
         }
 
         this.resetFight();
+        this.drawDangerCard();
     }
 
     endFightLost( cardsToDelete : Array<DangerCard|FightCard|AgingCard> ){
@@ -151,7 +164,7 @@ class Game {
         this.fight = null;
     }
 
-    discard( arrayOfCards : Array<PlayableCard|DangerCard> ) : void{
+    discard( arrayOfCards : Array<PlayableCard> ) : void{
         this.arrayOfRemovedCards.concat( arrayOfCards );
     }
 

@@ -28,8 +28,8 @@
             <game-info :game="game"></game-info>
             <game-over v-if="game.gameOver"></game-over>
             <hr>
-            <game-danger-choice :danger-choice="dangerChoice" v-if="!game.fight" @chose="startFight"></game-danger-choice>
-            <game-fight :fight="game.fight" @draw="addCardToFight" @fightClosed="reset" @fightClosed="addCardToFight" v-if="game.fight"></game-fight>
+            <game-danger-choice :danger-choice="game.dangerChoiceCards" v-if="!game.fight" @chose="startFight"></game-danger-choice>
+            <game-fight :fight="game.fight" @stop="stopFight" @draw="addCardToFight" @fight-closed="endFightLost" v-if="game.fight"></game-fight>
         </div>
 
         <!-- - - - - - - - -->
