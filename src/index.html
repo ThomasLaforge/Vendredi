@@ -29,7 +29,7 @@
             <game-over v-if="game.isGameOver()"></game-over>
             <hr>
             <game-danger-choice :danger-choice="game.dangerChoiceCards" v-if="( !game.fight && !game.isGameOver() )" @chose="startFight "></game-danger-choice>
-            <game-fight :fight="game.fight " @stop="stopFight " @draw="addCardToFight " @fight-closed="endFightLost " v-if="(game.fight && !game.isGameOver() )"></game-fight>
+            <game-fight :fight="game.fight" @stop="stopFight" @draw="addCardToFight" @fightClosed="endFightLost" @use-power="useMyPower" v-if="(game.fight && !game.isGameOver() )"></game-fight>
         </div>
 
         <!-- - - - - - - - -->

@@ -10,7 +10,7 @@ let template = `
     </div>
     <div class="fight-player-interface">
         <div class="fight-danger-fight-cards">
-            <playable-card v-for="(card, index) in fight.arrayFightCard" :card="card" :in-fight="!fight.finished" :selectedToDelete="cardsToDelete.indexOf(card) != -1" @cardToDelete="addCardToDelete"></playable-card>
+            <playable-card v-for="(card, index) in fight.arrayFightCard" :card="card" :in-fight="!fight.finished" @usePower="useCard" :selectedToDelete="cardsToDelete.indexOf(card) != -1" @cardToDelete="addCardToDelete"></playable-card>
         </div>
 
         <div class="fight-result-info-and-actions">
@@ -58,11 +58,11 @@ const gameFight = {
         },
         deleteCards(){
             console.log('deleteCards')
-            this.$emit('fight-closed', this.cardsToDelete.slice())
+            this.$emit('fightClosed', this.cardsToDelete.slice())
         },
         dontDelete(){
             console.log('dontDelete')
-            this.$emit('fight-closed', [])            
+            this.$emit('fightClosed', [])            
         },
         addCardToDelete(card){
             let cardExists = this.fight.getAllFightCards().indexOf(card) != -1;
@@ -81,6 +81,10 @@ const gameFight = {
                     this.cardsToDelete.splice(index,1);
                 }
             }
+        },
+        useCard(card){
+            console.log('fight : useCard', card)
+            this.$emit('use-power', card)
         }
     }
 }

@@ -47,6 +47,10 @@ let app = new Vue({
         endFightLost(arrOfCardsToDelete){
             this.game.endFightLost(arrOfCardsToDelete);
             console.log(this.game)
+        },
+        useMyPower(card){
+            console.log('game : usePower')
+            this.game.usePower(card)
         }
     }
 })

@@ -30,6 +30,7 @@ const playableCard = {
             else{
                 if(this.card.power){
                     console.log('power to use')
+                    this.$emit('usePower', this.card)
                 }
             }
         }

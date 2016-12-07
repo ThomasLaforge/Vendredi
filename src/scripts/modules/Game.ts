@@ -172,6 +172,7 @@ class Game {
 
     usePower( card : FightCard): void {
         if ( card.power ) {
+            let p:FightCardPower = card.power;
             switch( card.power ) {
                 case FightCardPower.GetTwoPV:
                     this.player.addPV( 2 );
@@ -186,10 +187,13 @@ class Game {
                     this.addCardToFight();
                     break;
                 default:
-                    console.log("use power not coded for the moment");
+                    console.log('game->usePower() : not a oneshot power', p)
                     break;
             }
             this.fight.useCard(card);
+        }
+        else{
+            console.log('game->usePower() : not a card with power attribute', card)
         }
     }
 
