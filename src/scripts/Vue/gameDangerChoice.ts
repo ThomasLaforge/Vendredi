@@ -25,7 +25,6 @@ const gameDangerChoice = {
     },
     methods:{
         changeSelectedIndex(index){
-            console.log('choice : card is selected')
             this.currentSelected = index;
         },
         chose(){

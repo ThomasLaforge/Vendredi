@@ -49,19 +49,15 @@ const gameFight = {
     },
     methods : {
         pickFightCard(){
-            console.log('draw')
             this.$emit('draw')            
         },
         stopFight(){
-            console.log('stopFight')
             this.$emit('stop')
         },
         deleteCards(){
-            console.log('deleteCards')
             this.$emit('fight-closed', this.cardsToDelete.slice())
         },
         dontDelete(){
-            console.log('dontDelete')
             this.$emit('fight-closed', [])            
         },
         addCardToDelete(card){
@@ -83,7 +79,6 @@ const gameFight = {
             }
         },
         useCard(card){
-            console.log('fight : useCard', card)
             this.$emit('use-power', card)
         }
     }

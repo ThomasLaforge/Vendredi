@@ -48,7 +48,6 @@ const dangerCard = {
     },
     methods: {
         select(){
-            console.log('card : i\'m selected')
             this.$emit('select', this.index);
         }
     }
