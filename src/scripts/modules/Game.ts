@@ -25,7 +25,7 @@ class Game {
     private _pirates       : Array<PirateCard>;
     private _actualPirate  : PirateCard;
     private _level         : number;
-    private _arrayOfRemovedCards  : Array<PlayableCard|DangerCard>;
+    private _arrayOfRemovedCards  : Array<PlayableCard>;
     private _fight         : Fight;
     private _dangerChoiceCards : Array<DangerCard>;
 
@@ -141,7 +141,7 @@ class Game {
         this.drawDangerCard();
     }
 
-    endFightLost( cardsToDelete : Array<DangerCard|FightCard|AgingCard> ){
+    endFightLost( cardsToDelete : Array<PlayableCard> ){
         if(this.fight instanceof DangerFight){        
             // Delete cards from game
             this.discard( cardsToDelete );
@@ -164,14 +164,13 @@ class Game {
         this.fight = null;
     }
 
-    discard( arrayOfCards : Array<PlayableCard> ) : void{
-        this.arrayOfRemovedCards.concat( arrayOfCards );
+    discard( arrayOfCards : Array<PlayableCard> ) : void {
+        arrayOfCards.forEach( card => {
+            this.arrayOfRemovedCards.push( card );
+        })
     }
 
-    usePower( selectedCard : DangerCard|FightCard): void {
-        let card : FightCard|DangerCard;
-        card = selectedCard instanceof DangerCard ? selectedCard.fightCard : selectedCard;
-
+    usePower( card : FightCard): void {
         if ( card.power ) {
             switch( card.power ) {
                 case FightCardPower.GetTwoPV:

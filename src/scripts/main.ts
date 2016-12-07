@@ -42,11 +42,11 @@ let app = new Vue({
         },
         stopFight(){
             this.game.stopFight();
+            console.log(this.game)
         },
-        endFightLost(arrOfIndexOfCardsToDelete){
-            let cardsToDelete = this.game.fight.getFightCardsByIndex(arrOfIndexOfCardsToDelete);
-            this.game.endFightLost(cardsToDelete);
-            console.log(this.game.arrayOfRemovedCards)
+        endFightLost(arrOfCardsToDelete){
+            this.game.endFightLost(arrOfCardsToDelete);
+            console.log(this.game)
         }
     }
 })

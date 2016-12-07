@@ -30,7 +30,7 @@ class Tools {
     }
 
     static getFightPowerName(power : FightCardPower|null) : string {
-        console.log(power)
+        // console.log(power)
         switch (power) {
             case FightCardPower.GetOnePV: return  '+1PV' ;
             case FightCardPower.GetTwoPV: return  '+2PV' ;
