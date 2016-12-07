@@ -137,7 +137,7 @@ class Tools {
         }
         else{
             if(
-                p === AgingCardPower.MaxEqualsZero || 
+                p === AgingCardPower.MaxEqualsZero
             ){
                 type = PlayableCardPowerType.AUTOMATIC
             }

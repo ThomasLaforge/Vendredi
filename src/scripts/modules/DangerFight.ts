@@ -3,8 +3,8 @@ import { DangerCard } from './DangerCard';
 import { GameLevel,DangerFightInterface } from './Vendredi';
 
 class DangerFight extends Fight implements DangerFightInterface {
-    constructor( danger:DangerCard, public level: GameLevel ){
-        super(danger);
+    constructor( cardToFight:DangerCard, public level: GameLevel ){
+        super(cardToFight);
     }
 
     getStrengthCardToFight(){
@@ -16,7 +16,7 @@ class DangerFight extends Fight implements DangerFightInterface {
         let fightPoints = this.getStrengthCardToFight();
         let playerForce = this.getPlayerForce();
 
-        return playerForce - fightPoints;
+        return playerForce - fightPoints;   
     }
 }
 

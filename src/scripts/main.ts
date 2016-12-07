@@ -4,7 +4,6 @@
 // Model
 import { Game 	}         from	'./modules/Game';
 import { Player }         from	'./modules/Player';
-import { UserInterface }  from	'./modules/UserInterface';
 import { DangerFight }  from	'./modules/DangerFight';
 
 let pseudo   = 'Thomas';
