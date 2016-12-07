@@ -1,9 +1,11 @@
 let template = `
+<div>
     GAME OVER !
+</div>
 `
 
 const gameOver = {
-    template : '#game-over',
+    template : template,
 }
 
 export { gameOver }
