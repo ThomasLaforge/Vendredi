@@ -72,7 +72,7 @@ const gameFight = {
                 if(index == -1){
                     let costToDeleteThisOne = card.costToDelete;
                     let actualTotalCostToDelete = Tools.getTotalCostToDelete(this.cardsToDelete.slice());
-                    let canAddIt = actualTotalCostToDelete + actualTotalCostToDelete <= Math.abs(this.fight.getResult());
+                    let canAddIt = actualTotalCostToDelete + costToDeleteThisOne <= Math.abs(this.fight.getResult());
                     if(canAddIt){
                         this.cardsToDelete.push(card);
                     }
