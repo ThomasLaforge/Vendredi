@@ -1,6 +1,8 @@
 import {Card} from './Card';
+import {FightCard} from './FightCard';
+import {DangerCard} from './DangerCard';
 import {PlayableCard} from './PlayableCard';
-import {FightCardPower, AgingCardPower, PirateMission} from './Vendredi';
+import {PlayableCardPowerType, FightCardPower, AgingCardPower, PirateMission} from './Vendredi';
 import * as _ from 'lodash';
 
 class Tools {
@@ -15,7 +17,6 @@ class Tools {
             case '+1PV': return FightCardPower.GetOnePV;
             case '+2PV': return FightCardPower.GetTwoPV;
             case 'Copier x1': return FightCardPower.CopyOne;
-            case 'Copier x2': return FightCardPower.CopyTwo;
             case 'Phase -1': return FightCardPower.PreviousPhase;
             case 'Echanger x1': return FightCardPower.SwapOne;
             case 'Echanger x2': return FightCardPower.SwapTwo;
@@ -35,7 +36,6 @@ class Tools {
             case FightCardPower.GetOnePV: return  '+1PV' ;
             case FightCardPower.GetTwoPV: return  '+2PV' ;
             case FightCardPower.CopyOne: return  'Copier x1' ;
-            case FightCardPower.CopyTwo: return  'Copier x2' ;
             case FightCardPower.PreviousPhase: return  'Phase -1'; 
             case FightCardPower.SwapOne: return  'Echanger x1' ;
             case FightCardPower.SwapTwo: return  'Echanger x2' ;
@@ -99,6 +99,61 @@ class Tools {
         });
         
         return sum;
+    }
+
+    static getTypeOfPower(card:PlayableCard) : PlayableCardPowerType {
+        let type: PlayableCardPowerType;
+        let p:FightCardPower|AgingCardPower = card.power;
+
+        if(card instanceof FightCard){
+            if(
+                p === FightCardPower.CopyOne || 
+                p === FightCardPower.SwapOne || 
+                p === FightCardPower.SwapTwo || 
+                p === FightCardPower.Destroy || 
+                p === FightCardPower.SortThreeCards 
+            ){
+                type = PlayableCardPowerType.TWO_STEP
+            }
+            else if(
+                p === FightCardPower.PreviousPhase || 
+                p === FightCardPower.Double 
+            ){
+                type = PlayableCardPowerType.AUTOMATIC
+            }
+            else if(
+                p === FightCardPower.GetOnePV || 
+                p === FightCardPower.GetTwoPV || 
+                p === FightCardPower.GetOneCard || 
+                p === FightCardPower.GetTwoCard || 
+                p === FightCardPower.UnderTheDeck 
+                
+            ){
+                type = PlayableCardPowerType.ONE_SHOT
+            }
+            else{
+                console.log('Type for this power card not referenced')
+            }
+        }
+        else{
+            if(
+                p === AgingCardPower.MaxEqualsZero || 
+            ){
+                type = PlayableCardPowerType.AUTOMATIC
+            }
+            else if(
+                p === AgingCardPower.LoseOnePV ||   
+                p === AgingCardPower.Stop ||   
+                p === AgingCardPower.LoseTwoPV   
+            ){
+                type = PlayableCardPowerType.ONE_SHOT
+            }
+            else{
+                console.log('Type for this power card not referenced')
+            }
+        }
+
+        return type;
     }
 
     // static getPowerName(power:FightCardPower|AgingCardPower): string {

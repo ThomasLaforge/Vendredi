@@ -17,7 +17,6 @@ export enum PirateMission {
 
 export enum FightCardPower{
     CopyOne,
-    CopyTwo,
     GetOnePV,
     GetTwoPV,
     GetOneCard,
@@ -31,14 +30,20 @@ export enum FightCardPower{
     SortThreeCards
 }
 
-export enum AgingCardPower{
+export enum PlayableCardPowerType {
+    ONE_SHOT,
+    TWO_STEP,
+    AUTOMATIC
+}
+
+export enum AgingCardPower {
     LoseOnePV,
     LoseTwoPV,
     Stop,
     MaxEqualsZero
 }
 
-export enum GameDifficulty{
+export enum GameDifficulty {
     EASY,
     MEDIUM,
     HARD,
