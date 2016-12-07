@@ -58,11 +58,11 @@ const gameFight = {
         },
         deleteCards(){
             console.log('deleteCards')
-            this.$emit('fightClosed', this.cardsToDelete.slice())
+            this.$emit('fight-closed', this.cardsToDelete.slice())
         },
         dontDelete(){
             console.log('dontDelete')
-            this.$emit('fightClosed', [])            
+            this.$emit('fight-closed', [])            
         },
         addCardToDelete(card){
             let cardExists = this.fight.getAllFightCards().indexOf(card) != -1;
