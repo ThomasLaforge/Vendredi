@@ -111,6 +111,7 @@ class Tools {
                 p === FightCardPower.SwapOne || 
                 p === FightCardPower.SwapTwo || 
                 p === FightCardPower.Destroy || 
+                p === FightCardPower.UnderTheDeck || 
                 p === FightCardPower.SortThreeCards 
             ){
                 type = PlayableCardPowerType.TWO_STEP
@@ -125,9 +126,7 @@ class Tools {
                 p === FightCardPower.GetOnePV || 
                 p === FightCardPower.GetTwoPV || 
                 p === FightCardPower.GetOneCard || 
-                p === FightCardPower.GetTwoCard || 
-                p === FightCardPower.UnderTheDeck 
-                
+                p === FightCardPower.GetTwoCard
             ){
                 type = PlayableCardPowerType.ONE_SHOT
             }
