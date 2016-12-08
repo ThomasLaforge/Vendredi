@@ -28,8 +28,6 @@ let template = `
             </div>
         </div>
 
-        {{ freeCardsAccessible }}
-
         <div class="fight-danger-fight-cards-used">
             <playable-card v-for="(card, index) in fight.arrayFightCardUsed" :card="card" :in-fight="!fight.finished" :selectedToDelete="cardsToDelete.indexOf(card) != -1" @cardToDelete="addCardToDelete"></playable-card>
         </div>
