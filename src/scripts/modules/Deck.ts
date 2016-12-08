@@ -69,7 +69,7 @@ abstract class Deck {
         return res;
     }
 
-    // Could be recursive
+    // Could be recursive ?
     drawOneCard(){
         let res:any ;
 

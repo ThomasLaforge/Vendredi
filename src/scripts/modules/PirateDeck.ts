@@ -20,7 +20,8 @@ class PirateDeck extends Deck{
         this.arrayDeck = arrRes;
     }
 
-    getPirates(nb: number){
+    // Pirates doesn't have same discard. Discard representing pirates defeated
+    drawCards(nb: number){
         let arr:Array<PirateCard> = [];
 
         if(nb > 0){

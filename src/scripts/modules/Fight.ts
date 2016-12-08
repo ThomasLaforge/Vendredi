@@ -56,9 +56,13 @@ abstract class Fight implements FightInterface {
             }
         });
 
+        // TODO : Update for loop in while loop
         let orderedPlayableCardsByStrength = allPlayableCards.sort( (a, b) => { return b.strength - a.strength; })
-        for(let i = 0 + offsetCauseMaxCardEqualsZero; i < nbCardToDouble + offsetCauseMaxCardEqualsZero; i++){
-            playerForce += orderedPlayableCardsByStrength[i].strength;
+        for(let i = 0; i < nbCardToDouble; i++){
+            let indexOfNextMaxCard = i + offsetCauseMaxCardEqualsZero;
+            if( indexOfNextMaxCard < orderedPlayableCardsByStrength.length ){
+                playerForce += orderedPlayableCardsByStrength[indexOfNextMaxCard].strength;
+            }
         }
 
         return playerForce;
@@ -93,7 +97,7 @@ abstract class Fight implements FightInterface {
     getSumOfCostToDelete(){
         let sum = 0;
 
-        this.arrayFightCard.forEach( (card : FightCard|AgingCard) => {
+        this.arrayFightCard.forEach( (card : PlayableCard) => {
             sum += card.costToDelete;
         });
 

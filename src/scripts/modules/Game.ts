@@ -46,7 +46,7 @@ class Game {
         }
 
         this.pirateDeck    = new PirateDeck();
-        this.pirates       = this.pirateDeck.getPirates( 2 );
+        this.pirates       = this.pirateDeck.drawCards( 2 );
         this.actualPirate = this.pirates[0];
 
         this.level         = GameLevel.FIRST_ROUND;
@@ -98,22 +98,20 @@ class Game {
     }
 
     drawDangerCard(){
-        let arr:Array<DangerCard> = []; //Tableau de cartes danger à renvoyer. Vide si fin de l'entrainement.
+        let arr:Array<DangerCard> = [];
 
         if ( this.dangerDeck.isEmpty() ){
-            // on monte le niveau d'un cran
             this.level++;
-            // on mélange la défausse de carte danger qui devient la pioche
+            // shuffle discard who becomes the deck
             this.dangerDeck.discardToDeck();
         }
         
         if(this.level < 4){
-            // On pioche deux cartes
             arr = ( this.dangerDeck.drawCards( 2 ) );
         }
-        
 
         this.dangerChoiceCards = arr;
+        return this.dangerChoiceCards //Optional
     }
 
     startFight( card:DangerCard|PirateCard ){
