@@ -17,11 +17,11 @@ abstract class Fight implements FightInterface {
         this.freeCards += cardInAddition;
     }
 
-    addFightCard( fightCard : FightCard|AgingCard ) {
+    addFightCard( fightCard : PlayableCard ) {
         this.arrayFightCard.push( fightCard );
     }
 
-    useCard(card : FightCard ) {
+    useCard(card : PlayableCard ) {
         let indexCard = this.arrayFightCard.indexOf(card);
         if(indexCard > -1){
             this.arrayFightCard.splice(indexCard, 1);

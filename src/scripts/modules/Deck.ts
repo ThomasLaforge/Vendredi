@@ -69,7 +69,7 @@ abstract class Deck {
         return res;
     }
 
-    // Missing control if empty
+    // Could be recursive
     drawOneCard(){
         let res:any ;
 
@@ -79,13 +79,13 @@ abstract class Deck {
         }
         else {
             this.discardToDeck();
-            // on recommence drawDangerCard();
+            // on recommence drawOneCard();
             if ( this.length() >= 1 ) {
                 res = this.arrayDeck[ 0 ];
                 this.arrayDeck.splice( 0, 1 );
             }
             else{
-                res = false;
+                throw new Error('No more cards in this deck');
             }
         }
 

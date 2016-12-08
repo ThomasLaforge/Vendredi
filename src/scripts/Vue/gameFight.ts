@@ -74,7 +74,7 @@ const gameFight = {
                     }
                 }
                 else{
-                    this.cardsToDelete.splice(index,1);
+                    this.cardsToDelete.splice(index, 1);
                 }
             }
         },

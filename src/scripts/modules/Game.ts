@@ -13,7 +13,7 @@ import { AgingCard }    from './AgingCard';
 import { PirateDeck }   from './PirateDeck';
 import { PirateCard }   from './PirateCard';
 import { Player }        from './Player';
-import { GameDifficulty, GameLevel, FightCardPower } from './Vendredi';
+import { GameDifficulty, GameLevel, FightCardPower, AgingCardPower } from './Vendredi';
 
 class Game {
 
@@ -64,7 +64,7 @@ class Game {
         return this.gameOver || this.player.isDead();
     }
 
-    drawFightCard(){
+    drawFightCard() : PlayableCard {
         if ( this.fight.getNumberOfCards() >= this.fight.cardToFight.freeCards ){
             this.loseOnePV();
             console.log('lose One PV', this.player.PV)
