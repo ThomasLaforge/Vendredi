@@ -181,10 +181,10 @@ class Game {
                     this.player.addPV( 1 );
                     break;
                 case FightCardPower.GetOneCard:
-                    this.addCardToFight();
+                    this.fight.addFreeCards(1);
                     break;
                 case FightCardPower.GetTwoCard:
-                    this.addCardToFight();
+                    this.fight.addFreeCards(2);
                     break;
                 default:
                     console.log('game->usePower() : not a oneshot power', p)

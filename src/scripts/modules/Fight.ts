@@ -7,13 +7,21 @@ import { FightInterface } from './Vendredi';
 
 abstract class Fight implements FightInterface {
 
-    constructor( public cardToFight : any, public arrayFightCard : Array<PlayableCard> = [], public arrayFightCardUsed : Array<PlayableCard> = [], public finished : boolean = false ){}
+    private _freeCards : number;
 
-    addFightCard( fightCard : FightCard|AgingCard ){
+    constructor( public cardToFight : any, public arrayFightCard : Array<PlayableCard> = [], public arrayFightCardUsed : Array<PlayableCard> = [], public finished : boolean = false ){
+        this.freeCards = cardToFight.freeCards;
+    }
+
+    addFreeCards(cardInAddition : number) {
+        this.freeCards += cardInAddition;
+    }
+
+    addFightCard( fightCard : FightCard|AgingCard ) {
         this.arrayFightCard.push( fightCard );
     }
 
-    useCard(card : FightCard ){
+    useCard(card : FightCard ) {
         let indexCard = this.arrayFightCard.indexOf(card);
         if(indexCard > -1){
             this.arrayFightCard.splice(indexCard, 1);
@@ -21,10 +29,10 @@ abstract class Fight implements FightInterface {
         }
     }
 
-    getPlayerForce(){
+    getPlayerForce() {
         let playerForce: number = 0;
 
-        this.arrayFightCard.concat(this.arrayFightCardUsed);
+        this.arrayFightCard = this.arrayFightCard.concat(this.arrayFightCardUsed);
         this.arrayFightCard.forEach( fightCard => {
             playerForce += fightCard.strength;
         });
@@ -74,6 +82,13 @@ abstract class Fight implements FightInterface {
     
     getAllFightCards(){
         return this.arrayFightCard.concat(this.arrayFightCardUsed);
+    }
+
+    get freeCards() : number{
+        return this.freeCards
+    }
+    set freeCards(newFreeCards:number){
+        this._freeCards = newFreeCards;
     }
 }
 
