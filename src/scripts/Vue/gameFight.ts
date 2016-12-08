@@ -21,12 +21,14 @@ let template = `
             </div>
 
             <div class="fight-danger-actions">
-                <button class="fight-danger-action" id="btn-pick-fight-card" @click="pickFightCard" v-if="!fight.finished">Piocher{{fight.getNumberOfCards() >= fight.cardToFight.freeCards ? ' + 1': ''}}</button>
+                <button class="fight-danger-action" id="btn-pick-fight-card" @click="pickFightCard" v-if="!fight.finished">Piocher ( {{freeCardsAccessible > 0 ? 'encore ' + freeCardsAccessible : 'contre 1 PV'}} )</button>
                 <button class="fight-danger-action" id="btn-stop-fight" @click="stopFight" v-if="!fight.finished">Stop</button>
                 <button class="fight-danger-action" id="btn-delete-fight-cards" @click="deleteCards" v-if="fight.finished">Delete Card(s)</button>
                 <button class="fight-danger-action" id="btn-dont-delete-fight-cards" @click="dontDelete" v-if="fight.finished">Keep them</button>
             </div>
         </div>
+
+        {{ freeCardsAccessible }}
 
         <div class="fight-danger-fight-cards-used">
             <playable-card v-for="(card, index) in fight.arrayFightCardUsed" :card="card" :in-fight="!fight.finished" :selectedToDelete="cardsToDelete.indexOf(card) != -1" @cardToDelete="addCardToDelete"></playable-card>
@@ -45,6 +47,12 @@ const gameFight = {
     data : function(){
         return {
             cardsToDelete : []
+        }
+    },
+    computed : {
+        freeCardsAccessible : function() : number {
+            console.log(this.fight.freeCards - this.fight.getNumberOfCards());
+            return this.fight.freeCards - this.fight.getNumberOfCards();
         }
     },
     methods : {
