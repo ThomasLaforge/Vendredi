@@ -3,31 +3,31 @@ import {PirateCard} from './PirateCard'
 import {DangerCard} from './DangerCard'
 
 export enum AgingLevel {
-    Uncomfortable = 1,
-    Evil = 2
+    UNCOMFORTABLE = 1,
+    EVIL = 2
 }
 
 export enum PirateMission {
-    EachCardGiveOneFightPoint,
-    KeepOnlyHalfCards,
-    EachPayedCardCostTwo,
-    AddTwoDangerPointByAgingCardInFigthAddToFightDeck,
-    FightAllDangerCards
+    EACH_CARD_GIVE_ONE_FIGHT_POINT,
+    ONLY_KEEP_HALF_CARDS,
+    EACH_PAYED_CARD_COST_TWO,
+    ADD_TWO_DANGER_POINT_BY_AGING_CARD_IN_FIGHT_ADDED_TO_FIGHT_DECK,
+    FIGHT_ALL_DANGER_CARDS
 }
 
 export enum FightCardPower{
-    CopyOne,
-    GetOnePV,
-    GetTwoPV,
-    GetOneCard,
-    GetTwoCard,
-    PreviousPhase,
-    SwapOne,
-    SwapTwo,
-    Destroy,
-    Double,
-    UnderTheDeck,
-    SortThreeCards
+    COPY_ONE,
+    GET_ONE_PV,
+    GET_TWO_PV,
+    GET_ONE_CARD,
+    GET_TWO_CARDS,
+    PREVIOUS_PHASE,
+    SWAP_ONE,
+    SWAP_TWO,
+    DESTROY,
+    DOUBLE,
+    UNDER_THE_DECK,
+    SORT_THREE_CARDS
 }
 
 export enum PlayableCardPowerType {
@@ -37,10 +37,10 @@ export enum PlayableCardPowerType {
 }
 
 export enum AgingCardPower {
-    LoseOnePV,
-    LoseTwoPV,
-    Stop,
-    MaxEqualsZero
+    LOSE_ONE_PV,
+    LOSE_TWO_PV,
+    STOP,
+    MAX_EQUALS_ZERO
 }
 
 export enum GameDifficulty {
@@ -51,14 +51,14 @@ export enum GameDifficulty {
 }
 
 export enum GameLevel {
-    FirstRound,
-    SecondRound,
-    ThirdRound
+    FIRST_ROUND,
+    SECONDE_ROUND,
+    THIRD_ROUND
 }
 
 export enum GameStep {
-    Dangers,
-    Pirates
+    DANGERS,
+    PIRATES
 }
 
 export interface PlayerInterface {

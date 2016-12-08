@@ -41,9 +41,9 @@ const dangerCard = {
     },
     data : () => {
         return {
-            firstLevel : GameLevel.FirstRound,
-            secondeLevel : GameLevel.SecondRound,
-            thirdLevel : GameLevel.ThirdRound,
+            firstLevel : GameLevel.FIRST_ROUND,
+            secondeLevel : GameLevel.SECONDE_ROUND,
+            thirdLevel : GameLevel.THIRD_ROUND,
         }
     },
     methods: {

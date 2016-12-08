@@ -49,7 +49,7 @@ class Game {
         this.pirates       = this.pirateDeck.getPirates( 2 );
         this.actualPirate = this.pirates[0];
 
-        this.level         = GameLevel.FirstRound;
+        this.level         = GameLevel.FIRST_ROUND;
         this.arrayOfRemovedCards  = [];
         this.drawDangerCard();
         this.fight         = null;
@@ -77,7 +77,24 @@ class Game {
             this.fightDeck.discardToDeck();
         }
 
-        return this.fightDeck.drawOneCard();
+        let newCardDraw:PlayableCard = this.fightDeck.drawOneCard();
+        // check if a power is to use now
+        if(newCardDraw instanceof AgingCard){
+            switch (newCardDraw.power) {
+                case AgingCardPower.LOSE_ONE_PV:
+                    this.player.losePV(1);
+                case AgingCardPower.LOSE_TWO_PV:
+                    this.player.losePV(2);                   
+                case AgingCardPower.STOP:
+                    this.fight.forceToStop();
+                default:
+                    newCardDraw.usePower();
+            }
+            // Vue is already checking if game over
+            
+        }
+
+        return newCardDraw;
     }
 
     drawDangerCard(){
@@ -174,16 +191,16 @@ class Game {
         if ( card.power ) {
             let p:FightCardPower = card.power;
             switch( card.power ) {
-                case FightCardPower.GetTwoPV:
+                case FightCardPower.GET_TWO_PV:
                     this.player.addPV( 2 );
                     break;
-                case FightCardPower.GetOnePV:
+                case FightCardPower.GET_ONE_PV:
                     this.player.addPV( 1 );
                     break;
-                case FightCardPower.GetOneCard:
+                case FightCardPower.GET_ONE_CARD:
                     this.fight.addFreeCards(1);
                     break;
-                case FightCardPower.GetTwoCard:
+                case FightCardPower.GET_TWO_CARDS:
                     this.fight.addFreeCards(2);
                     break;
                 default:

@@ -12,7 +12,7 @@ class DangerFight extends Fight implements DangerFightInterface {
     }
 
     setLevelDown(){
-        if(this.level > GameLevel.FirstRound){
+        if(this.level > GameLevel.FIRST_ROUND){
             this.level -= 1;        
         }
     }

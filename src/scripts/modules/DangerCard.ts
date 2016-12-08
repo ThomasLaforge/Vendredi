@@ -16,7 +16,7 @@ class DangerCard implements DangerCardInterface {
 
     getStrength(lvl: GameLevel) {
         switch (lvl) {
-            case GameLevel.FirstRound:
+            case GameLevel.FIRST_ROUND:
                 switch (this.freeCards) {
                     case 1: return 0;
                     case 2: return 1;
@@ -26,7 +26,7 @@ class DangerCard implements DangerCardInterface {
                     default: return 29;
                 }
 
-            case GameLevel.SecondRound:
+            case GameLevel.SECONDE_ROUND:
                 switch (this.freeCards) {
                     case 1: return 1;
                     case 2: return 3;
@@ -37,7 +37,7 @@ class DangerCard implements DangerCardInterface {
                 }
 
 
-            case GameLevel.ThirdRound:
+            case GameLevel.THIRD_ROUND:
                 switch (this.freeCards) {
                     case 1: return 3;
                     case 2: return 6;
