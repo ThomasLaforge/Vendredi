@@ -3,13 +3,19 @@ import { PirateCard } from './PirateCard';
 import { DangerCard } from './DangerCard';
 import { FightCard } from './FightCard';
 import { AgingCard } from './AgingCard';
-import { FightInterface } from './Vendredi';
+import { FightInterface, FightCardPower, AgingCardPower } from './Vendredi';
 
 abstract class Fight implements FightInterface {
 
     private _freeCards : number;
 
-    constructor( public cardToFight : any, public arrayFightCard : Array<PlayableCard> = [], public arrayFightCardUsed : Array<PlayableCard> = [], public finished : boolean = false ){
+    constructor( 
+        public cardToFight : any, 
+        public arrayFightCard : Array<PlayableCard> = [], 
+        public arrayFightCardUsed : Array<PlayableCard> = [], 
+        public finished : boolean = false, 
+        public forcedToStop : boolean = false 
+    ){
         this.freeCards = cardToFight.freeCards;
     }
 
@@ -74,6 +80,10 @@ abstract class Fight implements FightInterface {
         });
 
         return sum;
+    }
+
+    forceToStop(){
+        this.forcedToStop = true;
     }
 
     getCardToFight(){
