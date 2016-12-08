@@ -37,11 +37,29 @@ abstract class Fight implements FightInterface {
 
     getPlayerForce() {
         let playerForce: number = 0;
+        let nbCardToDouble = 0;
+        let offsetCauseMaxCardEqualsZero = 0;
 
-        this.arrayFightCard = this.arrayFightCard.concat(this.arrayFightCardUsed);
-        this.arrayFightCard.forEach( fightCard => {
-            playerForce += fightCard.strength;
+        let allPlayableCards = this.arrayFightCard.concat(this.arrayFightCardUsed);
+        allPlayableCards.forEach( playableCard => {
+            playerForce += playableCard.strength;
+            if(playableCard instanceof FightCard){
+                if(playableCard.power == FightCardPower.DOUBLE){
+                    nbCardToDouble++;
+                }
+            }
+            // If its AgingCard
+            else{
+                if(playableCard.power == AgingCardPower.MAX_EQUALS_ZERO){
+                    offsetCauseMaxCardEqualsZero++;
+                }
+            }
         });
+
+        let orderedPlayableCardsByStrength = allPlayableCards.sort( (a, b) => { return b.strength - a.strength; })
+        for(let i = 0 + offsetCauseMaxCardEqualsZero; i < nbCardToDouble + offsetCauseMaxCardEqualsZero; i++){
+            playerForce += orderedPlayableCardsByStrength[i].strength;
+        }
 
         return playerForce;
     }
