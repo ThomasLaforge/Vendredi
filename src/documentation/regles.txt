@@ -25,7 +25,7 @@ II - Déroulement:
 # - Lorsque la pioche des Périls est épuisée une deuxième fois, on passe en niveau rouge 
 - Lorsque la pioche des Périls est épuisée une troisième fois, on passe aux boss de fin de niveaux: les pirates. On affronte les pirate un par un, comme les périls (cartes gratuites + cartes en payant un point de vie), à la différence qu'on ne peut pas déclarer la fin du combat si on est moins fort que les pirates: il faut être plus fort. 
 # - On est éliminé lorsqu'on a -1 point de vie (à 0, on est toujours en vie). 
-- Si vous piocher la dernière carte de votre deck, vous prenez votre défausse, y ajoutez la première carte de Vieillissement sans la regarder, mélangez le tout, et paf, vous avez un deck tout neuf. 
+# - Si vous piocher la dernière carte de votre deck, vous prenez votre défausse, y ajoutez la première carte de Vieillissement sans la regarder, mélangez le tout, et paf, vous avez un deck tout neuf. 
 
 
 III - Après, il y a les capacités des cartes Robinson, des cartes de Vieillissement et des pirates: 
@@ -33,19 +33,19 @@ III - Après, il y a les capacités des cartes Robinson, des cartes de Vieilliss
 Cartes Périls devenues Robinson:
 --------------------------------
 # - +x points de vie => ça semble clair 
-- +x cartes => vous pouvez piocher x cartes supplémentaires gratuitement (et déclarer la fin du combat entre deux cartes, on le rappelle) 
+# - +x cartes => vous pouvez piocher x cartes supplémentaires gratuitement (et déclarer la fin du combat entre deux cartes, on le rappelle) 
 - échanger x cartes: mettez une de vos cartes déjà jouées dans la défausse (vous pouvez défausser une carte dont vous avez déjà utilisée la capacité) et piochez-en une autre gratuitement. On ne peut pas échanger la carte qui déclenche cet effet; si il y a plusieurs échanges, on peut échanger la carte que l'on vient de piocher, mais on ne peut pas déclencher d'autre effet tant que tous les échanges ne sont pas finis. 
 - trier 3 cartes: prendre les trois première cartes du deck, en défaussez-une, mettre les deux autres sur le dessus du deck: 
 - détruire un carte: choisissez une de vos cartes déjà jouée, et retournez-là. Elle à une force de 0, et si elle est encore en jeu à la fin du combat, elle est retirée du jeu 
 - copier: copier l'effet d'une autre carte 
-- doubler: doubler la force d'une autre carte. Il est interdit d'utiliser plusieurs fois cet effet sur la même carte 
+# - doubler: doubler la force d'une autre carte. Il est interdit d'utiliser plusieurs fois cet effet sur la même carte 
 - niveau -1: si vous êtes au niveau jaune (resp. rouge), la force du péril que vous affronter est réduite à la force du niveau vert (resp. jaune). N'a pas d'effet sur les périls niveau vert ni sur les pirates 
 
 Cartes Vieillissement:
 ----------------------
-- stop: si vous piochez cette carte parmi les cartes gratuites données par le Péril ou le PirateCard, vous cessez immédiatement de piocher des cartes gratuites 
-- plus forte carte=0: la plus forte carte jouée est de force 0 (une seule carte affectée si plusieurs sont de force identiques) 
-- -x points de vie: si la carte est encore en jeu à la fin du combat, vous perdez x points de vie
+# - stop: si vous piochez cette carte parmi les cartes gratuites données par le Péril ou le PirateCard, vous cessez immédiatement de piocher des cartes gratuites 
+# - plus forte carte=0: la plus forte carte jouée est de force 0 (une seule carte affectée si plusieurs sont de force identiques) 
+# - -x points de vie: si la carte est encore en jeu à la fin du combat, vous perdez x points de vie
 
 Cartes Pirates:
 --------------- 
