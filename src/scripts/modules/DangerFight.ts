@@ -11,6 +11,12 @@ class DangerFight extends Fight implements DangerFightInterface {
         return this.cardToFight.getStrength(this.level);
     }
 
+    setLevelDown(){
+        if(this.level > GameLevel.FirstRound){
+            this.level -= 1;        
+        }
+    }
+
     getResult(){
         // >= 0 if player win ; < 0 if player lose fight
         let fightPoints = this.getStrengthCardToFight();
