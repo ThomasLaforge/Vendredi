@@ -117,7 +117,7 @@ abstract class Fight implements FightInterface {
     }
 
     get freeCards() : number{
-        return this.freeCards
+        return this._freeCards
     }
     set freeCards(newFreeCards:number){
         this._freeCards = newFreeCards;
