@@ -13,7 +13,7 @@ import { AgingCard }    from './AgingCard';
 import { PirateDeck }   from './PirateDeck';
 import { PirateCard }   from './PirateCard';
 import { Player }        from './Player';
-import { GameDifficulty, GameLevel, FightCardPower, AgingCardPower } from './Vendredi';
+import { GameDifficulty, GameLevel, FightCardPower, AgingCardPower, PirateMission } from './Vendredi';
 
 class Game {
 
@@ -119,7 +119,26 @@ class Game {
             this.fight = new DangerFight( card, this.level );
         }
         else if(card instanceof PirateCard){
-            this.fight = new PirateFight( card );
+            switch (card.mission) {
+                case PirateMission.EACH_PAYED_CARD_COST_TWO:
+                    this.fight = new PirateFight( card, 2 );
+                    break;
+
+                case PirateMission.FIGHT_ALL_DANGER_CARDS:
+                    this.fight = new PirateFight( card, null, this.dangerDeck );
+                    break;
+                    
+                case PirateMission.ADD_TWO_DANGER_POINT_BY_AGING_CARD_IN_FIGHT_ADDED_TO_FIGHT_DECK:
+                    let arrayOfAgingCardInFightDeck = this.fightDeck.getAllCards().filter( playableCard => {
+                        return playableCard instanceof AgingCard
+                    });
+                    this.fight = new PirateFight( card, null, null, arrayOfAgingCardInFightDeck.length )
+                    break;
+            
+                default:
+                    this.fight = new PirateFight( card )
+                    break;
+            }
         }
         else{
             throw new Error("Type of card to fight is not PirateCard or Danger !");

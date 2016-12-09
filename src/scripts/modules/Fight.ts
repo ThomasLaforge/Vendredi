@@ -14,7 +14,7 @@ abstract class Fight implements FightInterface {
         public arrayFightCard : Array<PlayableCard> = [], 
         public arrayFightCardUsed : Array<PlayableCard> = [], 
         public finished : boolean = false, 
-        public forcedToStop : boolean = false 
+        public forcedToStop : boolean = false
     ){
         this.freeCards = cardToFight.freeCards;
     }
@@ -37,12 +37,32 @@ abstract class Fight implements FightInterface {
 
     getPlayerForce() {
         let playerForce: number = 0;
+        let allPlayableCards = this.getAllFightCards();
+        let powersToApplyAnswer = this.getPowersToApplyOnPlayerForce();
+        let nbCardToDouble = powersToApplyAnswer.nbCardToDouble;
+        let offsetCauseMaxCardEqualsZero = powersToApplyAnswer.offsetMaxEqualsZero;
+
+        allPlayableCards.forEach( playableCard => {
+            playerForce += playableCard.strength;
+        })
+
+        // TODO : Update for loop in while loop
+        let orderedPlayableCardsByStrength = allPlayableCards.sort( (a, b) => { return b.strength - a.strength; })
+        for(let i = 0; i < nbCardToDouble; i++){
+            let indexOfNextMaxCard = i + offsetCauseMaxCardEqualsZero;
+            if( indexOfNextMaxCard < orderedPlayableCardsByStrength.length ){
+                playerForce += orderedPlayableCardsByStrength[indexOfNextMaxCard].strength;
+            }
+        }
+
+        return playerForce;
+    }
+
+    getPowersToApplyOnPlayerForce() {
         let nbCardToDouble = 0;
         let offsetCauseMaxCardEqualsZero = 0;
 
-        let allPlayableCards = this.arrayFightCard.concat(this.arrayFightCardUsed);
-        allPlayableCards.forEach( playableCard => {
-            playerForce += playableCard.strength;
+        this.getAllFightCards().forEach( playableCard => {
             if(playableCard instanceof FightCard){
                 if(playableCard.power == FightCardPower.DOUBLE){
                     nbCardToDouble++;
@@ -56,16 +76,10 @@ abstract class Fight implements FightInterface {
             }
         });
 
-        // TODO : Update for loop in while loop
-        let orderedPlayableCardsByStrength = allPlayableCards.sort( (a, b) => { return b.strength - a.strength; })
-        for(let i = 0; i < nbCardToDouble; i++){
-            let indexOfNextMaxCard = i + offsetCauseMaxCardEqualsZero;
-            if( indexOfNextMaxCard < orderedPlayableCardsByStrength.length ){
-                playerForce += orderedPlayableCardsByStrength[indexOfNextMaxCard].strength;
-            }
+        return {
+            offsetMaxEqualsZero : offsetCauseMaxCardEqualsZero,
+            nbCardToDouble : nbCardToDouble
         }
-
-        return playerForce;
     }
 
     abstract getStrengthCardToFight() : number
