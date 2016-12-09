@@ -169,6 +169,7 @@ class Game {
             // fight cards
             this.fightDeck.discard( this.fight.getAllFightCards() );
             this.resetFight();
+            this.drawDangerCard();        
         }
         else{
             this.gameOver = true;
