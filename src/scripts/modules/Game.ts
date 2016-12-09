@@ -142,6 +142,7 @@ class Game {
         else{
             this.player.losePV(Math.abs(result));
         }
+        this.drawDangerCard();
     }
 
     endFightWon(){
@@ -153,15 +154,12 @@ class Game {
         }
 
         this.resetFight();
-        this.drawDangerCard();
     }
 
     endFightLost( cardsToDelete : Array<PlayableCard> ){
         if(this.fight instanceof DangerFight){        
             // Delete cards from game
             this.discard( cardsToDelete );
-            //remove this card from fight.arrayFightCard
-            //this.fight.arrayFightCard
 
             // put back cards of fight in differents decks
             // danger card
@@ -169,9 +167,8 @@ class Game {
             // fight cards
             this.fightDeck.discard( this.fight.getAllFightCards() );
             this.resetFight();
-            this.drawDangerCard();        
         }
-        else{
+        else{ // = If lost pirate fight => game is over
             this.gameOver = true;
         }
     }
