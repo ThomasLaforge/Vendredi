@@ -112,6 +112,10 @@ abstract class Deck {
         }
     }
 
+    getAllCards(){
+        return this.arrayDeck.concat(this.arrayDiscard);
+    }
+
 }
 
 export { Deck };
