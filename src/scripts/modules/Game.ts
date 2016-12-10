@@ -77,24 +77,7 @@ class Game {
             this.fightDeck.discardToDeck();
         }
 
-        let newCardDraw:PlayableCard = this.fightDeck.drawOneCard();
-        // check if a power is to use now
-        if(newCardDraw instanceof AgingCard){
-            switch (newCardDraw.power) {
-                case AgingCardPower.LOSE_ONE_PV:
-                    this.player.losePV(1);
-                case AgingCardPower.LOSE_TWO_PV:
-                    this.player.losePV(2);                   
-                case AgingCardPower.STOP:
-                    this.fight.forceToStop();
-                default:
-                    newCardDraw.usePower();
-            }
-            // Vue is already checking if game over
-            
-        }
-
-        return newCardDraw;
+        return this.fightDeck.drawOneCard();
     }
 
     drawDangerCard(){
@@ -148,8 +131,25 @@ class Game {
     }
 
     addCardToFight(){
-        let fightCard = this.drawFightCard();
-        this.fight.addFightCard( fightCard );
+        let playableCard = this.drawFightCard();
+        this.fight.addFightCard( playableCard );
+        if(playableCard instanceof AgingCard){
+            if(playableCard.power != null){
+                switch (playableCard.power) {
+                    case AgingCardPower.LOSE_ONE_PV:
+                        this.player.losePV(1);
+                        break;
+                    case AgingCardPower.LOSE_TWO_PV:
+                        this.player.losePV(2);                   
+                        break;
+                    case AgingCardPower.STOP:
+                        this.fight.forceToStop();
+                        break;
+                }
+
+                this.fight.useCard(playableCard)
+            }
+        }
     }
 
     stopFight(){
