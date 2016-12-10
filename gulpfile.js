@@ -85,6 +85,7 @@ gulp.task('serve', ['build', 'browser-sync'], () => {
     gulp.watch('src/images/**/*', ['images', reload]);
     gulp.watch('src/*.{html, php}', ['templates', reload]);
     gulp.watch('src/scripts/**/*.ts', ['compile-js', reload]);
+    gulp.watch('src/datas/*.json', ['compile-js', reload]);
 });
 
 gulp.task('default', ['serve']);
