@@ -21,7 +21,7 @@ let template = `
             </div>
 
             <div class="fight-danger-actions">
-                <button class="fight-danger-action" id="btn-pick-fight-card" @click="pickFightCard" :disabled="fight.forcedToStop" v-if="!fight.finished">Piocher ( {{freeCardsAccessible > 0 ? 'encore ' + freeCardsAccessible : 'contre 1 PV'}} )</button>
+                <button class="fight-danger-action" id="btn-pick-fight-card" @click="pickFightCard" v-if="( !fight.finished && !fight.forcedToStop)">Piocher ( {{freeCardsAccessible > 0 ? 'encore ' + freeCardsAccessible : 'contre 1 PV'}} )</button>
                 <button class="fight-danger-action" id="btn-stop-fight" @click="stopFight" v-if="!fight.finished">Stop</button>
                 <button class="fight-danger-action" id="btn-delete-fight-cards" @click="deleteCards" v-if="fight.finished">Delete Card(s)</button>
                 <button class="fight-danger-action" id="btn-dont-delete-fight-cards" @click="dontDelete" v-if="fight.finished">Keep them</button>
