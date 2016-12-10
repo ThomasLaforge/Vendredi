@@ -41,7 +41,7 @@ class PirateFight extends Fight implements PirateFightInterface {
             // Puis seulement après on applique la séparation en deux et on ne garde que les premières cartes.
             // Puis on double les plus grosses cartes restantes
             arrCardsToKeep.splice(0, offsetCauseMaxCardEqualsZero);
-            let midOfArr = Math.fround(arrCardsToKeep.length / 2);
+            let midOfArr = Math.round(arrCardsToKeep.length / 2);
             arrCardsToKeep.splice( midOfArr, arrCardsToKeep.length - midOfArr );
             arrCardsToKeep.forEach( playableCard => {
                 playerForce += playableCard.strength;
@@ -70,7 +70,8 @@ class PirateFight extends Fight implements PirateFightInterface {
         if(this.cardToFight.mission != null){
             switch (this.cardToFight.mission) {
                 case PirateMission.FIGHT_ALL_DANGER_CARDS:
-                    this.remainingDangerDeck.arrayDeck.forEach( (danger) => {res += danger.getStrength(GameLevel.THIRD_ROUND)});
+                    this.remainingDangerDeck.getAllCards().forEach( (danger) => {res += danger.getStrength(GameLevel.THIRD_ROUND)});
+                    break;
                     // Fight all cards => 0. No instructions cause res already equal to 0
                 case PirateMission.ADD_TWO_DANGER_POINT_BY_AGING_CARD_IN_FIGHT_ADDED_TO_FIGHT_DECK:
                     res += 2 * nbAgingCardUsed;
