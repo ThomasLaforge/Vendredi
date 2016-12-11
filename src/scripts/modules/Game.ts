@@ -85,7 +85,7 @@ class Game {
         return this.fightDeck.drawOneCard();
     }
 
-    drawDangerCard(){
+    drawDangerCard() : void{
         let arr:Array<DangerCard> = [];
 
         if ( this.dangerDeck.isEmpty() ){
@@ -99,7 +99,6 @@ class Game {
         }
 
         this.dangerChoiceCards = arr;
-        return this.dangerChoiceCards //Optional
     }
 
     startFight( card:DangerCard|PirateCard ){
@@ -131,11 +130,13 @@ class Game {
         else{
             throw new Error("Type of card to fight is not PirateCard or Danger !");
         }
-        // Each fight start with one card played
-        this.addCardToFight();
+        
+        // Discard other(s) cards of danger choice phase
+        this.dangerDeck.discard(this.dangerChoiceCards.filter(c => c != card))
+        this.addPlayableCardToFight();
     }
 
-    addCardToFight(){
+    addPlayableCardToFight(){
         let playableCard = this.drawFightCard();
         this.fight.addFightCard( playableCard );
         if(playableCard instanceof AgingCard){

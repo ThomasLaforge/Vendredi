@@ -34,7 +34,7 @@ let app = new Vue({
     },
     methods: {
         addCardToFight(){
-            this.game.addCardToFight();
+            this.game.addPlayableCardToFight();
         },
         startFight(index){
             this.game.startFight(this.game.dangerChoiceCards[index]);
