@@ -4,7 +4,7 @@ let template = `
 <div class="game-info">
     <div id="pirates-list">
         <div class="pirates-list-elt" v-for="pirate in game.pirates">
-            <pirate-card :pirate="pirate"></pirate-card>
+            <pirate-card :pirate="pirate" />
         </div>
     </div>
     <div class="info-main">

@@ -8,11 +8,11 @@ import * as _ from 'lodash'
 let template = `
 <div class="game-fight-danger" id="zone-fight-danger">
     <div class="fight-danger-card-to-fight" id="danger-card-to-fight">
-        <danger-card :danger="fight.cardToFight"></danger-card>                    
+        <danger-card :danger="fight.cardToFight" />                  
     </div>
     <div class="fight-player-interface">
         <div class="fight-danger-fight-cards">
-            <playable-card v-for="(card, index) in fight.arrayFightCard" :card="card" :in-fight="!fight.finished" @usePower="useCard" :selectedToDelete="cardsToDelete.indexOf(card) != -1" @cardToDelete="addCardToDelete"></playable-card>
+            <playable-card v-for="(card, index) in fight.arrayFightCard" :card="card" :in-fight="!fight.finished" @usePower="useCard" :selectedToDelete="cardsToDelete.indexOf(card) != -1" @cardToDelete="addCardToDelete" />
         </div>
 
         <div class="fight-result-info-and-actions">
@@ -31,11 +31,11 @@ let template = `
         </div>
 
         <div class="fight-danger-fight-cards-used">
-            <playable-card v-for="(card, index) in fight.arrayFightCardUsed" :card="card" :in-fight="!fight.finished" :selectedToDelete="cardsToDelete.indexOf(card) != -1" @cardToDelete="addCardToDelete"></playable-card>
+            <playable-card v-for="(card, index) in fight.arrayFightCardUsed" :card="card" :in-fight="!fight.finished" :selectedToDelete="cardsToDelete.indexOf(card) != -1" @cardToDelete="addCardToDelete" />
         </div>
     </div>
 
-    <two-step-powers v-if="twoStepPowerSelectionOpen" :cards="fight.getAllFightCards()" :used-card="twoStepCard"></two-step-powers>
+    <two-step-powers v-if="twoStepPowerSelectionOpen" :cards="fight.getAllFightCards()" :used-card="twoStepCard" />
 </div>
 `
 
