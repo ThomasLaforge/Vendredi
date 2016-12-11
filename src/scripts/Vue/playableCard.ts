@@ -1,5 +1,7 @@
+import { FightCard } from '../modules/FightCard'
+
 let template = `
-<div class="fight-card" @click="select" :class="selectedClass">
+<div @click="select" :class="selectedClass">
     <div class="fight-card-strength">{{card.strength}}</div>
     <div class="fight-card-power">{{card.power || card.power === 0 ? card.powerName : ''}}</div>
 </div>
@@ -16,6 +18,7 @@ const playableCard = {
     computed : {
         selectedClass : function(){
             let renderClass = '';
+            renderClass += this.card instanceof FightCard ? 'fight-card ' : 'aging-card ';
             if(this.selectedToDelete){
                 renderClass += 'end-fight-card-to-delete ';
             }

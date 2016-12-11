@@ -57,9 +57,21 @@ $heightPirateCardMission: 40px;
 }
 
 // Aging
+.aging-card {
+    border: 1px orange solid;
+    display: flex;
+    .fight-card-strength {
+        width: 30%;
+        text-align: center;
+    }
+    .figth-card-power {
+        width: 70%;
+    }
+}
+
 // Fight
 .fight-card {
-    border: 1px lightblue solid;
+    border: 1px lightgreen solid;
     display: flex;
     .fight-card-strength {
         width: 30%;
@@ -73,6 +85,17 @@ $heightPirateCardMission: 40px;
 .fight-danger-fight-cards {
     .fight-card {
         border: 1px lightblue solid;
+        flex-direction: row-reverse;
+        .figth-card-power-bonus {
+            color: lightblue;
+        }
+        .figth-card-power-malus {
+            color: red;
+        }
+    }
+
+    .aging-card {
+        border: 1px orange solid;
         flex-direction: row-reverse;
         .figth-card-power-bonus {
             color: lightblue;
