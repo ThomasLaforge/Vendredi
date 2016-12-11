@@ -1,22 +1,22 @@
 [
-    {
-		"name" :"Distrait",
-		"strength":-1,
-		"power": null,
-        "number": 5
-	},
-    {
-		"name" :"Mange",
-		"strength":0,
-		"power": "+2PV",
-        "number": 1
-	},
-    {
-		"name" :"Faible",
-		"strength":0,
-		"power": null,
-        "number" : 8
-	},
+    // {
+	// 	"name" :"Distrait",
+	// 	"strength":-1,
+	// 	"power": null,
+    //     "number": 5
+	// },
+    // {
+	// 	"name" :"Mange",
+	// 	"strength":0,
+	// 	"power": "+2PV",
+    //     "number": 1
+	// },
+    // {
+	// 	"name" :"Faible",
+	// 	"strength":0,
+	// 	"power": null,
+    //     "number" : 8
+	// },
     {
 		"name" :"Concentré",
 		"strength":1,
