@@ -34,8 +34,8 @@ class AgingDeck extends Deck{
         let arrEasy = this.arrayDeck.slice( 0, 3 );
         let arrHard = this.arrayDeck.slice( 3, this.arrayDeck.length );
 
-        _.shuffle( arrEasy );
-        _.shuffle( arrHard );
+        arrEasy = _.shuffle( arrEasy );
+        arrHard = _.shuffle( arrHard );
 
         // Put easier cards in first positions to get picked
         this.arrayDeck = arrHard.concat( arrEasy );
