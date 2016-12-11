@@ -65,9 +65,12 @@ class Game {
     }
 
     drawFightCard() : PlayableCard {
-        if ( this.fight.getNumberOfCards() >= this.fight.cardToFight.freeCards ){
             this.loseOnePV();
             console.log('lose One PV', this.player.PV)
+        if ( this.fight.freeCards > 0 ){            
+            this.fight.freeCards--;
+        }
+        else{
         }
         if ( this.fightDeck.isEmpty() ){
             // On ajoute une carte vieillissement dans la défausse

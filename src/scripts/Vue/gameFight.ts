@@ -21,7 +21,7 @@ let template = `
             </div>
 
             <div class="fight-danger-actions">
-                <button class="fight-danger-action" id="btn-pick-fight-card" @click="pickFightCard" v-if="( !fight.finished && !fight.forcedToStop)">Piocher ( {{freeCardsAccessible > 0 ? 'encore ' + freeCardsAccessible : 'contre 1 PV'}} )</button>
+                <button class="fight-danger-action" id="btn-pick-fight-card" @click="pickFightCard" v-if="( !fight.finished && !fight.forcedToStop)">Piocher ( {{this.fight.freeCards > 0 ? 'encore ' + this.fight.freeCards : 'contre ' + this.fight.costOfCardsNotFree + ' PV'}} )</button>
                 <button class="fight-danger-action" id="btn-stop-fight" @click="stopFight" v-if="!fight.finished">Stop</button>
                 <button class="fight-danger-action" id="btn-delete-fight-cards" @click="deleteCards" v-if="fight.finished">Delete Card(s)</button>
                 <button class="fight-danger-action" id="btn-dont-delete-fight-cards" @click="dontDelete" v-if="fight.finished">Keep them</button>
@@ -44,13 +44,8 @@ const gameFight = {
     },
     data : function(){
         return {
-            cardsToDelete : []
-        }
-    },
-    computed : {
-        freeCardsAccessible : function() : number {
-            console.log(this.fight.freeCards - this.fight.getNumberOfCards());
-            return this.fight.freeCards - this.fight.getNumberOfCards();
+            cardsToDelete : [],
+            twoStepPowerSelectionOpen : false
         }
     },
     methods : {
