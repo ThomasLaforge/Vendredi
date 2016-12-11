@@ -14,8 +14,8 @@ Powers :
 */
 
 class PirateFight extends Fight implements PirateFightInterface {
-    constructor( card : PirateCard , public costOfCardsNotFree: number = 1, public remainingDangerDeck?: DangerDeck, numberOfAgingCardInFightDeck?: number){
-        super(card);
+    constructor( card : PirateCard , costOfCardsNotFree = 1, public remainingDangerDeck?: DangerDeck, numberOfAgingCardInFightDeck?: number){
+        super(card, costOfCardsNotFree);
     }
 
     getPlayerForce(){

@@ -11,10 +11,11 @@ abstract class Fight implements FightInterface {
 
     constructor( 
         public cardToFight : any, 
+        public costOfCardsNotFree = 1,
         public arrayFightCard : Array<PlayableCard> = [], 
         public arrayFightCardUsed : Array<PlayableCard> = [], 
         public finished : boolean = false, 
-        public forcedToStop : boolean = false
+        public forcedToStop : boolean = false,
     ){
         this.freeCards = cardToFight.freeCards;
     }

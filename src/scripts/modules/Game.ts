@@ -59,18 +59,20 @@ class Game {
     loseOnePV(){
         this.player.losePV(1);
     }
+    losePV(pvToLose : number){
+        this.player.losePV(pvToLose);
+    }
 
 	isGameOver(){
         return this.gameOver || this.player.isDead();
     }
 
     drawFightCard() : PlayableCard {
-            this.loseOnePV();
-            console.log('lose One PV', this.player.PV)
         if ( this.fight.freeCards > 0 ){            
             this.fight.freeCards--;
         }
         else{
+            this.losePV(this.fight.costOfCardsNotFree);
         }
         if ( this.fightDeck.isEmpty() ){
             // On ajoute une carte vieillissement dans la défausse
