@@ -1,6 +1,8 @@
 import { dangerCard } from './dangerCard'
 import { playableCard } from './playableCard'
+import { twoStepPowers } from './twoStepPowers'
 import { Tools } from '../modules/Tools'
+import { PlayableCardPowerType } from '../modules/Vendredi'
 import * as _ from 'lodash'
 
 let template = `
@@ -32,6 +34,8 @@ let template = `
             <playable-card v-for="(card, index) in fight.arrayFightCardUsed" :card="card" :in-fight="!fight.finished" :selectedToDelete="cardsToDelete.indexOf(card) != -1" @cardToDelete="addCardToDelete"></playable-card>
         </div>
     </div>
+
+    <two-step-powers v-if="twoStepPowerSelectionOpen"></two-step-powers>
 </div>
 `
 
@@ -40,7 +44,8 @@ const gameFight = {
     template : template,
     components : {
         dangerCard,
-        playableCard
+        playableCard,
+        twoStepPowers
     },
     data : function(){
         return {
@@ -80,7 +85,13 @@ const gameFight = {
             }
         },
         useCard(card){
-            this.$emit('use-power', card)
+            console.log('gameFight: use card',card, card, Tools.getTypeOfPower(card.power))
+            if(Tools.getTypeOfPower(card) === PlayableCardPowerType.TWO_STEP){
+                this.twoStepPowerSelectionOpen = true
+            }
+            else{
+                this.$emit('use-power', card)
+            }
         }
     }
 }
