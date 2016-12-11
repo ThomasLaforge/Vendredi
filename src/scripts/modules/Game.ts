@@ -77,7 +77,7 @@ class Game {
         if ( this.fightDeck.isEmpty() ){
             // On ajoute une carte vieillissement dans la défausse
             let newAgingCard = this.agingDeck.drawCards( 1 );
-            this.fightDeck.addToDiscard( newAgingCard );
+            this.fightDeck.discard( newAgingCard );
             // On ajoute la défausse au deck et on mélange
             this.fightDeck.discardToDeck();
         }
@@ -174,8 +174,8 @@ class Game {
         if(this.fight instanceof DangerFight ){
             console.log('Game : danger fight won');
             this.fight.arrayFightCard.push( this.fight.cardToFight.fightCard );
-            let arrayOfCardsToDiscard = this.fight.arrayFightCard.slice();
-            this.fightDeck.addToDiscard( arrayOfCardsToDiscard );
+            let arrayOfCardsToDiscard = this.fight.getAllFightCards();
+            this.fightDeck.discard( arrayOfCardsToDiscard );
         }
 
         this.resetFight();

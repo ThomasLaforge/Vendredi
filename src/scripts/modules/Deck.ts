@@ -98,10 +98,6 @@ abstract class Deck {
         );
     }
 
-    addToDiscard( arrOfCards: Array<any> ){
-        this.discard( arrOfCards );
-    }
-
     removeCard( card:any ) {
         let pos = this.arrayDeck.indexOf( card );
         if(pos > -1){
