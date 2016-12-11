@@ -4,8 +4,8 @@ Design
 *   - add level class when shown level in info zone
 *   - create a color sass class:
 *       - add level color : 1, 2, 3, pirates(black)
-    - fix level
-    - update positioning with new Vue templates
+*   - fix level
+*   - update positioning with new Vue templates
 -----------------------------------------------------------------------------------------
 
 Finir l'implémentation de la phase de combat des pirates
@@ -31,11 +31,11 @@ Recréer le projet en Vue js
 *   - installer VueJs
 *   - implémenter les templates
 *   - créer les templates
-    - implémenter les components
+*   - implémenter les components
 *   - replace let by const on components definitions
-    - exports components in module on directory : /scripts/Vue (change gulpfile/or not)
-    - refactor templates in index.html
-    - test one file components in vue (change gulpfile)
+*   - exports components in module on directory : /scripts/Vue (change gulpfile/or not)
+*   - refactor templates in index.html
+*   - test one file components in vue (change gulpfile)
 
 -----------------------------------------------------------------------------------------
 
@@ -76,3 +76,5 @@ Historique
     - model
     - enregistrement de l'Historique
     - Chargement d'une partie à partir d'un id de partie
+
+    Possibilités de regarder du côté de vuex !
