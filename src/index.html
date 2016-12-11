@@ -26,8 +26,8 @@
 
         <div id="app">
             <game-info :game="game"></game-info>
-            <game-over v-if="game.isGameOver()"></game-over>
             <hr>
+            <game-over v-if="game.isGameOver()" :player-name="game.player.pseudo"></game-over>
             <game-danger-choice :danger-choice="game.dangerChoiceCards" v-if="( !game.fight && !game.isGameOver() )" @chose="startFight "></game-danger-choice>
             <game-fight :fight="game.fight" @stop="stopFight" @draw="addCardToFight" @fight-closed="endFightLost" @use-power="useMyPower" v-if="(game.fight && !game.isGameOver() )"></game-fight>
         </div>
