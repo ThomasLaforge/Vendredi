@@ -1,7 +1,7 @@
 let template = `
 <div class="fight-card" @click="select" :class="selectedClass">
     <div class="fight-card-strength">{{card.strength}}</div>
-    <div class="fight-card-power">{{card.power ? card.powerName : ''}}</div>
+    <div class="fight-card-power">{{card.power || card.power === 0 ? card.powerName : ''}}</div>
 </div>
 `
 
