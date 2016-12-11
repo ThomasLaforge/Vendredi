@@ -35,7 +35,7 @@ let template = `
         </div>
     </div>
 
-    <two-step-powers v-if="twoStepPowerSelectionOpen"></two-step-powers>
+    <two-step-powers v-if="twoStepPowerSelectionOpen" :cards="fight.getAllFightCards()" :used-card="twoStepCard"></two-step-powers>
 </div>
 `
 
@@ -50,7 +50,8 @@ const gameFight = {
     data : function(){
         return {
             cardsToDelete : [],
-            twoStepPowerSelectionOpen : false
+            twoStepPowerSelectionOpen : false,
+            twoStepCard : null
         }
     },
     methods : {
@@ -88,6 +89,7 @@ const gameFight = {
             console.log('gameFight: use card',card, card, Tools.getTypeOfPower(card.power))
             if(Tools.getTypeOfPower(card) === PlayableCardPowerType.TWO_STEP){
                 this.twoStepPowerSelectionOpen = true
+                this.twoStepCard = card 
             }
             else{
                 this.$emit('use-power', card)
