@@ -65,13 +65,13 @@ abstract class Fight implements FightInterface {
 
         this.getAllFightCards().forEach( playableCard => {
             if(playableCard instanceof FightCard){
-                if(playableCard.power == FightCardPower.DOUBLE){
+                if(playableCard.power === FightCardPower.DOUBLE){
                     nbCardToDouble++;
                 }
             }
             // If its AgingCard
-            else{
-                if(playableCard.power == AgingCardPower.MAX_EQUALS_ZERO){
+            else {
+                if(playableCard.power === AgingCardPower.MAX_EQUALS_ZERO){
                     offsetCauseMaxCardEqualsZero++;
                 }
             }
