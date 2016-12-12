@@ -8,6 +8,9 @@ Design
 *       - add level color : 1, 2, 3, pirates(black)
 *   - fix level
 *   - update positioning with new Vue templates
+    - styliser le composant gameover
+    - styliser le composant de victoire
+    
 -----------------------------------------------------------------------------------------
 
 Finir l'implémentation de la phase de combat des pirates
@@ -19,8 +22,7 @@ Finir l'implémentation de la phase de combat des pirates
 -----------------------------------------------------------------------------------------
 
 Modifier le modèle en typescript
-*   a) Rename all js files 
-    WINDOWS+R -> cmd -> cd wamp/www/vendredi/src/scripts -> ren *.js *.ts
+*   a) Rename all js files : WINDOWS+R -> cmd -> cd wamp/www/vendredi/src/scripts -> ren *.js *.ts
 *   b) modify gulpfile
 *   c) import librairies like jquery from DOM
 *   d) import typings
