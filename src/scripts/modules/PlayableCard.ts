@@ -7,6 +7,10 @@ class PlayableCard extends Card implements PlayableCardInterface {
         super(name, strength);
     }
 
+    show(){
+        console.log('playable card', this)
+    }
+
     usePower(){
         this.powerUsed = true;
     }

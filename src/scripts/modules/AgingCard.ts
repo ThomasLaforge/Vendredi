@@ -8,6 +8,10 @@ class AgingCard extends PlayableCard implements AgingCardInterface{
         super(name, strength, costToDelete, power);
     }
 
+    show(){
+        console.log('aging card', this)
+    }
+
     get powerName(){
         return Tools.getAgingPowerName(this.power)
     }

@@ -19,7 +19,7 @@ abstract class Deck {
         this.shuffle();
     }
 
-    initDeck(){}
+    abstract initDeck()
 
     // States of arrays : deck and discard
 

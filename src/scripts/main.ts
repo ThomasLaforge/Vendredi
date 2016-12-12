@@ -4,8 +4,6 @@
 // Model
 import { Game 	}         from	'./modules/Game';
 import { Player }         from	'./modules/Player';
-import { DangerFight }  from	'./modules/DangerFight';
-
 let pseudo   = 'Thomas';
 let myPlayer = new Player(pseudo);
 let game     = new Game(myPlayer, 1);
