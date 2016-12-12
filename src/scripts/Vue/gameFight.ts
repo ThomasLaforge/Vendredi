@@ -35,7 +35,9 @@ let template = `
         </div>
     </div>
 
-    <two-step-powers v-if="twoStepPowerSelectionOpen" :cards="fight.getAllFightCards()" :used-card="twoStepCard" />
+    <two-step-powers v-if="twoStepPowerSelectionOpen" :cards="fight.getAllFightCards()" :used-card="twoStepCard" @close-two-step-powers="closeTwoStepPowers"></two-step-powers>
+
+    <button @click="switchTwoStepView">Swith Two Step</button>
 </div>
 `
 
@@ -94,6 +96,13 @@ const gameFight = {
             else{
                 this.$emit('use-power', card)
             }
+        },
+        switchTwoStepView(){
+            this.twoStepPowerSelectionOpen = !this.twoStepPowerSelectionOpen
+        },
+        closeTwoStepPowers(data){
+            console.log(data ? data : 'no data');
+            this.twoStepPowerSelectionOpen = false
         }
     }
 }
