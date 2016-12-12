@@ -2,6 +2,19 @@ TODO LIST JEU VENDREDI
     * = done
     ? = WIP (Work in progress)
 
+General
+
+Piste de dev :
+    - Vue playableCard : Emit only select event and each parent call function that they want.
+
+Questions :
+    - est ce logique de créer un enum playablePowers pour éviter de toujours tester si la carte est
+    de type Vieillissement ou carte combat et donc si il faut comparer son pouvoir à la liste des
+    pouvoir propres au cartes de vieillissement ou aux cartes combat.
+    
+
+-----------------------------------------------------------------------------------------
+
 Design
 *   - add level class when shown level in info zone
 *   - create a color sass class:
