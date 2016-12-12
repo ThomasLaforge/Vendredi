@@ -23,7 +23,7 @@ class Game {
     private _pirateDeck    : PirateDeck;
     private _gameOver      : boolean;
     private _pirates       : Array<PirateCard>;
-    private _actualPirate  : PirateCard;
+    private _actualPirate  : number;
     private _level         : number;
     private _arrayOfRemovedCards  : Array<PlayableCard>;
     private _fight         : Fight;
@@ -47,7 +47,7 @@ class Game {
 
         this.pirateDeck    = new PirateDeck();
         this.pirates       = this.pirateDeck.drawCards( 2 );
-        this.actualPirate = this.pirates[0];
+        this.actualPirate  = -1;
 
         this.level         = GameLevel.FIRST_ROUND;
         this.arrayOfRemovedCards  = [];
@@ -86,7 +86,6 @@ class Game {
     }
 
     drawDangerCard() : void{
-        let arr:Array<DangerCard> = [];
 
         if ( this.dangerDeck.isEmpty() ){
             this.level++;
@@ -94,11 +93,24 @@ class Game {
             this.dangerDeck.discardToDeck();
         }
         
-        if(this.level < 4){
-            arr = ( this.dangerDeck.drawCards( 2 ) );
+        if ( this.level < 4 ){
+            this.dangerChoiceCards = this.dangerDeck.drawCards( 2 );
+        }
+        else {
+            let pirate = this.getNextPirate();
+            if ( pirate ) {
+                this.startFight( pirate )
+            }
+            else {
+                alert('game won !!! Reason : no more cards in pirate selection');
+            }
         }
 
-        this.dangerChoiceCards = arr;
+    }
+
+    getNextPirate() : PirateCard | null {
+        this.actualPirate++;
+        return this.actualPirate < this.pirates.length ? this.pirates[ this.actualPirate ] : null;
     }
 
     startFight( card:DangerCard|PirateCard ){
@@ -193,7 +205,7 @@ class Game {
             this.fightDeck.discard( this.fight.getAllFightCards() );
             this.resetFight();
         }
-        else{ // = If lost pirate fight => game is over
+        else { // = If lost pirate fight => game is over
             this.gameOver = true;
         }
     }
