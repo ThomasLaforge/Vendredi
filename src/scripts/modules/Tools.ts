@@ -3,7 +3,6 @@ import {FightCard} from './FightCard';
 import {DangerCard} from './DangerCard';
 import {PlayableCard} from './PlayableCard';
 import {PlayableCardPowerType, FightCardPower, AgingCardPower, PirateMission} from './Vendredi';
-import * as _ from 'lodash';
 
 class Tools {
     constructor(){}
