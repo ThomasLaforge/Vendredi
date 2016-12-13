@@ -130,7 +130,7 @@ class Tools {
                 type = PlayableCardPowerType.ONE_SHOT
             }
             else{
-                console.log('Type for this power card not referenced')
+                console.log('Fight Card : Type for this power card not referenced', card)
             }
         }
         else{
@@ -147,7 +147,7 @@ class Tools {
                 type = PlayableCardPowerType.ONE_SHOT
             }
             else{
-                console.log('Type for this power card not referenced')
+                console.log('AgingCard : Type for this power card not referenced', card)
             }
         }
 
