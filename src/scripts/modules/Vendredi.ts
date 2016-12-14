@@ -2,6 +2,8 @@ import {Card} from './Card'
 import {PirateCard} from './PirateCard'
 import {DangerCard} from './DangerCard'
 
+// Notice : in enum, initial index = 0. Could create some bug on typescript compilator like in switch/case. Start from 1 seems to fix it
+
 export enum AgingLevel {
     UNCOMFORTABLE = 1,
     EVIL = 2
@@ -16,7 +18,7 @@ export enum PirateMission {
 }
 
 export enum FightCardPower{
-    COPY_ONE,
+    COPY_ONE = 1,
     GET_ONE_PV,
     GET_TWO_PV,
     GET_ONE_CARD,

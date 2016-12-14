@@ -13,7 +13,7 @@ import { AgingCard }    from './AgingCard';
 import { PirateDeck }   from './PirateDeck';
 import { PirateCard }   from './PirateCard';
 import { Player }        from './Player';
-import { GameDifficulty, GameLevel, FightCardPower, AgingCardPower, PirateMission } from './Vendredi';
+import { GameDifficulty, GameLevel, FightCardPower, AgingCardPower, PirateMission, PlayableCardPowerType } from './Vendredi';
 
 class Game {
 
@@ -220,10 +220,44 @@ class Game {
         })
     }
 
-    usePower( card : FightCard): void {
+    usePower( card : PlayableCard, options?:any): void {
         if ( card.power ) {
-            let p:FightCardPower = card.power;
-            switch( card.power ) {
+            // Two Step powers
+            let cardToAffect:PlayableCard
+            switch( card.power  ) {
+                case FightCardPower.COPY_ONE:
+                    cardToAffect = options.cardToAffect;
+                    cardToAffect.power = card.power;
+                    card = cardToAffect;
+                    break;
+                case FightCardPower.DESTROY:
+                    // Transform this card into a 0 strength cards without any power
+                    cardToAffect = options.cardToAffect;
+                    cardToAffect.power = null;
+                    cardToAffect.strength = 0;
+                    break;
+                case FightCardPower.SORT_THREE_CARDS:
+                    // To fix: not addCard method and care about cardsInOrder + 3 first cards have been removed.
+                    options.cardsInOrder.forEach( card => {
+                        this.fightDeck.addCard(card);
+                    })
+                    break;
+                case FightCardPower.UNDER_THE_DECK:
+                    this.fightDeck.addCard(options.cardToAffect)
+                    break;
+                case FightCardPower.SWAP_ONE:
+                    
+                    break;
+                case FightCardPower.SWAP_ONE:
+                    
+                    break;
+                default:
+                    console.log('game->usePower() : not a two step power', p)
+                    break;
+            }
+
+            // One shot powers
+            switch( card.power  ) {
                 case FightCardPower.GET_TWO_PV:
                     this.player.addPV( 2 );
                     break;
