@@ -1,10 +1,10 @@
-import {Deck}  from './Deck';
+import {PlayableDeck}  from './PlayableDeck';
 import {Tools} from './Tools';
 import * as _ from 'lodash';
 import {AgingCard} from './AgingCard';
 import {GameDifficulty, jsonDataAging} from './Vendredi';
 
-class AgingDeck extends Deck{
+class AgingDeck extends PlayableDeck{
 
     constructor(difficulty : GameDifficulty){
         super();
