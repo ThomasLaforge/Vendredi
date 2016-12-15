@@ -1,4 +1,5 @@
 import { playableCard } from './playableCard'
+import { PlayableCard } from '../modules/PlayableCard'
 import { modal } from './components/modal'
 
 let template = `
@@ -22,7 +23,7 @@ const twoStepPowers = {
         playableCard,
         modal
     },
-    data : function(){
+    data : function() : { cardsAssigned : Array<PlayableCard>} {
         return {
             cardsAssigned : []
         }
@@ -34,15 +35,15 @@ const twoStepPowers = {
         },
         validate : function(){
             console.log('validation...')
+            this.$emit('validation', 'nothing, for the moment')
             this.close();
-            this.$emit('close-two-step-powers', 'nothing, for the moment')
         },
         cancel : function(){
             console.log('annulation...')
             this.close();            
-            this.$emit('close-two-step-powers')            
+            this.$emit('switch-show')            
         },
-        assignCard : function(card){
+        assignCard : function(card:PlayableCard){
             console.log('twoStepPowers : assign card', card)
             let indexOfThisCard = this.cardsAssigned.indexOf(card)
             if( indexOfThisCard === -1 ){
