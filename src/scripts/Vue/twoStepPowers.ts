@@ -3,11 +3,23 @@ import { modal } from './components/modal'
 
 let template = `
 <div>
-    <modal :show.sync="show" :on-close="close" >
+    <modal 
+        :show.sync="show" 
+        :on-close="close" 
+    >
         <div>La carte utilisée</div>
-        <playable-card v-if="usedCard" :card="usedCard" />
+        <playable-card 
+            v-if="usedCard" 
+            :card="usedCard" 
+        />
+        
         <div>Les cartes</div>
-        <playable-card v-for="card in cards" v-if="card != usedCard" :card="card" @selected="assignCard" />
+        <playable-card v-for="card in cards" 
+            v-if="card != usedCard" 
+            :card="card" 
+            @selected="assignCard" 
+        />
+
         <div>Les actions/validation</div>
         <button @click="validate">Valider</button>
         <button @click="cancel">Annuler</button>

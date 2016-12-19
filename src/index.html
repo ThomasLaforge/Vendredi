@@ -25,11 +25,32 @@
         <hr>
 
         <div id="app">
-            <game-info :game="game"></game-info>
+            <game-info 
+                :game="game"
+            ></game-info>
+            
             <hr>
-            <game-over v-if="game.isGameOver()" :player-name="game.player.pseudo"></game-over>
-            <game-danger-choice :danger-choice="game.dangerChoiceCards" v-if="( !game.fight && !game.isGameOver() )" @chose="startFight "></game-danger-choice>
-            <game-fight :fight="game.fight" @stop="stopFight" @draw="addCardToFight" @fight-closed="endFightLost" @use-power="useMyPower" v-if="(game.fight && !game.isGameOver() )"></game-fight>
+            
+            <game-over 
+                v-if="game.isGameOver()" 
+                :player-name="game.player.pseudo"
+            >
+            </game-over>
+            
+            <game-danger-choice 
+                v-if="( !game.fight && !game.isGameOver() )" 
+                :danger-choice="game.dangerChoiceCards" 
+                @chose="startFight"
+            ></game-danger-choice>
+            
+            <game-fight 
+                v-if="(game.fight && !game.isGameOver() )"
+                :fight="game.fight" 
+                @stop="stopFight" 
+                @draw="addCardToFight" 
+                @fight-closed="endFightLost" 
+                @use-power="useMyPower" 
+            ></game-fight>
         </div>
 
         <!-- - - - - - - - -->
