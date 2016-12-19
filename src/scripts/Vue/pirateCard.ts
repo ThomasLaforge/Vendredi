@@ -9,9 +9,9 @@ let template = `
 </div>
 `;
 
-const pirateCard = {
-    template: template,
-    props : ['pirate']
+const pirateCard = { 
+    template: template, 
+    props : ['pirate'] 
 }
 
 export { pirateCard }

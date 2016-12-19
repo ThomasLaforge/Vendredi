@@ -12,6 +12,10 @@ class FightCard extends PlayableCard implements FightCardInterface {
         console.log('Card : name => ' + this.name + ', strength => ' + this. strength + ', power => ' + this.power);
     }
 
+    changePower(newPower: FightCardPower) {
+        this.power = newPower;
+    }
+
     get powerName(){
         return Tools.getFightPowerName(this.power)
     }

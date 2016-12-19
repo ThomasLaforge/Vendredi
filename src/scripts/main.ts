@@ -4,6 +4,8 @@
 // Model
 import { Game 	}         from	'./modules/Game';
 import { Player }         from	'./modules/Player';
+import { PlayableCard }   from	'./modules/PlayableCard';
+import { FightCard }   from	'./modules/FightCard';
 let pseudo   = 'Thomas';
 let myPlayer = new Player(pseudo);
 let game     = new Game(myPlayer, 1);
@@ -34,18 +36,18 @@ let app = new Vue({
         addCardToFight(){
             this.game.addPlayableCardToFight();
         },
-        startFight(index){
+        startFight(index:number){
             this.game.startFight(this.game.dangerChoiceCards[index]);
         },
         stopFight(){
             this.game.stopFight();
             console.log(this.game)
         },
-        endFightLost(arrOfCardsToDelete){
+        endFightLost(arrOfCardsToDelete:Array<PlayableCard>){
             this.game.endFightLost(arrOfCardsToDelete);
             console.log(this.game)
         },
-        useMyPower(card){
+        useMyPower(card:FightCard){
             console.log('game : usePower')
             this.game.usePower(card)
         }

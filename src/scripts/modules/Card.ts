@@ -4,7 +4,7 @@ abstract class Card implements CardInterface {
 
     constructor(public name:string, public strength:number) {}
 
-    abstract show()
+    abstract show() : void
 
 }
 

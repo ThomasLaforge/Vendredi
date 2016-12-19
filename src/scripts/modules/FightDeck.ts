@@ -1,9 +1,9 @@
-import { Deck }  from "./Deck";
+import { PlayableDeck }  from "./PlayableDeck";
 import { FightCard } from "./FightCard";
 import { Tools } from './Tools';
 import { jsonDataFight } from './Vendredi';
 
-class FightDeck extends Deck {
+class FightDeck extends PlayableDeck {
 	constructor(){
 		super();
 	}

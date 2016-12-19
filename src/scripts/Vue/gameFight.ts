@@ -2,6 +2,8 @@ import { dangerCard } from './dangerCard'
 import { playableCard } from './playableCard'
 import { twoStepPowers } from './twoStepPowers'
 import { Tools } from '../modules/Tools'
+import { PlayableCard } from '../modules/PlayableCard'
+import { FightCard } from '../modules/FightCard'
 import { PlayableCardPowerType } from '../modules/Vendredi'
 import * as _ from 'lodash'
 
@@ -92,7 +94,7 @@ const gameFight = {
         playableCard,
         twoStepPowers,
     },
-    data : function(){
+    data : function() : { cardsToDelete : Array<PlayableCard>, twoStepPowerSelectionOpen : boolean, twoStepCard : PlayableCard } {
         return {
             cardsToDelete : [],
             twoStepPowerSelectionOpen : false,
@@ -112,7 +114,7 @@ const gameFight = {
         dontDelete(){
             this.$emit('fight-closed', [])            
         },
-        addCardToDelete(card){
+        addCardToDelete(card:PlayableCard){
             let cardExists = this.fight.getAllFightCards().indexOf(card) != -1;
             // Juste check if this card exists
             if(cardExists){
@@ -130,7 +132,7 @@ const gameFight = {
                 }
             }
         },
-        useCard(card){
+        useCard(card:FightCard){
             console.log('gameFight: use card',card, PlayableCardPowerType[Tools.getTypeOfPower(card)])
             if(Tools.getTypeOfPower(card) === PlayableCardPowerType.TWO_STEP){
                 this.twoStepCard = card 
@@ -143,7 +145,7 @@ const gameFight = {
         switchTwoStepView(){
             this.twoStepPowerSelectionOpen = !this.twoStepPowerSelectionOpen
         },
-        closeTwoStepPowers(data){
+        closeTwoStepPowers(data:{}){
             console.log(data ? data : 'no data');
             this.twoStepPowerSelectionOpen = false
         }

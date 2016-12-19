@@ -2,12 +2,14 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "es2015",
-        "noImplicitAny": false,
+        "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": true,
         "sourceMap": false
     },
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "bower_components",
+        "dist"
     ]
 }
