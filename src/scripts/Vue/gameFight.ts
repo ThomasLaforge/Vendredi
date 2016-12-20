@@ -8,7 +8,7 @@ import { PlayableCardPowerType } from '../modules/Vendredi'
 import * as _ from 'lodash'
 
 let template = `
-<div class="game-fight-danger" id="zone-fight-danger">
+<div class="game-fight" id="zone-fight">
     <div class="fight-danger-card-to-fight" id="danger-card-to-fight">
         <danger-card :danger="fight.cardToFight" />                  
     </div>
