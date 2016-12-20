@@ -6,9 +6,12 @@ import { Game 	}         from	'./modules/Game';
 import { Player }         from	'./modules/Player';
 import { PlayableCard }   from	'./modules/PlayableCard';
 import { FightCard }   from	'./modules/FightCard';
+import { FightCardPower }   from	'./modules/Vendredi';
 let pseudo   = 'Thomas';
 let myPlayer = new Player(pseudo);
 let game     = new Game(myPlayer, 1);
+let newFC = new FightCard("Stratégie", 2, FightCardPower.SWAP_ONE);
+game.fightDeck.addCard(newFC);
 
 // Vue
 import { dangerCard } from './Vue/dangerCard';

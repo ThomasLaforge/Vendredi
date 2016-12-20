@@ -27,14 +27,7 @@ const playableCard = {
     },
     methods : {
         select : function(){
-            if(!this.inFight){
-                this.$emit('cardToDelete', this.card)
-            }
-            else{
-                if(this.card.power){
-                    this.$emit('usePower', this.card)
-                }
-            }
+            this.$emit('select', this.card)
         }
     }
 }

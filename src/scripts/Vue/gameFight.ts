@@ -14,7 +14,7 @@ let template = `
     </div>
     <div class="fight-player-interface">
         <div class="fight-danger-fight-cards">
-            <playable-card v-for="(card, index) in fight.arrayFightCard" :card="card" :in-fight="!fight.finished" @usePower="useCard" :selectedToDelete="cardsToDelete.indexOf(card) != -1" @cardToDelete="addCardToDelete" />
+            <playable-card v-for="(card, index) in fight.arrayFightCard" :card="card" :in-fight="!fight.finished" :selectedToDelete="cardsToDelete.indexOf(card) != -1" @select="cardClicked" />
         </div>
 
         <div class="fight-result-info-and-actions">
@@ -33,7 +33,7 @@ let template = `
         </div>
 
         <div class="fight-danger-fight-cards-used">
-            <playable-card v-for="(card, index) in fight.arrayFightCardUsed" :card="card" :in-fight="!fight.finished" :selectedToDelete="cardsToDelete.indexOf(card) != -1" @cardToDelete="addCardToDelete" />
+            <playable-card v-for="(card, index) in fight.arrayFightCardUsed" :card="card" :in-fight="!fight.finished" :selectedToDelete="cardsToDelete.indexOf(card) != -1" @select="cardClicked" />
         </div>
     </div>
 
@@ -68,6 +68,16 @@ const gameFight = {
         },
         dontDelete(){
             this.$emit('fight-closed', [])            
+        },
+        cardClicked(card:PlayableCard){
+            if(this.fight.finished){
+                this.addCardToDelete(card)
+            }
+            else{
+                if(card.power){
+                    this.useCard(card)
+                }
+            }
         },
         addCardToDelete(card:PlayableCard){
             let cardExists = this.fight.getAllFightCards().indexOf(card) != -1;
