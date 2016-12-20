@@ -97,21 +97,13 @@ class Game {
             this.dangerChoiceCards = this.dangerDeck.drawCards( 2 );
         }
         else {
-            let pirate = this.getNextPirate();
-            console.log('game : drawDangerCard : pirateToFight : ', pirate)
-            if ( pirate ) {
-                this.startFight( pirate )
-            }
-            else {
-                alert('game won !!! Reason : no more cards in pirate selection');
-            }
+            this.nextPirate();
         }
 
     }
 
-    getNextPirate() : PirateCard | null {
+    nextPirate() : void {
         this.actualPirate = this.actualPirate ? this.pirates[ this.pirates.indexOf( this.actualPirate ) + 1 ] : this.pirates[0];
-        return this.actualPirate;
     }
 
     startFight( card:DangerCard|PirateCard ){
@@ -146,6 +138,7 @@ class Game {
         
         // Discard other(s) cards of danger choice phase
         this.dangerDeck.discard(this.dangerChoiceCards.filter(c => c != card))
+        this.dangerChoiceCards = null;
         this.addPlayableCardToFight();
     }
 
@@ -180,6 +173,7 @@ class Game {
         else{
             this.player.losePV(Math.abs(result));
         }
+        this.drawDangerCard();        
     }
 
     endFightWon(){
@@ -190,7 +184,6 @@ class Game {
             this.fightDeck.discard( arrayOfCardsToDiscard );
         }
 
-        this.drawDangerCard();
         this.resetFight();
     }
 
@@ -204,7 +197,6 @@ class Game {
             this.dangerDeck.discard( [ this.fight.cardToFight ] );
             // fight cards
             this.fightDeck.discard( this.fight.getAllFightCards() );
-            this.drawDangerCard();
             this.resetFight();
         }
         else { // = If lost pirate fight => game is over
@@ -214,6 +206,9 @@ class Game {
 
     resetFight() : void {
         this.fight = null;
+        if(this.level > GameLevel.THIRD_ROUND){
+            this.startFight(this.actualPirate)
+        }
     }
 
     discard( arrayOfCards : Array<PlayableCard> ) : void {
