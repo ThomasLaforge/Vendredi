@@ -10,6 +10,9 @@ import { FightCardPower }   from	'./modules/Vendredi';
 let pseudo   = 'Thomas';
 let myPlayer = new Player(pseudo);
 let game     = new Game(myPlayer, 1);
+
+game.level = 2
+
 let newFC = new FightCard("Stratégie", 2, FightCardPower.SWAP_ONE);
 game.fightDeck.addCard(newFC);
 
