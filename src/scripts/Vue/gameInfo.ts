@@ -24,7 +24,7 @@ let template = `
             <div class="info-main-subject">Aging cards</div>
         </div>
         <div class="info-main-level info-main-elt">
-            <div id="level" class="info-main-value" :class="game.level < -1 ? 'level-value-' + (game.level + 1) : 'level-value-pirates'">{{ game.level + 1 }}</div>
+            <div id="level" class="info-main-value" :class="game.level < 3 ? 'level-value-' + (game.level + 1) : 'level-value-pirates'">{{ game.level < 3 ? game.level + 1 : 'pirates' }}</div>
             <div class="info-main-subject">Level</div>
         </div>
     </div>

@@ -1,20 +1,30 @@
 import { dangerCard } from './dangerCard'
+import { pirateCard } from './pirateCard'
 import { playableCard } from './playableCard'
 import { twoStepPowers } from './twoStepPowers'
 import { Tools } from '../modules/Tools'
 import { PlayableCard } from '../modules/PlayableCard'
+import { DangerCard } from '../modules/DangerCard'
+import { PirateCard } from '../modules/PirateCard'
 import { FightCard } from '../modules/FightCard'
 import { PlayableCardPowerType } from '../modules/Vendredi'
 import * as _ from 'lodash'
 
 let template = `
-<div class="game-fight-danger" id="zone-fight-danger">
+<div class="game-fight" id="zone-fight">
     <div class="fight-danger-card-to-fight" id="danger-card-to-fight">
-        <danger-card :danger="fight.cardToFight" />                  
+        <danger-card v-if="isDangerFight" :danger="fight.cardToFight" />
+        <pirate-card v-if="isPirateFight" :pirate="fight.cardToFight" />
     </div>
+
     <div class="fight-player-interface">
         <div class="fight-danger-fight-cards">
-            <playable-card v-for="(card, index) in fight.arrayFightCard" :card="card" :in-fight="!fight.finished" :selectedToDelete="cardsToDelete.indexOf(card) != -1" @select="cardClicked" />
+            <playable-card v-for="(card, index) in fight.arrayFightCard" 
+                :card="card" 
+                :in-fight="!fight.finished" 
+                :selectedToDelete="cardsToDelete.indexOf(card) != -1" 
+                @select="playableCardClicked"
+            />
         </div>
 
         <div class="fight-result-info-and-actions">
@@ -25,19 +35,57 @@ let template = `
             </div>
 
             <div class="fight-danger-actions">
-                <button class="fight-danger-action" id="btn-pick-fight-card" @click="pickFightCard" v-if="( !fight.finished && !fight.forcedToStop)">Piocher ( {{this.fight.freeCards > 0 ? 'encore ' + this.fight.freeCards : 'contre ' + this.fight.costOfCardsNotFree + ' PV'}} )</button>
-                <button class="fight-danger-action" id="btn-stop-fight" @click="stopFight" v-if="!fight.finished">Stop</button>
-                <button class="fight-danger-action" id="btn-delete-fight-cards" @click="deleteCards" v-if="fight.finished">Delete Card(s)</button>
-                <button class="fight-danger-action" id="btn-dont-delete-fight-cards" @click="dontDelete" v-if="fight.finished">Keep them</button>
+                <button 
+                    class="fight-danger-action" id="btn-pick-fight-card" 
+                    @click="pickFightCard" 
+                    v-if="( !fight.finished && !fight.forcedToStop )"
+                >
+                    Piocher ( {{this.fight.freeCards > 0 ? 'encore ' + this.fight.freeCards : 'contre ' + this.fight.costOfCardsNotFree + ' PV'}} )
+                </button>
+                
+                <button 
+                    class="fight-danger-action" id="btn-stop-fight" 
+                    @click="stopFight" 
+                    v-if="!fight.finished"
+                >
+                    Stop
+                </button>
+                
+                <button 
+                    class="fight-danger-action" id="btn-delete-fight-cards" 
+                    @click="deleteCards" 
+                    v-if="fight.finished"
+                >
+                    Delete Card(s)
+                </button>
+                
+                <button 
+                    class="fight-danger-action" id="btn-dont-delete-fight-cards" 
+                    @click="dontDelete" 
+                    v-if="fight.finished"
+                >
+                    Keep them
+                </button>
             </div>
         </div>
 
         <div class="fight-danger-fight-cards-used">
-            <playable-card v-for="(card, index) in fight.arrayFightCardUsed" :card="card" :in-fight="!fight.finished" :selectedToDelete="cardsToDelete.indexOf(card) != -1" @select="cardClicked" />
+            <playable-card v-for="(card, index) in fight.arrayFightCardUsed" 
+                :card="card" 
+                :in-fight="!fight.finished" 
+                :selectedToDelete="cardsToDelete.indexOf(card) != -1" 
+                @select="playableCardClicked" 
+            />
         </div>
     </div>
 
-    <two-step-powers @keyup.esc="switchTwoStepView" :show="twoStepPowerSelectionOpen" :cards="fight.getAllFightCards()" :used-card="twoStepCard" @switch-show="switchTwoStepView"></two-step-powers>
+    <two-step-powers 
+        :show="twoStepPowerSelectionOpen" 
+        :cards="fight.getAllFightCards()" 
+        :used-card="twoStepCard" 
+        @keyup.esc="switchTwoStepView" 
+        @switch-show="switchTwoStepView"
+    />
 </div>
 `
 
@@ -46,6 +94,7 @@ const gameFight = {
     template : template,
     components : {
         dangerCard,
+        pirateCard,
         playableCard,
         twoStepPowers,
     },
@@ -56,11 +105,16 @@ const gameFight = {
             twoStepCard : null
         }
     },
+    computed : {
+        isPirateFight : function(){ return this.fight.cardToFight instanceof PirateCard },
+        isDangerFight : function(){ return this.fight.cardToFight instanceof DangerCard }
+    },
     methods : {
         pickFightCard(){
             this.$emit('draw')            
         },
         stopFight(){
+            console.log("gameFight: stopFight")
             this.$emit('stop')
         },
         deleteCards(){
@@ -69,7 +123,7 @@ const gameFight = {
         dontDelete(){
             this.$emit('fight-closed', [])            
         },
-        cardClicked(card:PlayableCard){
+        playableCardClicked(card:PlayableCard){
             if(this.fight.finished){
                 this.addCardToDelete(card)
             }

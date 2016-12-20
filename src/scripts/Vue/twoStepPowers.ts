@@ -4,11 +4,23 @@ import { modal } from './components/modal'
 
 let template = `
 <div>
-    <modal :show.sync="show" :on-close="close" >
+    <modal 
+        :show.sync="show" 
+        :on-close="close" 
+    >
         <div>La carte utilisée</div>
-        <playable-card v-if="usedCard" :card="usedCard" />
+        <playable-card 
+            v-if="usedCard" 
+            :card="usedCard" 
+        />
+        
         <div>Les cartes</div>
-        <playable-card v-for="(card, index) in cards" v-if="card != usedCard" :card="card" @selected="assignCard" />
+        <playable-card v-for="card in cards" 
+            v-if="card != usedCard" 
+            :card="card" 
+            @selected="assignCard" 
+        />
+
         <div>Les actions/validation</div>
         <button @click="validate">Valider</button>
         <button @click="cancel">Annuler</button>
@@ -23,7 +35,7 @@ const twoStepPowers = {
         playableCard,
         modal
     },
-    data : function() : { cardsAssigned : Array<PlayableCard>} {
+    data : function(): { cardsAssigned:Array<PlayableCard>} {
         return {
             cardsAssigned : []
         }
@@ -35,13 +47,13 @@ const twoStepPowers = {
         },
         validate : function(){
             console.log('validation...')
-            this.$emit('validation', 'nothing, for the moment')
             this.close();
+            this.$emit('close-two-step-powers', 'nothing, for the moment')
         },
         cancel : function(){
             console.log('annulation...')
             this.close();            
-            this.$emit('switch-show')            
+            this.$emit('close-two-step-powers')            
         },
         assignCard : function(card:PlayableCard){
             console.log('twoStepPowers : assign card', card)
