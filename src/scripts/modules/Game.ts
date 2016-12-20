@@ -23,7 +23,7 @@ class Game {
     private _pirateDeck    : PirateDeck;
     private _gameOver      : boolean;
     private _pirates       : Array<PirateCard>;
-    private _actualPirate  : number;
+    private _actualPirate  : PirateCard;
     private _level         : number;
     private _arrayOfRemovedCards  : Array<PlayableCard>;
     private _fight         : Fight;
@@ -47,7 +47,7 @@ class Game {
 
         this.pirateDeck    = new PirateDeck();
         this.pirates       = this.pirateDeck.drawCards(2);
-        this.actualPirate  = -1;
+        this.actualPirate  = null;
 
         this.level         = GameLevel.FIRST_ROUND;
         this.arrayOfRemovedCards  = [];
@@ -93,11 +93,12 @@ class Game {
             this.dangerDeck.discardToDeck();
         }
         
-        if ( this.level < 4 ){
+        if ( this.level <= GameLevel.THIRD_ROUND ){
             this.dangerChoiceCards = this.dangerDeck.drawCards( 2 );
         }
         else {
             let pirate = this.getNextPirate();
+            console.log('game : drawDangerCard : pirateToFight : ', pirate)
             if ( pirate ) {
                 this.startFight( pirate )
             }
@@ -109,8 +110,8 @@ class Game {
     }
 
     getNextPirate() : PirateCard | null {
-        this.actualPirate++;
-        return this.actualPirate < this.pirates.length ? this.pirates[ this.actualPirate ] : null;
+        this.actualPirate = this.actualPirate ? this.pirates[ this.pirates.indexOf( this.actualPirate ) + 1 ] : this.pirates[0];
+        return this.actualPirate;
     }
 
     startFight( card:DangerCard|PirateCard ){

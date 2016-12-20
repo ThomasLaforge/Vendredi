@@ -1,8 +1,11 @@
 import { dangerCard } from './dangerCard'
+import { pirateCard } from './pirateCard'
 import { playableCard } from './playableCard'
 import { twoStepPowers } from './twoStepPowers'
 import { Tools } from '../modules/Tools'
 import { PlayableCard } from '../modules/PlayableCard'
+import { DangerCard } from '../modules/DangerCard'
+import { PirateCard } from '../modules/PirateCard'
 import { FightCard } from '../modules/FightCard'
 import { PlayableCardPowerType } from '../modules/Vendredi'
 import * as _ from 'lodash'
@@ -10,7 +13,8 @@ import * as _ from 'lodash'
 let template = `
 <div class="game-fight" id="zone-fight">
     <div class="fight-danger-card-to-fight" id="danger-card-to-fight">
-        <danger-card :danger="fight.cardToFight" />                  
+        <danger-card v-if="isDangerFight" :danger="fight.cardToFight" />
+        <pirate-card v-if="isPirateFight" :pirate="fight.cardToFight" />
     </div>
 
     <div class="fight-player-interface">
@@ -35,7 +39,7 @@ let template = `
                 <button 
                     class="fight-danger-action" id="btn-pick-fight-card" 
                     @click="pickFightCard" 
-                    v-if="( !fight.finished && !fight.forcedToStop)"
+                    v-if="( !fight.finished && !fight.forcedToStop )"
                 >
                     Piocher ( {{this.fight.freeCards > 0 ? 'encore ' + this.fight.freeCards : 'contre ' + this.fight.costOfCardsNotFree + ' PV'}} )
                 </button>
@@ -91,6 +95,7 @@ const gameFight = {
     template : template,
     components : {
         dangerCard,
+        pirateCard,
         playableCard,
         twoStepPowers,
     },
@@ -101,11 +106,16 @@ const gameFight = {
             twoStepCard : null
         }
     },
+    computed : {
+        isPirateFight : function(){ return this.fight.cardToFight instanceof PirateCard },
+        isDangerFight : function(){ return this.fight.cardToFight instanceof DangerCard }
+    },
     methods : {
         pickFightCard(){
             this.$emit('draw')            
         },
         stopFight(){
+            console.log("gameFight: stopFight")
             this.$emit('stop')
         },
         deleteCards(){
