@@ -180,7 +180,6 @@ class Game {
         else{
             this.player.losePV(Math.abs(result));
         }
-        this.drawDangerCard();
     }
 
     endFightWon(){
@@ -191,6 +190,7 @@ class Game {
             this.fightDeck.discard( arrayOfCardsToDiscard );
         }
 
+        this.drawDangerCard();
         this.resetFight();
     }
 
@@ -204,6 +204,7 @@ class Game {
             this.dangerDeck.discard( [ this.fight.cardToFight ] );
             // fight cards
             this.fightDeck.discard( this.fight.getAllFightCards() );
+            this.drawDangerCard();
             this.resetFight();
         }
         else { // = If lost pirate fight => game is over
