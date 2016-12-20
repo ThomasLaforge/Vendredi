@@ -9,7 +9,7 @@ let template = `
     </div>
     <div class="info-main">
         <div class="info-main-pv info-main-elt" id="pv">
-            <div class="info-main-value">{{ game.player.PV }}</div>
+            <div class="info-main-value">{{ game.player.PV >= -1 ? game.player.PV : -1 }}</div>
         </div>
         <div class="info-main-fight-cards info-main-elt">
             <div id="nbFightCards" class="info-main-value">{{ game.fightDeck.length() }}</div>
