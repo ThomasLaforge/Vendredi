@@ -63,7 +63,7 @@ abstract class Fight implements FightInterface {
         let offsetCauseMaxCardEqualsZero = 0;
 
         this.getAllFightCards().forEach( playableCard => {
-            if(typeof(playableCard.power) !=='undefined'){
+            if(typeof playableCard.power !== 'undefined'){
                 if(playableCard instanceof FightCard){
                     if(playableCard.power === FightCardPower.DOUBLE){
                         nbCardToDouble++;
