@@ -6,7 +6,7 @@
     //  - freeCards == 3 : lvl1 => 2, lvl2 => 5, lvl3 => 8
     //  - freeCards == 4 : lvl1 => 4, lvl2 => 7, lvl3 => 11
     //  - freeCards == 5 : lvl1 => 5, lvl2 => 9, lvl3 => 14
-	// {
+    // {
     //     "fight":{
     //         "name"      :   "Livre",
     //         "strength"  :   0,
@@ -17,21 +17,21 @@
     //         "freeCards"     :   1
     //     },
     //     "number":1
-	// },
-	{
-        "fight":{
-            "name"      :   "Nourriture",
-            "strength"  :   1,
-            "power"     :   "+1PV"
+    // },
+    {
+        "fight": {
+            "name": "Nourriture",
+            "strength": 1,
+            "power": "+1PV"
         },
-        "danger":{
-            "name"      :   "Explore l'île",
-            "freeCards"     :   2
+        "danger": {
+            "name": "Explore l'île",
+            "freeCards": 2
         },
-        "number":2
-	}
+        "number": 2
+    }
     // ,
-	// {
+    // {
     //     "fight":{
     //         "name"      :   "Nourriture",
     //         "strength"  :   2,
@@ -42,8 +42,8 @@
     //         "freeCards"     :   3
     //     },
     //     "number":1
-	// },
-	// {
+    // },
+    // {
     //     "fight":{
     //         "name"      :   "Nourriture",
     //         "strength"  :   0,
@@ -54,8 +54,8 @@
     //         "freeCards"     :   1
     //     },
     //     "number":2
-	// },
-	// {
+    // },
+    // {
     //     "fight":{
     //         "name"      :   "Stratégie",
     //         "strength"  :   0,
@@ -66,35 +66,35 @@
     //         "freeCards"     :   1
     //     },
     //     "number":2
-	// }
-    
+    // }
+
     ,
-	{
-        "fight":{
-            "name"      :   "Stratégie",
-            "strength"  :   2,
-            "power"     :   "Echanger x1"
+    {
+        "fight": {
+            "name": "Stratégie",
+            "strength": 2,
+            "power": "Echanger x1"
         },
-        "danger":{
-            "name"      :   "Explore l'île davantage",
-            "freeCards"     :   3
+        "danger": {
+            "name": "Explore l'île davantage",
+            "freeCards": 3
         },
-        "number":1
-	},
-	{
-        "fight":{
-            "name"      :   "Stratégie",
-            "strength"  :   3,
-            "power"     :   "Echanger x1"
+        "number": 1
+    },
+    {
+        "fight": {
+            "name": "Stratégie",
+            "strength": 3,
+            "power": "Echanger x1"
         },
-        "danger":{
-            "name"      :   "Animaux sauvages",
-            "freeCards"     :   4
+        "danger": {
+            "name": "Animaux sauvages",
+            "freeCards": 4
         },
-        "number":1
-	}
+        "number": 1
+    }
     // ,
-	// {
+    // {
     //     "fight":{
     //         "name"      :   "Arme",
     //         "strength"  :   4,
@@ -105,8 +105,8 @@
     //         "freeCards"     :   5
     //     },
     //     "number":2
-	// },
-	// {
+    // },
+    // {
     //     "fight":{
     //         "name"      :   "Arme",
     //         "strength"  :   2,
@@ -117,8 +117,8 @@
     //         "freeCards"     :   2
     //     },
     //     "number":2
-	// },
-	// {
+    // },
+    // {
     //     "fight":{
     //         "name"      :   "Imitation",
     //         "strength"  :   0,
@@ -129,8 +129,8 @@
     //         "freeCards"     :   1
     //     },
     //     "number":1
-	// },
-	// {
+    // },
+    // {
     //     "fight":{
     //         "name"      :   "Imitation",
     //         "strength"  :   1,
@@ -141,8 +141,8 @@
     //         "freeCards"     :   2
     //     },
     //     "number":1
-	// },
-	// {
+    // },
+    // {
     //     "fight":{
     //         "name"      :   "Connaissances",
     //         "strength"  :   3,
@@ -153,8 +153,8 @@
     //         "freeCards"     :   4
     //     },
     //     "number":1
-	// },
-	// {
+    // },
+    // {
     //     "fight":{
     //         "name"      :   "Connaissances",
     //         "strength"  :   2,
@@ -165,8 +165,8 @@
     //         "freeCards"     :   3
     //     },
     //     "number":1
-	// },
-	// {
+    // },
+    // {
     //     "fight":{
     //         "name"      :   "Connaissances",
     //         "strength"  :   0,
@@ -177,8 +177,8 @@
     //         "freeCards"     :   1
     //     },
     //     "number":1
-	// },
-	// {
+    // },
+    // {
     //     "fight":{
     //         "name"      :   "Connaissances",
     //         "strength"  :   1,
@@ -189,8 +189,8 @@
     //         "freeCards"     :   2
     //     },
     //     "number":1
-	// },
-	// {
+    // },
+    // {
     //     "fight":{
     //         "name"      :   "Equipement",
     //         "strength"  :   0,
@@ -201,21 +201,22 @@
     //         "freeCards"     :   1
     //     },
     //     "number":2
-	// }
+    // }
+    ,
+    {
+        "fight": {
+            "name": "Répétition",
+            "strength": 2,
+            "power": "Doubler"
+        },
+        "danger": {
+            "name": "Explore l'île davantage",
+            "freeCards": 3
+        },
+        "number": 1
+    }
     // ,
-	// {
-    //     "fight":{
-    //         "name"      :   "Répétition",
-    //         "strength"  :   2,
-    //         "power"     :   "Doubler"
-    //     },
-    //     "danger":{
-    //         "name"      :   "Explore l'île davantage",
-    //         "freeCards"     :   3
-    //     },
-    //     "number":1
-	// },
-	// {
+    // {
     //     "fight":{
     //         "name"      :   "Répétition",
     //         "strength"  :   1,
@@ -226,8 +227,8 @@
     //         "freeCards"     :   2
     //     },
     //     "number":1
-	// },
-	// {
+    // },
+    // {
     //     "fight":{
     //         "name"      :   "Expérience",
     //         "strength"  :   2,
@@ -238,8 +239,8 @@
     //         "freeCards"     :   3
     //     },
     //     "number":1
-	// },
-	// {
+    // },
+    // {
     //     "fight":{
     //         "name"      :   "Expérience",
     //         "strength"  :   3,
@@ -250,9 +251,9 @@
     //         "freeCards"     :   4
     //     },
     //     "number":1
-	// }
+    // }
     // ,
-	// {
+    // {
     //     "fight":{
     //         "name"      :   "Vision",
     //         "strength"  :   2,
@@ -263,8 +264,8 @@
     //         "freeCards"     :   3
     //     },
     //     "number":1
-	// },
-	// {
+    // },
+    // {
     //     "fight":{
     //         "name"      :   "Vision",
     //         "strength"  :   3,
@@ -275,8 +276,8 @@
     //         "freeCards"     :   4
     //     },
     //     "number":1
-	// },
-	// {
+    // },
+    // {
     //     "fight":{
     //         "name"      :   "Ruse",
     //         "strength"  :   1,
@@ -287,8 +288,8 @@
     //         "freeCards"     :   2
     //     },
     //     "number":1
-	// },
-	// {
+    // },
+    // {
     //     "fight":{
     //         "name"      :   "Ruse",
     //         "strength"  :   0,
@@ -299,5 +300,5 @@
     //         "freeCards"     :   1
     //     },
     //     "number":1
-	// }
+    // }
 ]
