@@ -5,13 +5,14 @@ TODO LIST JEU VENDREDI
 General
 
 Piste de dev :
-    - Vue playableCard : Emit only select event and each parent call function that they want.
+*    - Vue playableCard : Emit only select event and each parent call function that they want.
 
 Questions :
-    - est ce logique de créer un enum playablePowers pour éviter de toujours tester si la carte est
-    de type Vieillissement ou carte combat et donc si il faut comparer son pouvoir à la liste des
-    pouvoir propres au cartes de vieillissement ou aux cartes combat.
-    - Array<any> on type definition Card. why doesn't Array<Card> work?
+     - est ce logique de créer un enum playablePowers pour éviter de toujours tester si la carte est
+       de type Vieillissement ou carte combat et donc si il faut comparer son pouvoir à la liste des
+       pouvoir propres au cartes de vieillissement ou aux cartes combat.
+     - Array<any> on type definition Card. why doesn't Array<Card> work?
+     - PirateFight : Create multiple 
     
 
 -----------------------------------------------------------------------------------------
@@ -19,7 +20,7 @@ Questions :
 Design
 *   - add level class when shown level in info zone
 *   - create a color sass class:
-*       - add level color : 1, 2, 3, pirates(black)
+*   - add level color : 1, 2, 3, pirates(black)
 *   - fix level
 *   - update positioning with new Vue templates
     - styliser le composant gameover
@@ -28,8 +29,8 @@ Design
 -----------------------------------------------------------------------------------------
 
 Finir l'implémentation de la phase de combat des pirates
-?   - piocher un pirate 
-?   - implémenter les missions des pirates
+*   - piocher un pirate 
+*   - implémenter les missions des pirates
 ?   - tester la fin d'un combat
     - finir la phase de combat des pirates victorieux (nouveau composant + event/attribute to watch/control/check)
 
@@ -71,7 +72,7 @@ Implémenter les capacités des cartes Robinson, des cartes de Vieillissement et
     ? - détruire un carte: choisissez une de vos cartes déjà jouée, et retournez-là. Elle à une force de 0, et si elle est encore en jeu à la fin du combat, elle est retirée du jeu 
     ? - copier: copier l'effet d'une autre carte 
     * - doubler: doubler la force d'une autre carte. Il est interdit d'utiliser plusieurs fois cet effet sur la même carte 
-    * - niveau -1: si vous êtes au niveau jaune (resp. rouge), la force du péril que vous affronter est réduite à la force du niveau vert (resp. jaune). N'a pas d'effet sur les périls niveau vert ni sur les pirates 
+    ? - niveau -1: si vous êtes au niveau jaune (resp. rouge), la force du péril que vous affronter est réduite à la force du niveau vert (resp. jaune). N'a pas d'effet sur les périls niveau vert ni sur les pirates 
 
     Aging Cards: 
     * - stop: si vous piochez cette carte parmi les cartes gratuites données par le Péril ou le PirateCard, vous cessez immédiatement de piocher des cartes gratuites 
@@ -83,7 +84,7 @@ Implémenter les capacités des cartes Robinson, des cartes de Vieillissement et
     * - Le PirateCard à autant de force que deux fois le nombre de cartes de Vieillissement que vous avez ajouté dans votre deck au cours de la partie. La force du pirate est déterminée au début du combat et ne change pas si vous rajoutez des cartes de Vieillissement pendant le combat 
     * - Affrontez le reste de l'île: prenez toutes les cartes Périls restant dans la défausse, faites la somme des cartes gratuites pour savoir combien vous pouvez piocher de cartes gratuitement, et la somme des chiffres rouges pour avoir la force de l'ennemi 
     * - Chacune des cartes piochées à +1 de force 
-    * - Seule la moitié des cartes piochées est compté pour la combat
+    ? - Seule la moitié des cartes piochées est compté pour la combat
  
 -----------------------------------------------------------------------------------------
 
