@@ -1,4 +1,5 @@
 import { Fight } from './Fight';
+import { AgingDeck } from './AgingDeck';
 import {PirateCard} from './PirateCard';
 import {DangerCard} from './DangerCard';
 import {DangerDeck} from './DangerDeck';
@@ -14,7 +15,7 @@ Powers :
 */
 
 class PirateFight extends Fight implements PirateFightInterface {
-    constructor( card : PirateCard , costOfCardsNotFree = 1, public remainingDangerDeck?: DangerDeck, numberOfAgingCardInFightDeck?: number){
+    constructor( card : PirateCard , costOfCardsNotFree = 1){
         super(card, costOfCardsNotFree);
     }
 
@@ -61,24 +62,11 @@ class PirateFight extends Fight implements PirateFightInterface {
     }
 
     getStrengthCardToFight(){
-        let nbAgingCardUsed = 0;
-        let res = 0;
-        if(this.cardToFight.strength != null){
-            res = this.cardToFight.strength;
+        if(this.cardToFight.strength === null){
+            throw new Error('no strength for this pirate. No cards with this particularity');
         }
-        
-        if(this.cardToFight.mission != null){
-            switch (this.cardToFight.mission) {
-                case PirateMission.FIGHT_ALL_DANGER_CARDS:
-                    this.remainingDangerDeck.getAllCards().forEach( (danger) => {res += danger.getStrength(GameLevel.THIRD_ROUND)});
-                    break;
-                    // Fight all cards => 0. No instructions cause res already equal to 0
-                case PirateMission.ADD_TWO_DANGER_POINT_BY_AGING_CARD_IN_FIGHT_ADDED_TO_FIGHT_DECK:
-                    res += 2 * nbAgingCardUsed;
-                    break;
-            }
-        }
-        return res;
+
+        return this.cardToFight.strength;
     }
 
 }

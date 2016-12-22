@@ -117,14 +117,24 @@ class Game {
                     break;
 
                 case PirateMission.FIGHT_ALL_DANGER_CARDS:
-                    this.fight = new PirateFight( card, null, this.dangerDeck );
+                    // TODO : set strength and freeCards with all danger cards to fight.
+                    let newStrength = 0;
+                    let newFreeCards = 0;
+                    this.dangerDeck.discardToDeck();
+                    this.dangerDeck.getAllCards().forEach( (card : DangerCard) => {
+                        newStrength += card.getStrength( GameLevel.THIRD_ROUND );
+                        newFreeCards += card.freeCards;
+                    });
+                    card.strength = newStrength;
+                    card.freeCards = newFreeCards;
+                    this.fight = new PirateFight( card );
                     break;
                     
                 case PirateMission.ADD_TWO_DANGER_POINT_BY_AGING_CARD_IN_FIGHT_ADDED_TO_FIGHT_DECK:
-                    let arrayOfAgingCardInFightDeck = this.fightDeck.getAllCards().filter( playableCard => {
-                        return playableCard instanceof AgingCard
-                    });
-                    this.fight = new PirateFight( card, null, null, arrayOfAgingCardInFightDeck.length )
+                    let currentAgingDeckLength = this.agingDeck.length();
+                    let initialLength = (new AgingDeck(this.difficulty)).length(); 
+                    card.strength = ( initialLength - currentAgingDeckLength ) * 2;
+                    this.fight = new PirateFight( card )
                     break;
             
                 default:
