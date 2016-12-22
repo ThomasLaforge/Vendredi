@@ -134,6 +134,7 @@ class Game {
                     let currentAgingDeckLength = this.agingDeck.length();
                     let initialLength = (new AgingDeck(this.difficulty)).length(); 
                     card.strength = ( initialLength - currentAgingDeckLength ) * 2;
+                    console.log('ADD_TWO_DANGER_POINT_BY_AGING_CARD_IN_FIGHT_ADDED_TO_FIGHT_DECK', card)
                     this.fight = new PirateFight( card )
                     break;
             
@@ -147,8 +148,10 @@ class Game {
         }
         
         // Discard other(s) cards of danger choice phase
-        this.dangerDeck.discard(this.dangerChoiceCards.filter(c => c != card))
-        this.dangerChoiceCards = null;
+        if(this.dangerChoiceCards){
+            this.dangerDeck.discard(this.dangerChoiceCards.filter(c => c != card))
+            this.dangerChoiceCards = null;
+        }
         this.addPlayableCardToFight();
     }
 
