@@ -45,18 +45,15 @@ abstract class Fight implements FightInterface {
         let offsetCauseMaxCardEqualsZero = powersToApplyAnswer.offsetMaxEqualsZero;
 
         orderedPlayableCardsByStrength.forEach( (playableCard, i) => {
-            if( i >= offsetCauseMaxCardEqualsZero ){
+            if( i > offsetCauseMaxCardEqualsZero - 1 ){
+                if( nbCardToDouble > 0 ){
+                    playerForce += playableCard.strength;
+                    nbCardToDouble--;
+                }
+
                 playerForce += playableCard.strength;
             }
         })
-
-        // TODO : Update for loop in while loop
-        for(let i = 0; i < nbCardToDouble; i++){
-            let indexOfNextMaxCard = i + offsetCauseMaxCardEqualsZero;
-            if( indexOfNextMaxCard < orderedPlayableCardsByStrength.length ){
-                playerForce += orderedPlayableCardsByStrength[indexOfNextMaxCard].strength;
-            }
-        }
 
         return playerForce;
     }
