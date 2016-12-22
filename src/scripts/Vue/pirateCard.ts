@@ -5,7 +5,7 @@ let template = `
         <div class="pirate-card-name">{{pirate.name}}</div>
         <div class="pirate-card-strength">{{pirate.strength ? pirate.strength : '*'}}</div>
     </div>
-    <div class="pirate-card-mission">{{pirate.mission ? pirate.missionName() : '...'}}</div>
+    <div class="pirate-card-mission">{{pirate.mission || pirate.mission === 0 ? pirate.missionName() : '...'}}</div>
 </div>
 `;
 
