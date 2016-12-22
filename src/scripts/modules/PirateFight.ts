@@ -20,10 +20,9 @@ class PirateFight extends Fight implements PirateFightInterface {
     }
 
     getPlayerForce(){
-        let playerForce = 0;
+        let playerForce = super.getPlayerForce();
         
         if( this.cardToFight.mission === PirateMission.EACH_CARD_GIVE_ONE_FIGHT_POINT ){
-            playerForce = super.getPlayerForce();
             // Comment j'interprete cette règle:
             // On rajoute un point par carte à la fin du combat
             // On pourrait se dire que c'est l'ensemble des cartes piochées pendant le combat
@@ -31,7 +30,10 @@ class PirateFight extends Fight implements PirateFightInterface {
             // Du coup, une carte peut rapporter deux points en étant piochée, échangée et rejouée plus tard.
             playerForce += this.getAllFightCards().length;
         }
-        else if( this.cardToFight.mission === PirateMission.ONLY_KEEP_HALF_CARDS ){
+        
+        if( this.cardToFight.mission === PirateMission.ONLY_KEEP_HALF_CARDS ){
+            // TODO : Refactor using super.getPlayerForce who is in playerForce var. And then sub cards that are on second half of played card
+            // Keep in mind the fact that aging cards must stay
             let powersToApplyAnswer = this.getPowersToApplyOnPlayerForce();
             let nbCardToDouble = powersToApplyAnswer.nbCardToDouble;
             let offsetCauseMaxCardEqualsZero = powersToApplyAnswer.offsetMaxEqualsZero;
@@ -53,9 +55,6 @@ class PirateFight extends Fight implements PirateFightInterface {
                     playerForce += arrCardsToKeep[i].strength;
                 }
             }
-        }
-        else {
-            playerForce = super.getPlayerForce();
         }
 
         return playerForce;
