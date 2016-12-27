@@ -29,8 +29,11 @@ let template = `
 
         <div class="fight-result-info-and-actions">
             <div class="fight-danger-infos">
-                <span id="fight-danger-temporary-result" :class="fight.getResult() >= 0 ? 'fight-danger-temporary-result-success' : 'fight-danger-temporary-result-negative'">
-                    {{fight.getResult()}}
+                <span v-if="!fight.finished" id="fight-danger-temporary-result" :class="fight.getResult() >= 0 ? 'fight-danger-temporary-result-success' : 'fight-danger-temporary-result-negative'">
+                    {{ fight.getResult() }}
+                </span>
+                <span v-if="fight.finished">
+                    {{ nbCardsRemovable }}
                 </span>
             </div>
 
@@ -54,7 +57,7 @@ let template = `
                 <button 
                     class="fight-danger-action" id="btn-delete-fight-cards" 
                     @click="deleteCards" 
-                    v-if="fight.finished"
+                    :disabled="(fight.finished && cardsToDelete.length === 0)"
                 >
                     Delete Card(s)
                 </button>
@@ -64,7 +67,7 @@ let template = `
                     @click="dontDelete" 
                     v-if="fight.finished"
                 >
-                    Keep them
+                    Keep all
                 </button>
             </div>
         </div>
@@ -107,7 +110,13 @@ const gameFight = {
     },
     computed : {
         isPirateFight : function(){ return this.fight.cardToFight instanceof PirateCard },
-        isDangerFight : function(){ return this.fight.cardToFight instanceof DangerCard }
+        isDangerFight : function(){ return this.fight.cardToFight instanceof DangerCard },
+        nbCardsRemovable : function() { 
+            let result: number = this.fight.getResult();
+            let sum: number = 0;
+            this.cardsToDelete.forEach( (c: PlayableCard) => { sum += c.costToDelete } ) 
+            return Math.abs(result) - sum;
+        }
     },
     methods : {
         pickFightCard(){
