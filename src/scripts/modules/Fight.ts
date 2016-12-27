@@ -129,7 +129,7 @@ abstract class Fight implements FightInterface {
     }
     
     getAllFightCards(){
-        return this.arrayFightCard.concat(this.arrayFightCardUsed);
+        return this.arrayFightCard.concat(this.arrayFightCardUsed).filter( c => typeof c !== "undefined");
     }
 
     get freeCards() : number{
