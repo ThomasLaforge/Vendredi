@@ -57,7 +57,8 @@ let template = `
                 <button 
                     class="fight-danger-action" id="btn-delete-fight-cards" 
                     @click="deleteCards" 
-                    :disabled="(fight.finished && cardsToDelete.length === 0)"
+                    v-if="fight.finished"
+                    :disabled="cardsToDelete.length === 0"
                 >
                     Delete Card(s)
                 </button>
