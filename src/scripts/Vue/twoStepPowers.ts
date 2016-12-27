@@ -17,8 +17,8 @@ let template = `
         <div>Les cartes</div>
         <playable-card v-for="card in cards" 
             v-if="card != usedCard" 
-            :card="card" 
-            @selected="assignCard" 
+            :card="card"
+            @select="assignCard(card)" 
         />
 
         <div>Les actions/validation</div>
