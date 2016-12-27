@@ -4,8 +4,8 @@ import { FightCardInterface, FightCardPower } from './Vendredi';
 
 class FightCard extends PlayableCard implements FightCardInterface {
 
-    constructor(id:string, name:string, strength:number,public power: FightCardPower|null, readonly costToDelete:number = 1 ){
-        super(id, name, strength, costToDelete, power);
+    constructor( name:string, strength:number, public power: FightCardPower|null, id: string, readonly costToDelete:number = 1 ){
+        super( name, strength, costToDelete, power, id);
     }
 
     show(){

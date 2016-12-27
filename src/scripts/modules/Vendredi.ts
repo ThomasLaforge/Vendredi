@@ -78,9 +78,10 @@ export interface CardInterface{
 }
 
 export interface PlayableCardInterface extends CardInterface {
-    costToDelete : number,
-    power        : FightCardPower|AgingCardPower|null,
+    costToDelete : number
+    power        : FightCardPower|AgingCardPower|null
     powerUsed    : boolean
+    id           : string
 }
 
 // export interface CardToFightInterface extends CardInterface {

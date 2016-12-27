@@ -14,7 +14,7 @@ let game     = new Game(myPlayer, 1);
 
 game.level = 2
 
-let newFC = new FightCard(uuid.v1(), "Stratégie", 2, FightCardPower.SWAP_ONE);
+let newFC = new FightCard("Stratégie", 2, FightCardPower.SWAP_ONE, uuid.v1());
 game.fightDeck.addCard(newFC);
 
 // Vue

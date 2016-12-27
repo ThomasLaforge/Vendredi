@@ -15,10 +15,10 @@ class DangerDeck extends Deck {
         let arrDatas = require('../../datas/dangers_cards.json');
         arrDatas.forEach( (jsonData:jsonDataDanger) => {
             let number = jsonData.number;
-            for (var i=0; i<number; i++) {
-                let newPower = Tools.getFightPowerFromString(jsonData.fight.power);
-                let newFightCard = new FightCard(uuid.v1(), jsonData.fight.name, jsonData.fight.strength, newPower);
-                let newDanger = new DangerCard(newFightCard, jsonData.danger.name, jsonData.danger.freeCards);
+            for ( let i=0; i<number; i++ ) {
+                let newPower = Tools.getFightPowerFromString( jsonData.fight.power );
+                let newFightCard = new FightCard( jsonData.fight.name, jsonData.fight.strength, newPower, uuid.v1() );
+                let newDanger = new DangerCard( newFightCard, jsonData.danger.name, jsonData.danger.freeCards );
                 arrRes.push(newDanger);
             }
         });

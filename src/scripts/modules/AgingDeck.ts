@@ -18,14 +18,13 @@ class AgingDeck extends PlayableDeck{
     }
 
     initDeck(){
-        let uuidCard = uuid.v1();
         let arrRes : Array<AgingCard> = [];
         let arrDatas = require( '../../datas/aging_cards.json' );
         arrDatas.forEach( (obj: jsonDataAging) => {
             let number = obj.number;
             let power = obj.power ? Tools.getAgingPowerFromString(obj.power) : null;
-            let newAgingCard = new AgingCard(uuidCard, obj.name, obj.strength, power, obj.level);
             for (var i=0; i<number; i++) {
+                let newAgingCard= new AgingCard( obj.name, obj.strength, power, obj.level, uuid.v1());
                 arrRes.push( newAgingCard );
             }
         });
