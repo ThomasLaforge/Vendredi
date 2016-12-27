@@ -4,6 +4,8 @@ import * as _ from 'lodash';
 import {AgingCard} from './AgingCard';
 import {GameDifficulty, jsonDataAging} from './Vendredi';
 
+import * as uuid from 'node-uuid';
+
 class AgingDeck extends PlayableDeck{
 
     constructor(difficulty : GameDifficulty){
@@ -12,16 +14,17 @@ class AgingDeck extends PlayableDeck{
         if(difficulty < GameDifficulty.HARD){
             this.arrayDeck.pop();
         }
-        this.shuffle();        
+        this.shuffle();       
     }
 
     initDeck(){
+        let uuidCard = uuid.v1();
         let arrRes : Array<AgingCard> = [];
         let arrDatas = require( '../../datas/aging_cards.json' );
         arrDatas.forEach( (obj: jsonDataAging) => {
             let number = obj.number;
             let power = obj.power ? Tools.getAgingPowerFromString(obj.power) : null;
-            let newAgingCard = new AgingCard(obj.name, obj.strength, power, obj.level);
+            let newAgingCard = new AgingCard(uuidCard, obj.name, obj.strength, power, obj.level);
             for (var i=0; i<number; i++) {
                 arrRes.push( newAgingCard );
             }

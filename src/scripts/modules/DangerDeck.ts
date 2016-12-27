@@ -3,6 +3,7 @@ import {DangerCard} from "./DangerCard";
 import {FightCard} from "./FightCard";
 import {Tools} from './Tools';
 import {jsonDataDanger} from './Vendredi';
+import * as uuid from 'node-uuid'
 
 class DangerDeck extends Deck {
 	constructor(){
@@ -16,7 +17,7 @@ class DangerDeck extends Deck {
             let number = jsonData.number;
             for (var i=0; i<number; i++) {
                 let newPower = Tools.getFightPowerFromString(jsonData.fight.power);
-                let newFightCard = new FightCard(jsonData.fight.name, jsonData.fight.strength, newPower);
+                let newFightCard = new FightCard(uuid.v1(), jsonData.fight.name, jsonData.fight.strength, newPower);
                 let newDanger = new DangerCard(newFightCard, jsonData.danger.name, jsonData.danger.freeCards);
                 arrRes.push(newDanger);
             }

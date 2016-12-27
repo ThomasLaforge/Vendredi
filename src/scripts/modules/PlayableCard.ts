@@ -5,7 +5,7 @@ import * as _ from 'lodash'
 
 abstract class PlayableCard extends Card implements PlayableCardInterface {
 
-    constructor(name:string, strength:number, public costToDelete: number, public power: FightCardPower|AgingCardPower|null, public powerUsed : boolean = false, public initialState?:PlayableCard) {
+    constructor(id: string, name:string, strength:number, public costToDelete: number, public power: FightCardPower|AgingCardPower|null, public powerUsed : boolean = false, public initialState?:PlayableCard) {
         super(name, strength);
         this.initialState = _.clone(this);
     }
