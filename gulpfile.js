@@ -70,15 +70,7 @@ gulp.task('templates', () => {
         .pipe(gulp.dest('dist/'))
 });
 
-
-gulp.task('bower-files', () => {
-    return gulp.src('bower_components/**/*.min.js')
-        .pipe(flatten())
-        .pipe(gulp.dest('dist/lib'));
-});
-
-
-gulp.task('build', ['compass', 'compile-js', 'templates', 'images', 'bower-files']);
+gulp.task('build', ['compass', 'compile-js', 'templates', 'images']);
 
 gulp.task('serve', ['build', 'browser-sync'], () => {
     gulp.watch('src/stylesheets/**/*.{scss,sass}', ['compass', reload]);
