@@ -4,8 +4,6 @@ import * as _ from 'lodash';
 import {AgingCard} from './AgingCard';
 import {GameDifficulty, jsonDataAging} from './Vendredi';
 
-import * as uuid from 'node-uuid';
-
 class AgingDeck extends PlayableDeck{
 
     constructor(difficulty : GameDifficulty){
@@ -24,7 +22,7 @@ class AgingDeck extends PlayableDeck{
             let number = obj.number;
             let power = obj.power ? Tools.getAgingPowerFromString(obj.power) : null;
             for (var i=0; i<number; i++) {
-                let newAgingCard= new AgingCard( obj.name, obj.strength, power, obj.level, uuid.v1());
+                let newAgingCard= new AgingCard( obj.name, obj.strength, power, obj.level );
                 arrRes.push( newAgingCard );
             }
         });

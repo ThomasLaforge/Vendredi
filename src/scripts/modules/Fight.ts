@@ -24,8 +24,13 @@ abstract class Fight implements FightInterface {
         this.freeCards += cardInAddition;
     }
 
-    addFightCard( fightCard : PlayableCard ) {
-        this.arrayFightCard.push( fightCard );
+    addFightCard( playableCard : PlayableCard ) {
+        if(typeof playableCard !== "undefined"){
+            this.arrayFightCard.push( playableCard )
+        }
+        else{
+            console.log('Error : try to add undefined to Fight:arrayFightCard')
+        }
     }
 
     useCard(card : PlayableCard ) {

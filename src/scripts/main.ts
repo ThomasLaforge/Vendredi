@@ -1,6 +1,5 @@
 // Jquery et bootstrap
 // var bootstrap = require('bootstrap/dist/js/bootstrap');
-import * as uuid from 'node-uuid';
 
 // Model
 import { Game 	}         from	'./modules/Game';
@@ -14,7 +13,7 @@ let game     = new Game(myPlayer, 1);
 
 game.level = 2
 
-let newFC = new FightCard("Stratégie", 2, FightCardPower.SWAP_ONE, uuid.v1());
+let newFC = new FightCard("Stratégie", 2, FightCardPower.SWAP_ONE );
 game.fightDeck.addCard(newFC);
 
 // Vue

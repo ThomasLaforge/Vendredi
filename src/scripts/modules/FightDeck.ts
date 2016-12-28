@@ -2,7 +2,6 @@ import { PlayableDeck }  from "./PlayableDeck";
 import { FightCard } from "./FightCard";
 import { Tools } from './Tools';
 import { jsonDataFight } from './Vendredi';
-import * as uuid from 'node-uuid';
 
 class FightDeck extends PlayableDeck {
 	constructor(){
@@ -16,7 +15,7 @@ class FightDeck extends PlayableDeck {
             let number = obj.number;
             let power = obj.power ? Tools.getFightPowerFromString(obj.power) : null;
             for (var i=0; i<number; i++) {
-                let newFight = new FightCard( obj.name, obj.strength, power, uuid.v1());
+                let newFight = new FightCard( obj.name, obj.strength, power );
                 arrRes.push(newFight);
             }
         });
