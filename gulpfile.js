@@ -70,7 +70,15 @@ gulp.task('templates', () => {
         .pipe(gulp.dest('dist/'))
 });
 
-gulp.task('build', ['compass', 'compile-js', 'templates', 'images']);
+
+gulp.task('lib', () => {
+    return gulp.src('node_modules/{vue/dist/vue.js,bootstrap/dist/css/bootstrap.min.css}')
+        .pipe(flatten())
+        .pipe(gulp.dest('dist/lib'));
+});
+
+
+gulp.task('build', ['compass', 'compile-js', 'templates', 'images', 'lib']);
 
 gulp.task('serve', ['build', 'browser-sync'], () => {
     gulp.watch('src/stylesheets/**/*.{scss,sass}', ['compass', reload]);
