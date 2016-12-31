@@ -140,7 +140,9 @@ const gameFight = {
             }
             else{
                 if(card.power){
-                    this.useCard(card)
+                    if(this.fight.arrayFightCard.indexOf(card) !== -1){
+                        this.useCard(card)
+                    }
                 }
             }
         },
