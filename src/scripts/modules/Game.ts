@@ -80,8 +80,8 @@ class Game {
 
         if ( this.fightDeck.isEmpty() ){
             // On ajoute une carte vieillissement dans la défausse
-            let newAgingCard = this.agingDeck.drawCards( 1 );
-            this.fightDeck.discard( newAgingCard );
+            let newArrayAgingCard = this.agingDeck.drawCards(1);
+            this.fightDeck.discard( newArrayAgingCard );
             // On ajoute la défausse au deck et on mélange
             this.fightDeck.discardToDeck();
         }

@@ -82,31 +82,23 @@ abstract class Deck {
 
     // Could be recursive ?
     drawOneCard(){
-        let res:any ;
+        let res:any = null;
 
-        if ( this.length() >= 1 ) {
+        if ( !this.isEmpty() ) {
             res = this.arrayDeck[0];
             this.arrayDeck.splice( 0, 1 );
         }
         else {
-            this.discardToDeck();
-            // on recommence drawOneCard();
-            if ( this.length() >= 1 ) {
-                res = this.arrayDeck[ 0 ];
-                this.arrayDeck.splice( 0, 1 );
-            }
-            else{
-                throw new Error('No more cards in this deck');
-            }
+          throw new Error('No more cards in this deck');
         }
 
         return res;
     }
 
     discard( arrayOfCard: Array<any> ){
-        arrayOfCard.forEach( card =>
+        arrayOfCard.forEach( card => {
             this.arrayDiscard.push( card )
-        );
+        });
     }
 
     removeCard( card:any ) {
