@@ -247,8 +247,9 @@ class Game {
                     case FightCardPower.COPY_ONE:
                         usePower = false;                        
                         if(assignedCards.length === 1 && assignedCards[0] instanceof FightCard){
-                            let cardToGetPower = <FightCard>assignedCards[0];
-                            card.changePower( cardToGetPower.power );
+                            let cardToCopy = <FightCard>assignedCards[0];
+                            card.changePower( cardToCopy.power );
+                            card.strength = cardToCopy.strength;
                         }
                         break;
                     case FightCardPower.DESTROY:
