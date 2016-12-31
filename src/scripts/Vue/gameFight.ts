@@ -7,7 +7,8 @@ import { PlayableCard } from '../modules/PlayableCard'
 import { DangerCard } from '../modules/DangerCard'
 import { PirateCard } from '../modules/PirateCard'
 import { FightCard } from '../modules/FightCard'
-import { PlayableCardPowerType } from '../modules/Vendredi'
+import { AgingCard } from '../modules/AgingCard'
+import { PlayableCardPowerType, AgingCardPower } from '../modules/Vendredi'
 import * as _ from 'lodash'
 
 let template = `
@@ -41,7 +42,7 @@ let template = `
                 <button 
                     class="fight-danger-action" id="btn-pick-fight-card" 
                     @click="pickFightCard" 
-                    v-if="( !fight.finished && !fight.forcedToStop )"
+                    v-if="( !fight.finished && !forcedToStop )"
                 >
                     Piocher ( {{this.fight.freeCards > 0 ? 'encore ' + this.fight.freeCards : 'contre ' + this.fight.costOfCardsNotFree + ' PV'}} )
                 </button>
@@ -49,7 +50,7 @@ let template = `
                 <button 
                     class="fight-danger-action" id="btn-stop-fight" 
                     @click="stopFight" 
-                    v-if="!fight.finished"
+                    v-if="forcedToStop"
                 >
                     Stop
                 </button>
@@ -118,7 +119,8 @@ const gameFight = {
             let sum: number = 0;
             this.cardsToDelete.forEach( (c: PlayableCard) => { sum += c.costToDelete } ) 
             return Math.abs(result) - sum;
-        }
+        },
+        forcedToStop : function(){ return this.fight.hasStopCard() } 
     },
     methods : {
         pickFightCard(){

@@ -171,9 +171,6 @@ class Game {
                     case AgingCardPower.LOSE_TWO_PV:
                         this.player.losePV(2);                   
                         break;
-                    case AgingCardPower.STOP:
-                        this.fight.forceToStop();
-                        break;
                 }
 
                 this.fight.useCard(playableCard)

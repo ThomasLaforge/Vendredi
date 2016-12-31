@@ -14,8 +14,7 @@ abstract class Fight implements FightInterface {
         public costOfCardsNotFree = 1,
         public arrayFightCard : Array<PlayableCard> = [], 
         public arrayFightCardUsed : Array<PlayableCard> = [], 
-        public finished : boolean = false, 
-        public forcedToStop : boolean = false,
+        public finished : boolean = false
     ){
         this.freeCards = cardToFight.freeCards;
     }
@@ -138,10 +137,6 @@ abstract class Fight implements FightInterface {
         return sum;
     }
 
-    forceToStop(){
-        this.forcedToStop = true;
-    }
-
     getCardToFight(){
         return this.cardToFight;
     }
@@ -152,6 +147,10 @@ abstract class Fight implements FightInterface {
 
     getAllCardsToDiscard() : Array<PlayableCard> {
         return this.getAllCards().filter( (card: PlayableCard) => { return !card.toDestroyAtEndOfFight });
+    }
+
+    hasStopCard() : boolean {
+        return this.getAllCards().filter( (card:PlayableCard) => { return card instanceof AgingCard && card.power === AgingCardPower.STOP}).length > 0
     }
 
     get freeCards() : number{
