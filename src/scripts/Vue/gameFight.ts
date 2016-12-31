@@ -50,7 +50,7 @@ let template = `
                 <button 
                     class="fight-danger-action" id="btn-stop-fight" 
                     @click="stopFight" 
-                    v-if="forcedToStop"
+                    v-if="(!fight.finished && forcedToStop)"
                 >
                     Stop
                 </button>
