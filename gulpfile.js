@@ -25,7 +25,8 @@ gulp.task('browser-sync', () => {
         open: !!argv.open,
         notify: !!argv.notify,
         server: {
-            baseDir: "./dist"
+            index: "dist/index.html",
+            baseDir: "./"
         }
     });
 });
@@ -71,14 +72,14 @@ gulp.task('templates', () => {
 });
 
 
-gulp.task('lib', () => {
-    return gulp.src('node_modules/{vue/dist/vue.js,bootstrap/dist/css/bootstrap.min.css}')
-        .pipe(flatten())
-        .pipe(gulp.dest('dist/lib'));
-});
+// gulp.task('lib', () => {
+//     return gulp.src('node_modules/{vue/dist/vue.js,bootstrap/dist/css/bootstrap.min.css,vue-sortable/vue-sortable.js}')
+//         .pipe(flatten())
+//         .pipe(gulp.dest('dist/lib'));
+// });
 
 
-gulp.task('build', ['compass', 'compile-js', 'templates', 'images', 'lib']);
+gulp.task('build', ['compass', 'compile-js', 'templates', 'images']);
 
 gulp.task('serve', ['build', 'browser-sync'], () => {
     gulp.watch('src/stylesheets/**/*.{scss,sass}', ['compass', reload]);
