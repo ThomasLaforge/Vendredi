@@ -28,7 +28,7 @@ class PirateFight extends Fight implements PirateFightInterface {
             // On pourrait se dire que c'est l'ensemble des cartes piochées pendant le combat
             // Dans ce cas, les cartes échangées (donc remis dans la pioche rapporterai un point)
             // Du coup, une carte peut rapporter deux points en étant piochée, échangée et rejouée plus tard.
-            playerForce += this.getAllFightCards().length;
+            playerForce += this.getAllCards().length;
         }
         
         if( this.cardToFight.mission === PirateMission.ONLY_KEEP_HALF_CARDS ){
@@ -37,7 +37,7 @@ class PirateFight extends Fight implements PirateFightInterface {
             let powersToApplyAnswer = this.getPowersToApplyOnPlayerForce();
             let nbCardToDouble = powersToApplyAnswer.nbCardToDouble;
             let offsetCauseMaxCardEqualsZero = powersToApplyAnswer.offsetMaxEqualsZero;
-            let arrCardsToKeep = this.getAllFightCards().sort( (a, b) => {return b.strength - a.strength });
+            let arrCardsToKeep = this.getAllCards().sort( (a, b) => {return b.strength - a.strength });
 
             // Comment j'interprete cette règle:
             // Supprime les premiers éléments qui sont égaux à 0.

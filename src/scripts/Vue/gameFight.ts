@@ -85,7 +85,7 @@ let template = `
 
     <two-step-powers 
         :show="twoStepPowerSelectionOpen" 
-        :cards="fight.getAllFightCards()" 
+        :cards="fight.getAllCards()" 
         :used-card="twoStepCard" 
         @keyup.esc="switchTwoStepView" 
         @switch-show="switchTwoStepView"
@@ -144,7 +144,7 @@ const gameFight = {
             }
         },
         addCardToDelete(card:PlayableCard){
-            let cardExists = this.fight.getAllFightCards().indexOf(card) != -1;
+            let cardExists = this.fight.getAllCards().indexOf(card) != -1;
             // Juste check if this card exists
             if(cardExists){
                 let index = this.cardsToDelete.indexOf(card); 

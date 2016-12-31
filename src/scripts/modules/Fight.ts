@@ -43,7 +43,7 @@ abstract class Fight implements FightInterface {
 
     getPlayerForce() {
         let playerForce: number = 0;
-        let allPlayableCards = this.getAllFightCards();
+        let allPlayableCards = this.getAllCards();
         let orderedPlayableCardsByStrength = allPlayableCards.sort( (a, b) => { return b.strength - a.strength; })
         let powersToApplyAnswer = this.getPowersToApplyOnPlayerForce();
         let nbCardToDouble = powersToApplyAnswer.nbCardToDouble;
@@ -67,7 +67,7 @@ abstract class Fight implements FightInterface {
         let nbCardToDouble = 0;
         let offsetCauseMaxCardEqualsZero = 0;
 
-        this.getAllFightCards().forEach( playableCard => {
+        this.getAllCards().forEach( playableCard => {
             if(typeof playableCard.power !== 'undefined'){
                 if(playableCard instanceof FightCard){
                     if(playableCard.power === FightCardPower.DOUBLE){
@@ -133,7 +133,7 @@ abstract class Fight implements FightInterface {
         return this.cardToFight;
     }
     
-    getAllFightCards(){
+    getAllCards(){
         return this.arrayFightCard.concat(this.arrayFightCardUsed).filter( c => typeof c !== "undefined");
     }
 
