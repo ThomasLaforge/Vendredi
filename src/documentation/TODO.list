@@ -12,7 +12,8 @@ Questions :
        de type Vieillissement ou carte combat et donc si il faut comparer son pouvoir à la liste des
        pouvoir propres au cartes de vieillissement ou aux cartes combat.
      - Array<any> on type definition Card. why doesn't Array<Card> work?
-     - PirateFight : Create multiple 
+     - PirateFight : Create multiple
+     - Est ce que Fight ne devrait pas avoir une copie de Game.FightDeck
     
 
 -----------------------------------------------------------------------------------------
