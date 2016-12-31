@@ -200,6 +200,7 @@ class Game {
         this.resetFight();
     }
 
+    // TODO : Check if it works well...
     endFightLost( cardsToDelete : Array<PlayableCard> ){
         if(this.fight instanceof DangerFight){        
             // Delete cards from game
@@ -209,7 +210,7 @@ class Game {
             // danger card
             this.dangerDeck.discard( [ this.fight.cardToFight ] );
             // fight cards
-            this.fightDeck.discard( this.fight.getAllCards() );
+            this.fightDeck.discard( this.fight.getAllCardsToDiscard() );
             this.resetFight();
         }
         else { // = If lost pirate fight => game is over
