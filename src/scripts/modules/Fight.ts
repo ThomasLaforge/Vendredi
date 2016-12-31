@@ -33,6 +33,19 @@ abstract class Fight implements FightInterface {
         }
     }
 
+    discard(arrayOfCardToDiscard : Array<PlayableCard>){
+        arrayOfCardToDiscard.forEach( card => {
+            let indexNotUsed:number = this.arrayFightCard.indexOf(card);
+            let indexUsed: number = this.arrayFightCardUsed.indexOf(card);
+            if(indexNotUsed !== -1){
+                this.arrayFightCard.splice(indexNotUsed, 1)
+            }
+            if(indexUsed !== -1){
+                this.arrayFightCardUsed.splice(indexUsed, 1)
+            }
+        })
+    }
+
     useCard(card : PlayableCard ) {
         let indexCard = this.arrayFightCard.indexOf(card);
         if(indexCard > -1){
@@ -135,6 +148,10 @@ abstract class Fight implements FightInterface {
     
     getAllCards(){
         return this.arrayFightCard.concat(this.arrayFightCardUsed).filter( c => typeof c !== "undefined");
+    }
+
+    getAllCardsToDiscard() : Array<PlayableCard> {
+        return this.getAllCards().filter( (card: PlayableCard) => { return !card.toDestroyAtEndOfFight });
     }
 
     get freeCards() : number{

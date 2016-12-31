@@ -45,7 +45,18 @@ abstract class Deck {
 
     addCard(card:any){
         this.arrayDeck.push(card);
-        this.shuffle();
+    }
+
+    addCardsToTheEnd(cards:Array<any>){ 
+        cards.forEach( card => {
+            this.addCard(card)
+        });
+    }
+    
+    addCardOnTop(cards:Array<any>){
+        cards.forEach( card => {    
+            this.arrayDeck.unshift(cards)
+        });
     }
 
     discardToDeck(){
