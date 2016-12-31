@@ -177,8 +177,9 @@ const gameFight = {
         switchTwoStepView(){
             this.twoStepPowerSelectionOpen = !this.twoStepPowerSelectionOpen
         },
-        closeTwoStepPowers(data:{}){
+        handleUseTwoStepPower(data:{}){
             console.log(data ? data : 'no data');
+            this.$emit('use-two-step-power', data);
             this.twoStepPowerSelectionOpen = false
         }
     }

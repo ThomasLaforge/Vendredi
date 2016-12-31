@@ -56,6 +56,11 @@ let app = new Vue({
         useMyPower(card:FightCard){
             console.log('game : usePower')
             this.game.usePower(card)
+        },
+        useTwoStepPower(data:{ usedCard:FightCard, assignedCards: Array<PlayableCard>}){
+            console.log('main:useTwoStepPower', data)
+            this.game.usePower(data.usedCard, data.assignedCards)
         }
     }
 })
+
