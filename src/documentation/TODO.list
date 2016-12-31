@@ -14,6 +14,21 @@ Questions :
      - Array<any> on type definition Card. why doesn't Array<Card> work?
      - PirateFight : Create multiple
      - Est ce que Fight ne devrait pas avoir une copie de Game.FightDeck
+
+     - Annotations sur certaines règles:
+        I have only 0 cards left in my deck, when i use the ability to sort the top 3 cards of my deck, should i just ignore this ability since it is useless at this given time, or should add an aging card and reshuffle my deck?
+        As Vasher said, add an aging card and reshuffle. I detailed how to use this ability with a deck of 0-2 cards in this post: Re: Sort 3 cards and fewer than 3 in the Robinson deck
+        ryusora wrote:
+        When i use exchange 2, i must exchange exactly 2 cards? Cards draw after the exchange, should go on the right or left side?
+        As Vasher said, the rules do say "up to 2" cards, and each new card goes to the same place (left or right) as the card it replaces.
+        You can do the first exchange before deciding whether to do a second one.
+        You can use the second exchange to swap out the card you got in the first exchange.
+        If you do two exchanges, you cannot use the ability of either of the new cards until you have completed both exchanges. That means that, if you exchange away the first new card (previous paragraph), you will not be able to use its ability at all.
+        ryusora wrote:
+        When i draw 2 cards from an ability, i must draw exactly 2 cards? And cards draw this way i should place on the right or left side?
+        As Vasher said, the rules do say "up to 2" cards, and each new card goes on the right.
+        You can draw card before deciding whether to draw a second one.
+        If you draw two cards, you cannot use the ability of either of the new cards until you have drawn both cards. That means that, if the first card is "sort 3 cards," you cannot use it to peek and see (or control) what the next card might be.
     
 
 -----------------------------------------------------------------------------------------
