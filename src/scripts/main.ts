@@ -13,8 +13,10 @@ let game     = new Game(myPlayer, 1);
 
 game.level = 2
 
-let newFC = new FightCard("Stratégie", 2, FightCardPower.SWAP_ONE );
+let newFC = new FightCard("Stratégie", 2, FightCardPower.COPY_ONE );
+let newFC2 = new FightCard("Stratégie", 2, FightCardPower.SWAP_ONE );
 game.fightDeck.addCard(newFC);
+game.fightDeck.addCard(newFC2);
 
 // Vue
 import { dangerCard } from './Vue/dangerCard';

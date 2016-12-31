@@ -245,12 +245,10 @@ class Game {
             if(assignedCards.length > 0){
                 switch( card.power ) {
                     case FightCardPower.COPY_ONE:
-                        if(assignedCards.length === 1){
+                        usePower = false;                        
+                        if(assignedCards.length === 1 && assignedCards[0] instanceof FightCard){
                             let cardToGetPower = <FightCard>assignedCards[0];
                             card.changePower( cardToGetPower.power );
-                        }
-                        else{
-                            usePower = false;
                         }
                         break;
                     case FightCardPower.DESTROY:
