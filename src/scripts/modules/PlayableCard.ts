@@ -6,13 +6,15 @@ import * as uuid from 'node-uuid'
 
 abstract class PlayableCard extends Card implements PlayableCardInterface {
 
-    public initialState?:PlayableCard
+    public initialState:PlayableCard
     public id: string
+    public toDestroyAtEndOfFight: boolean
 
     constructor(name:string, strength:number, public costToDelete: number, public power: FightCardPower|AgingCardPower|null, public powerUsed : boolean = false) {
         super(name, strength);
         this.id = uuid.v1();
         this.initialState = _.clone(this);
+        this.toDestroyAtEndOfFight = false;
     }
 
     // How not implements it o
@@ -25,6 +27,7 @@ abstract class PlayableCard extends Card implements PlayableCardInterface {
     destroy() {
         this.power = null;
         this.strength = 0;
+        this.toDestroyAtEndOfFight = true;
     }
 }
 
