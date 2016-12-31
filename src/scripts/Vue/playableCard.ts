@@ -9,7 +9,7 @@ let template = `
 
 const playableCard = {
     template : template,
-    props : ['card', 'inFight', 'selectedToDelete'],
+    props : ['card', 'inFight', 'selectedToDelete', 'selectedToTwoStepPowers'],
     data : function(){
         return {
             used : true
@@ -21,6 +21,9 @@ const playableCard = {
             renderClass += this.card instanceof FightCard ? 'fight-card ' : 'aging-card ';
             if(this.selectedToDelete){
                 renderClass += 'end-fight-card-to-delete ';
+            }
+            if(this.selectedToTwoStepPowers){
+                renderClass += 'two-step-powers-card-selected ';
             }
             return renderClass; //selectedToDelete ? 'end-fight-card-to-delete' : ''" :class="used ? 'fight-danger-fight-used' : ''"
         }

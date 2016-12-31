@@ -78,7 +78,7 @@ let template = `
                 :card="card" 
                 :in-fight="!fight.finished" 
                 :selectedToDelete="cardsToDelete.indexOf(card) != -1" 
-                @select="playableCardClicked" 
+                @select="playableCardClicked"
             />
         </div>
     </div>
@@ -88,7 +88,8 @@ let template = `
         :cards="fight.getAllCards()" 
         :used-card="twoStepCard" 
         @keyup.esc="switchTwoStepView" 
-        @switch-show="switchTwoStepView"
+        @switchShow="switchTwoStepView"
+        @useTwoStepPower="handleUseTwoStepPower"
     />
 </div>
 `

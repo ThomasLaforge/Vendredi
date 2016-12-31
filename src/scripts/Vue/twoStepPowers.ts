@@ -18,7 +18,8 @@ let template = `
         <playable-card v-for="card in cards" 
             v-if="card != usedCard" 
             :card="card"
-            @select="assignCard(card)" 
+            :selectedToTwoStepPowers="assignedCards.indexOf(card) !== -1"
+            @select="assignCard(card)"
         />
 
         <div>Les actions/validation</div>
@@ -35,34 +36,44 @@ const twoStepPowers = {
         playableCard,
         modal
     },
-    data : function(): { cardsAssigned:Array<PlayableCard>} {
+    data : function(): { assignedCards:Array<PlayableCard>} {
         return {
-            cardsAssigned : []
+            assignedCards : []
         }
     },
     methods : {
         close : function(){
-            console.log('close on two step powers')
-            this.$emit('switch-show');
+            this.cardAssigned = [];
+            this.$emit('switchShow');
         },
         validate : function(){
             console.log('validation...')
             this.close();
-            this.$emit('close-two-step-powers', 'nothing, for the moment')
+            let data = {
+                usedCard : this.usedCard,
+                assignedCards : this.assignedCards
+            };
+            this.$emit('useTwoStepPower', data)
         },
         cancel : function(){
             console.log('annulation...')
-            this.close();            
-            this.$emit('close-two-step-powers')            
+            this.close(); 
+            // this.$emit('close-two-step-powers')            
         },
         assignCard : function(card:PlayableCard){
             console.log('twoStepPowers : assign card', card)
-            let indexOfThisCard = this.cardsAssigned.indexOf(card)
-            if( indexOfThisCard === -1 ){
-                this.cardsAssigned.push(card);
+            let indexOfThisCard = this.assignedCards.indexOf(card)
+            let nbCardAssignable = this.usedCard.getNumberOfCardAssignable()
+            if( indexOfThisCard === -1){
+                if(nbCardAssignable === 1){
+                    this.assignedCards = []
+                }
+                if(nbCardAssignable - this.assignedCards.length > 0){
+                    this.assignedCards.push(card);
+                }
             }
             else {
-                this.cardsAssigned.splice(indexOfThisCard, 1);
+                this.assignedCards.splice(indexOfThisCard, 1);
             }
         }
     }
