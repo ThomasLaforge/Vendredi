@@ -1,5 +1,6 @@
 // Jquery et bootstrap
 // var bootstrap = require('bootstrap/dist/js/bootstrap');
+import * as _ from 'lodash'
 
 // Model
 import { Game 	}         from	'./modules/Game';
@@ -62,6 +63,18 @@ let app = new Vue({
         useTwoStepPower(data:{ usedCard:FightCard, assignedCards: Array<PlayableCard>}){
             console.log('main:useTwoStepPower', data)
             this.game.usePower(data.usedCard, data.assignedCards)
+        },
+        save(){
+            let stringifyGameState = JSON.stringify( _.clone(this.game) );
+            console.log('saving', stringifyGameState);
+            localStorage.setItem('gameSaveState', stringifyGameState);
+        },
+        load(){
+            console.log('loading');
+            let gameObj = JSON.parse( localStorage.getItem('gameSaveState') )
+            gameObj.__proto__ = new Game(gameObj._player, gameObj._difficulty)
+            console.log('game save state loaded', gameObj)
+            this.game = _.clone(this.game)
         }
     }
 })
