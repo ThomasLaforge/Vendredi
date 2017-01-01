@@ -1,4 +1,5 @@
 import { pirateCard } from './pirateCard'
+import { discard } from './discard'
 
 let template = `
 <div class="game-info">
@@ -14,10 +15,12 @@ let template = `
         <div class="info-main-fight-cards info-main-elt">
             <div id="nbFightCards" class="info-main-value">{{ game.fightDeck.length() }}</div>
             <div class="info-main-subject">Fight cards</div>
+            <button @click="switchDiscardPlayable">Discard</button>
         </div>
         <div class="info-main-danger-cards info-main-elt">
             <div id="nbDangerCards" class='info-main-value'>{{ game.dangerDeck.length() }}</div>
             <div class="info-main-subject">Danger cards</div>
+            <button @click="switchDiscardDanger">Discard</button>            
         </div>
         <div class="info-main-aging-cards info-main-elt">
             <div id="nbAgingCards" class="info-main-value">{{ game.agingDeck.length() }}</div>
@@ -28,14 +31,46 @@ let template = `
             <div class="info-main-subject">Level</div>
         </div>
     </div>
+
+    <discard 
+        :cards="game.fightDeck.arrayDiscard" 
+        :show="discardPlayableOpen" 
+        :type="'playable'" 
+        @switchShowDiscard="switchDiscardPlayable"
+    />
+    <discard 
+        :cards="game.dangerDeck.arrayDiscard" 
+        :show="discardDangerOpen" 
+        :type="'danger'" 
+        @switchShowDiscard="switchDiscardDanger"
+    />
 </div>
 `
 
 const gameInfo = {
     props : ['game'],
     template : template,
+    data: () => {
+        return {
+            discardDangerOpen : false,
+            discardPlayableOpen : false,
+        }
+    },
     components : {
-        pirateCard
+        pirateCard,
+        discard
+    },
+    methods: {
+        switchDiscardPlayable(){
+            console.log('switch discard playable')
+            this.discardPlayableOpen = !this.discardPlayableOpen            
+            this.discardDangerOpen = false            
+        },
+        switchDiscardDanger(){
+            console.log('switch discard danger') 
+            this.discardDangerOpen = !this.discardDangerOpen
+            this.discardPlayableOpen = false
+        },
     }
 };
 
