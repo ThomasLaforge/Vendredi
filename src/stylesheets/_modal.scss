@@ -10,14 +10,16 @@
 }
 
 .modal-container {
-    width: 300px;
-    margin: 40px auto 0;
+    width: 80%;
+    height: 80%;
+    margin: 10% auto;
     padding: 20px 30px;
     background-color: #fff;
     border-radius: 2px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
     transition: all .3s ease;
     font-family: Helvetica, Arial, sans-serif;
+    text-align: center;
 }
 
 .modal-header h3 {
