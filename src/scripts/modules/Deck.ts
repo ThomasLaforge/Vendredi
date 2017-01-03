@@ -9,14 +9,13 @@ abstract class Deck {
     //length        : give the length of the deck
     //drawCards     : return an array with the firts cards of the deck.
 
-    protected arrayDeck : Array<any>;
-    protected arrayDiscard : Array<any>;
-
-    constructor() {
-        this.arrayDeck = [];
-        this.arrayDiscard = [];
-        this.initDeck();
-        this.shuffle();
+    constructor(protected arrayDeck : Array<any> = null, protected arrayDiscard : Array<any> = null) {
+        if(!arrayDeck && !arrayDiscard){
+            this.arrayDeck = []
+            this.arrayDiscard = []
+            this.initDeck();
+            this.shuffle();
+        }
     }
 
     abstract initDeck():void
