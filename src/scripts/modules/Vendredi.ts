@@ -71,6 +71,7 @@ export interface PlayerInterface {
     isDead():void
 }
 
+// Cards
 export interface CardInterface{
     name: string
     strength : number
@@ -83,10 +84,6 @@ export interface PlayableCardInterface extends CardInterface {
     powerUsed    : boolean
     id           : string
 }
-
-// export interface CardToFightInterface extends CardInterface {
-//     power        : FightCardPower|AgingCardPower|null
-// }
 
 export interface PirateCardInterface {
     id		  :	  number
@@ -111,6 +108,7 @@ export interface DangerCardInterface {
     freeCards : number
 }
 
+// Fights
 export interface FightInterface {
     cardToFight: PirateCard|DangerCard
     arrayFightCard:Array<Card>
@@ -125,6 +123,7 @@ export interface DangerFightInterface extends FightInterface {
     cardToFight: DangerCard
 }
 
+// Cards Data
 export interface jsonDataPirate {
     id		  :	  number
     name      :   string
@@ -159,4 +158,9 @@ export interface jsonDataFight {
     strength : number,
     power    : string|null,
     number   : number
+}
+
+// History
+export interface GameSaveStateState{
+    
 }
