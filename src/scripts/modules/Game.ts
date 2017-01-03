@@ -1,6 +1,6 @@
 import { Deck }         from './Deck';
 import { Card }         from './Card';
-import { PlayableCard }         from './PlayableCard';
+import { PlayableCard } from './PlayableCard';
 import { Fight }        from './Fight';
 import { FightDeck }    from './FightDeck';
 import { DangerFight }  from './DangerFight';
@@ -17,44 +17,32 @@ import { GameDifficulty, GameLevel, FightCardPower, AgingCardPower, PirateMissio
 
 class Game {
 
-    private _fightDeck     : FightDeck;
-    private _dangerDeck    : DangerDeck;
-    private _agingDeck     : AgingDeck;
-    private _pirateDeck    : PirateDeck;
-    private _gameOver      : boolean;
-    private _pirates       : Array<PirateCard>;
-    private _actualPirate  : PirateCard;
-    private _level         : number;
-    private _arrayOfRemovedCards  : Array<PlayableCard>;
-    private _fight         : Fight;
-    private _dangerChoiceCards : Array<DangerCard>;
-
-	constructor( private _player : Player, private _difficulty = GameDifficulty.EASY ){
-        this.player        = _player;
-        this.difficulty    = _difficulty;
-
+	constructor( 
+            private _player : Player, 
+            private _difficulty = GameDifficulty.EASY,
+            private _fightDeck: FightDeck = new FightDeck(),
+            private _dangerDeck: DangerDeck = new DangerDeck(),
+            private _agingDeck: AgingDeck = new AgingDeck( _difficulty ),
+            private _pirateDeck: PirateDeck = new PirateDeck(),
+            private _gameOver: boolean = false,
+            private _pirates: Array<PirateCard> = _pirateDeck.drawCards(2),
+            private _actualPirate: PirateCard = null,
+            private _level: number = GameLevel.FIRST_ROUND,
+            private _arrayOfRemovedCards: Array<PlayableCard> = [],
+            private _fight: Fight = null,
+            private _dangerChoiceCards: Array<DangerCard> = null
+     ){
         // Si la difficulté est de 4 alors la partie commence avec 18 PV au lieu de 20 => on perd 2 PV
         if(this.difficulty === 4){
             this.player.losePV(2);
         }
 
-        this.fightDeck     = new FightDeck();
-        this.dangerDeck    = new DangerDeck();
-        this.agingDeck     = new AgingDeck( this.difficulty );
         if(this.difficulty > 1){
             this.fightDeck.addCard(this.agingDeck.drawCards(1));
             this.fightDeck.shuffle();
         }
-
-        this.pirateDeck    = new PirateDeck();
-        this.pirates       = this.pirateDeck.drawCards(2);
-        this.actualPirate  = null;
-
-        this.level         = GameLevel.FIRST_ROUND;
-        this.arrayOfRemovedCards  = [];
+        
         this.drawDangerCard();
-        this.fight         = null;
-        this.gameOver      = false;
 	}
 
     loseOnePV(){
