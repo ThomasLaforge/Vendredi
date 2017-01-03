@@ -7,17 +7,14 @@ import { FightInterface, FightCardPower, AgingCardPower } from './Vendredi';
 
 abstract class Fight implements FightInterface {
 
-    private _freeCards : number;
-
     constructor( 
         public cardToFight : any, 
         public costOfCardsNotFree = 1,
         public arrayFightCard : Array<PlayableCard> = [], 
         public arrayFightCardUsed : Array<PlayableCard> = [], 
-        public finished : boolean = false
-    ){
-        this.freeCards = cardToFight.freeCards;
-    }
+        public finished : boolean = false,
+        private _freeCards: number = cardToFight.freeCards
+    ){}
 
     addFreeCards(cardInAddition : number) {
         this.freeCards += cardInAddition;

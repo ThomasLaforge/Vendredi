@@ -6,8 +6,8 @@ import {GameDifficulty, jsonDataAging} from './Vendredi';
 
 class AgingDeck extends PlayableDeck{
 
-    constructor(difficulty : GameDifficulty){
-        super();
+    constructor(difficulty : GameDifficulty, arrayCard?:Array<AgingCard>, arrayDiscard?:Array<AgingCard>){
+        super(arrayCard,arrayDiscard);
         this.initDeck();
         if(difficulty < GameDifficulty.HARD){
             this.arrayDeck.pop();

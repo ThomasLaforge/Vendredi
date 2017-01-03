@@ -4,8 +4,8 @@ import {Tools} from './Tools';
 import {jsonDataPirate} from './Vendredi';
 
 class PirateDeck extends Deck{
-    constructor(){
-        super();
+    constructor(arrayCard?:Array<PirateCard>, arrayDiscard?:Array<PirateCard>){
+        super(arrayCard,arrayDiscard);
     }
 
     initDeck(){

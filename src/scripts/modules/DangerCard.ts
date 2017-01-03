@@ -10,8 +10,8 @@ class DangerCard implements DangerCardInterface {
 
     // Console debug
     show() {
-        this.fightCard.show();
         console.log('Card Danger : name => ' + this.name + ', strength => 1 : ' + this.getStrength(1) + ', 2 : ' + this.getStrength(2) + ', 3 : ' + this.getStrength(3));
+        this.fightCard.show();
     }
 
     getStrength(lvl: GameLevel) {
@@ -23,7 +23,7 @@ class DangerCard implements DangerCardInterface {
                     case 3: return 2;
                     case 4: return 4;
                     case 5: return 5;
-                    default: return 29;
+                    default: throw new Error(this.constructor.name + ' => getStrength(FIRST_ROUND) with freeCards > 5 or < 1');
                 }
 
             case GameLevel.SECONDE_ROUND:
@@ -33,7 +33,7 @@ class DangerCard implements DangerCardInterface {
                     case 3: return 5;
                     case 4: return 7;
                     case 5: return 9;
-                    default: return 30;
+                    default: throw new Error(this.constructor.name + ' => getStrength(SECONDE_ROUND) with freeCards > 5 or < 1');
                 }
 
 
@@ -44,13 +44,14 @@ class DangerCard implements DangerCardInterface {
                     case 3: return 8;
                     case 4: return 11;
                     case 5: return 14;
-                    default: return 31;
+                    default: throw new Error(this.constructor.name + ' => getStrength(THIRD_ROUND) with freeCards ' + (this.freeCards > 5 ? '> 5' : '< 1') );
+
                 }
-            default: return 32;
+            default: throw new Error(this.constructor.name + ' => getStrength(NOT_VALID_ROUND)');
         }
     }
 
-    powerName(){
+    get powerName(){
         return this.fightCard.powerName;
     }
 

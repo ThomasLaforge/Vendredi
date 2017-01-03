@@ -5,8 +5,8 @@ import {Tools} from './Tools';
 import {jsonDataDanger} from './Vendredi';
 
 class DangerDeck extends Deck {
-	constructor(){
-		super();
+	constructor(arrayCard?:Array<DangerCard>, arrayDiscard?:Array<DangerCard>){
+        super(arrayCard,arrayDiscard);
 	}
 
     initDeck(){
