@@ -337,6 +337,17 @@ class Game {
         }
     }
 
+    // History
+    save() : GameSaveStateState{
+        let stateToSave : GameSaveStateState;
+        console.log('saving game state', stateToSave);
+        return stateToSave;
+    }
+
+    load(gameSaveState : GameSaveStateState){
+        console.log('loading game state', gameSaveState);
+    }
+
 //Region : Getters / Setters
     get player(){
         return this._player;
