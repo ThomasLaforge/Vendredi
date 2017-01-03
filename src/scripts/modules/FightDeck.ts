@@ -4,8 +4,8 @@ import { Tools } from './Tools';
 import { jsonDataFight } from './Vendredi';
 
 class FightDeck extends PlayableDeck {
-	constructor(){
-		super();
+	constructor(arrayCard?:Array<FightCard>, arrayDiscard?:Array<FightCard>){
+        super(arrayCard,arrayDiscard);
 	}
 
     initDeck(){
