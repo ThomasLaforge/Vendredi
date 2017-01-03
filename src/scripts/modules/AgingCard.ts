@@ -4,12 +4,8 @@ import { AgingCardInterface, AgingCardPower, AgingLevel } from './Vendredi'
 
 class AgingCard extends PlayableCard implements AgingCardInterface{
 
-    constructor( name:string, strength:number, public power: AgingCardPower|null, public level : AgingLevel, public costToDelete: number = 2 ){
+    constructor(name:string, strength:number, public power: AgingCardPower|null, public level : AgingLevel, public costToDelete: number = 2 ){
         super(name, strength, costToDelete, power);
-    }
-
-    show(){
-        console.log('aging card', this)
     }
 
     get powerName(){

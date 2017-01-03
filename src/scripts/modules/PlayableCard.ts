@@ -7,18 +7,19 @@ import * as uuid from 'node-uuid'
 abstract class PlayableCard extends Card implements PlayableCardInterface {
 
     public initialState:PlayableCard
-    public id: string
-    public toDestroyAtEndOfFight: boolean
 
-    constructor(name:string, strength:number, public costToDelete: number, public power: FightCardPower|AgingCardPower|null, public powerUsed : boolean = false) {
+    constructor(
+            name:string, 
+            strength:number, 
+            public costToDelete: number, 
+            public power: FightCardPower|AgingCardPower|null, 
+            public powerUsed : boolean = false,
+            public toDestroyAtEndOfFight:boolean = false,
+            public id = uuid.v1(),
+        ) {
         super(name, strength);
-        this.id = uuid.v1();
         this.initialState = _.clone(this);
-        this.toDestroyAtEndOfFight = false;
     }
-
-    // How not implements it o
-    abstract show() : void
 
     usePower() {
         this.powerUsed = true;

@@ -23,7 +23,7 @@ let template = `
                 <div class="card-danger-fight-name">{{danger.fightCard.name}}</div>
                 <div class="card-danger-fight-destroycost">{{danger.fightCard.costToDelete}}</div>
             </div>
-            <div class="card-danger-fight-power">{{danger.fightCard.power || danger.fightCard.power === 0 ? danger.powerName() : '...'}}</div>
+            <div class="card-danger-fight-power">{{danger.fightCard.power || danger.fightCard.power === 0 ? danger.powerName : '...'}}</div>
         </div>
     </div>
 `;

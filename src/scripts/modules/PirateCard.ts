@@ -13,12 +13,9 @@ class PirateCard extends Card implements PirateCardInterface {
 	 */
 
 	getStrength(){
+		console.log('Why this method ? need to be checked')
 		return 0;
 	}
-
-    show(){
-        console.log('PirateCard : ', this);
-    }
 
 	missionName(){
         return Tools.getPirateMissionName(this.mission);
