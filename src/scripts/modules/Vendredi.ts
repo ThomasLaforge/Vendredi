@@ -86,7 +86,6 @@ export interface PlayableCardInterface extends CardInterface {
 }
 
 export interface PirateCardInterface {
-    id		  :	  number
     name      :   string
     strength  :   number
     mission   :   PirateMission|null
@@ -125,7 +124,6 @@ export interface DangerFightInterface extends FightInterface {
 
 // Cards Data
 export interface jsonDataPirate {
-    id		  :	  number
     name      :   string
     strength  :   number
     mission   :   string|null

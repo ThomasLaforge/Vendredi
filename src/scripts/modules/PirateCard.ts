@@ -4,7 +4,7 @@ import { PirateCardInterface, PirateMission } from './Vendredi';
 
 class PirateCard extends Card implements PirateCardInterface {
 
-	constructor( name: string, strength: number, public id: number, public mission: PirateMission|null, public freeCards: number){
+	constructor( name: string, strength: number, public mission: PirateMission|null, public freeCards: number){
 		super(name, strength);
 	}
 
