@@ -318,40 +318,56 @@ class Game {
     }
 
     // History
-    save() : GameSaveStateState{
-        let stateToSave : GameSaveStateState;
+    save() : string {
+        let stateToSave : string;
         stateToSave = JSON.stringify(_.clone(this));
         console.log('saving game state', stateToSave);
+        localStorage.setItem('save', stateToSave);
         return stateToSave;
     }
 
-    load(gameSaveState : string){
-        console.log('loading game state', gameSaveState);
-        /* 
-            private _player : Player, 
-            private _difficulty = GameDifficulty.EASY,
-            private _fightDeck: FightDeck = new FightDeck(),
-            private _dangerDeck: DangerDeck = new DangerDeck(),
-            private _agingDeck: AgingDeck = new AgingDeck( _difficulty ),
-            private _pirateDeck: PirateDeck = new PirateDeck(),
-            private _gameOver: boolean = false,
-            private _pirates: Array<PirateCard> = _pirateDeck.drawCards(2),
-            private _actualPirate: PirateCard = null,
-            private _level: number = GameLevel.FIRST_ROUND,
-            private _arrayOfRemovedCards: Array<PlayableCard> = [],
-            private _fight: Fight = null,
-            private _dangerChoiceCards: Array<DangerCard> = null
-        */
-        let state : GameSaveStateState = JSON.parse(gameSaveState);
-        let p = new Player(state._player.pseudo, state._player.PV)
-        //decks
-        let fightDeck:Array<PlayableCard> = [];
-        let fightDiscard:Array<PlayableCard> = [];
-        let dangerDeck:Array<DangerCard> = [];
-        let dangerDiscard:Array<DangerCard> = [];
-        let pirateDeck:Array<PirateCard> = [];
-        let agingDeck:Array<AgingCard> = [];
-        let fight:Fight;
+    load(gameSaveStateJson? : string){
+        console.log('loading game state', gameSaveStateJson);
+        gameSaveStateJson = localStorage.getItem('save');
+
+        // let state : GameSaveStateState = JSON.parse(gameSaveStateJson);
+        // let p = new Player(state._player.pseudo, state._player.PV)
+        // //decks
+        // let fightDeck:Array<PlayableCard> = [];
+        // state._fightDeck.arrayDeck.forEach( playableCardJson => {  })
+        // let fightDiscard:Array<PlayableCard> = [];
+        // state._fightDeck.arrayDiscard.forEach( playableCardJson => {  })        
+        // let dangerDeck:Array<DangerCard> = [];
+        // state._dangerDeck.arrayDeck.forEach( dcJson => { 
+        //     let fcJson = dcJson.fightCard;
+        //     let fightCard = new FightCard(fcJson.name, fcJson.strength, fcJson.power, fcJson.powerUsed, fcJson.toDestroyAtEndOfFight)
+        //     dangerDeck.push( new DangerCard(fightCard, dcJson.name, dcJson.freeCards) )
+        // })                
+        // let dangerDiscard:Array<DangerCard> = [];
+        // state._dangerDeck.arrayDiscard.forEach( dcJson => { 
+        //     let fcJson = dcJson.fightCard;
+        //     let fightCard = new FightCard(fcJson.name, fcJson.strength, fcJson.power, fcJson.powerUsed, fcJson.toDestroyAtEndOfFight)
+        //     dangerDeck.push( new DangerCard(fightCard, dcJson.name, dcJson.freeCards) )
+        // })                      
+        // let pirateDeck:Array<PirateCard> = [];
+        // state._pirateDeck.arrayDeck.forEach( pJson => {
+        //     pirateDeck.push( new PirateCard(pJson.name, pJson.strength, pJson.mission, pJson.freeCards) )
+        // })
+        // let agingDeck:Array<AgingCard> = [];
+        // state._agingDeck.arrayDeck.forEach( aJson => {
+        //     agingDeck.push( new AgingCard(aJson.name, aJson.strength, aJson.power, aJson.level) )
+        // })
+        // let fight:Fight;
+
+        // let game = new Game(p,state._difficulty, 
+        //                     new FightDeck(fightDeck, fightDiscard), 
+        //                     new DangerDeck(dangerDeck, dangerDiscard), 
+        //                     new AgingDeck(state._difficulty, agingDeck, []), 
+        //                     new PirateDeck(pirateDeck, []),
+        //                     state._gameOver, pirates, state._actualPirate, state._level, arrayOfRemovedCards, fight, dangerChoiceCards
+        //                 );
+    }
+
     getListOfPirateToFight() : Array<PirateCard>{
         let list: Array<PirateCard> = [];
 
