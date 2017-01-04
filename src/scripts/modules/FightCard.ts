@@ -1,11 +1,20 @@
 import { PlayableCard } from './PlayableCard';
 import { Tools } from './Tools';
+import * as uuid from 'node-uuid'
 import { FightCardInterface, FightCardPower } from './Vendredi';
 
 class FightCard extends PlayableCard implements FightCardInterface {
 
-    constructor( name:string, strength:number, public power: FightCardPower|null, readonly costToDelete:number = 1 ){
-        super( name, strength, costToDelete, power );
+    constructor(
+            name:string, 
+            strength:number, 
+            power: FightCardPower|null, 
+            powerUsed : boolean = false,
+            toDestroyAtEndOfFight:boolean = false,
+            costToDelete: number = 1, 
+            id = uuid.v1()
+        ){
+        super( name, strength, costToDelete, power, powerUsed, toDestroyAtEndOfFight, id );
     }
 
     changePower(newPower: FightCardPower) {

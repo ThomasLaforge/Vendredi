@@ -1,10 +1,11 @@
 import { PlayableDeck }  from "./PlayableDeck";
+import { PlayableCard }  from "./PlayableCard";
 import { FightCard } from "./FightCard";
 import { Tools } from './Tools';
 import { jsonDataFight } from './Vendredi';
 
 class FightDeck extends PlayableDeck {
-	constructor(arrayCard?:Array<FightCard>, arrayDiscard?:Array<FightCard>){
+	constructor(arrayCard?:Array<PlayableCard>, arrayDiscard?:Array<PlayableCard>){
         super(arrayCard,arrayDiscard);
 	}
 

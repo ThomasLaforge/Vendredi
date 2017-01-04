@@ -12,7 +12,7 @@ abstract class PlayableCard extends Card implements PlayableCardInterface {
             name:string, 
             strength:number, 
             public costToDelete: number, 
-            public power: FightCardPower|AgingCardPower|null, 
+            public power: any, 
             public powerUsed : boolean = false,
             public toDestroyAtEndOfFight:boolean = false,
             public id = uuid.v1(),
