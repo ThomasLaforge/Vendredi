@@ -1,0 +1,533 @@
+{
+    "_player": {
+        "pseudo": "Thomas",
+        "PV": 20
+    },
+    "_difficulty": 1,
+    "_fightDeck": {
+        "arrayDeck": [
+            {
+                "name": "Ingénieux",
+                "strength": 2,
+                "costToDelete": 1,
+                "power": null,
+                "powerUsed": false,
+                "toDestroyAtEndOfFight": false,
+                "id": "eeaa36d2-d209-11e6-9717-733fd0ed6925",
+                "initialState": {
+                    "name": "Ingénieux",
+                    "strength": 2,
+                    "costToDelete": 1,
+                    "power": null,
+                    "powerUsed": false,
+                    "toDestroyAtEndOfFight": false,
+                    "id": "eeaa36d2-d209-11e6-9717-733fd0ed6925"
+                }
+            },
+            {
+                "name": "Concentré",
+                "strength": 1,
+                "costToDelete": 1,
+                "power": null,
+                "powerUsed": false,
+                "toDestroyAtEndOfFight": false,
+                "id": "eeaa36d0-d209-11e6-9717-733fd0ed6925",
+                "initialState": {
+                    "name": "Concentré",
+                    "strength": 1,
+                    "costToDelete": 1,
+                    "power": null,
+                    "powerUsed": false,
+                    "toDestroyAtEndOfFight": false,
+                    "id": "eeaa36d0-d209-11e6-9717-733fd0ed6925"
+                }
+            },
+            {
+                "name": "Concentré",
+                "strength": 1,
+                "costToDelete": 1,
+                "power": null,
+                "powerUsed": false,
+                "toDestroyAtEndOfFight": false,
+                "id": "eeaa0fc0-d209-11e6-9717-733fd0ed6925",
+                "initialState": {
+                    "name": "Concentré",
+                    "strength": 1,
+                    "costToDelete": 1,
+                    "power": null,
+                    "powerUsed": false,
+                    "toDestroyAtEndOfFight": false,
+                    "id": "eeaa0fc0-d209-11e6-9717-733fd0ed6925"
+                }
+            },
+            {
+                "name": "Concentré",
+                "strength": 1,
+                "costToDelete": 1,
+                "power": null,
+                "powerUsed": false,
+                "toDestroyAtEndOfFight": false,
+                "id": "eeaa36d1-d209-11e6-9717-733fd0ed6925",
+                "initialState": {
+                    "name": "Concentré",
+                    "strength": 1,
+                    "costToDelete": 1,
+                    "power": null,
+                    "powerUsed": false,
+                    "toDestroyAtEndOfFight": false,
+                    "id": "eeaa36d1-d209-11e6-9717-733fd0ed6925"
+                }
+            },
+            {
+                "name": "Stratégie",
+                "strength": 2,
+                "costToDelete": 1,
+                "power": 1,
+                "powerUsed": false,
+                "toDestroyAtEndOfFight": false,
+                "id": "eeaaac00-d209-11e6-9717-733fd0ed6925",
+                "initialState": {
+                    "name": "Stratégie",
+                    "strength": 2,
+                    "costToDelete": 1,
+                    "power": 1,
+                    "powerUsed": false,
+                    "toDestroyAtEndOfFight": false,
+                    "id": "eeaaac00-d209-11e6-9717-733fd0ed6925"
+                }
+            },
+            {
+                "name": "Stratégie",
+                "strength": 2,
+                "costToDelete": 1,
+                "power": 7,
+                "powerUsed": false,
+                "toDestroyAtEndOfFight": false,
+                "id": "eeaaac01-d209-11e6-9717-733fd0ed6925",
+                "initialState": {
+                    "name": "Stratégie",
+                    "strength": 2,
+                    "costToDelete": 1,
+                    "power": 7,
+                    "powerUsed": false,
+                    "toDestroyAtEndOfFight": false,
+                    "id": "eeaaac01-d209-11e6-9717-733fd0ed6925"
+                }
+            }
+        ],
+        "arrayDiscard": []
+    },
+    "_dangerDeck": {
+        "arrayDeck": [
+            {
+                "fightCard": {
+                    "name": "Stratégie",
+                    "strength": 3,
+                    "costToDelete": 1,
+                    "power": 7,
+                    "powerUsed": false,
+                    "toDestroyAtEndOfFight": false,
+                    "id": "eeaa5de2-d209-11e6-9717-733fd0ed6925",
+                    "initialState": {
+                        "name": "Stratégie",
+                        "strength": 3,
+                        "costToDelete": 1,
+                        "power": 7,
+                        "powerUsed": false,
+                        "toDestroyAtEndOfFight": false,
+                        "id": "eeaa5de2-d209-11e6-9717-733fd0ed6925"
+                    }
+                },
+                "name": "Animaux sauvages",
+                "freeCards": 4,
+                "arrCardsToDelete": []
+            },
+            {
+                "fightCard": {
+                    "name": "Nourriture",
+                    "strength": 1,
+                    "costToDelete": 1,
+                    "power": 2,
+                    "powerUsed": false,
+                    "toDestroyAtEndOfFight": false,
+                    "id": "eeaa36d3-d209-11e6-9717-733fd0ed6925",
+                    "initialState": {
+                        "name": "Nourriture",
+                        "strength": 1,
+                        "costToDelete": 1,
+                        "power": 2,
+                        "powerUsed": false,
+                        "toDestroyAtEndOfFight": false,
+                        "id": "eeaa36d3-d209-11e6-9717-733fd0ed6925"
+                    }
+                },
+                "name": "Explore l'île",
+                "freeCards": 2,
+                "arrCardsToDelete": []
+            },
+            {
+                "fightCard": {
+                    "name": "Répétition",
+                    "strength": 2,
+                    "costToDelete": 1,
+                    "power": 10,
+                    "powerUsed": false,
+                    "toDestroyAtEndOfFight": false,
+                    "id": "eeaa5de3-d209-11e6-9717-733fd0ed6925",
+                    "initialState": {
+                        "name": "Répétition",
+                        "strength": 2,
+                        "costToDelete": 1,
+                        "power": 10,
+                        "powerUsed": false,
+                        "toDestroyAtEndOfFight": false,
+                        "id": "eeaa5de3-d209-11e6-9717-733fd0ed6925"
+                    }
+                },
+                "name": "Explore l'île davantage",
+                "freeCards": 3,
+                "arrCardsToDelete": []
+            }
+        ],
+        "arrayDiscard": []
+    },
+    "_agingDeck": {
+        "arrayDeck": [
+            {
+                "name": "Distrait",
+                "strength": -1,
+                "costToDelete": 2,
+                "power": null,
+                "powerUsed": false,
+                "toDestroyAtEndOfFight": false,
+                "id": "eeaa84f8-d209-11e6-9717-733fd0ed6925",
+                "initialState": {
+                    "name": "Distrait",
+                    "strength": -1,
+                    "costToDelete": 2,
+                    "power": null,
+                    "powerUsed": false,
+                    "toDestroyAtEndOfFight": false,
+                    "id": "eeaa84f8-d209-11e6-9717-733fd0ed6925"
+                },
+                "level": 1
+            },
+            {
+                "name": "Apeuré",
+                "strength": 0,
+                "costToDelete": 2,
+                "power": 3,
+                "powerUsed": false,
+                "toDestroyAtEndOfFight": false,
+                "id": "eeaa84f6-d209-11e6-9717-733fd0ed6925",
+                "initialState": {
+                    "name": "Apeuré",
+                    "strength": 0,
+                    "costToDelete": 2,
+                    "power": 3,
+                    "powerUsed": false,
+                    "toDestroyAtEndOfFight": false,
+                    "id": "eeaa84f6-d209-11e6-9717-733fd0ed6925"
+                },
+                "level": 1
+            },
+            {
+                "name": "Stupide",
+                "strength": -2,
+                "costToDelete": 2,
+                "power": null,
+                "powerUsed": false,
+                "toDestroyAtEndOfFight": false,
+                "id": "eeaa84f9-d209-11e6-9717-733fd0ed6925",
+                "initialState": {
+                    "name": "Stupide",
+                    "strength": -2,
+                    "costToDelete": 2,
+                    "power": null,
+                    "powerUsed": false,
+                    "toDestroyAtEndOfFight": false,
+                    "id": "eeaa84f9-d209-11e6-9717-733fd0ed6925"
+                },
+                "level": 1
+            },
+            {
+                "name": "Très fatigué",
+                "strength": 0,
+                "costToDelete": 2,
+                "power": 2,
+                "powerUsed": false,
+                "toDestroyAtEndOfFight": false,
+                "id": "eeaa84f5-d209-11e6-9717-733fd0ed6925",
+                "initialState": {
+                    "name": "Très fatigué",
+                    "strength": 0,
+                    "costToDelete": 2,
+                    "power": 2,
+                    "powerUsed": false,
+                    "toDestroyAtEndOfFight": false,
+                    "id": "eeaa84f5-d209-11e6-9717-733fd0ed6925"
+                },
+                "level": 1
+            },
+            {
+                "name": "A faim",
+                "strength": 0,
+                "costToDelete": 2,
+                "power": 0,
+                "powerUsed": false,
+                "toDestroyAtEndOfFight": false,
+                "id": "eeaa84f4-d209-11e6-9717-733fd0ed6925",
+                "initialState": {
+                    "name": "A faim",
+                    "strength": 0,
+                    "costToDelete": 2,
+                    "power": 0,
+                    "powerUsed": false,
+                    "toDestroyAtEndOfFight": false,
+                    "id": "eeaa84f4-d209-11e6-9717-733fd0ed6925"
+                },
+                "level": 1
+            },
+            {
+                "name": "Stupide",
+                "strength": -2,
+                "costToDelete": 2,
+                "power": null,
+                "powerUsed": false,
+                "toDestroyAtEndOfFight": false,
+                "id": "eeaa84fa-d209-11e6-9717-733fd0ed6925",
+                "initialState": {
+                    "name": "Stupide",
+                    "strength": -2,
+                    "costToDelete": 2,
+                    "power": null,
+                    "powerUsed": false,
+                    "toDestroyAtEndOfFight": false,
+                    "id": "eeaa84fa-d209-11e6-9717-733fd0ed6925"
+                },
+                "level": 1
+            },
+            {
+                "name": "Apeuré",
+                "strength": 0,
+                "costToDelete": 2,
+                "power": 3,
+                "powerUsed": false,
+                "toDestroyAtEndOfFight": false,
+                "id": "eeaa84f7-d209-11e6-9717-733fd0ed6925",
+                "initialState": {
+                    "name": "Apeuré",
+                    "strength": 0,
+                    "costToDelete": 2,
+                    "power": 3,
+                    "powerUsed": false,
+                    "toDestroyAtEndOfFight": false,
+                    "id": "eeaa84f7-d209-11e6-9717-733fd0ed6925"
+                },
+                "level": 1
+            },
+            {
+                "name": "Affamé",
+                "strength": 0,
+                "costToDelete": 2,
+                "power": 1,
+                "powerUsed": false,
+                "toDestroyAtEndOfFight": false,
+                "id": "eeaa84f1-d209-11e6-9717-733fd0ed6925",
+                "initialState": {
+                    "name": "Affamé",
+                    "strength": 0,
+                    "costToDelete": 2,
+                    "power": 1,
+                    "powerUsed": false,
+                    "toDestroyAtEndOfFight": false,
+                    "id": "eeaa84f1-d209-11e6-9717-733fd0ed6925"
+                },
+                "level": 2
+            },
+            {
+                "name": "Idiot",
+                "strength": -4,
+                "costToDelete": 2,
+                "power": null,
+                "powerUsed": false,
+                "toDestroyAtEndOfFight": false,
+                "id": "eeaa84f2-d209-11e6-9717-733fd0ed6925",
+                "initialState": {
+                    "name": "Idiot",
+                    "strength": -4,
+                    "costToDelete": 2,
+                    "power": null,
+                    "powerUsed": false,
+                    "toDestroyAtEndOfFight": false,
+                    "id": "eeaa84f2-d209-11e6-9717-733fd0ed6925"
+                },
+                "level": 2
+            },
+            {
+                "name": "Suicidaire",
+                "strength": -5,
+                "costToDelete": 2,
+                "power": null,
+                "powerUsed": false,
+                "toDestroyAtEndOfFight": false,
+                "id": "eeaa84f3-d209-11e6-9717-733fd0ed6925",
+                "initialState": {
+                    "name": "Suicidaire",
+                    "strength": -5,
+                    "costToDelete": 2,
+                    "power": null,
+                    "powerUsed": false,
+                    "toDestroyAtEndOfFight": false,
+                    "id": "eeaa84f3-d209-11e6-9717-733fd0ed6925"
+                },
+                "level": 2
+            }
+        ],
+        "arrayDiscard": []
+    },
+    "_pirateDeck": {
+        "arrayDeck": [
+            {
+                "name": "Capitaine Haddock",
+                "strength": 52,
+                "id": 9,
+                "mission": 0,
+                "freeCards": 10
+            },
+            {
+                "name": "Hector Barbossa",
+                "strength": 25,
+                "id": 3,
+                "mission": null,
+                "freeCards": 7
+            },
+            {
+                "name": "Capitaine Crochet",
+                "strength": 35,
+                "id": 7,
+                "mission": null,
+                "freeCards": 9
+            },
+            {
+                "name": "Davy Jones",
+                "strength": null,
+                "id": 1,
+                "mission": 3,
+                "freeCards": 5
+            },
+            {
+                "name": "Barbe Noire",
+                "strength": 30,
+                "id": 5,
+                "mission": null,
+                "freeCards": 8
+            },
+            {
+                "name": "William Turner",
+                "strength": 20,
+                "id": 2,
+                "mission": null,
+                "freeCards": 6
+            },
+            {
+                "name": "Elisabeth Swann",
+                "strength": 16,
+                "id": 4,
+                "mission": 2,
+                "freeCards": 7
+            },
+            {
+                "name": "Capitaine Fracasse",
+                "strength": 40,
+                "id": 8,
+                "mission": null,
+                "freeCards": 10
+            },
+            {
+                "name": "Barbe Rousse",
+                "strength": 22,
+                "id": 6,
+                "mission": 1,
+                "freeCards": 9
+            },
+            {
+                "name": "Jack Sparrow",
+                "strength": null,
+                "id": 0,
+                "mission": 4,
+                "freeCards": null
+            }
+        ],
+        "arrayDiscard": []
+    },
+    "_gameOver": false,
+    "_pirates": [
+        {
+            "name": "Capitaine Haddock",
+            "strength": 52,
+            "id": 9,
+            "mission": 0,
+            "freeCards": 10
+        },
+        {
+            "name": "Hector Barbossa",
+            "strength": 25,
+            "id": 3,
+            "mission": null,
+            "freeCards": 7
+        }
+    ],
+    "_actualPirate": null,
+    "_level": 2,
+    "_arrayOfRemovedCards": [],
+    "_fight": null,
+    "_dangerChoiceCards": [
+        {
+            "fightCard": {
+                "name": "Nourriture",
+                "strength": 1,
+                "costToDelete": 1,
+                "power": 2,
+                "powerUsed": false,
+                "toDestroyAtEndOfFight": false,
+                "id": "eeaa5de0-d209-11e6-9717-733fd0ed6925",
+                "initialState": {
+                    "name": "Nourriture",
+                    "strength": 1,
+                    "costToDelete": 1,
+                    "power": 2,
+                    "powerUsed": false,
+                    "toDestroyAtEndOfFight": false,
+                    "id": "eeaa5de0-d209-11e6-9717-733fd0ed6925"
+                }
+            },
+            "name": "Explore l'île",
+            "freeCards": 2,
+            "arrCardsToDelete": []
+        },
+        {
+            "fightCard": {
+                "name": "Stratégie",
+                "strength": 2,
+                "costToDelete": 1,
+                "power": 7,
+                "powerUsed": false,
+                "toDestroyAtEndOfFight": false,
+                "id": "eeaa5de1-d209-11e6-9717-733fd0ed6925",
+                "initialState": {
+                    "name": "Stratégie",
+                    "strength": 2,
+                    "costToDelete": 1,
+                    "power": 7,
+                    "powerUsed": false,
+                    "toDestroyAtEndOfFight": false,
+                    "id": "eeaa5de1-d209-11e6-9717-733fd0ed6925"
+                }
+            },
+            "name": "Explore l'île davantage",
+            "freeCards": 3,
+            "arrCardsToDelete": []
+        }
+    ]
+}

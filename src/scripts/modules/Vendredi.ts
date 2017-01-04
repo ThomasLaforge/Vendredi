@@ -160,7 +160,106 @@ export interface jsonDataFight {
     number   : number
 }
 
-// History
-export interface GameSaveStateState{
-    
+// History : Automatic generation using vs code pluggin "json to type" to finalize
+export interface _playerType {
+   pseudo: string;
+   PV: number;
+}
+
+export interface powerType {
+}
+
+export interface initialStateType {
+   name: string;
+   strength: number;
+   costToDelete: number;
+   power: number;
+   powerUsed: boolean;
+   toDestroyAtEndOfFight: boolean;
+   id: string;
+}
+
+export interface arrayDeckItemType {
+   name: string;
+   strength: number;
+   id: number;
+   mission: number;
+   freeCards: number;
+}
+
+export interface arrayDiscardItemType {
+}
+
+export interface _fightDeckType {
+   arrayDeck: Array<arrayDeckItemType>;
+   arrayDiscard: Array<arrayDiscardItemType>;
+}
+
+export interface fightCardType {
+   name: string;
+   strength: number;
+   costToDelete: number;
+   power: number;
+   powerUsed: boolean;
+   toDestroyAtEndOfFight: boolean;
+   id: string;
+   initialState: initialStateType;
+}
+
+export interface arrCardsToDeleteItemType {
+}
+
+export interface _dangerDeckType {
+   arrayDeck: Array<arrayDeckItemType>;
+   arrayDiscard: Array<arrayDiscardItemType>;
+}
+
+export interface _agingDeckType {
+   arrayDeck: Array<arrayDeckItemType>;
+   arrayDiscard: Array<arrayDiscardItemType>;
+}
+
+export interface _pirateDeckType {
+   arrayDeck: Array<arrayDeckItemType>;
+   arrayDiscard: Array<arrayDiscardItemType>;
+}
+
+export interface _piratesItemType {
+   name: string;
+   strength: number;
+   id: number;
+   mission: number;
+   freeCards: number;
+}
+
+export interface _actualPirateType {
+}
+
+export interface _arrayOfRemovedCardsItemType {
+}
+
+export interface _fightType {
+}
+
+export interface _dangerChoiceCardsItemType {
+   fightCard: fightCardType;
+   name: string;
+   freeCards: number;
+   arrCardsToDelete: Array<arrCardsToDeleteItemType>;
+}
+
+export interface GameSaveStateState {
+   _player: _playerType;
+   _difficulty: number;
+   _fightDeck: _fightDeckType;
+   _dangerDeck: _dangerDeckType;
+   _agingDeck: _agingDeckType;
+   _pirateDeck: _pirateDeckType;
+   _gameOver: boolean;
+   _pirates: Array<_piratesItemType>;
+   _actualPirate: _actualPirateType;
+   _level: number;
+   _arrayOfRemovedCards: Array<_arrayOfRemovedCardsItemType>;
+   _fight: _fightType;
+   _dangerChoiceCards: Array<_dangerChoiceCardsItemType>;
 }
