@@ -330,7 +330,7 @@ class Game {
         console.log('loading game state', gameSaveStateJson);
         gameSaveStateJson = localStorage.getItem('save');
 
-        // let state : GameSaveStateState = JSON.parse(gameSaveStateJson);
+        let state : GameSaveStateState = JSON.parse(gameSaveStateJson);
         // let p = new Player(state._player.pseudo, state._player.PV)
         // //decks
         // let fightDeck:Array<PlayableCard> = [];
@@ -359,12 +359,12 @@ class Game {
         // })
         // let fight:Fight;
 
-        // let game = new Game(p,state._difficulty, 
+        // let game = new Game(p, state._difficulty, 
         //                     new FightDeck(fightDeck, fightDiscard), 
         //                     new DangerDeck(dangerDeck, dangerDiscard), 
         //                     new AgingDeck(state._difficulty, agingDeck, []), 
         //                     new PirateDeck(pirateDeck, []),
-        //                     state._gameOver, pirates, state._actualPirate, state._level, arrayOfRemovedCards, fight, dangerChoiceCards
+        //                     state._gameOver, state._level, arrayOfRemovedCards, fight, dangerChoiceCards, state._nbPiratesToFight
         //                 );
     }
 
