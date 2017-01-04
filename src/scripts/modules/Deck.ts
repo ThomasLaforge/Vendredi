@@ -114,6 +114,13 @@ abstract class Deck {
         return this.arrayDeck.concat(this.arrayDiscard);
     }
 
+    getCopyOfCard(index: number){
+        if(index < 0 || index > this.arrayDeck.length - 1){
+            throw new Error('Try to get a card at index : ' + index + ' who doesn\'t exist in deck')
+        }
+        return this.arrayDeck[index]
+    }
+
 }
 
 export { Deck };

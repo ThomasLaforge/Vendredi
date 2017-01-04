@@ -1,10 +1,11 @@
 import { pirateCard } from './pirateCard'
+import { PirateCard } from '../modules/PirateCard'
 import { discard } from './discard'
 
 let template = `
 <div class="game-info">
     <div id="pirates-list">
-        <div class="pirates-list-elt" v-for="pirate in game.pirates">
+        <div class="pirates-list-elt" v-for="pirate in pirateList">
             <pirate-card :pirate="pirate" />
         </div>
     </div>
@@ -50,10 +51,11 @@ let template = `
 const gameInfo = {
     props : ['game'],
     template : template,
-    data: () => {
+    data: function(){
         return {
             discardDangerOpen : false,
             discardPlayableOpen : false,
+            pirateList : this.game.getListOfPirateToFight()
         }
     },
     components : {

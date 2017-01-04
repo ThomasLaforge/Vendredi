@@ -25,12 +25,11 @@ class Game {
             private _agingDeck: AgingDeck = new AgingDeck( _difficulty ),
             private _pirateDeck: PirateDeck = new PirateDeck(),
             private _gameOver: boolean = false,
-            private _pirates: Array<PirateCard> = _pirateDeck.drawCards(2),
-            private _actualPirate: PirateCard = null,
             private _level: number = GameLevel.FIRST_ROUND,
             private _arrayOfRemovedCards: Array<PlayableCard> = [],
             private _fight: Fight = null,
-            private _dangerChoiceCards: Array<DangerCard> = null
+            private _dangerChoiceCards: Array<DangerCard> = null,
+            private _nbPiratesToFight = 2
      ){
         // Si la difficulté est de 4 alors la partie commence avec 18 PV au lieu de 20 => on perd 2 PV
         if(this.difficulty === 4){
@@ -88,14 +87,7 @@ class Game {
         if ( this.level <= GameLevel.THIRD_ROUND ){
             this.dangerChoiceCards = this.dangerDeck.drawCards( 2 );
         }
-        else {
-            this.nextPirate();
-        }
 
-    }
-
-    nextPirate() : void {
-        this.actualPirate = this.actualPirate ? this.pirates[ this.pirates.indexOf( this.actualPirate ) + 1 ] : this.pirates[0];
     }
 
     startFight( card:DangerCard|PirateCard ){
@@ -209,7 +201,7 @@ class Game {
     resetFight() : void {
         this.fight = null;
         if(this.level > GameLevel.THIRD_ROUND){
-            this.startFight(this.actualPirate)
+            this.startFight(this.pirateDeck.drawOneCard())
         }
     }
 
@@ -360,6 +352,14 @@ class Game {
         let pirateDeck:Array<PirateCard> = [];
         let agingDeck:Array<AgingCard> = [];
         let fight:Fight;
+    getListOfPirateToFight() : Array<PirateCard>{
+        let list: Array<PirateCard> = [];
+
+        for (let i = 0; i < this.nbPiratesToFight; i++) {
+            list.push(this.pirateDeck.getCopyOfCard(i))
+        }
+
+        return list;
     }
 
 //Region : Getters / Setters
@@ -405,18 +405,6 @@ class Game {
     set gameOver(newgameOver){
         this._gameOver = newgameOver;
     }
-    get pirates() {
-        return this._pirates;
-    }
-    set pirates(newpirates){
-        this._pirates = newpirates;
-    }
-    get actualPirate() {
-        return this._actualPirate;
-    }
-    set actualPirate(newactualPirate){
-        this._actualPirate = newactualPirate;   
-    }
     get level() {
         return this._level;
     }
@@ -440,6 +428,12 @@ class Game {
     }
     set dangerChoiceCards(newdangerChoiceCards){
         this._dangerChoiceCards = newdangerChoiceCards;
+    }
+    get nbPiratesToFight(){
+        return this._nbPiratesToFight
+    }
+    set nbPiratesToFight(newnbPiratesToFight){
+        this._nbPiratesToFight = newnbPiratesToFight
     }
 
 }
