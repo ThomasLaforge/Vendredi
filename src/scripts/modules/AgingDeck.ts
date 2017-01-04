@@ -8,11 +8,14 @@ class AgingDeck extends PlayableDeck{
 
     constructor(difficulty : GameDifficulty, arrayCard?:Array<AgingCard>, arrayDiscard?:Array<AgingCard>){
         super(arrayCard,arrayDiscard);
-        this.initDeck();
-        if(difficulty < GameDifficulty.HARD){
-            this.arrayDeck.pop();
+        
+        if(!this.arrayDeck || !this.arrayDiscard){
+            this.initDeck();
+            if(difficulty < GameDifficulty.HARD){
+                this.arrayDeck.pop();
+            }
+            this.shuffle();
         }
-        this.shuffle();       
     }
 
     initDeck(){
