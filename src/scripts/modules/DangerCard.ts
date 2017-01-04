@@ -6,7 +6,7 @@ import { DangerCardInterface, FightCardInterface, GameLevel } from './Vendredi';
 
 class DangerCard implements DangerCardInterface {
 
-    constructor(readonly fightCard: FightCard, readonly name: string, readonly freeCards: number, public arrCardsToDelete:Array<PlayableCard> = []) { }
+    constructor(readonly fightCard: FightCard, readonly name: string, readonly freeCards: number) { }
 
     // Console debug
     show() {
