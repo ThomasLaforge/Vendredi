@@ -99,6 +99,7 @@ export interface AgingCardInterface extends PlayableCardInterface{
 
 export interface FightCardInterface extends PlayableCardInterface {
 	power   : FightCardPower|null
+    toDestroyAtEndOfFight: boolean
 }
 
 export interface DangerCardInterface {
@@ -168,24 +169,31 @@ export interface powerType {
 }
 
 export interface initialStateType {
-   name: string;
-   strength: number;
-   costToDelete: number;
-   power: number;
-   powerUsed: boolean;
-   toDestroyAtEndOfFight: boolean;
-   id: string;
+    name: string;
+    strength: number;
+    costToDelete: number;
+    power: number;
+    powerUsed: boolean;
+    toDestroyAtEndOfFight: boolean;
+    id: string;
 }
 
 export interface arrayDeckItemType {
-   name: string;
-   strength: number;
-   id: number;
-   mission: number;
-   freeCards: number;
+    name: string;
+    strength: number;
+    id: number;
+    mission: number;
+    freeCards: number;
+    fightCard?: FightCardInterface
 }
 
 export interface arrayDiscardItemType {
+    name: string;
+    strength: number;
+    id: number;
+    mission: number;
+    freeCards: number;
+    fightCard?: FightCardInterface
 }
 
 export interface _fightDeckType {
@@ -202,9 +210,6 @@ export interface fightCardType {
    toDestroyAtEndOfFight: boolean;
    id: string;
    initialState: initialStateType;
-}
-
-export interface arrCardsToDeleteItemType {
 }
 
 export interface _dangerDeckType {
@@ -243,7 +248,6 @@ export interface _dangerChoiceCardsItemType {
    fightCard: fightCardType;
    name: string;
    freeCards: number;
-   arrCardsToDelete: Array<arrCardsToDeleteItemType>;
 }
 
 export interface GameSaveStateState {
