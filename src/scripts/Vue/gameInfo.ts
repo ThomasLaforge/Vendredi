@@ -7,6 +7,7 @@ let template = `
     <div id="pirates-list">
         <div class="pirates-list-elt" v-for="pirate in pirateList">
             <pirate-card :pirate="pirate" />
+            <div v-if="(game.fight && game.fight.cardToFight === pirate)">En cours</div>
         </div>
     </div>
     <div class="info-main">
