@@ -8,7 +8,7 @@ let template = `
         :show.sync="show" 
         :on-close="close" 
     >
-        <div>Liste des cartes dans la défausse</div>
+        <h2>Liste des cartes dans la défausse</h2>
         <playable-card v-if="type === 'playable'" v-for="card in cards" 
             :card="card"
         />

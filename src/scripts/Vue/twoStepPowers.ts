@@ -43,16 +43,16 @@ const twoStepPowers = {
     },
     methods : {
         close : function(){
-            this.cardAssigned = [];
+            this.assignedCards = [];
             this.$emit('switchShow');
         },
         validate : function(){
             console.log('validation...')
-            this.close();
             let data = {
                 usedCard : this.usedCard,
                 assignedCards : this.assignedCards
             };
+            this.close();
             this.$emit('useTwoStepPower', data)
         },
         cancel : function(){
