@@ -4,4 +4,5 @@ bower_components
 .idea
 npm-debug.log
 /dist/
-/typings/
+typings/*
+!typings/ext.d.ts
