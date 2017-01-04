@@ -30,7 +30,7 @@ import { gameOver } from './Vue/gameOver';
 
 let app = new Vue({
     el: '#app',
-    data: () => {
+    data: function() {
         return {
             game : game,
         }
