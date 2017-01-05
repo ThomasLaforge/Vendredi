@@ -11,10 +11,9 @@ class FightCard extends PlayableCard implements FightCardInterface {
             power: FightCardPower|null, 
             powerUsed : boolean = false,
             toDestroyAtEndOfFight:boolean = false,
-            costToDelete: number = 1, 
-            id = uuid.v1()
+            costToDelete: number = 1
         ){
-        super( name, strength, costToDelete, power, powerUsed, toDestroyAtEndOfFight, id );
+        super( name, strength, costToDelete, power, powerUsed, toDestroyAtEndOfFight);
     }
 
     changePower(newPower: FightCardPower) {

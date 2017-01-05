@@ -15,7 +15,7 @@ abstract class PlayableCard extends Card implements PlayableCardInterface {
             public power: any, 
             public powerUsed : boolean = false,
             public toDestroyAtEndOfFight:boolean = false,
-            public id = uuid.v1(),
+            public id = uuid.v1()
         ) {
         super(name, strength);
         this.initialState = _.clone(this);
