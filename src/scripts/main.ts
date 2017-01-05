@@ -3,16 +3,19 @@
 import * as _ from 'lodash'
 
 // Model
-import { Game 	}         from	'./modules/Game';
-import { Player }         from	'./modules/Player';
-import { PlayableCard }   from	'./modules/PlayableCard';
-import { FightCard }   from	'./modules/FightCard';
-import { FightCardPower }   from	'./modules/Vendredi';
+import { Game 	}           from './modules/Game';
+import { Player }           from './modules/Player';
+import { PlayableCard }     from './modules/PlayableCard';
+import { FightCard }        from './modules/FightCard';
+import { FightCardPower }   from './modules/Vendredi';
+import { GameStateManager } from './modules/GameStateManager'
 let pseudo   = 'Thomas';
 let myPlayer = new Player(pseudo);
 let game     = new Game(myPlayer, 1);
+let gameStateManager = new GameStateManager(game)
 
 game.level = 2
+
 
 let newFC = new FightCard("Stratégie", 2, FightCardPower.COPY_ONE );
 let newFC2 = new FightCard("Stratégie", 2, FightCardPower.SWAP_ONE );
@@ -32,7 +35,9 @@ let app = new Vue({
     el: '#app',
     data: function() {
         return {
+            gsm : gameStateManager,
             game : game,
+            testingHistory : true
         }
     },
     components:{
@@ -65,16 +70,11 @@ let app = new Vue({
             this.game.usePower(data.usedCard, data.assignedCards)
         },
         save(){
-            let stringifyGameState = JSON.stringify( _.clone(this.game) );
-            console.log('saving', stringifyGameState);
-            localStorage.setItem('gameSaveState', stringifyGameState);
+            console.log('saving', this.gsm.save() );
         },
         load(){
-            console.log('loading');
-            let gameObj = JSON.parse( localStorage.getItem('gameSaveState') )
-            gameObj.__proto__ = new Game(gameObj._player, gameObj._difficulty)
-            console.log('game save state loaded', gameObj)
-            this.game = _.clone(this.game)
+            this.gsm.load();
+            console.log('game save state loaded')
         }
     }
 })

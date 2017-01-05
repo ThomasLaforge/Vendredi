@@ -3,6 +3,12 @@ import {PirateCard} from './PirateCard'
 import {DangerCard} from './DangerCard'
 
 // Notice : in enum, initial index = 0. Could create some bug on typescript compilator like in switch/case. Start from 1 seems to fix it
+export enum GameStateAction {
+    UNDO,
+    REDO,
+    LAST_SAVE,
+    LAST_GAME
+}
 
 export enum AgingLevel {
     UNCOMFORTABLE = 1,
@@ -108,6 +114,11 @@ export interface DangerCardInterface {
     freeCards : number
 }
 
+// Decks
+export interface DeckInterface {
+    
+}
+
 // Fights
 export interface FightInterface {
     cardToFight: PirateCard|DangerCard
@@ -160,56 +171,20 @@ export interface jsonDataFight {
 }
 
 // History : Automatic generation using vs code pluggin "json to type" to finalize
-export interface _playerType {
-   pseudo: string;
-   PV: number;
+export interface playerHistoryJson extends PlayerInterface {}
+
+export interface playableCardHistoryJson extends PlayableCardInterface {
+    power:FightCardPower|AgingCardPower
+    level?:AgingLevel
+    toDestroyAtEndOfFight:boolean
 }
 
-export interface powerType {
+export interface fightDeckHistoryJson {
+   arrayDeck: Array<playableCardHistoryJson>;
+   arrayDiscard: Array<playableCardHistoryJson>;
 }
 
-export interface initialStateType {
-    name: string;
-    strength: number;
-    costToDelete: number;
-    power: number;
-    powerUsed: boolean;
-    toDestroyAtEndOfFight: boolean;
-    id: string;
-}
-
-export interface arrayDeckItemType {
-    name: string;
-    strength: number;
-    id: number;
-    mission: number;
-    freeCards: number;
-    fightCard?: FightCardInterface
-}
-
-export interface arrayDiscardItemType {
-    name: string;
-    strength: number;
-    id: number;
-    mission: number;
-    freeCards: number;
-    fightCard?: FightCardInterface
-}
-
-export interface _fightDeckType {
-   arrayDeck: Array<arrayDeckItemType>;
-   arrayDiscard: Array<arrayDiscardItemType>;
-}
-
-export interface fightCardType {
-   name: string;
-   strength: number;
-   costToDelete: number;
-   power: number;
-   powerUsed: boolean;
-   toDestroyAtEndOfFight: boolean;
-   id: string;
-   initialState: initialStateType;
+export interface fightCardHistoryJson extends playableCardHistoryJson{
 }
 
 export interface _dangerDeckType {
@@ -251,17 +226,16 @@ export interface _dangerChoiceCardsItemType {
 }
 
 export interface GameSaveStateState {
-   _player: _playerType;
+   _player: playerHistoryJson;
    _difficulty: number;
-   _fightDeck: _fightDeckType;
-   _dangerDeck: _dangerDeckType;
-   _agingDeck: _agingDeckType;
-   _pirateDeck: _pirateDeckType;
+   _fightDeck: fightDeckHistoryJson;
+   _dangerDeck: any;
+   _agingDeck: any;
+   _pirateDeck: any;
    _gameOver: boolean;
-   _pirates: Array<_piratesItemType>;
-   _actualPirate: _actualPirateType;
    _level: number;
-   _arrayOfRemovedCards: Array<_arrayOfRemovedCardsItemType>;
-   _fight: _fightType;
-   _dangerChoiceCards: Array<_dangerChoiceCardsItemType>;
+   _arrayOfRemovedCards: Array<any>;
+   _fight: any;
+   _dangerChoiceCards: Array<any>;
+   _nbPiratesToFight: number;
 }
