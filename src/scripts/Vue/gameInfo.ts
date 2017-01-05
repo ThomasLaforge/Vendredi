@@ -10,6 +10,9 @@ let template = `
             <div v-if="(game.fight && game.fight.cardToFight === pirate)">En cours</div>
         </div>
     </div>
+
+    <button @click="switchDiscardGlobal">Discard</button>   
+
     <div class="info-main">
         <div class="info-main-pv info-main-elt" id="pv">
             <div class="info-main-value">{{ game.player.PV >= -1 ? game.player.PV : -1 }}</div>
@@ -56,6 +59,7 @@ const gameInfo = {
         return {
             discardDangerOpen : false,
             discardPlayableOpen : false,
+            discardGlobalOpen : false,
             pirateList : this.game.getListOfPirateToFight()
         }
     },
@@ -68,12 +72,19 @@ const gameInfo = {
             console.log('switch discard playable')
             this.discardPlayableOpen = !this.discardPlayableOpen            
             this.discardDangerOpen = false            
+            this.discardGlobalOpen = false            
         },
         switchDiscardDanger(){
             console.log('switch discard danger') 
             this.discardDangerOpen = !this.discardDangerOpen
             this.discardPlayableOpen = false
+            this.discardGlobalOpen = false
         },
+        switchDiscardGlobal(){
+            this.discardGlobalOpen = !this.discardDangerOpen;
+            this.discardPlayableOpen = false
+            this.discardDangerOpen = false
+        }
     }
 };
 
