@@ -19,7 +19,7 @@
     </p><![endif]-->
 
     <div class="container">
-        <h1 class="title-top">Vendredi</h1>
+        <!--<h1 class="title-top">Vendredi</h1>-->
 
         <hr>
 
@@ -51,9 +51,11 @@
                 @use-power="useMyPower"
                 @use-two-step-power="useTwoStepPower"
             ></game-fight>
+            <div v-if="!testingHistory">
+            </div>
 
             <!-- WIP -->
-            <div v-show="true">
+            <div v-if="testingHistory">
                 <button @click="save">Save</button>
                 <button @click="load">Load</button>
             </div>
