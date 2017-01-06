@@ -60,8 +60,10 @@ const gameInfo = {
             discardDangerOpen : false,
             discardPlayableOpen : false,
             discardGlobalOpen : false,
-            pirateList : this.game.getListOfPirateToFight()
         }
+    },
+    computed : {
+        pirateList : function(){ return this.game.getListOfPirateToFight() }
     },
     components : {
         pirateCard,
