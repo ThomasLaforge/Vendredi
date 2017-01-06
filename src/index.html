@@ -24,33 +24,16 @@
         <hr>
 
         <div id="app">
-            <game-info 
-                :game="game"
-            ></game-info>
-            
+            <game-info :game="game"></game-info>
+
             <hr>
-            
-            <game-over 
-                v-if="game.isGameOver()" 
-                :player-name="game.player.pseudo"
-            >
+
+            <game-over v-if="game.isGameOver()" :player-name="game.player.pseudo">
             </game-over>
-            
-            <game-danger-choice 
-                v-if="( !game.fight && !game.isGameOver() )" 
-                :danger-choice="game.dangerChoiceCards" 
-                @chose="startFight"
-            ></game-danger-choice>
-            
-            <game-fight 
-                v-if="(game.fight && !game.isGameOver() )"
-                :fight="game.fight" 
-                @stop="stopFight" 
-                @draw="addCardToFight" 
-                @fight-closed="endFightLost" 
-                @use-power="useMyPower"
-                @use-two-step-power="useTwoStepPower"
-            ></game-fight>
+
+            <game-danger-choice v-if="( !game.fight && !game.isGameOver() )" :danger-choice="game.dangerChoiceCards" @chose="startFight"></game-danger-choice>
+
+            <game-fight v-if="(game.fight && !game.isGameOver() )" :fight="game.fight" @stop="stopFight" @draw="addCardToFight" @fight-closed="endFightLost" @use-power="useMyPower" @use-two-step-power="useTwoStepPower"></game-fight>
             <div v-if="!testingHistory">
             </div>
 

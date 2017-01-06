@@ -14,7 +14,7 @@ let myPlayer = new Player(pseudo);
 let game     = new Game(myPlayer, 1);
 let gameStateManager = new GameStateManager(game)
 
-game.level = 2
+game.level = 0
 
 
 let newFC = new FightCard("Stratégie", 2, FightCardPower.COPY_ONE );
@@ -70,11 +70,10 @@ let app = new Vue({
             this.game.usePower(data.usedCard, data.assignedCards)
         },
         save(){
-            console.log('saving', this.gsm.save() );
+            this.gsm.save();
         },
         load(){
-            this.gsm.load();
-            console.log('game save state loaded')
+            this.game = this.gsm.load();
         }
     }
 })

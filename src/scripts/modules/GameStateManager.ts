@@ -1,4 +1,5 @@
 import {GameSaveStateState, AgingCardPower, FightCardPower, GameStateAction} from './Vendredi';
+import { GameStateAction } from "./Vendredi";
 import {Game} from './Game';
 import {Fight} from './Fight'
 import {Player} from './Player';
@@ -61,9 +62,9 @@ constructor( private _game:Game, private currentStateId?:string ){}
         return stateToSave;
     }
 
-    load(gameSaveStateJson : string) : void {
-        console.log('loading game state', gameSaveStateJson);
+    load(gameSaveStateJson : string) : Game {
         gameSaveStateJson = localStorage.getItem('save');
+        console.log('loading game state', gameSaveStateJson);
 
         let state : GameSaveStateState = JSON.parse(gameSaveStateJson);
         let p = new Player(state._player.pseudo, state._player.PV)
@@ -111,28 +112,46 @@ constructor( private _game:Game, private currentStateId?:string ){}
             agingDeck.push( new AgingCard(aJson.name, aJson.strength, aJson.power, aJson.level) )
         })
         let fight:Fight;
+        cardToFight
+        costOfCardsNotFree
+        arrayFightCard
+        finished
+        _freeCards
+        level
+
         let arrayOfRemovedCards:Array<PlayableCard> = [];
         let dangerChoiceCards:Array<DangerCard> = [];
 
         let newGame = new Game(p, state._difficulty, 
-                            new FightDeck(fightDeck, fightDiscard), 
-                            new DangerDeck(dangerDeck, dangerDiscard), 
-                            new AgingDeck(state._difficulty, agingDeck, []), 
-                            new PirateDeck(pirateDeck, []),
-                            state._gameOver, state._level, arrayOfRemovedCards, fight, dangerChoiceCards, state._nbPiratesToFight
-                        );
+                        new FightDeck(fightDeck, fightDiscard), 
+                        new DangerDeck(dangerDeck, dangerDiscard), 
+                        new AgingDeck(state._difficulty, agingDeck, []), 
+                        new PirateDeck(pirateDeck, []),
+                        state._gameOver, state._level, arrayOfRemovedCards, fight, dangerChoiceCards, state._nbPiratesToFight
+                    );
 
-        this._game = newGame
+        return newGame
     }
 
     getStateFromAction( action: GameStateAction){
-        
+        switch (action) {
+            case GameStateAction.REDO:
+                return localStorage.getItem('save');
+            case GameStateAction.UNDO:
+                return localStorage.getItem('save');
+        }
     }
 
     getStateFromKey( key:string){
         
     }
 
+    get game(){
+        return this._game;
+    }
+    set game(newgame){
+        this._game = newgame
+    }
 }
 
 export { GameStateManager }
