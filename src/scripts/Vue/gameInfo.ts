@@ -11,11 +11,12 @@ let template = `
         </div>
     </div>
 
-    <button @click="switchDiscardGlobal">Discard</button>   
-
     <div class="info-main">
-        <div class="info-main-pv info-main-elt" id="pv">
-            <div class="info-main-value">{{ game.player.PV >= -1 ? game.player.PV : -1 }}</div>
+        <div class="info-main-global info-main-elt">
+            <div class="info-main-pv" id="pv">
+                <div class="info-main-value">{{ game.player.PV >= -1 ? game.player.PV : -1 }}</div>
+            </div>
+            <button @click="switchDiscardGlobal">Global discard</button>       
         </div>
         <div class="info-main-fight-cards info-main-elt">
             <div id="nbFightCards" class="info-main-value">{{ game.fightDeck.length() }}</div>
@@ -48,6 +49,13 @@ let template = `
         :show="discardDangerOpen" 
         :type="'danger'" 
         @switchShowDiscard="switchDiscardDanger"
+    />
+
+    <discard
+        :cards="game.arrayOfRemovedCards"
+        :show="discardGlobalOpen"
+        :type="'playable'"
+        @switchShowDiscard="switchDiscardGlobal"
     />
 </div>
 `
@@ -83,7 +91,8 @@ const gameInfo = {
             this.discardGlobalOpen = false
         },
         switchDiscardGlobal(){
-            this.discardGlobalOpen = !this.discardDangerOpen;
+            console.log('switch discard global')             
+            this.discardGlobalOpen = !this.discardGlobalOpen;
             this.discardPlayableOpen = false
             this.discardDangerOpen = false
         }
