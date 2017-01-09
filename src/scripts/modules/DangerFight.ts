@@ -1,10 +1,17 @@
 import { Fight } from './Fight';
 import { DangerCard } from './DangerCard';
+import { PlayableCard } from './PlayableCard';
 import { GameLevel,DangerFightInterface } from './Vendredi';
 
 class DangerFight extends Fight implements DangerFightInterface {
-    constructor( cardToFight:DangerCard, public level: GameLevel ){
-        super(cardToFight);
+    constructor( 
+        cardToFight:DangerCard, 
+        public level: GameLevel,         
+        public arrayFightCard : Array<PlayableCard> = [], 
+        public arrayFightCardUsed : Array<PlayableCard> = [], 
+        public finished : boolean = false
+    ){
+        super(cardToFight, arrayFightCard, arrayFightCardUsed, finished);
     }
 
     getStrengthCardToFight(){

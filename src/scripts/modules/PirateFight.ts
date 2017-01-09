@@ -1,6 +1,7 @@
 import { Fight } from './Fight';
 import { AgingDeck } from './AgingDeck';
 import {PirateCard} from './PirateCard';
+import {PlayableCard} from './PlayableCard';
 import {DangerCard} from './DangerCard';
 import {DangerDeck} from './DangerDeck';
 import {PirateFightInterface, PirateMission, GameLevel } from './Vendredi';
@@ -15,8 +16,15 @@ Powers :
 */
 
 class PirateFight extends Fight implements PirateFightInterface {
-    constructor( card : PirateCard , costOfCardsNotFree = 1){
-        super(card, costOfCardsNotFree);
+    constructor( 
+        cardToFight : PirateCard , 
+        costOfCardsNotFree = 1,
+        arrayFightCard : Array<PlayableCard> = [], 
+        arrayFightCardUsed : Array<PlayableCard> = [], 
+        finished : boolean = false,
+        _freeCards: number = cardToFight.freeCards,
+    ){
+        super(cardToFight, arrayFightCard, arrayFightCardUsed, finished, costOfCardsNotFree);
     }
 
     getPlayerForce(){
