@@ -188,18 +188,12 @@ export interface fightCardHistoryJson extends playableCardHistoryJson{
 }
 
 export interface _dangerDeckType {
-   arrayDeck: Array<arrayDeckItemType>;
-   arrayDiscard: Array<arrayDiscardItemType>;
 }
 
 export interface _agingDeckType {
-   arrayDeck: Array<arrayDeckItemType>;
-   arrayDiscard: Array<arrayDiscardItemType>;
 }
 
 export interface _pirateDeckType {
-   arrayDeck: Array<arrayDeckItemType>;
-   arrayDiscard: Array<arrayDiscardItemType>;
 }
 
 export interface _piratesItemType {
@@ -220,7 +214,7 @@ export interface _fightType {
 }
 
 export interface _dangerChoiceCardsItemType {
-   fightCard: fightCardType;
+   fightCard: FightCardInterface;
    name: string;
    freeCards: number;
 }
