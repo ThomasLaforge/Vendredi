@@ -1,5 +1,4 @@
 import {GameSaveStateState, AgingCardPower, FightCardPower, GameStateAction} from './Vendredi';
-import { GameStateAction } from "./Vendredi";
 import {Game} from './Game';
 import {Fight} from './Fight'
 import {Player} from './Player';
@@ -13,6 +12,7 @@ import {DangerDeck} from './DangerDeck';
 import {AgingDeck} from './AgingDeck';
 import {PirateDeck} from './PirateDeck';
 import * as _ from 'lodash';
+import * as CircularJSON from 'circular-json';
 
 class GameStateManager {
 
@@ -49,7 +49,7 @@ constructor( private _game:Game, private currentStateId?:string ){}
 
     save() : string {
         let stateToSave : string;
-        stateToSave = JSON.stringify(_.clone(this._game));
+        stateToSave = CircularJSON.stringify(_.clone(this._game));
         console.log('saving game state', stateToSave);
         try {
             localStorage.setItem('save', stateToSave);
@@ -66,7 +66,7 @@ constructor( private _game:Game, private currentStateId?:string ){}
         gameSaveStateJson = localStorage.getItem('save');
         console.log('loading game state', gameSaveStateJson);
 
-        let state : GameSaveStateState = JSON.parse(gameSaveStateJson);
+        let state : GameSaveStateState = CircularJSON.parse(gameSaveStateJson);
         let p = new Player(state._player.pseudo, state._player.PV)
         //decks
         let fightDeck:Array<PlayableCard> = [];
