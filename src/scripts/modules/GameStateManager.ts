@@ -1,7 +1,8 @@
-import {GameSaveStateState, AgingCardPower, FightCardPower, GameStateAction} from './Vendredi';
-import { GameStateAction } from "./Vendredi";
+import {GameSaveStateState, AgingCardPower, FightCardPower, GameStateAction, GameLevel} from './Vendredi';
 import {Game} from './Game';
 import {Fight} from './Fight'
+import {DangerFight} from './DangerFight'
+import {PirateFight} from './PirateFight'
 import {Player} from './Player';
 import {PlayableCard} from './PlayableCard';
 import {AgingCard} from './AgingCard';
@@ -65,7 +66,9 @@ constructor( private _game:Game, private currentStateId?:string ){}
     load(gameSaveStateJson : string) : Game {
         gameSaveStateJson = localStorage.getItem('save');
         console.log('loading game state', gameSaveStateJson);
-
+        if(gameSaveStateJson === null){
+            return null
+        }
         let state : GameSaveStateState = JSON.parse(gameSaveStateJson);
         let p = new Player(state._player.pseudo, state._player.PV)
         //decks
@@ -111,16 +114,78 @@ constructor( private _game:Game, private currentStateId?:string ){}
         state._agingDeck.arrayDeck.forEach( aJson => {
             agingDeck.push( new AgingCard(aJson.name, aJson.strength, aJson.power, aJson.level) )
         })
-        let fight:Fight;
-        cardToFight
-        costOfCardsNotFree
-        arrayFightCard
-        finished
-        _freeCards
-        level
+        
+        // Fight
+        let fight: Fight = null;        
+        if(state._fight) {
+            let cardToFight:DangerCard|PirateCard;
+            if( state._fight.cardToFight.fightCard) {
+                let dcJson = state._fight.cardToFight;
+                let fcJson = dcJson.fightCard;
+                let fightCard = new FightCard(fcJson.name, fcJson.strength, fcJson.power, fcJson.powerUsed, fcJson.toDestroyAtEndOfFight)
+                cardToFight = new DangerCard(fightCard, dcJson.name, dcJson.freeCards);
+            }
+            else {
+                let pJson = state._fight.cardToFight; 
+                cardToFight = new PirateCard(pJson.name, pJson.strength, pJson.mission, pJson.freeCards)         
+            }
+            let arrayFightCard: Array<PlayableCard> = [];
+            state._fight.arrayFightCard.forEach( pcJson => {
+                let cardToAdd: PlayableCard;
+                if(pcJson.level){
+                    cardToAdd = new AgingCard(pcJson.name, pcJson.strength, <AgingCardPower>pcJson.power, pcJson.level, pcJson.powerUsed, pcJson.toDestroyAtEndOfFight)
+                }
+                else{
+                    cardToAdd = new FightCard(pcJson.name, pcJson.strength, <FightCardPower>pcJson.power, pcJson.powerUsed, pcJson.toDestroyAtEndOfFight)                
+                }
+                arrayFightCard.push(cardToAdd);
+            })
+            let arrayFightCardUsed: Array<PlayableCard> = [];
+            state._fight.arrayFightCardUsed.forEach( pcJson => {
+                let cardToAdd: PlayableCard;
+                if(pcJson.level){
+                    cardToAdd = new AgingCard(pcJson.name, pcJson.strength, <AgingCardPower>pcJson.power, pcJson.level, pcJson.powerUsed, pcJson.toDestroyAtEndOfFight)
+                }
+                else{
+                    cardToAdd = new FightCard(pcJson.name, pcJson.strength, <FightCardPower>pcJson.power, pcJson.powerUsed, pcJson.toDestroyAtEndOfFight)                
+                }
+                arrayFightCardUsed.push(cardToAdd);
+            })
+            let finished : boolean = state._fight.finished;
+            let costOfCardsNotFree : number = state._fight.costOfCardsNotFree;
+            let freeCards : number = state._fight._freecards;
+            let level:GameLevel = state._fight.level;
+            if( cardToFight instanceof DangerCard ){
+                fight = new DangerFight(cardToFight, level, arrayFightCard, arrayFightCardUsed, finished); 
+            }
+            if( cardToFight instanceof PirateCard) {
+                fight = new PirateFight(cardToFight, costOfCardsNotFree, arrayFightCard, arrayFightCardUsed, finished);
+            }
+        }
 
+        // Global discard
         let arrayOfRemovedCards:Array<PlayableCard> = [];
-        let dangerChoiceCards:Array<DangerCard> = [];
+        state._arrayOfRemovedCards.forEach( pcJson => {
+            let cardToAdd: PlayableCard;
+            if(pcJson.level){
+                cardToAdd = new AgingCard(pcJson.name, pcJson.strength, <AgingCardPower>pcJson.power, pcJson.level, pcJson.powerUsed, pcJson.toDestroyAtEndOfFight)
+            }
+            else{
+                cardToAdd = new FightCard(pcJson.name, pcJson.strength, <FightCardPower>pcJson.power, pcJson.powerUsed, pcJson.toDestroyAtEndOfFight)                
+            }
+            arrayOfRemovedCards.push(cardToAdd);
+        })
+
+        //dangerChoiceCards 
+        let dangerChoiceCards:Array<DangerCard> = null;
+        if(dangerChoiceCards !== null){
+            dangerChoiceCards = [];
+            state._dangerChoiceCards.forEach( dcJson => {
+                let fcJson = dcJson.fightCard;
+                let fightCard = new FightCard(fcJson.name, fcJson.strength, fcJson.power, fcJson.powerUsed, fcJson.toDestroyAtEndOfFight)
+                dangerChoiceCards.push( new DangerCard(fightCard, dcJson.name, dcJson.freeCards));
+            })
+        }
 
         let newGame = new Game(p, state._difficulty, 
                         new FightDeck(fightDeck, fightDiscard), 
