@@ -33,7 +33,6 @@ const gameDangerChoice = {
     },
     methods:{
         changeSelectedIndex(index:number){
-            console.log('look here and delete comment if you understood', index)
             this.currentSelected = index;
         },
         chose(){
