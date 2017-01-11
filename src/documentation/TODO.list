@@ -115,3 +115,6 @@ Historique
     - Chargement d'une partie à partir d'un id de partie
 
     Possibilités de regarder du côté de vuex !
+    https://github.com/robinvdvleuten/vuex-persistedstate
+
+    
