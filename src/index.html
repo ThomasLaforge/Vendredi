@@ -19,7 +19,7 @@
     </p><![endif]-->
 
     <div class="container">
-        <!--<h1 class="title-top">Vendredi</h1>-->
+        <h1 class="title-top">Vendredi</h1>
 
         <hr>
 
@@ -28,20 +28,15 @@
 
             <hr>
 
-            <game-over v-if="game.isGameOver()" :player-name="game.player.pseudo">
-            </game-over>
+            <game-over v-if="game.isGameOver()" :player-name="game.player.pseudo"></game-over>
 
             <game-danger-choice v-if="( !game.fight && !game.isGameOver() )" :danger-choice="game.dangerChoiceCards" @chose="startFight"></game-danger-choice>
 
             <game-fight v-if="(game.fight && !game.isGameOver() )" :fight="game.fight" @stop="stopFight" @draw="addCardToFight" @fight-closed="endFightLost" @use-power="useMyPower" @use-two-step-power="useTwoStepPower"></game-fight>
-            <div v-if="!testingHistory">
-            </div>
 
-            <!-- WIP -->
-            <div v-if="testingHistory">
-                <button @click="save">Save</button>
-                <button @click="load">Load</button>
-            </div>
+            <hr>
+
+            <game-state-manager @save="save" @load="load"></game-state-manager>
         </div>
 
         <!-- - - - - - - - -->

@@ -1,50 +1,57 @@
-// Jquery et bootstrap
-// var bootstrap = require('bootstrap/dist/js/bootstrap');
-import * as _ from 'lodash'
+// Libraries
+    // var bootstrap = require('bootstrap/dist/js/bootstrap');
+    import * as _ from 'lodash'
 
 // Model
-import { Game 	}           from './modules/Game';
-import { Player }           from './modules/Player';
-import { PlayableCard }     from './modules/PlayableCard';
-import { FightCard }        from './modules/FightCard';
-import { FightCardPower }   from './modules/Vendredi';
-import { GameStateManager } from './modules/GameStateManager'
-let pseudo   = 'Thomas';
-let myPlayer = new Player(pseudo);
-let game     = new Game(myPlayer, 1);
-let gameStateManager = new GameStateManager(game)
+    import { Game 	}           from './modules/Game';
+    import { Player }           from './modules/Player';
+    import { PlayableCard }     from './modules/PlayableCard';
+    import { FightCard }        from './modules/FightCard';
+    import { FightCardPower }   from './modules/Vendredi';
+    import { GameStateManager } from './modules/GameStateManager'
+    let pseudo   = 'Thomas';
+    let myPlayer = new Player(pseudo);
+    let newGame     = new Game(myPlayer, 1);
+    let gsm = new GameStateManager(newGame)
 
-game.level = 0
-
-
-let newFC = new FightCard("Stratégie", 2, FightCardPower.COPY_ONE );
-let newFC2 = new FightCard("Stratégie", 2, FightCardPower.SWAP_ONE );
-game.fightDeck.addCard(newFC);
-game.fightDeck.addCard(newFC2);
+// Game Config
+    newGame.level = 0
+    let newFC = new FightCard("Stratégie", 2, FightCardPower.COPY_ONE );
+    let newFC2 = new FightCard("Stratégie", 2, FightCardPower.SWAP_ONE );
+    // TODO: Here should I add method in Game to add a card to fight deck?
+    newGame.fightDeck.addCard(newFC);
+    newGame.fightDeck.addCard(newFC2);
 
 // Vue
-import { dangerCard } from './Vue/dangerCard';
-import { pirateCard } from './Vue/pirateCard';
-import { playableCard } from './Vue/playableCard';
-import { gameInfo } from './Vue/gameInfo';
-import { gameDangerChoice } from './Vue/gameDangerChoice';
-import { gameFight } from './Vue/gameFight';
-import { gameOver } from './Vue/gameOver';
+    import { dangerCard } from './Vue/dangerCard';
+    import { pirateCard } from './Vue/pirateCard';
+    import { playableCard } from './Vue/playableCard';
+    import { gameInfo } from './Vue/gameInfo';
+    import { gameDangerChoice } from './Vue/gameDangerChoice';
+    import { gameFight } from './Vue/gameFight';
+    import { gameOver } from './Vue/gameOver';
+    import { gameStateManager } from './Vue/gameStateManager';
 
+// Main
 let app = new Vue({
     el: '#app',
     data: function() {
         return {
-            gsm : gameStateManager,
-            game : game,
+            gamestatemanager : gsm,
+            initialgame : gsm.game,
             testingHistory : true
         }
+    },
+    computed: {
+        gsm : function() { return this.gamestatemanager }, 
+        game : function() { return this.gsm.game }, 
     },
     components:{
         gameInfo,
         gameDangerChoice,
         gameFight,
-        gameOver
+        gameOver,
+        gameStateManager
     },
     methods: {
         addCardToFight(){
@@ -72,8 +79,9 @@ let app = new Vue({
         save(){
             this.gsm.save();
         },
-        load(){
-            this.game = this.gsm.load();
+        load(slotName:null|string){
+            console.log('name of slot to load', slotName)
+            this.game = this.gsm.load(slotName)
         }
     }
 })

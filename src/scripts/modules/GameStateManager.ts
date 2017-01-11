@@ -1,4 +1,5 @@
 import {GameSaveStateState, AgingCardPower, FightCardPower, GameStateAction, GameLevel} from './Vendredi';
+import * as config from '../modules/Configuration'
 import {Game} from './Game';
 import {Fight} from './Fight'
 import {DangerFight} from './DangerFight'
@@ -18,7 +19,7 @@ import * as CircularJSON from 'circular-json';
 
 class GameStateManager {
 
-constructor( private _game:Game, private currentStateId?:string ){}
+    constructor( private _game:Game, private currentStateId?:string ){}
 
     getAllSaveStates(){
         let res: Array<string> = []
@@ -54,7 +55,7 @@ constructor( private _game:Game, private currentStateId?:string ){}
         stateToSave = CircularJSON.stringify(_.clone(this._game));
         console.log('saving game state', stateToSave);
         try {
-            localStorage.setItem('save', stateToSave);
+            localStorage.setItem(config.SAVE_SLOT_DEFAULT_NAME, stateToSave);
         } catch(domException) {
             if (domException.name === 'QuotaExceededError' ||
                 domException.name === 'NS_ERROR_DOM_QUOTA_REACHED') {
@@ -64,9 +65,10 @@ constructor( private _game:Game, private currentStateId?:string ){}
         return stateToSave;
     }
 
-    load(gameSaveStateJson : string) : Game {
-        gameSaveStateJson = localStorage.getItem('save');
-        console.log('loading game state', gameSaveStateJson);
+    load(gameSlotName? : string) : Game {
+        let slotName = gameSlotName ? gameSlotName : config.SAVE_SLOT_DEFAULT_NAME;
+        let gameSaveStateJson = localStorage.getItem(gameSlotName);
+        // console.log('loading game state', gameSaveStateJson);
         if(gameSaveStateJson === null){
             return null
         }
@@ -196,7 +198,7 @@ constructor( private _game:Game, private currentStateId?:string ){}
                         state._gameOver, state._level, arrayOfRemovedCards, fight, dangerChoiceCards, state._nbPiratesToFight
                     );
 
-        return newGame
+        this.game = newGame
     }
 
     getStateFromAction( action: GameStateAction){
