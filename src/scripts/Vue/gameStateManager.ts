@@ -26,13 +26,17 @@ let template = `
 
 const gameStateManager = {
     template : template,
-    data : function() : { selectedSlot : number } {
+    data : function() : { selectedSlot : number, saveSlots:Array<any> } {
         return {
-            selectedSlot : null
+            selectedSlot : null,
+            saveSlots : []
         }
     },
-    computed : {
-        saveSlots : function() : Array<{key : string, value : string, startDate:string, lastChangeDate:string}> {
+    created: function () {
+        this.refreshSlots();
+    },
+    methods: {
+        refreshSlots(){
             let res:Array<{key : string, value : string, startDate:string, lastChangeDate:string}> = [];
             for(let i=0, len = localStorage.length; i < len; i++) {
                 let key = localStorage.key(i);
@@ -41,21 +45,21 @@ const gameStateManager = {
                     res.push({
                         key : key.replace(config.SAVE_SLOT_PREFIX, ''),
                         value : value,
-                        startDate : config.moment(value._startDate).format('LLL'),
-                        lastChangeDate: config.moment(value._lastChangeDate).format('LLL')
+                        startDate : config.moment(value._startDate).format('LLL ss'),
+                        lastChangeDate: config.moment(value._lastChangeDate).format('LLL ss') 
                     });
                 }
             }
-            return res;
-        }
-    },
-    methods: {
+            this.saveSlots = res;
+        },
         save(){
             this.$emit('save')
+            this.refreshSlots()
         },
         load(){
             if(this.saveSlots[this.selectedSlot].key){
                 this.$emit('load', config.SAVE_SLOT_PREFIX + this.saveSlots[this.selectedSlot].key)
+                this.refreshSlots();
             }
         },
         testClickOnTableCell(index:number){
