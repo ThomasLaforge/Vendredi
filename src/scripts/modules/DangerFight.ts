@@ -9,9 +9,10 @@ class DangerFight extends Fight implements DangerFightInterface {
         public level: GameLevel,         
         public arrayFightCard : Array<PlayableCard> = [], 
         public arrayFightCardUsed : Array<PlayableCard> = [], 
-        public finished : boolean = false
+        public finished : boolean = false,
+        freeCards: number = cardToFight.freeCards
     ){
-        super(cardToFight, arrayFightCard, arrayFightCardUsed, finished);
+        super(cardToFight, arrayFightCard, arrayFightCardUsed, finished, freeCards);
     }
 
     getStrengthCardToFight(){

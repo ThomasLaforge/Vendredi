@@ -159,10 +159,10 @@ class GameStateManager {
             let freeCards : number = state._fight._freecards;
             let level:GameLevel = state._fight.level;
             if( cardToFight instanceof DangerCard ){
-                fight = new DangerFight(cardToFight, level, arrayFightCard, arrayFightCardUsed, finished); 
+                fight = new DangerFight(cardToFight, level, arrayFightCard, arrayFightCardUsed, finished, freeCards); 
             }
             if( cardToFight instanceof PirateCard) {
-                fight = new PirateFight(cardToFight, costOfCardsNotFree, arrayFightCard, arrayFightCardUsed, finished);
+                fight = new PirateFight(cardToFight, freeCards, costOfCardsNotFree, arrayFightCard, arrayFightCardUsed, finished);
             }
         }
 

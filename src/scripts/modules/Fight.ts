@@ -12,7 +12,7 @@ abstract class Fight implements FightInterface {
         public arrayFightCard : Array<PlayableCard> = [], 
         public arrayFightCardUsed : Array<PlayableCard> = [], 
         public finished : boolean = false,
-        protected _freeCards: number = cardToFight.freeCards,
+        public freeCards: number = cardToFight.freeCards,
         public costOfCardsNotFree = 1
     ){}
 
@@ -148,13 +148,6 @@ abstract class Fight implements FightInterface {
 
     hasStopCard() : boolean {
         return this.getAllCards().filter( (card:PlayableCard) => { return card instanceof AgingCard && card.power === AgingCardPower.STOP}).length > 0
-    }
-
-    get freeCards() : number{
-        return this._freeCards
-    }
-    set freeCards(newFreeCards:number){
-        this._freeCards = newFreeCards;
     }
 }
 

@@ -18,13 +18,13 @@ Powers :
 class PirateFight extends Fight implements PirateFightInterface {
     constructor( 
         cardToFight : PirateCard , 
+        freeCards: number = cardToFight.freeCards,
         costOfCardsNotFree = 1,
         arrayFightCard : Array<PlayableCard> = [], 
         arrayFightCardUsed : Array<PlayableCard> = [], 
-        finished : boolean = false,
-        _freeCards: number = cardToFight.freeCards,
+        finished : boolean = false
     ){
-        super(cardToFight, arrayFightCard, arrayFightCardUsed, finished, costOfCardsNotFree);
+        super(cardToFight, arrayFightCard, arrayFightCardUsed, finished, costOfCardsNotFree, freeCards);
     }
 
     getPlayerForce(){
