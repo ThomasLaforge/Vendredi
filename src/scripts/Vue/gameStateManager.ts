@@ -2,15 +2,19 @@ import * as config from '../modules/Configuration'
 
 let template = `
 <div>
-    <table class="table-bordered table-hover table-condensed table-responsive">
-        <thead>
+    <table class="table-bordered table-striped table-sm table-hover table-responsive">
+        <thead class="thead-inverse">
             <tr>
-                <th>slot name</th>
+                <th>Slot name</th>
+                <th>Date of start</th>
+                <th>Date of last change</th>
             <tr>
         </thead>
         <tbody>
-            <tr v-for="(slot, i) in saveSlots">
-                <td @click="testClickOnTableCell(i)" :class="selectedSlot === i ? 'test' : ''">{{ slot.key }}</td>
+            <tr v-for="(slot, i) in saveSlots" @click="testClickOnTableCell(i)" :class="selectedSlot === i ? 'table-info' : ''">
+                <td>{{ slot.key }}</td>
+                <td>{{ slot.startDate }}</td>
+                <td>{{ slot.lastChangeDate }}</td>
             </tr>
         </tbody>
     </table>
@@ -28,15 +32,17 @@ const gameStateManager = {
         }
     },
     computed : {
-        saveSlots : function() : Array<{key : string, value : string}> {
-            let res:Array<{key : string, value : string}> = [];
+        saveSlots : function() : Array<{key : string, value : string, startDate:string, lastChangeDate:string}> {
+            let res:Array<{key : string, value : string, startDate:string, lastChangeDate:string}> = [];
             for(let i=0, len = localStorage.length; i < len; i++) {
                 let key = localStorage.key(i);
                 if(key.includes(config.SAVE_SLOT_PREFIX)){
-                    let value = localStorage.getItem(key);
+                    let value = JSON.parse(localStorage.getItem(key));
                     res.push({
                         key : key.replace(config.SAVE_SLOT_PREFIX, ''),
-                        value : value
+                        value : value,
+                        startDate : config.moment(value._startDate).format('LLL'),
+                        lastChangeDate: config.moment(value._lastChangeDate).format('LLL')
                     });
                 }
             }
@@ -48,9 +54,12 @@ const gameStateManager = {
             this.$emit('save')
         },
         load(){
-            this.$emit('load', config.SAVE_SLOT_PREFIX + this.saveSlots[this.selectedSlot].key)
+            if(this.saveSlots[this.selectedSlot].key){
+                this.$emit('load', config.SAVE_SLOT_PREFIX + this.saveSlots[this.selectedSlot].key)
+            }
         },
         testClickOnTableCell(index:number){
+            console.log('testClickOnTableCell', index)
             this.selectedSlot = this.selectedSlot !== index ? index : null;
         }
     }

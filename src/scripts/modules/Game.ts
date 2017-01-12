@@ -29,7 +29,9 @@ class Game {
             private _arrayOfRemovedCards: Array<PlayableCard> = [],
             private _fight: Fight = null,
             private _dangerChoiceCards: Array<DangerCard> = null,
-            private _nbPiratesToFight = 2
+            private _nbPiratesToFight = 2,
+            private _startDate = Date.now(),
+            private _lastChangeDate = Date.now()
      ){
         // Si la difficulté est de 4 alors la partie commence avec 18 PV au lieu de 20 => on perd 2 PV
         if(this.difficulty === 4){
@@ -399,6 +401,12 @@ class Game {
     }
     set nbPiratesToFight(newnbPiratesToFight){
         this._nbPiratesToFight = newnbPiratesToFight
+    }
+    get lastChangeDate() {
+        return this._lastChangeDate;
+    }
+    set lastChangeDate(newLastChangeDate) {
+        this._lastChangeDate = newLastChangeDate;
     }
 
 }

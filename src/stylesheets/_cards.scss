@@ -93,7 +93,6 @@ $heightPirateCardMission: 40px;
             color: red;
         }
     }
-
     .aging-card {
         border: 1px orange solid;
         flex-direction: row-reverse;
@@ -117,6 +116,7 @@ $heightPirateCardMission: 40px;
     height: 280px;
     border: 5px solid rgba(gray, 0.15);
     border-radius: 5px;
+    background-color: white;
     .danger-card-definition {
         display: flex;
         flex-direction: column;
@@ -245,7 +245,7 @@ $heightPirateCardMission: 40px;
 }
 
 .two-step-powers-card-selected {
-    background-color: rgba(greenyellow, 0.7);    
+    background-color: rgba(greenyellow, 0.7);
 }
 
 .danger-card-selected {

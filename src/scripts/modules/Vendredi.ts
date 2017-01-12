@@ -179,9 +179,28 @@ export interface playableCardHistoryJson extends PlayableCardInterface {
     toDestroyAtEndOfFight:boolean
 }
 
+export interface dangerCardHistoryJson extends DangerCardInterface {}
+export interface agingCardHistoryJson extends AgingCardInterface {}
+export interface pirateCardHistoryJson extends PirateCardInterface {}
+
 export interface fightDeckHistoryJson {
    arrayDeck: Array<playableCardHistoryJson>;
    arrayDiscard: Array<playableCardHistoryJson>;
+}
+
+export interface dangerDeckHistoryJson {
+   arrayDeck: Array<dangerCardHistoryJson>;
+   arrayDiscard: Array<dangerCardHistoryJson>;
+}
+
+export interface pirateDeckHistoryJson {
+   arrayDeck: Array<pirateCardHistoryJson>;
+   arrayDiscard: Array<pirateCardHistoryJson>;
+}
+
+export interface agingDeckHistoryJson {
+   arrayDeck: Array<agingCardHistoryJson>;
+   arrayDiscard: Array<agingCardHistoryJson>;
 }
 
 export interface fightCardHistoryJson extends playableCardHistoryJson{
@@ -223,13 +242,15 @@ export interface GameSaveStateState {
    _player: playerHistoryJson;
    _difficulty: number;
    _fightDeck: fightDeckHistoryJson;
-   _dangerDeck: any;
-   _agingDeck: any;
-   _pirateDeck: any;
+   _dangerDeck: dangerDeckHistoryJson;
+   _agingDeck: agingDeckHistoryJson;
+   _pirateDeck: pirateDeckHistoryJson;
    _gameOver: boolean;
    _level: number;
-   _arrayOfRemovedCards: Array<any>;
+   _arrayOfRemovedCards: Array<playableCardHistoryJson>;
    _fight: any;
-   _dangerChoiceCards: Array<any>;
+   _dangerChoiceCards: Array<dangerCardHistoryJson>;
    _nbPiratesToFight: number;
+   _startDate : number;
+   _lastChangeDate : number;
 }

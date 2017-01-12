@@ -1,4 +1,4 @@
-import {GameSaveStateState, AgingCardPower, FightCardPower, GameStateAction, GameLevel} from './Vendredi';
+import {GameSaveStateState, AgingCardPower, FightCardPower, GameStateAction, GameLevel, playableCardHistoryJson} from './Vendredi';
 import * as config from '../modules/Configuration'
 import {Game} from './Game';
 import {Fight} from './Fight'
@@ -52,6 +52,7 @@ class GameStateManager {
 
     save() : string {
         let stateToSave : string;
+        this._game.lastChangeDate = Date.now();
         stateToSave = CircularJSON.stringify(_.clone(this._game));
         console.log('saving game state', stateToSave);
         try {
@@ -133,7 +134,7 @@ class GameStateManager {
                 cardToFight = new PirateCard(pJson.name, pJson.strength, pJson.mission, pJson.freeCards)         
             }
             let arrayFightCard: Array<PlayableCard> = [];
-            state._fight.arrayFightCard.forEach( pcJson => {
+            state._fight.arrayFightCard.forEach( (pcJson:playableCardHistoryJson) => {
                 let cardToAdd: PlayableCard;
                 if(pcJson.level){
                     cardToAdd = new AgingCard(pcJson.name, pcJson.strength, <AgingCardPower>pcJson.power, pcJson.level, pcJson.powerUsed, pcJson.toDestroyAtEndOfFight)
@@ -144,7 +145,7 @@ class GameStateManager {
                 arrayFightCard.push(cardToAdd);
             })
             let arrayFightCardUsed: Array<PlayableCard> = [];
-            state._fight.arrayFightCardUsed.forEach( pcJson => {
+            state._fight.arrayFightCardUsed.forEach( (pcJson:playableCardHistoryJson) => {
                 let cardToAdd: PlayableCard;
                 if(pcJson.level){
                     cardToAdd = new AgingCard(pcJson.name, pcJson.strength, <AgingCardPower>pcJson.power, pcJson.level, pcJson.powerUsed, pcJson.toDestroyAtEndOfFight)
@@ -195,7 +196,14 @@ class GameStateManager {
                         new DangerDeck(dangerDeck, dangerDiscard), 
                         new AgingDeck(state._difficulty, agingDeck, []), 
                         new PirateDeck(pirateDeck, []),
-                        state._gameOver, state._level, arrayOfRemovedCards, fight, dangerChoiceCards, state._nbPiratesToFight
+                        state._gameOver, 
+                        state._level, 
+                        arrayOfRemovedCards, 
+                        fight, 
+                        dangerChoiceCards, 
+                        state._nbPiratesToFight,
+                        state._startDate,
+                        state._lastChangeDate
                     );
 
         this.game = newGame
