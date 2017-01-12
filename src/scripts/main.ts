@@ -81,7 +81,8 @@ let app = new Vue({
         },
         load(slotName:null|string){
             console.log('name of slot to load', slotName)
-            this.game = this.gsm.load(slotName)
+            this.gsm.load(slotName)
+            console.log('after load', this.game.dangerChoiceCards)
         }
     }
 })

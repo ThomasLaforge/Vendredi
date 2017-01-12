@@ -74,6 +74,7 @@ class GameStateManager {
             return null
         }
         let state : GameSaveStateState = CircularJSON.parse(gameSaveStateJson);
+        console.log('state to load', state)
         let p = new Player(state._player.pseudo, state._player.PV)
         //decks
         let fightDeck:Array<PlayableCard> = [];
@@ -182,16 +183,20 @@ class GameStateManager {
 
         //dangerChoiceCards 
         let dangerChoiceCards:Array<DangerCard> = null;
-        if(dangerChoiceCards !== null){
+        if(state._dangerChoiceCards !== null){
             dangerChoiceCards = [];
+            console.log('dangerChoiceCard to load', state._dangerChoiceCards)
             state._dangerChoiceCards.forEach( dcJson => {
                 let fcJson = dcJson.fightCard;
                 let fightCard = new FightCard(fcJson.name, fcJson.strength, fcJson.power, fcJson.powerUsed, fcJson.toDestroyAtEndOfFight)
                 dangerChoiceCards.push( new DangerCard(fightCard, dcJson.name, dcJson.freeCards));
             })
         }
+        console.log('dangerChoiceCard loaded', dangerChoiceCards)
 
-        let newGame = new Game(p, state._difficulty, 
+        let newGame = new Game(
+                        p, 
+                        state._difficulty, 
                         new FightDeck(fightDeck, fightDiscard), 
                         new DangerDeck(dangerDeck, dangerDiscard), 
                         new AgingDeck(state._difficulty, agingDeck, []), 
@@ -206,7 +211,11 @@ class GameStateManager {
                         state._lastChangeDate
                     );
 
-        this.game = newGame
+        setTimeout(function() {
+            console.log('newGame', newGame)
+            this.game = newGame
+        }, 2000); // executera le code après 2000 milliseconde, soit 2 secondes
+        
     }
 
     getStateFromAction( action: GameStateAction){

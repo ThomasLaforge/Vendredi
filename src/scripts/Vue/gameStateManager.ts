@@ -1,7 +1,7 @@
 import * as config from '../modules/Configuration'
 
 let template = `
-<div>
+<div class="game-save-state-zone">
     <table class="table-bordered table-striped table-sm table-hover table-responsive">
         <thead class="thead-inverse">
             <tr>
@@ -32,7 +32,7 @@ const gameStateManager = {
             saveSlots : []
         }
     },
-    created: function () {
+    beforeMount: function () {
         this.refreshSlots();
     },
     methods: {

@@ -1,4 +1,5 @@
 import { Deck }         from './Deck';
+import gameInfo = require("./../Vue/gameInfo")
 import { Card }         from './Card';
 import { PlayableCard } from './PlayableCard';
 import { Fight }        from './Fight';
@@ -33,6 +34,7 @@ class Game {
             private _startDate = Date.now(),
             private _lastChangeDate = Date.now()
      ){
+        console.log('danger choice in game', this.dangerChoiceCards)
         // Si la difficulté est de 4 alors la partie commence avec 18 PV au lieu de 20 => on perd 2 PV
         if(this.difficulty === 4){
             this.player.losePV(2);
