@@ -98,7 +98,8 @@ class GameStateManager {
                 cardToAdd = new FightCard(pcJson.name, pcJson.strength, <FightCardPower>pcJson.power, pcJson.powerUsed, pcJson.toDestroyAtEndOfFight)                
             }
             fightDeck.push(cardToAdd)
-        })       
+        })
+
         let dangerDeck:Array<DangerCard> = [];
         state._dangerDeck.arrayDeck.forEach( dcJson => { 
             let fcJson = dcJson.fightCard;
@@ -109,15 +110,25 @@ class GameStateManager {
         state._dangerDeck.arrayDiscard.forEach( dcJson => { 
             let fcJson = dcJson.fightCard;
             let fightCard = new FightCard(fcJson.name, fcJson.strength, fcJson.power, fcJson.powerUsed, fcJson.toDestroyAtEndOfFight)
-            dangerDeck.push( new DangerCard(fightCard, dcJson.name, dcJson.freeCards) )
-        })                      
+            dangerDiscard.push( new DangerCard(fightCard, dcJson.name, dcJson.freeCards) )
+        })
+
         let pirateDeck:Array<PirateCard> = [];
         state._pirateDeck.arrayDeck.forEach( pJson => {
             pirateDeck.push( new PirateCard(pJson.name, pJson.strength, pJson.mission, pJson.freeCards) )
         })
+        let pirateDiscard:Array<PirateCard> = [];
+        state._pirateDeck.arrayDiscard.forEach( pJson => {
+            pirateDiscard.push( new PirateCard(pJson.name, pJson.strength, pJson.mission, pJson.freeCards) )
+        })
+
         let agingDeck:Array<AgingCard> = [];
         state._agingDeck.arrayDeck.forEach( aJson => {
             agingDeck.push( new AgingCard(aJson.name, aJson.strength, aJson.power, aJson.level) )
+        })
+        let agingDiscard:Array<AgingCard> = [];
+        state._agingDeck.arrayDiscard.forEach( aJson => {
+            agingDiscard.push( new AgingCard(aJson.name, aJson.strength, aJson.power, aJson.level) )
         })
         
         // Fight
@@ -197,9 +208,9 @@ class GameStateManager {
                         state._difficulty, 
                         new FightDeck(fightDeck, fightDiscard), 
                         new DangerDeck(dangerDeck, dangerDiscard), 
-                        new AgingDeck(state._difficulty, agingDeck, []), 
-                        new PirateDeck(pirateDeck, []),
-                        state._gameOver, 
+                        new AgingDeck(state._difficulty, agingDeck, agingDiscard), 
+                        new PirateDeck(pirateDeck, pirateDiscard),
+                        state._gameOver,
                         state._level, 
                         arrayOfRemovedCards, 
                         fight, 
