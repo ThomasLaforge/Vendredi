@@ -11,7 +11,7 @@ let template = `
             <tr>
         </thead>
         <tbody>
-            <tr v-for="(slot, i) in saveSlots" @click="testClickOnTableCell(i)" :class="selectedSlot === i ? 'table-info' : ''">
+            <tr v-for="(slot, i) in saveSlots" @click="clickOnTableSaveSlots(i)" :class="selectedSlot === i ? 'table-info' : ''">
                 <td>{{ slot.key }}</td>
                 <td>{{ slot.startDate }}</td>
                 <td>{{ slot.lastChangeDate }}</td>
@@ -57,13 +57,13 @@ const gameStateManager = {
             this.refreshSlots()
         },
         load(){
-            if(this.saveSlots[this.selectedSlot].key){
+            if(this.saveSlots[this.selectedSlot] && this.saveSlots[this.selectedSlot].key ){
                 this.$emit('load', config.SAVE_SLOT_PREFIX + this.saveSlots[this.selectedSlot].key)
                 this.refreshSlots();
             }
         },
-        testClickOnTableCell(index:number){
-            console.log('testClickOnTableCell', index)
+        clickOnTableSaveSlots(index:number){
+            console.log('clickOnTableSaveSlots', index)
             this.selectedSlot = this.selectedSlot !== index ? index : null;
         }
     }
