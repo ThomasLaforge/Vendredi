@@ -185,14 +185,12 @@ class GameStateManager {
         let dangerChoiceCards:Array<DangerCard> = null;
         if(state._dangerChoiceCards !== null){
             dangerChoiceCards = [];
-            console.log('dangerChoiceCard to load', state._dangerChoiceCards)
             state._dangerChoiceCards.forEach( dcJson => {
                 let fcJson = dcJson.fightCard;
                 let fightCard = new FightCard(fcJson.name, fcJson.strength, fcJson.power, fcJson.powerUsed, fcJson.toDestroyAtEndOfFight)
                 dangerChoiceCards.push( new DangerCard(fightCard, dcJson.name, dcJson.freeCards));
             })
         }
-        console.log('dangerChoiceCard loaded', dangerChoiceCards)
 
         let newGame = new Game(
                         p, 
@@ -211,8 +209,8 @@ class GameStateManager {
                         state._lastChangeDate
                     );
 
-        console.log('newGame', newGame)
         this.game = newGame
+        console.log(this.game)
         
     }
 
