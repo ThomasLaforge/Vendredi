@@ -211,10 +211,8 @@ class GameStateManager {
                         state._lastChangeDate
                     );
 
-        setTimeout(function() {
-            console.log('newGame', newGame)
-            this.game = newGame
-        }, 2000); // executera le code après 2000 milliseconde, soit 2 secondes
+        console.log('newGame', newGame)
+        this.game = newGame
         
     }
 
