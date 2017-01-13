@@ -158,7 +158,7 @@ class GameStateManager {
             })
             let finished : boolean = state._fight.finished;
             let costOfCardsNotFree : number = state._fight.costOfCardsNotFree;
-            let freeCards : number = state._fight._freecards;
+            let freeCards : number = state._fight.freeCards;
             let level:GameLevel = state._fight.level;
             if( cardToFight instanceof DangerCard ){
                 fight = new DangerFight(cardToFight, level, arrayFightCard, arrayFightCardUsed, finished, freeCards); 
