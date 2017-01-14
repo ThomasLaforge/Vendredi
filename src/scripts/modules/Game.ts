@@ -15,6 +15,7 @@ import { PirateDeck }   from './PirateDeck';
 import { PirateCard }   from './PirateCard';
 import { Player }        from './Player';
 import { GameDifficulty, GameLevel, FightCardPower, AgingCardPower, PirateMission, PlayableCardPowerType, GameSaveStateState } from './Vendredi';
+import * as _ from 'lodash'
 
 class Game {
 
@@ -194,7 +195,7 @@ class Game {
             // danger card
             this.dangerDeck.discard( [ this.fight.cardToFight ] );
             // fight cards
-            this.fightDeck.discard( this.fight.getAllCardsToDiscard() );
+            this.fightDeck.discard( _.difference(this.fight.getAllCardsToDiscard(), cardsToDelete) );
             this.resetFight();
         }
         else { // = If lost pirate fight => game is over
