@@ -1,5 +1,4 @@
 import { Deck }         from './Deck';
-import gameInfo = require("./../Vue/gameInfo")
 import { Card }         from './Card';
 import { PlayableCard } from './PlayableCard';
 import { Fight }        from './Fight';
