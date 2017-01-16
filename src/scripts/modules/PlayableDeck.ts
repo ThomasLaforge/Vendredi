@@ -8,7 +8,7 @@ abstract class PlayableDeck extends Deck {
 
     discard( arrayOfCard: Array<PlayableCard> ){
         arrayOfCard.forEach( card => {
-            this.arrayDiscard.push( card.initialState )
+            this.arrayDiscard.push( card.restore() )
         });
     }
 
