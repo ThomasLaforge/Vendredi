@@ -1,4 +1,5 @@
 import * as config from '../modules/Configuration'
+import {SaveSlot} from '../modules/Vendredi'
 
 let template = `
 <div class="game-save-state-zone">
@@ -37,7 +38,7 @@ const gameStateManager = {
     },
     methods: {
         refreshSlots(){
-            let res:Array<{key : string, value : string, startDate:string, lastChangeDate:string}> = [];
+            let res:Array<SaveSlot> = [];
             for(let i=0, len = localStorage.length; i < len; i++) {
                 let key = localStorage.key(i);
                 if(key.includes(config.SAVE_SLOT_PREFIX)){
@@ -63,7 +64,6 @@ const gameStateManager = {
             }
         },
         clickOnTableSaveSlots(index:number){
-            console.log('clickOnTableSaveSlots', index)
             this.selectedSlot = this.selectedSlot !== index ? index : null;
         }
     }

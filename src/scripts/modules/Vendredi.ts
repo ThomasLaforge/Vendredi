@@ -69,6 +69,13 @@ export enum GameStep {
     PIRATES
 }
 
+export interface SaveSlot { 
+    key : string 
+    value : string
+    startDate:string
+    lastChangeDate:string
+}
+
 export interface PlayerInterface {
     pseudo:string
     PV:number
