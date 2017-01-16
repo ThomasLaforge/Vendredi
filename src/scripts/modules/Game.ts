@@ -188,7 +188,7 @@ class Game {
     endFightLost( cardsToDelete : Array<PlayableCard> ){
         if(this.fight instanceof DangerFight){        
             // Delete cards from game
-            this.discard( cardsToDelete );
+            this.discard( cardsToDelete.concat(this.fight.getAllCardsToDestroy()) );
 
             // put back cards of fight in differents decks
             // danger card
@@ -248,7 +248,7 @@ class Game {
                     case FightCardPower.SORT_THREE_CARDS:
                         // To fix: not addCard method and care about cardsInOrder + 3 first cards have been removed.
                         if(assignedCards.length === 3){
-                            this.fightDeck.addCardOnTop(assignedCards);                            
+                            this.fightDeck.addCardOnTop(assignedCards);
                         }
                         else{
                             usePower = false;
