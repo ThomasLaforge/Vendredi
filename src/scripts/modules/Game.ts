@@ -1,5 +1,4 @@
 import { Deck }         from './Deck';
-import gameInfo = require("./../Vue/gameInfo")
 import { Card }         from './Card';
 import { PlayableCard } from './PlayableCard';
 import { Fight }        from './Fight';
@@ -13,8 +12,10 @@ import { AgingDeck }    from './AgingDeck';
 import { AgingCard }    from './AgingCard';
 import { PirateDeck }   from './PirateDeck';
 import { PirateCard }   from './PirateCard';
-import { Player }        from './Player';
+import { Player }       from './Player';
+import { Tools }        from './Tools'
 import { GameDifficulty, GameLevel, FightCardPower, AgingCardPower, PirateMission, PlayableCardPowerType, GameSaveStateState } from './Vendredi';
+import * as _ from 'lodash'
 
 class Game {
 
@@ -194,7 +195,7 @@ class Game {
             // danger card
             this.dangerDeck.discard( [ this.fight.cardToFight ] );
             // fight cards
-            this.fightDeck.discard( this.fight.getAllCardsToDiscard() );
+            this.fightDeck.discard( _.difference(this.fight.getAllCardsToDiscard(), cardsToDelete) );
             this.resetFight();
         }
         else { // = If lost pirate fight => game is over
@@ -220,95 +221,109 @@ class Game {
         this.fightDeck.discard(arrayOfPlayableCards);
     }
 
-    usePower( card : FightCard, assignedCards:Array<PlayableCard>): void {
+    usePower( card : FightCard, assignedCards:Array<PlayableCard> = []): void {
         console.log('game:usePower', card, assignedCards)
         let usePower:boolean = true;
+        let powerType = Tools.getTypeOfPower(card);
+        console.log(card, Tools.getTypeOfPower(card), PlayableCardPowerType, PlayableCardPowerType.TWO_STEP )
 
-        if ( card.power ) {
+        if ( card.power && (powerType === PlayableCardPowerType.ONE_SHOT || powerType === PlayableCardPowerType.TWO_STEP ) ) {
             // Two Step powers => care if power is changed. When card will be discard, the initial card must be discard and not the transformed card.
-            if(assignedCards.length > 0){
-                switch( card.power ) {
-                    case FightCardPower.COPY_ONE:
-                        usePower = false;                        
-                        if(assignedCards.length === 1 && assignedCards[0] instanceof FightCard){
-                            let cardToCopy = <FightCard>assignedCards[0];
-                            card.changePower( cardToCopy.power );
-                            card.strength = cardToCopy.strength;
-                        }
-                        break;
-                    case FightCardPower.DESTROY:
-                        // Transform this card into a 0 strength cards without any power
-                        if(assignedCards.length === 1){
-                            assignedCards[0].destroy()
-                        }
-                        else{
-                            usePower = false;
-                        }
-                        break;
-                    case FightCardPower.SORT_THREE_CARDS:
-                        // To fix: not addCard method and care about cardsInOrder + 3 first cards have been removed.
-                        if(assignedCards.length === 3){
-                            this.fightDeck.addCardOnTop(assignedCards);
-                        }
-                        else{
-                            usePower = false;
-                        }
-                        break;
-                    case FightCardPower.UNDER_THE_DECK:
-                        if(assignedCards.length === 1){
-                            this.fightDeck.addCardsToTheEnd(assignedCards)
-                            this.discardFightCard(assignedCards);                            
-                        }
-                        else{
-                            usePower = false;
-                        }
-                        break;
-                    case FightCardPower.SWAP_ONE:
-                        if(assignedCards.length === 1){
-                            this.discardFightCard(assignedCards);
-                            this.addPlayableCardToFight(true);
-                        }
-                        else{
-                            usePower = false;
-                        }
-                        break;
-                    case FightCardPower.SWAP_TWO:
-                        // When = false swap two cards, u can swap one then chose to swap one another time or not => so swap one, then change power to swap one
-                        if(assignedCards.length <= 2){
-                            this.discardFightCard(assignedCards);
-                            
-                            this.addPlayableCardToFight(true);
-                            if(assignedCards.length > 1){
-                                this.addPlayableCardToFight(true);                        
+            if(powerType === PlayableCardPowerType.TWO_STEP){
+                if(assignedCards.length > 0){
+                    switch( card.power ) {
+                        case FightCardPower.COPY_ONE:
+                            usePower = false;                        
+                            if(assignedCards.length === 1 && assignedCards[0] instanceof FightCard){
+                                let cardToCopy = <FightCard>assignedCards[0];
+                                card.changePower( cardToCopy.power );
+                                card.strength = cardToCopy.strength;
+                            }
+                            break;
+                        case FightCardPower.DESTROY:
+                            // Transform this card into a 0 strength cards without any power
+                            if(assignedCards.length === 1){
+                                assignedCards[0].destroy()
                             }
                             else{
-                                card.changePower( FightCardPower.SWAP_ONE );
+                                usePower = false;
                             }
-                        }
-                        else{
+                            break;
+                        case FightCardPower.SORT_THREE_CARDS:
+                            // To fix: not addCard method and care about cardsInOrder + 3 first cards have been removed.
+                            if(assignedCards.length === 3){
+                                this.fightDeck.addCardOnTop(assignedCards);                            
+                            }
+                            else{
+                                usePower = false;
+                            }
+                            break;
+                        case FightCardPower.UNDER_THE_DECK:
+                            if(assignedCards.length === 1){
+                                this.fightDeck.addCardsToTheEnd(assignedCards)
+                                this.discardFightCard(assignedCards);                            
+                            }
+                            else{
+                                usePower = false;
+                            }
+                            break;
+                        case FightCardPower.SWAP_ONE:
+                            if(assignedCards.length === 1){
+                                this.discardFightCard(assignedCards);
+                                this.addPlayableCardToFight(true);
+                            }
+                            else{
+                                usePower = false;
+                            }
+                            break;
+                        case FightCardPower.SWAP_TWO:
+                            // When = false swap two cards, u can swap one then chose to swap one another time or not => so swap one, then change power to swap one
+                            if(assignedCards.length <= 2){
+                                this.discardFightCard(assignedCards);
+                                
+                                this.addPlayableCardToFight(true);
+                                if(assignedCards.length > 1){
+                                    this.addPlayableCardToFight(true);                        
+                                }
+                                else{
+                                    card.changePower( FightCardPower.SWAP_ONE );
+                                }
+                            }
+                            else{
+                                usePower = false;
+                            }
+                            break;
+                        default:
+                            console.log('unkonwn two step power')
                             usePower = false;
-                        }
-                        break;
+                            break;
+                    }
+                }
+                else{
+                    console.log('two step power but no assignedCards')
+                    usePower = false;
                 }
             }
-            else{
-                usePower = false;
-            }
-
-            // One shot powers
-            switch( card.power  ) {
-                case FightCardPower.GET_TWO_PV:
-                    this.player.addPV(2);
-                    break;
-                case FightCardPower.GET_ONE_PV:
-                    this.player.addPV(1);
-                    break;
-                case FightCardPower.GET_ONE_CARD:
-                    this.fight.addFreeCards(1);
-                    break;
-                case FightCardPower.GET_TWO_CARDS:
-                    this.fight.addFreeCards(2);
-                    break;
+            else {
+                // One shot powers
+                switch( card.power  ) {
+                    case FightCardPower.GET_TWO_PV:
+                        this.player.addPV(2);
+                        break;
+                    case FightCardPower.GET_ONE_PV:
+                        this.player.addPV(1);
+                        break;
+                    case FightCardPower.GET_ONE_CARD:
+                        this.fight.addFreeCards(1);
+                        break;
+                    case FightCardPower.GET_TWO_CARDS:
+                        this.fight.addFreeCards(2);
+                        break;
+                    default :
+                        console.log('unknown one shot power')
+                        usePower = false;
+                        break;
+                }
             }
 
             // then useCard in fight

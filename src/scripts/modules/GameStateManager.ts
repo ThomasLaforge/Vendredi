@@ -97,7 +97,7 @@ class GameStateManager {
             else{
                 cardToAdd = new FightCard(pcJson.name, pcJson.strength, <FightCardPower>pcJson.power, pcJson.powerUsed, pcJson.toDestroyAtEndOfFight)                
             }
-            fightDeck.push(cardToAdd)
+            fightDiscard.push(cardToAdd)
         })
 
         let dangerDeck:Array<DangerCard> = [];
