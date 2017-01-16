@@ -10,7 +10,7 @@ let template = `
     >
         <h2>Liste des cartes dans la défausse</h2>
         <playable-card v-if="type === 'playable'" v-for="card in cards" 
-            :card="card"
+            :card="card.initialState"
         />
         <danger-card v-if="type === 'danger'" v-for="danger in cards" 
             :danger="danger"

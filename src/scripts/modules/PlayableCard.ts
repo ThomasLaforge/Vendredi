@@ -19,7 +19,7 @@ abstract class PlayableCard extends Card implements PlayableCardInterface {
         ) {
         super(name, strength);
         this.initialState = _.clone(this);
-        this.initialState.initialState = this.initialState;
+        this.initialState.initialState = _.clone(this);
     }
 
     usePower() {
@@ -27,9 +27,11 @@ abstract class PlayableCard extends Card implements PlayableCardInterface {
     }
 
     destroy() {
+        console.log('before destroy', this.power)
         this.power = null;
         this.strength = 0;
         this.toDestroyAtEndOfFight = true;
+        console.log('after destroy', this.power, this.initialState)        
     }
 }
 

@@ -37,10 +37,6 @@ class FightCard extends PlayableCard implements FightCardInterface {
         }
     }
 
-    restore(){
-        
-    }
-
     get powerName(){
         return Tools.getFightPowerName(this.power)
     }

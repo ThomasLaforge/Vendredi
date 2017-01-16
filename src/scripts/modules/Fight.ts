@@ -149,11 +149,15 @@ abstract class Fight implements FightInterface {
     }
 
     getAllCardsToDiscard() : Array<PlayableCard> {
-        return this.getAllCardsAtInitialState().filter( (card: PlayableCard) => { return !card.toDestroyAtEndOfFight });
+        return this.getAllCards().filter( (card: PlayableCard) => { return !card.toDestroyAtEndOfFight }).map( (card:PlayableCard) => {
+            return card.initialState;
+        });
     }
 
     getAllCardsToDestroy() : Array<PlayableCard> {
-        return this.getAllCardsAtInitialState().filter( (card: PlayableCard) => { return card.toDestroyAtEndOfFight })
+        return this.getAllCards().filter( (card: PlayableCard) => { return card.toDestroyAtEndOfFight }).map( (card:PlayableCard) => {
+            return card.initialState;
+        });
     } 
 
     hasStopCard() : boolean {

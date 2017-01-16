@@ -1,7 +1,7 @@
 // Libraries
     // var bootstrap = require('bootstrap/dist/js/bootstrap');
     import * as _ from 'lodash'
-    import * as vueSortable from 'vue-sortable'
+
 // Model
     import { Game 	}           from './modules/Game';
     import { Player }           from './modules/Player';
@@ -16,11 +16,9 @@
 
 // Game Config
     newGame.level = 0
-    let newFC = new FightCard("Stratégie", 2, FightCardPower.COPY_ONE );
-    let newFC2 = new FightCard("Stratégie", 2, FightCardPower.SWAP_ONE );
+    let newFC = new FightCard("Stratégie", -2, FightCardPower.DESTROY );
     // TODO: Here should I add method in Game to add a card to fight deck?
     newGame.fightDeck.addCard(newFC);
-    newGame.fightDeck.addCard(newFC2);
 
 // Vue
     import { dangerCard } from './Vue/dangerCard';
@@ -31,8 +29,6 @@
     import { gameFight } from './Vue/gameFight';
     import { gameOver } from './Vue/gameOver';
     import { gameStateManager } from './Vue/gameStateManager';
-    
-    Vue.use(vueSortable); 
 
 // Main
 let app = new Vue({

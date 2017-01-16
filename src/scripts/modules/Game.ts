@@ -180,22 +180,23 @@ class Game {
             console.log('Game : danger fight won');
             this.fight.arrayFightCard.push( this.fight.cardToFight.fightCard );
             this.fightDeck.discard( this.fight.getAllCardsToDiscard() );
+            this.discard( this.fight.getAllCardsToDestroy() );            
         }
 
         this.resetFight();
     }
 
     endFightLost( cardsToDelete : Array<PlayableCard> ){
-        cardsToDelete.forEach( (c) => { c.initialState } );
+        let cardsToDeleteAtInitialState = cardsToDelete.map(c => { return c.initialState});
         if(this.fight instanceof DangerFight){        
             // Delete cards at initialState from game
-            this.discard( [].concat(cardsToDelete, this.fight.getAllCardsToDestroy()) );
+            this.discard( [].concat( this.fight.getAllCardsToDestroy(), cardsToDeleteAtInitialState) );
 
             // put back cards of fight in differents decks
             // danger card
             this.dangerDeck.discard( [ this.fight.cardToFight ] );
             // fight cards
-            this.fightDeck.discard( _.difference(this.fight.getAllCardsToDiscard(), cardsToDelete) );
+            this.fightDeck.discard( _.difference(this.fight.getAllCardsToDiscard(), cardsToDeleteAtInitialState) );
             this.resetFight();
         }
         else { // = If lost pirate fight => game is over
