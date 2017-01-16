@@ -16,7 +16,7 @@
 
 // Game Config
     newGame.level = 0
-    let newFC = new FightCard("Stratégie", -2, FightCardPower.DESTROY );
+    let newFC = new FightCard("Stratégie", -2, FightCardPower.PREVIOUS_PHASE );
     // TODO: Here should I add method in Game to add a card to fight deck?
     newGame.fightDeck.addCard(newFC);
 

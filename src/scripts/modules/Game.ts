@@ -322,6 +322,11 @@ class Game {
                     case FightCardPower.GET_TWO_CARDS:
                         this.fight.addFreeCards(2);
                         break;
+                    case FightCardPower.PREVIOUS_PHASE:
+                        if(this.fight instanceof DangerFight){
+                            this.fight.setLevelDown();
+                        }
+                        break;
                     default :
                         console.log('unknown one shot power')
                         usePower = false;
