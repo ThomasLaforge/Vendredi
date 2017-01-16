@@ -185,11 +185,11 @@ class Game {
         this.resetFight();
     }
 
-    // TODO : Check if it works well...
     endFightLost( cardsToDelete : Array<PlayableCard> ){
+        cardsToDelete.forEach( (c) => { c.initialState } );
         if(this.fight instanceof DangerFight){        
-            // Delete cards from game
-            this.discard( cardsToDelete.concat(this.fight.getAllCardsToDestroy()) );
+            // Delete cards at initialState from game
+            this.discard( [].concat(cardsToDelete, this.fight.getAllCardsToDestroy()) );
 
             // put back cards of fight in differents decks
             // danger card

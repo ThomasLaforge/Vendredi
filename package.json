@@ -33,7 +33,8 @@
     "circular-json": "^0.3.1",
     "moment": "^2.17.1",
     "node-uuid": "^1.4.7",
-    "vue": "^2.1.8"
+    "vue": "^2.1.8",
+    "vue-sortable": "^0.1.3"
   },
   "scripts": {
     "installation": "npm install && typings install",

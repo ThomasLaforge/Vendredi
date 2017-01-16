@@ -19,6 +19,7 @@ abstract class PlayableCard extends Card implements PlayableCardInterface {
         ) {
         super(name, strength);
         this.initialState = _.clone(this);
+        this.initialState.initialState = this.initialState;
     }
 
     usePower() {

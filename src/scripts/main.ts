@@ -1,7 +1,7 @@
 // Libraries
     // var bootstrap = require('bootstrap/dist/js/bootstrap');
     import * as _ from 'lodash'
-
+    import * as vueSortable from 'vue-sortable'
 // Model
     import { Game 	}           from './modules/Game';
     import { Player }           from './modules/Player';
@@ -31,6 +31,8 @@
     import { gameFight } from './Vue/gameFight';
     import { gameOver } from './Vue/gameOver';
     import { gameStateManager } from './Vue/gameStateManager';
+    
+    Vue.use(vueSortable); 
 
 // Main
 let app = new Vue({
