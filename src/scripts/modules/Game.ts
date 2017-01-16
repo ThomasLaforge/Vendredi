@@ -219,6 +219,7 @@ class Game {
     }
 
     discardFightCard(arrayOfPlayableCards: Array<PlayableCard>){
+    arrayOfPlayableCards = arrayOfPlayableCards.map(c => {return c.restore() })
         this.fight.discard(arrayOfPlayableCards);
         this.fightDeck.discard(arrayOfPlayableCards);
     }
