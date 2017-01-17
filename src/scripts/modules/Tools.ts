@@ -116,12 +116,12 @@ class Tools {
                 type = PlayableCardPowerType.TWO_STEP
             }
             else if(
-                p === FightCardPower.PREVIOUS_PHASE || 
                 p === FightCardPower.DOUBLE 
             ){
                 type = PlayableCardPowerType.AUTOMATIC
             }
             else if(
+                p === FightCardPower.PREVIOUS_PHASE ||                
                 p === FightCardPower.GET_ONE_PV || 
                 p === FightCardPower.GET_TWO_PV || 
                 p === FightCardPower.GET_ONE_CARD || 

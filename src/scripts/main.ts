@@ -16,7 +16,7 @@
 
 // Game Config
     newGame.level = 0
-    let newFC = new FightCard("Stratégie", -2, FightCardPower.DESTROY );
+    let newFC = new FightCard("Stratégie", -2, FightCardPower.PREVIOUS_PHASE );
     // TODO: Here should I add method in Game to add a card to fight deck?
     newGame.fightDeck.addCard(newFC);
 
@@ -81,6 +81,9 @@ let app = new Vue({
             console.log('name of slot to load', slotName)
             this.gsm.load(slotName)
             console.log('after load', this.game.dangerChoiceCards)
+        },
+        onDrop: function(ev) {
+            console.log(ev.target);
         }
     }
 })

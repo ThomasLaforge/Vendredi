@@ -178,25 +178,24 @@ class Game {
     endFightWon(){
         if(this.fight instanceof DangerFight ){
             console.log('Game : danger fight won');
-            this.fight.arrayFightCard.push( this.fight.cardToFight.fightCard );
-            this.fightDeck.discard( this.fight.getAllCardsToDiscard() );
-            this.discard( this.fight.getAllCardsToDestroy() );            
+            this.fight.arrayFightCard.push( this.fight.cardToFight.fightCard );       
         }
 
+        this.fightDeck.discard( this.fight.getAllCardsToDiscard() );
+        this.discard( this.fight.getAllCardsToDestroy() );     
         this.resetFight();
     }
 
     endFightLost( cardsToDelete : Array<PlayableCard> ){
-        let cardsToDeleteAtInitialState = cardsToDelete.map(c => { return c.initialState});
         if(this.fight instanceof DangerFight){        
             // Delete cards at initialState from game
-            this.discard( [].concat( this.fight.getAllCardsToDestroy(), cardsToDeleteAtInitialState) );
+            this.discard( [].concat( this.fight.getAllCardsToDestroy(), cardsToDelete) );
 
             // put back cards of fight in differents decks
             // danger card
             this.dangerDeck.discard( [ this.fight.cardToFight ] );
             // fight cards
-            this.fightDeck.discard( _.difference(this.fight.getAllCardsToDiscard(), cardsToDeleteAtInitialState) );
+            this.fightDeck.discard( _.difference(this.fight.getAllCardsToDiscard(), cardsToDelete) );
             this.resetFight();
         }
         else { // = If lost pirate fight => game is over
@@ -213,11 +212,14 @@ class Game {
 
     discard( arrayOfCards : Array<PlayableCard> ) : void {
         arrayOfCards.forEach( card => {
-            this.arrayOfRemovedCards.push( card.initialState );
+            let restoredCard = card.restore();
+            console.log('restoredCard', restoredCard)
+            this.arrayOfRemovedCards.push( restoredCard );
         })
     }
 
     discardFightCard(arrayOfPlayableCards: Array<PlayableCard>){
+    arrayOfPlayableCards = arrayOfPlayableCards.map(c => {return c.restore() })
         this.fight.discard(arrayOfPlayableCards);
         this.fightDeck.discard(arrayOfPlayableCards);
     }
@@ -319,6 +321,11 @@ class Game {
                         break;
                     case FightCardPower.GET_TWO_CARDS:
                         this.fight.addFreeCards(2);
+                        break;
+                    case FightCardPower.PREVIOUS_PHASE:
+                        if(this.fight instanceof DangerFight){
+                            this.fight.setLevelDown();
+                        }
                         break;
                     default :
                         console.log('unknown one shot power')

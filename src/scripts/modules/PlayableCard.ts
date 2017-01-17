@@ -4,9 +4,12 @@ import {PlayableCardInterface, FightCardPower, AgingCardPower} from './Vendredi'
 import * as _ from 'lodash'
 import * as uuid from 'node-uuid'
 
-abstract class PlayableCard extends Card implements PlayableCardInterface {
+interface InititialStateInterface {
+    strength : number
+    power : any
+}
 
-    public initialState:PlayableCard
+abstract class PlayableCard extends Card implements PlayableCardInterface {
 
     constructor(
             name:string, 
@@ -15,23 +18,27 @@ abstract class PlayableCard extends Card implements PlayableCardInterface {
             public power: any, 
             public powerUsed : boolean = false,
             public toDestroyAtEndOfFight:boolean = false,
-            public id = uuid.v1()
+            public id = uuid.v1(),
+            public initialState: InititialStateInterface = { strength : strength, power : power}
         ) {
         super(name, strength);
-        this.initialState = _.clone(this);
-        this.initialState.initialState = _.clone(this);
     }
 
     usePower() {
         this.powerUsed = true;
     }
 
-    destroy() {
-        console.log('before destroy', this.power)
+    destroy() : PlayableCard {
         this.power = null;
         this.strength = 0;
-        this.toDestroyAtEndOfFight = true;
-        console.log('after destroy', this.power, this.initialState)        
+        this.toDestroyAtEndOfFight = true;  
+        return this  
+    }
+
+    restore(): PlayableCard {
+        this.strength = this.initialState.strength;
+        this.power = this.initialState.power;
+        return this
     }
 }
 
