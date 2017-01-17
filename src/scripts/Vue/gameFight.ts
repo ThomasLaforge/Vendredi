@@ -121,7 +121,15 @@ const gameFight = {
             return Math.abs(result) - sum;
         },
         forcedToStop : function(){ return this.fight.hasStopCard() },
-        twoStepCard : function(){ return this.twoStepCard && this.twoStepCard.power === FightCardPower.SORT_THREE_CARDS ? this.fight.getAllCards() : []}
+        twoStepCards : ()=>{ 
+            let cardToChose:Array<any> = [];
+            if(this.twoStepCard) {
+                if(this.twoStepCard.power === FightCardPower.SORT_THREE_CARDS){
+                    cardToChose = this.fight.getAllCards()
+                 }
+            }
+            return cardToChose;
+        }
     },
     methods : {
         pickFightCard(){

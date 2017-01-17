@@ -52,7 +52,7 @@ const twoStepPowers = {
         }
     },
     computed : {
-        isSortThreeCards : function(){ return this.usedCard.power === FightCardPower.SORT_THREE_CARDS }
+        isSortThreeCards : function(){ return this.usedCard && this.usedCard.power === FightCardPower.SORT_THREE_CARDS }
     },
     methods : {
         close : function(){

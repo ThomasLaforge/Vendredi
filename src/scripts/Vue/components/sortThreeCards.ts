@@ -5,10 +5,12 @@ import {playableCard}   from '../playableCard'
 var draggable = require('vuedraggable')
 
 let template = `
+<div>
     <draggable :list="list">
         <playable-card v-for="card in list" :card="card" />
     </draggable>
     <button @click="logList">Log the list</button>
+</div>
 `;
 
 let sortThreeCards = {
