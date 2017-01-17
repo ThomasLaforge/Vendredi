@@ -1,6 +1,8 @@
 import { playableCard } from './playableCard'
-import { PlayableCard } from '../modules/PlayableCard'
+import { sortThreeCards } from './components/sortThreeCards'
 import { modal } from './components/modal'
+import { FightCardPower } from '../modules/Vendredi'
+import { PlayableCard } from '../modules/PlayableCard'
 
 let template = `
 <div>
@@ -15,12 +17,19 @@ let template = `
         />
         
         <div>Les cartes</div>
-        <playable-card v-for="card in cards" 
-            v-if="card != usedCard" 
-            :card="card"
-            :selectedToTwoStepPowers="assignedCards.indexOf(card) !== -1"
-            @select="assignCard(card)"
-        />
+
+        <div v-if="isSortThreeCards">
+            <sort-three-cards :list="cards"></sort-three-cards>
+        </div>
+
+        <div v-if="!isSortThreeCards">
+            <playable-card v-for="card in cards" 
+                v-if="card != usedCard" 
+                :card="card"
+                :selectedToTwoStepPowers="assignedCards.indexOf(card) !== -1"
+                @select="assignCard(card)"
+            />
+        </div>
 
         <div>Les actions/validation</div>
         <button @click="validate">Valider</button>
@@ -34,12 +43,16 @@ const twoStepPowers = {
     props : ['cards', 'usedCard', 'show'],
     components : {
         playableCard,
-        modal
+        modal,
+        sortThreeCards
     },
     data : function(): { assignedCards:Array<PlayableCard>} {
         return {
             assignedCards : []
         }
+    },
+    computed : {
+        isSortThreeCards : function(){ return this.usedCard.power === FightCardPower.SORT_THREE_CARDS }
     },
     methods : {
         close : function(){

@@ -11,33 +11,35 @@
     import { GameStateManager } from './modules/GameStateManager'
     let pseudo   = 'Thomas';
     let myPlayer = new Player(pseudo);
-    let newGame     = new Game(myPlayer, 1);
-    let gsm = new GameStateManager(newGame)
+    let newGame  = new Game(myPlayer, 1);
+    let gsm      = new GameStateManager(newGame)
 
 // Game Config
     newGame.level = 0
-    let newFC = new FightCard("Stratégie", -2, FightCardPower.PREVIOUS_PHASE );
+    let newFC     = new FightCard("Stratégie", -2, FightCardPower.SORT_THREE_CARDS );
+
     // TODO: Here should I add method in Game to add a card to fight deck?
     newGame.fightDeck.addCard(newFC);
 
 // Vue
-    import { dangerCard } from './Vue/dangerCard';
-    import { pirateCard } from './Vue/pirateCard';
-    import { playableCard } from './Vue/playableCard';
-    import { gameInfo } from './Vue/gameInfo';
+    import { dangerCard }       from './Vue/dangerCard';
+    import { pirateCard }       from './Vue/pirateCard';
+    import { playableCard }     from './Vue/playableCard';
+    import { gameInfo }         from './Vue/gameInfo';
     import { gameDangerChoice } from './Vue/gameDangerChoice';
-    import { gameFight } from './Vue/gameFight';
-    import { gameOver } from './Vue/gameOver';
+    import { gameFight }        from './Vue/gameFight';
+    import { gameOver }         from './Vue/gameOver';
     import { gameStateManager } from './Vue/gameStateManager';
-
+    import { sortThreeCards } from './Vue/components/sortThreeCards';
 // Main
+
 let app = new Vue({
     el: '#app',
-    data: function() {
+    data: () => {
         return {
             gamestatemanager : gsm,
             initialgame : gsm.game,
-            testingHistory : true
+            testingHistory : true,
         }
     },
     computed: {
@@ -81,9 +83,6 @@ let app = new Vue({
             console.log('name of slot to load', slotName)
             this.gsm.load(slotName)
             console.log('after load', this.game.dangerChoiceCards)
-        },
-        onDrop: function(ev) {
-            console.log(ev.target);
         }
     }
 })

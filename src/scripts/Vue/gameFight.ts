@@ -8,7 +8,7 @@ import { DangerCard } from '../modules/DangerCard'
 import { PirateCard } from '../modules/PirateCard'
 import { FightCard } from '../modules/FightCard'
 import { AgingCard } from '../modules/AgingCard'
-import { PlayableCardPowerType, AgingCardPower } from '../modules/Vendredi'
+import { PlayableCardPowerType, AgingCardPower, FightCardPower } from '../modules/Vendredi'
 import * as _ from 'lodash'
 
 let template = `
@@ -86,7 +86,7 @@ let template = `
 
     <two-step-powers 
         :show="twoStepPowerSelectionOpen" 
-        :cards="fight.getAllCards()" 
+        :cards="twoStepCards" 
         :used-card="twoStepCard" 
         @keyup.esc="switchTwoStepView" 
         @switchShow="switchTwoStepView"
@@ -120,7 +120,8 @@ const gameFight = {
             this.cardsToDelete.forEach( (c: PlayableCard) => { sum += c.costToDelete } ) 
             return Math.abs(result) - sum;
         },
-        forcedToStop : function(){ return this.fight.hasStopCard() } 
+        forcedToStop : function(){ return this.fight.hasStopCard() },
+        twoStepCard : function(){ return this.twoStepCard && this.twoStepCard.power === FightCardPower.SORT_THREE_CARDS ? this.fight.getAllCards() : []}
     },
     methods : {
         pickFightCard(){
