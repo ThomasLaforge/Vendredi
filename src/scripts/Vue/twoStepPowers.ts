@@ -19,7 +19,7 @@ let template = `
         <div>Les cartes</div>
 
         <div v-if="isSortThreeCards">
-            <sort-three-cards :list="cards"></sort-three-cards>
+            <sort-three-cards :cardList="cards"></sort-three-cards>
         </div>
 
         <div v-if="!isSortThreeCards">
@@ -33,7 +33,7 @@ let template = `
 
         <div>Les actions/validation</div>
         <button @click="validate">Valider</button>
-        <button @click="cancel">Annuler</button>
+        <button v-if="!isSortThreeCards" @click="cancel">Annuler</button>
     </modal>
 </div>
 `
@@ -56,8 +56,12 @@ const twoStepPowers = {
     },
     methods : {
         close : function(){
-            this.assignedCards = [];
-            this.$emit('switchShow');
+            // Can't close modal if power of used card is sort three cards. 
+            // Anti cheat: loop see three next cards and close, etc...
+            if(!this.isSortThreeCards){
+                this.assignedCards = [];
+                this.$emit('switchShow');
+            }
         },
         validate : function(){
             console.log('validation...')

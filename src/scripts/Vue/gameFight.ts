@@ -96,7 +96,7 @@ let template = `
 `
 
 const gameFight = {
-    props : ['fight'],
+    props : ['fight', 'nextThreeCards'],
     template : template,
     components : {
         dangerCard,
@@ -104,11 +104,15 @@ const gameFight = {
         playableCard,
         twoStepPowers,
     },
-    data : function() : { cardsToDelete : Array<PlayableCard>, twoStepPowerSelectionOpen : boolean, twoStepCard : PlayableCard } {
+    mounted : function(){
+        console.log('this.nextThreeCards', this.nextThreeCards)
+    },
+    data : function() : { cardsToDelete : Array<PlayableCard>, twoStepPowerSelectionOpen : boolean, twoStepCard : PlayableCard, twoStepCards : Array<PlayableCard> } {
         return {
             cardsToDelete : [],
             twoStepPowerSelectionOpen : false,
-            twoStepCard : null
+            twoStepCard : null,
+            twoStepCards : []
         }
     },
     computed : {
@@ -121,15 +125,6 @@ const gameFight = {
             return Math.abs(result) - sum;
         },
         forcedToStop : function(){ return this.fight.hasStopCard() },
-        twoStepCards : ()=>{ 
-            let cardToChose:Array<any> = [];
-            if(this.twoStepCard) {
-                if(this.twoStepCard.power === FightCardPower.SORT_THREE_CARDS){
-                    cardToChose = this.fight.getAllCards()
-                 }
-            }
-            return cardToChose;
-        }
     },
     methods : {
         pickFightCard(){
@@ -179,6 +174,7 @@ const gameFight = {
             console.log('gameFight: use card',card, PlayableCardPowerType[Tools.getTypeOfPower(card)])
             if(Tools.getTypeOfPower(card) === PlayableCardPowerType.TWO_STEP){
                 this.twoStepCard = card 
+                this.refreshTwoStepCards();            
                 this.twoStepPowerSelectionOpen = true
             }
             else{
@@ -192,6 +188,19 @@ const gameFight = {
             console.log(data ? data : 'no data');
             this.$emit('use-two-step-power', data);
             this.twoStepPowerSelectionOpen = false
+        },
+        refreshTwoStepCards : function(){ 
+            let cardToChose:Array<any> = [];
+            if(this.twoStepCard) {
+                if(this.twoStepCard.power === FightCardPower.SORT_THREE_CARDS){
+                    cardToChose = this.nextThreeCards
+                    console.log('cardToChose', cardToChose, this.nextThreeCards)
+                }
+                else{
+                    cardToChose = this.fight.getAllCards()
+                }
+            }
+            this.twoStepCards = cardToChose;
         }
     }
 }

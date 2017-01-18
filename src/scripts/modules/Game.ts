@@ -354,6 +354,14 @@ class Game {
         return list;
     }
 
+    getThreeFisrtFightCards() : Array<PlayableCard> {    
+        return this.fightDeck.getThreeFirstCards();
+    }
+
+    switchFirstFightCards(cards: Array<PlayableCard>){
+        this.fightDeck.switchFirstCards(cards)
+    }
+
 //Region : Getters / Setters
     get player(){
         return this._player;

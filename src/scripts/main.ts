@@ -16,10 +16,6 @@
 
 // Game Config
     newGame.level = 0
-    let newFC     = new FightCard("Stratégie", -2, FightCardPower.SORT_THREE_CARDS );
-
-    // TODO: Here should I add method in Game to add a card to fight deck?
-    newGame.fightDeck.addCard(newFC);
 
 // Vue
     import { dangerCard }       from './Vue/dangerCard';

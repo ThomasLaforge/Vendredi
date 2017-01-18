@@ -6,8 +6,8 @@ var draggable = require('vuedraggable')
 
 let template = `
 <div>
-    <draggable :list="list">
-        <playable-card v-for="card in list" :card="card" />
+    <draggable :list="cardList">
+        <playable-card v-for="card in cardList" :card="card" />
     </draggable>
     <button @click="logList">Log the list</button>
 </div>
@@ -15,14 +15,19 @@ let template = `
 
 let sortThreeCards = {
   template : template,
-  props:['list'],
+  props:['cardList'],
+  mounted : function(){
+    console.log('this.cardList', this.cardList)
+  },
   components : {
     draggable,
     playableCard
   },
   methods : {
     logList(){
-        console.log(this.list)
+        this.cardList.forEach( card => {
+          console.log(card.strength)
+        })
     }
   }
 };
