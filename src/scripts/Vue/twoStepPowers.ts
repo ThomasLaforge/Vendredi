@@ -65,6 +65,9 @@ const twoStepPowers = {
         },
         validate : function(){
             console.log('validation...')
+            if(this.isSortThreeCards){
+                this.assignedCards = this.cards
+            }
             let data = {
                 usedCard : this.usedCard,
                 assignedCards : this.assignedCards

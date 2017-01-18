@@ -1,4 +1,5 @@
 import {FightCard}      from '../../modules/FightCard'
+import {PlayableCard}      from '../../modules/PlayableCard'
 import {FightCardPower} from '../../modules/Vendredi'
 import {playableCard}   from '../playableCard'
 
@@ -25,7 +26,7 @@ let sortThreeCards = {
   },
   methods : {
     logList(){
-        this.cardList.forEach( card => {
+        this.cardList.forEach( (card: PlayableCard) => {
           console.log(card.strength)
         })
     }
