@@ -231,10 +231,6 @@ class GameStateManager {
         }
     }
 
-    getStateFromKey( key:string){
-        
-    }
-
     get game(){
         return this._game;
     }
