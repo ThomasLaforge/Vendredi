@@ -11,8 +11,6 @@ class FightDeck extends PlayableDeck {
 
     initDeck(){
         let arrRes:Array<FightCard> = [];
-        let newFC     = new FightCard("Stratégie", -2, FightCardPower.SORT_THREE_CARDS );
-        arrRes.push(newFC);
         let arrDatas = require('../../datas/fight_cards.json');
         arrDatas.forEach( (obj:jsonDataFight) => {
             let number = obj.number;
@@ -32,7 +30,9 @@ class FightDeck extends PlayableDeck {
     }
 
     switchFirstCards(cards: Array<PlayableCard>) {
-        this.arrayDeck.splice(0,cards.length,cards)
+        let spliceArgs:Array<number|PlayableCard> = [0,cards.length];
+        let args:Array<number|PlayableCard> = spliceArgs.concat(cards);
+        Array.prototype.splice.apply(this.arrayDeck, args);
     }
 }
 

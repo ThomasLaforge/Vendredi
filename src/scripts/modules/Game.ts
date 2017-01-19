@@ -254,8 +254,8 @@ class Game {
                             break;
                         case FightCardPower.SORT_THREE_CARDS:
                             // To fix: not addCard method and care about cardsInOrder + 3 first cards have been removed.
-                            if(assignedCards.length === 3){
-                                this.fightDeck.addCardOnTop(assignedCards);                            
+                            if(assignedCards.length <= 3){
+                                this.switchFirstFightCards(assignedCards);                            
                             }
                             else{
                                 usePower = false;
