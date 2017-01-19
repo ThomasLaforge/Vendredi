@@ -11,7 +11,7 @@ class AgingCard extends PlayableCard implements AgingCardInterface{
             public level: AgingLevel,
             powerUsed : boolean = false,
             toDestroyAtEndOfFight:boolean = false,
-            costToDelete: number = 1
+            costToDelete: number = 2
         ){
         super( name, strength, costToDelete, power, powerUsed, toDestroyAtEndOfFight);
     }
