@@ -206,6 +206,7 @@ class Game {
     resetFight() : void {
         this.fight = null;
         if(this.level > GameLevel.THIRD_ROUND){
+            console.log('start of pirate Fight')
             this.startFight(this.pirateDeck.drawOneCard())
         }
     }
