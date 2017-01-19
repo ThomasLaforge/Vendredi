@@ -16,7 +16,6 @@
 
 // Game Config
     newGame.level = 0
-
 // Vue
     import { dangerCard }       from './Vue/dangerCard';
     import { pirateCard }       from './Vue/pirateCard';
@@ -58,27 +57,21 @@ let app = new Vue({
         },
         stopFight(){
             this.game.stopFight();
-            console.log(this.game)
         },
         endFightLost(arrOfCardsToDelete:Array<PlayableCard>){
             this.game.endFightLost(arrOfCardsToDelete);
-            console.log(this.game)
         },
         useMyPower(card:FightCard){
-            console.log('game : usePower')
             this.game.usePower(card)
         },
         useTwoStepPower(data:{ usedCard:FightCard, assignedCards: Array<PlayableCard>}){
-            console.log('main:useTwoStepPower', data)
             this.game.usePower(data.usedCard, data.assignedCards)
         },
         save(){
             this.gsm.save();
         },
         load(slotName:null|string){
-            console.log('name of slot to load', slotName)
             this.gsm.load(slotName)
-            console.log('after load', this.game.dangerChoiceCards)
         }
     }
 })
