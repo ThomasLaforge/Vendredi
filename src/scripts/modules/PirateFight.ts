@@ -24,7 +24,7 @@ class PirateFight extends Fight implements PirateFightInterface {
         arrayFightCardUsed : Array<PlayableCard> = [], 
         finished : boolean = false
     ){
-        super(cardToFight, arrayFightCard, arrayFightCardUsed, finished, costOfCardsNotFree, freeCards);
+        super(cardToFight, arrayFightCard, arrayFightCardUsed, finished, freeCards, costOfCardsNotFree);
     }
 
     getPlayerForce(){

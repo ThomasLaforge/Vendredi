@@ -1,21 +1,23 @@
-import { Deck }         from './Deck';
-import { Card }         from './Card';
-import { PlayableCard } from './PlayableCard';
-import { Fight }        from './Fight';
-import { FightDeck }    from './FightDeck';
-import { DangerFight }  from './DangerFight';
-import { PirateFight }  from './PirateFight';
-import { FightCard }    from './FightCard';
-import { DangerDeck }   from './DangerDeck';
-import { DangerCard }   from './DangerCard';
-import { AgingDeck }    from './AgingDeck';
-import { AgingCard }    from './AgingCard';
-import { PirateDeck }   from './PirateDeck';
-import { PirateCard }   from './PirateCard';
-import { Player }       from './Player';
-import { Tools }        from './Tools'
-import { GameDifficulty, GameLevel, FightCardPower, AgingCardPower, PirateMission, PlayableCardPowerType, GameSaveStateState } from './Vendredi';
-import * as _ from 'lodash'
+// imports
+    import { Deck }         from './Deck';
+    import { Card }         from './Card';
+    import { PlayableCard } from './PlayableCard';
+    import { Fight }        from './Fight';
+    import { FightDeck }    from './FightDeck';
+    import { DangerFight }  from './DangerFight';
+    import { PirateFight }  from './PirateFight';
+    import { FightCard }    from './FightCard';
+    import { DangerDeck }   from './DangerDeck';
+    import { DangerCard }   from './DangerCard';
+    import { AgingDeck }    from './AgingDeck';
+    import { AgingCard }    from './AgingCard';
+    import { PirateDeck }   from './PirateDeck';
+    import { PirateCard }   from './PirateCard';
+    import { Player }       from './Player';
+    import { Tools }        from './Tools'
+    import { GameDifficulty, GameLevel, FightCardPower, AgingCardPower, PirateMission, PlayableCardPowerType, GameSaveStateState } from './Vendredi';
+    import * as _ from 'lodash'
+// -------
 
 class Game {
 
@@ -52,6 +54,7 @@ class Game {
     loseOnePV(){
         this.player.losePV(1);
     }
+    
     losePV(pvToLose : number){
         this.player.losePV(pvToLose);
     }
@@ -220,7 +223,7 @@ class Game {
     }
 
     discardFightCard(arrayOfPlayableCards: Array<PlayableCard>){
-    arrayOfPlayableCards = arrayOfPlayableCards.map(c => {return c.restore() })
+        arrayOfPlayableCards = arrayOfPlayableCards.map(c => {return c.restore() })
         this.fight.discard(arrayOfPlayableCards);
         this.fightDeck.discard(arrayOfPlayableCards);
     }
@@ -442,6 +445,7 @@ class Game {
     set lastChangeDate(newLastChangeDate) {
         this._lastChangeDate = newLastChangeDate;
     }
+//--------------------------
 
 }
 
