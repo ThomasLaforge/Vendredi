@@ -15,7 +15,6 @@ import {DangerDeck} from './DangerDeck';
 import {AgingDeck} from './AgingDeck';
 import {PirateDeck} from './PirateDeck';
 import * as _ from 'lodash';
-import * as CircularJSON from 'circular-json';
 
 class GameStateManager {
 
@@ -53,8 +52,7 @@ class GameStateManager {
     save() : string {
         let stateToSave : string;
         this._game.lastChangeDate = Date.now();
-        stateToSave = CircularJSON.stringify(_.clone(this._game));
-        console.log('saving game state', stateToSave);
+        stateToSave = JSON.stringify(_.clone(this._game));
         try {
             localStorage.setItem(config.SAVE_SLOT_DEFAULT_NAME, stateToSave);
         } catch(domException) {
@@ -73,7 +71,7 @@ class GameStateManager {
         if(gameSaveStateJson === null){
             return null
         }
-        let state : GameSaveStateState = CircularJSON.parse(gameSaveStateJson);
+        let state : GameSaveStateState = JSON.parse(gameSaveStateJson);
         console.log('state to load', state)
         let p = new Player(state._player.pseudo, state._player.PV)
         //decks
@@ -221,7 +219,6 @@ class GameStateManager {
                     );
 
         this.game = newGame
-        console.log(this.game)
         
     }
 
