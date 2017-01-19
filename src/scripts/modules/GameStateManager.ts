@@ -147,10 +147,10 @@ class GameStateManager {
             state._fight.arrayFightCard.forEach( (pcJson:playableCardHistoryJson) => {
                 let cardToAdd: PlayableCard;
                 if(pcJson.level){
-                    cardToAdd = new AgingCard(pcJson.name, pcJson.strength, <AgingCardPower>pcJson.power, pcJson.level, pcJson.powerUsed, pcJson.toDestroyAtEndOfFight)
+                    cardToAdd = new AgingCard(pcJson.name, pcJson.strength, <AgingCardPower>pcJson.power, pcJson.level, pcJson.powerUsed, pcJson.toDestroyAtEndOfFight, { strength : pcJson.initialState.strength, power : pcJson.initialState.power})
                 }
                 else{
-                    cardToAdd = new FightCard(pcJson.name, pcJson.strength, <FightCardPower>pcJson.power, pcJson.powerUsed, pcJson.toDestroyAtEndOfFight)                
+                    cardToAdd = new FightCard(pcJson.name, pcJson.strength, <FightCardPower>pcJson.power, pcJson.powerUsed, pcJson.toDestroyAtEndOfFight, { strength : pcJson.initialState.strength, power : pcJson.initialState.power})                
                 }
                 arrayFightCard.push(cardToAdd);
             })
@@ -158,10 +158,10 @@ class GameStateManager {
             state._fight.arrayFightCardUsed.forEach( (pcJson:playableCardHistoryJson) => {
                 let cardToAdd: PlayableCard;
                 if(pcJson.level){
-                    cardToAdd = new AgingCard(pcJson.name, pcJson.strength, <AgingCardPower>pcJson.power, pcJson.level, pcJson.powerUsed, pcJson.toDestroyAtEndOfFight)
+                    cardToAdd = new AgingCard(pcJson.name, pcJson.strength, <AgingCardPower>pcJson.power, pcJson.level, pcJson.powerUsed, pcJson.toDestroyAtEndOfFight, { strength : pcJson.initialState.strength, power : pcJson.initialState.power})
                 }
                 else{
-                    cardToAdd = new FightCard(pcJson.name, pcJson.strength, <FightCardPower>pcJson.power, pcJson.powerUsed, pcJson.toDestroyAtEndOfFight)                
+                    cardToAdd = new FightCard(pcJson.name, pcJson.strength, <FightCardPower>pcJson.power, pcJson.powerUsed, pcJson.toDestroyAtEndOfFight, { strength : pcJson.initialState.strength, power : pcJson.initialState.power})                
                 }
                 arrayFightCardUsed.push(cardToAdd);
             })

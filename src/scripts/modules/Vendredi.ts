@@ -91,11 +91,17 @@ export interface CardInterface{
     show():void
 }
 
+export interface InitialStateInterface {
+    strength : number
+    power : any
+}
+
 export interface PlayableCardInterface extends CardInterface {
     costToDelete : number
     power        : FightCardPower|AgingCardPower|null
     powerUsed    : boolean
     id           : string
+    initialState: InitialStateInterface
 }
 
 export interface PirateCardInterface {

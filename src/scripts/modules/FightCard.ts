@@ -1,7 +1,7 @@
 import { PlayableCard } from './PlayableCard';
 import { Tools } from './Tools';
 import * as uuid from 'node-uuid'
-import { FightCardInterface, FightCardPower } from './Vendredi';
+import { FightCardInterface, FightCardPower, InitialStateInterface } from './Vendredi';
 
 class FightCard extends PlayableCard implements FightCardInterface {
 
@@ -11,9 +11,10 @@ class FightCard extends PlayableCard implements FightCardInterface {
             power: FightCardPower|null, 
             powerUsed : boolean = false,
             toDestroyAtEndOfFight:boolean = false,
+            initialState: InitialStateInterface = { strength : strength, power : power},
             costToDelete: number = 1
         ){
-        super( name, strength, costToDelete, power, powerUsed, toDestroyAtEndOfFight);
+        super( name, strength, costToDelete, power, powerUsed, toDestroyAtEndOfFight, initialState);
     }
 
     changePower(newPower: FightCardPower) {

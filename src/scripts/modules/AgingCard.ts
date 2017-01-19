@@ -1,6 +1,6 @@
 import { PlayableCard } from './PlayableCard';
 import { Tools } from './Tools';
-import { AgingCardInterface, AgingCardPower, AgingLevel } from './Vendredi'
+import { AgingCardInterface, AgingCardPower, AgingLevel, InitialStateInterface } from './Vendredi'
 
 class AgingCard extends PlayableCard implements AgingCardInterface{
 
@@ -11,9 +11,10 @@ class AgingCard extends PlayableCard implements AgingCardInterface{
             public level: AgingLevel,
             powerUsed : boolean = false,
             toDestroyAtEndOfFight:boolean = false,
-            costToDelete: number = 2
+            initialState: InitialStateInterface = { strength : strength, power : power},
+            costToDelete: number = 2,
         ){
-        super( name, strength, costToDelete, power, powerUsed, toDestroyAtEndOfFight);
+        super( name, strength, costToDelete, power, powerUsed, toDestroyAtEndOfFight, initialState);
     }
 
     get powerName(){
