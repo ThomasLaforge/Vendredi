@@ -59,9 +59,9 @@ gulp.task('clean', (cb) => {
 
 gulp.task('images', () => {
     return gulp.src('./src/images/**/*')
-        .pipe($.imagemin({
-            progressive: true
-        }))
+        // .pipe($.imagemin({
+        //     progressive: true
+        // }))
         .pipe(gulp.dest('./dist/images'))
 })
 
@@ -70,14 +70,6 @@ gulp.task('templates', () => {
         .pipe($.plumber())
         .pipe(gulp.dest('dist/'))
 });
-
-
-// gulp.task('lib', () => {
-//     return gulp.src('node_modules/{vue/dist/vue.js,bootstrap/dist/css/bootstrap.min.css,vue-sortable/vue-sortable.js}')
-//         .pipe(flatten())
-//         .pipe(gulp.dest('dist/lib'));
-// });
-
 
 gulp.task('build', ['compass', 'compile-js', 'templates', 'images']);
 
