@@ -2,7 +2,7 @@ import {PlayableDeck}  from './PlayableDeck';
 import {Tools} from './Tools';
 import * as _ from 'lodash';
 import {AgingCard} from './AgingCard';
-import {GameDifficulty, jsonDataAging} from './Vendredi';
+import {GameDifficulty, jsonDataAging, AgingLevel} from './Vendredi';
 
 class AgingDeck extends PlayableDeck{
 
@@ -24,7 +24,7 @@ class AgingDeck extends PlayableDeck{
         arrDatas.forEach( (obj: jsonDataAging) => {
             let number = obj.number;
             let power = obj.power ? Tools.getAgingPowerFromString(obj.power) : null;
-            for (var i=0; i<number; i++) {
+            for (let i=0; i<number; i++) {
                 let newAgingCard= new AgingCard( obj.name, obj.strength, power, obj.level );
                 arrRes.push( newAgingCard );
             }
@@ -34,14 +34,14 @@ class AgingDeck extends PlayableDeck{
     }
 
     shuffle(){
-        let arrEasy = this.arrayDeck.slice( 0, 3 );
-        let arrHard = this.arrayDeck.slice( 3, this.arrayDeck.length );
+        let arrEasy = this.arrayDeck.filter( agingCard => { return agingCard.level <= AgingLevel.UNCOMFORTABLE} );
+        let arrHard = this.arrayDeck.filter( agingCard => { return agingCard.level >= AgingLevel.EVIL });
 
         arrEasy = _.shuffle( arrEasy );
         arrHard = _.shuffle( arrHard );
 
         // Put easier cards in first positions to get picked
-        this.arrayDeck = arrHard.concat( arrEasy );
+        this.arrayDeck = arrEasy.concat( arrHard );
     }
 }
 
