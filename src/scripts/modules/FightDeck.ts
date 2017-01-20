@@ -15,7 +15,7 @@ class FightDeck extends PlayableDeck {
         arrDatas.forEach( (obj:jsonDataFight) => {
             let number = obj.number;
             let power = obj.power ? Tools.getFightPowerFromString(obj.power) : null;
-            for (var i=0; i<number; i++) {
+            for (let i=0; i<number; i++) {
                 let newFight = new FightCard( obj.name, obj.strength, power );
                 arrRes.push(newFight);
             }

@@ -69,8 +69,8 @@ abstract class Deck {
 
     // Missing control if empty
     drawCards( nbCards:number ){
-        var res: Array<any> = [];
-        for( var i=0; i < nbCards; i++ ){
+        let res: Array<any> = [];
+        for( let i=0; i < nbCards; i++ ){
             if(this.arrayDeck.length > 0){
                 res.push( this.drawOneCard() );
             }

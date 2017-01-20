@@ -1,5 +1,5 @@
 // Libraries
-    // var bootstrap = require('bootstrap/dist/js/bootstrap');
+    // let bootstrap = require('bootstrap/dist/js/bootstrap');
     import * as _ from 'lodash'
 
 // Model

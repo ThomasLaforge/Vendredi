@@ -1,4 +1,4 @@
-var gulp = require('gulp'),
+let gulp = require('gulp'),
     $ = require('gulp-load-plugins')(),
     path = require('path'),
     browserSync = require('browser-sync'),
@@ -11,7 +11,7 @@ var gulp = require('gulp'),
     source = require('vinyl-source-stream'),
     tsify = require('tsify');
 
-var config = {
+let config = {
     publicPath: __dirname + '/dist/scripts',
     app: {
         path: __dirname + '/src/scripts',
@@ -43,7 +43,7 @@ gulp.task('compass', () => {
 });
 
 gulp.task('compile-js', function() {
-    var bundler = browserify({ basedir: config.app.path })
+    let bundler = browserify({ basedir: config.app.path })
         .add(config.app.path + '/' + config.app.main)
         .plugin(tsify, { target: 'ES5' });
 
