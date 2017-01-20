@@ -42,7 +42,7 @@ gulp.task('compass', () => {
         .pipe(gulp.dest('dist/stylesheets'));
 });
 
-gulp.task('compile-js', function() {
+gulp.task('compile-ts', function() {
     let bundler = browserify({ basedir: config.app.path })
         .add(config.app.path + '/' + config.app.main)
         .plugin(tsify, { target: 'ES5' });
@@ -71,14 +71,14 @@ gulp.task('templates', () => {
         .pipe(gulp.dest('dist/'))
 });
 
-gulp.task('build', ['compass', 'compile-js', 'templates', 'images']);
+gulp.task('build', ['compass', 'compile-ts', 'templates', 'images']);
 
 gulp.task('serve', ['build', 'browser-sync'], () => {
     gulp.watch('src/stylesheets/**/*.{scss,sass}', ['compass', reload]);
     gulp.watch('src/images/**/*', ['images', reload]);
     gulp.watch('src/*.{html, php}', ['templates', reload]);
-    gulp.watch('src/scripts/**/*.ts', ['compile-js', reload]);
-    gulp.watch('src/datas/*.json', ['compile-js', reload]);
+    gulp.watch('src/scripts/**/*.ts', ['compile-ts', reload]);
+    gulp.watch('src/datas/*.json', ['compile-ts', reload]);
 });
 
 gulp.task('default', ['serve']);
