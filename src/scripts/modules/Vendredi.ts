@@ -251,7 +251,7 @@ export interface _dangerChoiceCardsItemType {
    freeCards: number;
 }
 
-export interface GameSaveStateState {
+export interface GameSaveState {
    _player: playerHistoryJson;
    _difficulty: number;
    _fightDeck: fightDeckHistoryJson;

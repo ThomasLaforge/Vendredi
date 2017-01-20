@@ -1,4 +1,4 @@
-import {GameSaveStateState, AgingCardPower, FightCardPower, GameStateAction, GameLevel, playableCardHistoryJson} from './Vendredi';
+import {GameSaveState, AgingCardPower, FightCardPower, GameStateAction, GameLevel, playableCardHistoryJson} from './Vendredi';
 import * as config from '../modules/Configuration'
 import {Game} from './Game';
 import {Fight} from './Fight'
@@ -16,7 +16,7 @@ import {AgingDeck} from './AgingDeck';
 import {PirateDeck} from './PirateDeck';
 import * as _ from 'lodash';
 
-class GameStateManager {
+class GameSaveManager {
 
     constructor( private _game:Game, private currentStateId?:string ){}
 
@@ -71,7 +71,7 @@ class GameStateManager {
         if(gameSaveStateJson === null){
             return null
         }
-        let state : GameSaveStateState = JSON.parse(gameSaveStateJson);
+        let state : GameSaveState = JSON.parse(gameSaveStateJson);
         console.log('state to load', state)
         let p = new Player(state._player.pseudo, state._player.PV)
         //decks
@@ -218,8 +218,16 @@ class GameStateManager {
                         state._lastChangeDate
                     );
 
-        this.game = newGame
+        this.game = newGame;
         
+    }
+
+    undo(){
+
+    }
+
+    redo(){
+
     }
 
     getStateFromAction( action: GameStateAction){
@@ -235,8 +243,8 @@ class GameStateManager {
         return this._game;
     }
     set game(newgame){
-        this._game = newgame
+        this._game = newgame;
     }
 }
 
-export { GameStateManager }
+export { GameSaveManager }

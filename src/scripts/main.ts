@@ -8,11 +8,11 @@
     import { PlayableCard }     from './modules/PlayableCard';
     import { FightCard }        from './modules/FightCard';
     import { FightCardPower }   from './modules/Vendredi';
-    import { GameStateManager } from './modules/GameStateManager'
+    import { GameSaveManager } from './modules/GameSaveManager'
     let pseudo   = 'Thomas';
     let myPlayer = new Player(pseudo);
     let newGame  = new Game(myPlayer, 1);
-    let gsm      = new GameStateManager(newGame)
+    let gsm      = new GameSaveManager(newGame)
 
 // Game Config
     newGame.level = 2
@@ -24,7 +24,7 @@
     import { gameDangerChoice } from './Vue/gameDangerChoice';
     import { gameFight }        from './Vue/gameFight';
     import { gameOver }         from './Vue/gameOver';
-    import { gameStateManager } from './Vue/gameStateManager';
+    import { gameSaveManager } from './Vue/gameSaveManager';
     import { sortThreeCards } from './Vue/components/sortThreeCards';
 // Main
 
@@ -32,13 +32,13 @@ let app = new Vue({
     el: '#app',
     data: () => {
         return {
-            gamestatemanager : gsm,
+            gamesavemanager : gsm,
             initialgame : gsm.game,
             testingHistory : true,
         }
     },
     computed: {
-        gsm : function() { return this.gamestatemanager }, 
+        gsm : function() { return this.gamesavemanager }, 
         game : function() { return this.gsm.game }, 
     },
     components:{
@@ -46,7 +46,7 @@ let app = new Vue({
         gameDangerChoice,
         gameFight,
         gameOver,
-        gameStateManager
+        gameSaveManager
     },
     methods: {
         addCardToFight(){

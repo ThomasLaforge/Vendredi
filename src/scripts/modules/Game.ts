@@ -15,7 +15,7 @@
     import { PirateCard }   from './PirateCard';
     import { Player }       from './Player';
     import { Tools }        from './Tools'
-    import { GameDifficulty, GameLevel, FightCardPower, AgingCardPower, PirateMission, PlayableCardPowerType, GameSaveStateState } from './Vendredi';
+    import { GameDifficulty, GameLevel, FightCardPower, AgingCardPower, PirateMission, PlayableCardPowerType, GameSaveState } from './Vendredi';
     import * as _ from 'lodash'
 // -------
 

@@ -25,7 +25,7 @@ let template = `
 </div>
 `
 
-const gameStateManager = {
+const gameSaveManager = {
     template : template,
     data : function() : { selectedSlot : number, saveSlots:Array<any> } {
         return {
@@ -69,4 +69,4 @@ const gameStateManager = {
     }
 };
 
-export { gameStateManager }
+export { gameSaveManager }
