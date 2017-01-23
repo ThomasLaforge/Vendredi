@@ -267,3 +267,5 @@ export interface GameSaveState {
    _startDate : number;
    _lastChangeDate : number;
 }
+
+export interface StateJson {}

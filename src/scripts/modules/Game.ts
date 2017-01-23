@@ -28,7 +28,7 @@ class Game {
             private _dangerDeck: DangerDeck = new DangerDeck(),
             private _agingDeck: AgingDeck = new AgingDeck( _difficulty ),
             private _pirateDeck: PirateDeck = new PirateDeck(),
-            private _gameOver: boolean = false,
+            private _gameOver: boolean = false, //Cause if pirateFight is lost => gameOver
             private _level: number = GameLevel.FIRST_ROUND,
             private _arrayOfRemovedCards: Array<PlayableCard> = [],
             private _fight: Fight = null,
@@ -59,8 +59,12 @@ class Game {
         this.player.losePV(pvToLose);
     }
 
-	isGameOver(){
+	isGameOver():boolean{
         return this.gameOver || this.player.isDead();
+    }
+
+    isWon():boolean{
+        return this.nbPiratesToFight <= this.pirateDeck.discard.length
     }
 
     drawFightCard(free:boolean = false) : PlayableCard {
@@ -175,13 +179,16 @@ class Game {
         else{
             this.player.losePV(Math.abs(result));
         }
-        this.drawDangerCard();   
+        this.drawDangerCard(); 
     }
 
     endFightWon(){
         if(this.fight instanceof DangerFight ){
             console.log('Game : danger fight won');
             this.fight.arrayFightCard.push( this.fight.cardToFight.fightCard );       
+        }
+        else{ //PirateFight
+            this.pirateDeck.discard( this.fight.cardToFight )
         }
 
         this.fightDeck.discard( this.fight.getAllCardsToDiscard() );
@@ -195,9 +202,7 @@ class Game {
             this.discard( [].concat( this.fight.getAllCardsToDestroy(), cardsToDelete) );
 
             // put back cards of fight in differents decks
-            // danger card
             this.dangerDeck.discard( [ this.fight.cardToFight ] );
-            // fight cards
             this.fightDeck.discard( _.difference(this.fight.getAllCardsToDiscard(), cardsToDelete) );
             this.resetFight();
         }

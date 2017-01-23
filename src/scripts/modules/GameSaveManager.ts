@@ -29,26 +29,7 @@ class GameSaveManager {
 
         return res
     }
-
-    // History
-
-    /*
-    *   Timeline:
-    *
-    *   Start       Event 1        Event2       Event 3       Last event/End
-    *     |------------|-------------|-------------|-----------------|
-    *
-    *   History = [ Start , Event 1, Event 2, Event 3, End]
-    *   
-    *   Undo Redo case. 
-    *       if undo redo without new event => No problemo
-    *       if undo and add new event => this event become last element => remove event after in Timeline:
-    *           Ex : Undo to event 1 and change action => Delete all after Event 1
-    *   Start       Event 1      New Event       
-    *     |------------|-------------|
-    *
-    */
-
+    
     save() : string {
         let stateToSave : string;
         this._game.lastChangeDate = Date.now();

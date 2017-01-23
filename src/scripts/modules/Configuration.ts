@@ -61,3 +61,4 @@ export {moment}
 
 export const SAVE_SLOT_PREFIX = 'VENDREDI_SAVE_STATE_';
 export const SAVE_SLOT_DEFAULT_NAME = 'VENDREDI_SAVE_STATE_DEFAULT';
+export const DEFAULT_USER_PSEUDO = 'DEFAULT';
