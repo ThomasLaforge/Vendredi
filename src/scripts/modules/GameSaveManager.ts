@@ -54,7 +54,7 @@ class GameSaveManager {
         }
         let state : GameSaveState = JSON.parse(gameSaveStateJson);
         console.log('state to load', state)
-        let p = new Robinson(state._player.PV)
+        let p = new Robinson(state._robinson.PV)
         //decks
         let fightDeck:Array<PlayableCard> = [];
         state._fightDeck.arrayDeck.forEach( pcJson => { 

@@ -64,7 +64,7 @@ class Game {
     }
 
     isWon():boolean{
-        return this.nbPiratesToFight <= this.pirateDeck.discard.length
+        return this.pirateDeck.getNumberOfCardsInDiscard() >= this.nbPiratesToFight
     }
 
     drawFightCard(free:boolean = false) : PlayableCard {
@@ -172,6 +172,8 @@ class Game {
 
     stopFight(){
         this.fight.finish();
+        this.drawDangerCard();
+        
         let result = this.fight.getResult();
         if( result >= 0 ) {
             this.endFightWon();
@@ -179,16 +181,18 @@ class Game {
         else{
             this.robinson.losePV(Math.abs(result));
         }
-        this.drawDangerCard(); 
     }
 
     endFightWon(){
+        console.log('type of won fight : Danger?, Pirate?', this.fight instanceof DangerFight, this.fight instanceof PirateFight )
         if(this.fight instanceof DangerFight ){
             console.log('Game : danger fight won');
             this.fight.arrayFightCard.push( this.fight.cardToFight.fightCard );       
         }
         else{ //PirateFight
-            this.pirateDeck.discard( this.fight.cardToFight )
+            console.log('pirate fight won')
+            this.pirateDeck.discard( [this.fight.cardToFight] )
+            if(this.isWon()){ return }
         }
 
         this.fightDeck.discard( this.fight.getAllCardsToDiscard() );
@@ -213,6 +217,7 @@ class Game {
 
     resetFight() : void {
         this.fight = null;
+        console.log('level on reset Fitght', this.level)
         if(this.level > GameLevel.THIRD_ROUND){
             console.log('start of pirate Fight')
             this.startFight(this.pirateDeck.drawOneCard())

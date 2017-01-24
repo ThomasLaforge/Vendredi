@@ -32,7 +32,6 @@ class GameSaveManager {
     newGame():boolean{
         let created:false;
         this.game = new Game();
-
         return created;
     }
 
