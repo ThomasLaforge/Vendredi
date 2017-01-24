@@ -28,7 +28,7 @@
 
             <hr>
 
-            <game-over v-if="game.isGameOver()" :player-name="game.player.pseudo"></game-over>
+            <game-over v-if="game.isGameOver()" :player-name="game.robinson.pseudo"></game-over>
 
             <game-danger-choice v-if="( !game.fight && !game.isGameOver() )" :danger-choice="game.dangerChoiceCards" @chose="startFight"></game-danger-choice>
 

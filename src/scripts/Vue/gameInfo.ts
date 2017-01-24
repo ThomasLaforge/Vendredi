@@ -14,7 +14,7 @@ let template = `
     <div class="info-main">
         <div class="info-main-global info-main-elt">
             <div class="info-main-pv" id="pv">
-                <div class="info-main-value">{{ game.player.PV >= -1 ? game.player.PV : -1 }}</div>
+                <div class="info-main-value">{{ game.robinson.PV >= -1 ? game.robinson.PV : -1 }}</div>
             </div>
             <button @click="switchDiscardGlobal">Global discard</button>       
         </div>

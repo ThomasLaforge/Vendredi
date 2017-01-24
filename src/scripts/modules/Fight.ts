@@ -50,29 +50,29 @@ abstract class Fight implements FightInterface {
         }
     }
 
-    getPlayerForce() {
-        let playerForce: number = 0;
+    getRobinsonForce() {
+        let robinsonForce: number = 0;
         let allPlayableCards = this.getAllCards();
         let orderedPlayableCardsByStrength = allPlayableCards.sort( (a, b) => { return b.strength - a.strength; })
-        let powersToApplyAnswer = this.getPowersToApplyOnPlayerForce();
+        let powersToApplyAnswer = this.getPowersToApplyOnRobinsonForce();
         let nbCardToDouble = powersToApplyAnswer.nbCardToDouble;
         let offsetCauseMaxCardEqualsZero = powersToApplyAnswer.offsetMaxEqualsZero;
 
         orderedPlayableCardsByStrength.forEach( (playableCard, i) => {
             if( i > offsetCauseMaxCardEqualsZero - 1 ){
                 if( nbCardToDouble > 0 ){
-                    playerForce += playableCard.strength;
+                    robinsonForce += playableCard.strength;
                     nbCardToDouble--;
                 }
 
-                playerForce += playableCard.strength;
+                robinsonForce += playableCard.strength;
             }
         })
 
-        return playerForce;
+        return robinsonForce;
     }
 
-    getPowersToApplyOnPlayerForce() {
+    getPowersToApplyOnRobinsonForce() {
         let nbCardToDouble = 0;
         let offsetCauseMaxCardEqualsZero = 0;
 
@@ -101,11 +101,11 @@ abstract class Fight implements FightInterface {
     abstract getStrengthCardToFight() : number
 
     getResult(){
-        // >= 0 if player win ; < 0 if player lose fight
+        // >= 0 if robinson win ; < 0 if robinson lose fight
         let fightPoints = this.getStrengthCardToFight();
-        let playerForce = this.getPlayerForce();
+        let robinsonForce = this.getRobinsonForce();
 
-        return playerForce - fightPoints;
+        return robinsonForce - fightPoints;
     }
 
     isWon(){

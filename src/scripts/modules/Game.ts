@@ -22,7 +22,7 @@
 class Game {
 
 	constructor( 
-            private _player : Robinson = new Robinson(), 
+            private _robinson : Robinson = new Robinson(), 
             private _difficulty = GameDifficulty.EASY,
             private _fightDeck: FightDeck = new FightDeck(),
             private _dangerDeck: DangerDeck = new DangerDeck(),
@@ -40,7 +40,7 @@ class Game {
         // Si la difficulté est de 4 alors la partie commence avec 18 PV au lieu de 20 => on perd 2 PV
         if(this.difficulty > 1){
             if(this.difficulty === 4){
-                this.player.losePV(2);
+                this.robinson.losePV(2);
             }
             this.fightDeck.addCard(this.agingDeck.drawCards(1));
             this.fightDeck.shuffle();
@@ -52,15 +52,15 @@ class Game {
 	}
 
     loseOnePV(){
-        this.player.losePV(1);
+        this.robinson.losePV(1);
     }
     
     losePV(pvToLose : number){
-        this.player.losePV(pvToLose);
+        this.robinson.losePV(pvToLose);
     }
 
 	isGameOver():boolean{
-        return this.gameOver || this.player.isDead();
+        return this.gameOver || this.robinson.isDead();
     }
 
     isWon():boolean{
@@ -158,10 +158,10 @@ class Game {
             if(playableCard.power != null){
                 switch (playableCard.power) {
                     case AgingCardPower.LOSE_ONE_PV:
-                        this.player.losePV(1);
+                        this.robinson.losePV(1);
                         break;
                     case AgingCardPower.LOSE_TWO_PV:
-                        this.player.losePV(2);                   
+                        this.robinson.losePV(2);                   
                         break;
                 }
 
@@ -177,7 +177,7 @@ class Game {
             this.endFightWon();
         }
         else{
-            this.player.losePV(Math.abs(result));
+            this.robinson.losePV(Math.abs(result));
         }
         this.drawDangerCard(); 
     }
@@ -320,10 +320,10 @@ class Game {
                 // One shot powers
                 switch( card.power  ) {
                     case FightCardPower.GET_TWO_PV:
-                        this.player.addPV(2);
+                        this.robinson.addPV(2);
                         break;
                     case FightCardPower.GET_ONE_PV:
-                        this.player.addPV(1);
+                        this.robinson.addPV(1);
                         break;
                     case FightCardPower.GET_ONE_CARD:
                         this.fight.addFreeCards(1);
@@ -372,11 +372,11 @@ class Game {
     }
 
 //Region : Getters / Setters
-    get player(){
-        return this._player;
+    get robinson(){
+        return this._robinson;
     }
-    set player(newPlayer){
-        this._player = newPlayer;
+    set robinson(newrobinson){
+        this._robinson = newrobinson;
     }
     get difficulty(){
         return this._difficulty;

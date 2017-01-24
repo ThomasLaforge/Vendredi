@@ -183,7 +183,7 @@ export interface jsonDataFight {
 }
 
 // History : Automatic generation using vs code pluggin "json to type" to finalize
-export interface playerHistoryJson extends RobinsonInterface {}
+export interface robinsonHistoryJson extends RobinsonInterface {}
 
 export interface playableCardHistoryJson extends PlayableCardInterface {
     power:FightCardPower|AgingCardPower
@@ -251,7 +251,7 @@ export interface _dangerChoiceCardsItemType {
 }
 
 export interface GameSaveState {
-   _player: playerHistoryJson;
+   _robinson: robinsonHistoryJson;
    _difficulty: number;
    _fightDeck: fightDeckHistoryJson;
    _dangerDeck: dangerDeckHistoryJson;

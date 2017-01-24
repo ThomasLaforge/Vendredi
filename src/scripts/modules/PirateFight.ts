@@ -27,8 +27,8 @@ class PirateFight extends Fight implements PirateFightInterface {
         super(cardToFight, arrayFightCard, arrayFightCardUsed, finished, freeCards, costOfCardsNotFree);
     }
 
-    getPlayerForce(){
-        let playerForce = super.getPlayerForce();
+    getRobinsonForce(){
+        let robinsonForce = super.getRobinsonForce();
         
         if( this.cardToFight.mission === PirateMission.EACH_CARD_GIVE_ONE_FIGHT_POINT ){
             // Comment j'interprete cette règle:
@@ -36,13 +36,13 @@ class PirateFight extends Fight implements PirateFightInterface {
             // On pourrait se dire que c'est l'ensemble des cartes piochées pendant le combat
             // Dans ce cas, les cartes échangées (donc remis dans la pioche rapporterai un point)
             // Du coup, une carte peut rapporter deux points en étant piochée, échangée et rejouée plus tard.
-            playerForce += this.getAllCards().length;
+            robinsonForce += this.getAllCards().length;
         }
         
         if( this.cardToFight.mission === PirateMission.ONLY_KEEP_HALF_CARDS ){
-            // TODO : Refactor using super.getPlayerForce who is in playerForce var. And then sub cards that are on second half of played card
+            // TODO : Refactor using super.getrobinson who is in robinson var. And then sub cards that are on second half of played card
             // Keep in mind the fact that aging cards must stay
-            let powersToApplyAnswer = this.getPowersToApplyOnPlayerForce();
+            let powersToApplyAnswer = this.getPowersToApplyOnRobinsonForce();
             let nbCardToDouble = powersToApplyAnswer.nbCardToDouble;
             let offsetCauseMaxCardEqualsZero = powersToApplyAnswer.offsetMaxEqualsZero;
             let arrCardsToKeep = this.getAllCards().sort( (a, b) => {return b.strength - a.strength });
@@ -55,17 +55,17 @@ class PirateFight extends Fight implements PirateFightInterface {
             let midOfArr = Math.round(arrCardsToKeep.length / 2);
             arrCardsToKeep.splice( midOfArr, arrCardsToKeep.length - midOfArr );
             arrCardsToKeep.forEach( playableCard => {
-                playerForce += playableCard.strength;
+                robinsonForce += playableCard.strength;
             });
 
             if(nbCardToDouble > 0 && nbCardToDouble < arrCardsToKeep.length){
                 for(let i = 0; i < nbCardToDouble;i++){
-                    playerForce += arrCardsToKeep[i].strength;
+                    robinsonForce += arrCardsToKeep[i].strength;
                 }
             }
         }
 
-        return playerForce;
+        return robinsonForce;
     }
 
     getStrengthCardToFight(){

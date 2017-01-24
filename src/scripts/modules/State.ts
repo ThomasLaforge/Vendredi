@@ -1,5 +1,5 @@
 import { Game } from './Game'
-import { GameSaveState /*, PlayerJson */ } from './Vendredi'
+import { GameSaveState /*, RobinsonJson */ } from './Vendredi'
 
 class State /*implements GameSaveState*/ {
     constructor(gameStateJson:any){}
