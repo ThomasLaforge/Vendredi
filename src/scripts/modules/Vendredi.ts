@@ -76,8 +76,7 @@ export interface SaveSlot {
     lastChangeDate:string
 }
 
-export interface PlayerInterface {
-    pseudo:string
+export interface RobinsonInterface {
     PV:number
     addPV(nbPV:number):void
     losePV(nbPV:number):void
@@ -184,7 +183,7 @@ export interface jsonDataFight {
 }
 
 // History : Automatic generation using vs code pluggin "json to type" to finalize
-export interface playerHistoryJson extends PlayerInterface {}
+export interface playerHistoryJson extends RobinsonInterface {}
 
 export interface playableCardHistoryJson extends PlayableCardInterface {
     power:FightCardPower|AgingCardPower

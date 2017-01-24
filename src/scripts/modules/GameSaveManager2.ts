@@ -1,4 +1,5 @@
 import {Game} from './Game'
+import {Robinson} from './Robinson'
 import {SaveSlot} from './SaveSlot'
 import {User} from './User'
 
@@ -30,11 +31,16 @@ class GameSaveManager {
 
     newGame():boolean{
         let created:false;
+        this.game = new Game();
 
         return created;
     }
 
-    getAllUsers(){
+    getAllSaveSlots(){
+        return localStorage.getItem(this.user.pseudo);
+    }
+
+    static getAllUsers(){
         let res: Array<string> = []
         
         for(let i = 0; i < localStorage.length;i++){
@@ -43,7 +49,6 @@ class GameSaveManager {
 
         return res
     }
-    
 
     get currentSaveSlot(){
         return this.currentSaveSlot

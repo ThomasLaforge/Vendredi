@@ -4,7 +4,7 @@ import {Game} from './Game';
 import {Fight} from './Fight'
 import {DangerFight} from './DangerFight'
 import {PirateFight} from './PirateFight'
-import {Player} from './Player';
+import {Robinson} from './Robinson';
 import {PlayableCard} from './PlayableCard';
 import {AgingCard} from './AgingCard';
 import {PirateCard} from './PirateCard';
@@ -29,7 +29,7 @@ class GameSaveManager {
 
         return res
     }
-    
+
     save() : string {
         let stateToSave : string;
         this._game.lastChangeDate = Date.now();
@@ -54,7 +54,7 @@ class GameSaveManager {
         }
         let state : GameSaveState = JSON.parse(gameSaveStateJson);
         console.log('state to load', state)
-        let p = new Player(state._player.pseudo, state._player.PV)
+        let p = new Robinson(state._player.PV)
         //decks
         let fightDeck:Array<PlayableCard> = [];
         state._fightDeck.arrayDeck.forEach( pcJson => { 

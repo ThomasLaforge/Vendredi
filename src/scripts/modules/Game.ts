@@ -13,7 +13,7 @@
     import { AgingCard }    from './AgingCard';
     import { PirateDeck }   from './PirateDeck';
     import { PirateCard }   from './PirateCard';
-    import { Player }       from './Player';
+    import { Robinson }       from './Robinson';
     import { Tools }        from './Tools'
     import { GameDifficulty, GameLevel, FightCardPower, AgingCardPower, PirateMission, PlayableCardPowerType, GameSaveState } from './Vendredi';
     import * as _ from 'lodash'
@@ -22,7 +22,7 @@
 class Game {
 
 	constructor( 
-            private _player : Player, 
+            private _player : Robinson = new Robinson(), 
             private _difficulty = GameDifficulty.EASY,
             private _fightDeck: FightDeck = new FightDeck(),
             private _dangerDeck: DangerDeck = new DangerDeck(),

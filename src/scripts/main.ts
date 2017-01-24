@@ -4,14 +4,11 @@
 
 // Model
     import { Game 	}           from './modules/Game';
-    import { Player }           from './modules/Player';
     import { PlayableCard }     from './modules/PlayableCard';
     import { FightCard }        from './modules/FightCard';
     import { FightCardPower }   from './modules/Vendredi';
-    import { GameSaveManager } from './modules/GameSaveManager'
-    let pseudo   = 'Thomas';
-    let myPlayer = new Player(pseudo);
-    let newGame  = new Game(myPlayer, 1);
+    import { GameSaveManager } from './modules/GameSaveManager';
+    let newGame  = new Game();
     let gsm      = new GameSaveManager(newGame)
 
 // Game Config

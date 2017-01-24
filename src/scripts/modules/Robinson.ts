@@ -1,10 +1,11 @@
-import { PlayerInterface } from './Vendredi';
+import { RobinsonInterface } from './Vendredi';
+import { DEFAULT_USER_PSEUDO } from './Configuration';
 
 const MAX_PV = 22;
 
-class Player implements PlayerInterface {
+class Robinson implements RobinsonInterface {
 
-    constructor(public pseudo: string = "Invité", public PV = 20){}
+    constructor(public PV = 20){}
 
     addPV(nbPV: number):void{
         this.PV += nbPV;
@@ -24,4 +25,4 @@ class Player implements PlayerInterface {
 
 }
 
-export {Player}
+export {Robinson}
