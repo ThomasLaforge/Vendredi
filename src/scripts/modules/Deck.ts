@@ -60,7 +60,7 @@ abstract class Deck {
 
     discardToDeck(){
         // ajout de la défausse dans la pioche
-        this.arrayDeck = this.arrayDiscard;
+        this.arrayDeck = this.arrayDiscard.concat(this.arrayDeck);
         // Remise à zéro de la défausse
         this.arrayDiscard = [];
         // On mélange le nouveau deck
