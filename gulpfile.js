@@ -1,6 +1,4 @@
 let gulp = require('gulp'),
-    // gzip = require('gulp-gzip'),
-    // uglify = require('gulp-uglify'),
     $ = require('gulp-load-plugins')(),
     path = require('path'),
     browserSync = require('browser-sync'),
@@ -52,8 +50,6 @@ gulp.task('compile-ts', function() {
     return bundler.bundle()
         .on('error', function(error) { console.error(error.toString()); })
         .pipe(source(config.app.result))
-        //.pipe(uglify())
-        //.pipe(gzip())
         .pipe(gulp.dest(config.publicPath));
 });
 
@@ -63,9 +59,9 @@ gulp.task('clean', (cb) => {
 
 gulp.task('images', () => {
     return gulp.src('./src/images/**/*')
-        // .pipe($.imagemin({
-        //     progressive: true
-        // }))
+        .pipe($.imagemin({
+            progressive: true
+        }))
         .pipe(gulp.dest('./dist/images'))
 })
 
@@ -89,9 +85,9 @@ gulp.task('css-libs', () => {
         .pipe(gulp.dest('dist/libs/css'));
 });
 
-gulp.task('build', ['compass', 'compile-ts', 'templates', 'images']);
+gulp.task('build', ['compass', 'compile-ts', 'templates', 'images','js-libs', 'css-libs']);
 
-gulp.task('serve', ['build', 'js-libs', 'css-libs', 'browser-sync'], () => {
+gulp.task('serve', ['build', 'browser-sync'], () => {
     gulp.watch('src/stylesheets/**/*.{scss,sass}', ['compass', reload]);
     gulp.watch('src/images/**/*', ['images', reload]);
     gulp.watch('src/*.{html, php}', ['templates', reload]);
