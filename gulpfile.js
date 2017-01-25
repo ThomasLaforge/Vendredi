@@ -1,4 +1,6 @@
 let gulp = require('gulp'),
+    // gzip = require('gulp-gzip'),
+    // uglify = require('gulp-uglify'),
     $ = require('gulp-load-plugins')(),
     path = require('path'),
     browserSync = require('browser-sync'),
@@ -50,6 +52,8 @@ gulp.task('compile-ts', function() {
     return bundler.bundle()
         .on('error', function(error) { console.error(error.toString()); })
         .pipe(source(config.app.result))
+        //.pipe(uglify())
+        //.pipe(gzip())
         .pipe(gulp.dest(config.publicPath));
 });
 
