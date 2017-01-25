@@ -7,7 +7,7 @@
     import { PlayableCard }     from './modules/PlayableCard';
     import { FightCard }        from './modules/FightCard';
     import { FightCardPower }   from './modules/Vendredi';
-    import { GameSaveManager } from './modules/GameSaveManager';
+    import { GameSaveManager }  from './modules/GameSaveManager';
     let newGame  = new Game();
     let gsm      = new GameSaveManager(newGame)
 
