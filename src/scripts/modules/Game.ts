@@ -123,6 +123,7 @@ class Game {
                     });
                     card.strength = newStrength;
                     card.freeCards = newFreeCards;
+                    console.log('startFight with pirate and power : FIGHT_ALL_DANGER_CARDS', { dangerDeck : this.dangerDeck, strength : newStrength, freeCards : newFreeCards})
                     this.fight = new PirateFight( card );
                     break;
                     
