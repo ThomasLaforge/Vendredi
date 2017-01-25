@@ -12,7 +12,8 @@
     let gsm      = new GameSaveManager(newGame)
 
 // Game Config
-    newGame.level = 2
+    // newGame.level = 2
+    
 // Vue
     import { dangerCard }       from './Vue/dangerCard';
     import { pirateCard }       from './Vue/pirateCard';
