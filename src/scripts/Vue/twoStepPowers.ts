@@ -64,7 +64,6 @@ const twoStepPowers = {
             }
         },
         validate : function(){
-            console.log('validation...')
             if(this.isSortThreeCards){
                 this.assignedCards = this.cards
             }
@@ -76,7 +75,6 @@ const twoStepPowers = {
             this.$emit('useTwoStepPower', data)
         },
         cancel : function(){
-            console.log('annulation...')
             this.close(); 
             // this.$emit('close-two-step-powers')            
         },

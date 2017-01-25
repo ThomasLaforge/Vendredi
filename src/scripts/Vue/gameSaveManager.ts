@@ -36,7 +36,26 @@ const gameSaveManager = {
     beforeMount: function () {
         this.refreshSlots();
     },
+    created: function () {
+        window.addEventListener('keydown', this.handleKeyboardEvent)
+    },
+    beforeDestroy: function () {
+        window.removeEventListener('keydown', this.handleKeyboardEvent);
+    },
     methods: {
+        handleKeyboardEvent(e:KeyboardEvent){
+            if(e.keyCode){
+                if(e.ctrlKey && e.keyCode === 83){ // Ctrl + S
+                    this.save();
+                    e.preventDefault();
+                }
+                if(e.ctrlKey && e.keyCode === 79){ // Ctrl + O
+                    console.log('load')
+                    this.load();
+                    e.preventDefault();
+                }
+            }
+        },
         refreshSlots(){
             let res:Array<SaveSlot> = [];
             for(let i=0, len = localStorage.length; i < len; i++) {
