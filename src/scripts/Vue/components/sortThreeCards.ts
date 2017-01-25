@@ -17,19 +17,9 @@ let template = `
 let sortThreeCards = {
   template : template,
   props:['cardList'],
-  mounted : function(){
-    console.log('this.cardList', this.cardList)
-  },
   components : {
     draggable,
     playableCard
-  },
-  methods : {
-    logList(){
-        this.cardList.forEach( (card: PlayableCard) => {
-          console.log(card.strength)
-        })
-    }
   }
 };
 

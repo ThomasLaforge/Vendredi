@@ -25,7 +25,8 @@ abstract class Fight implements FightInterface {
             this.arrayFightCard.push( playableCard )
         }
         else{
-            console.log('Error : try to add undefined to Fight:arrayFightCard', playableCard)
+            // console.log('Error : try to add undefined to Fight:arrayFightCard', playableCard)
+            Error('Error : try to add undefined to Fight:arrayFightCard' + JSON.stringify(playableCard))
         }
     }
 

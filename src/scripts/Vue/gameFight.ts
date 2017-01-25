@@ -104,9 +104,6 @@ const gameFight = {
         playableCard,
         twoStepPowers,
     },
-    mounted : function(){
-        console.log('this.nextThreeCards', this.nextThreeCards)
-    },
     data : function() : { cardsToDelete : Array<PlayableCard>, twoStepPowerSelectionOpen : boolean, twoStepCard : PlayableCard, twoStepCards : Array<PlayableCard> } {
         return {
             cardsToDelete : [],
@@ -126,12 +123,24 @@ const gameFight = {
         },
         forcedToStop : function(){ return this.fight.hasStopCard() },
     },
+    created: function () {
+        window.addEventListener('keyup', this.handleKeyboardEvent)
+    },
+    beforeDestroy: function () {
+        window.removeEventListener('keyup', this.handleKeyboardEvent);
+    },
     methods : {
+        handleKeyboardEvent(e:KeyboardEvent){
+            if(e.keyCode){
+                if(e.keyCode === 13){
+                    this.pickFightCard();
+                }
+            }
+        },
         pickFightCard(){
             this.$emit('draw')            
         },
         stopFight(){
-            console.log("gameFight: stopFight")
             this.$emit('stop')
         },
         deleteCards(){

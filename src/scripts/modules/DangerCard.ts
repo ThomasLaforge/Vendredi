@@ -10,7 +10,7 @@ class DangerCard implements DangerCardInterface {
 
     // Console debug
     show() {
-        console.log('Card Danger : name => ' + this.name + ', strength => 1 : ' + this.getStrength(1) + ', 2 : ' + this.getStrength(2) + ', 3 : ' + this.getStrength(3));
+        // console.log('Card Danger : name => ' + this.name + ', strength => 1 : ' + this.getStrength(1) + ', 2 : ' + this.getStrength(2) + ', 3 : ' + this.getStrength(3));
         this.fightCard.show();
     }
 

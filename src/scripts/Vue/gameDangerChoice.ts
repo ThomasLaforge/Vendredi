@@ -32,12 +32,31 @@ const gameDangerChoice = {
         }
     },
     methods:{
+        handleKeyboardEvent(e:KeyboardEvent){
+            if(e.keyCode){
+                if(e.keyCode === 13){
+                    this.chose()
+                }
+                if(e.keyCode === 37){
+                    this.changeSelectedIndex(0)
+                }
+                if(e.keyCode === 39){
+                    this.changeSelectedIndex(1)
+                }
+            }
+        },
         changeSelectedIndex(index:number){
             this.currentSelected = index;
         },
         chose(){
             this.$emit('chose', this.currentSelected);
         }
+    },
+    created: function () {
+        window.addEventListener('keyup', this.handleKeyboardEvent)
+    },
+    beforeDestroy: function () {
+        window.removeEventListener('keyup', this.handleKeyboardEvent);
     }
 };
 
