@@ -54,7 +54,7 @@ abstract class Fight implements FightInterface {
     getRobinsonForce() {
         let robinsonForce: number = 0;
         let allPlayableCards = this.getAllCards();
-    let orderedPlayableCardsByStrength = allPlayableCards.filter( (c) => { return c.strength > 0 } ).sort( (a, b) => { return b.strength - a.strength; })
+        let orderedPlayableCardsByStrength = allPlayableCards.filter( (c) => { return c.strength > 0 } ).sort( (a, b) => { return b.strength - a.strength; })
         let powersToApplyAnswer = this.getPowersToApplyOnRobinsonForce();
         let nbCardToDouble = powersToApplyAnswer.nbCardToDouble;
         let initNbCardToDouble = nbCardToDouble;
@@ -70,6 +70,9 @@ abstract class Fight implements FightInterface {
 
                 robinsonForce += playableCard.strength;
             }
+        })
+        allPlayableCards.filter( c => { return c.strength < 0}).forEach( c => {
+            robinsonForce += c.strength;
         })
 
         return robinsonForce;
