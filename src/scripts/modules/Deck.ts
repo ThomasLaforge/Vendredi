@@ -54,7 +54,7 @@ abstract class Deck {
     
     addCardOnTop(cards:Array<any>){
         cards.forEach( card => {    
-            this.arrayDeck.unshift(cards)
+            this.arrayDeck.unshift(card)
         });
     }
 
