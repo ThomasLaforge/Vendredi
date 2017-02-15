@@ -135,6 +135,9 @@ const gameFight = {
                 if(e.keyCode === 13){
                     this.pickFightCard();
                 }
+                if(e.keyCode === 32){
+                    this.stopFight();
+                }
             }
         },
         pickFightCard(){
