@@ -11,7 +11,7 @@ let template = `
     </div>
 
     <div class="danger-choice-actions">
-        <button id="btn-action-chose-danger" 
+        <button id="btn-action-chose-danger" class="btn btn-success"
             @click="chose"
         >
             Choisir !

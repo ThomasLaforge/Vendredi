@@ -9,23 +9,22 @@ body {
     padding-bottom: 50px;
 }
 
-h1,
-.title-top {
-    text-align: center;
+.navbar-brand {
+    width: 20%;
 }
 
 .fight-card-power-used {
     outline: 1px solid green;
 }
 
-.game-info {
-    display: flex;
-    flex-direction: column;
+.game-content {
+    margin-top: 25px;
 }
 
 .game-danger-choice {
     display: flex;
     flex-direction: column;
+    height: 500px;
     .danger-choice-card-slots {
         display: flex;
         justify-content: center;
