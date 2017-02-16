@@ -1,86 +1,100 @@
 @import 'colors';
+.game-info {
+    .title-top {
+        text-align: center;
+    }
+    #pirates-list {
+        display: none;
+        // display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        .pirates-list-elt {
+            width: 50%;
+        }
+        padding-bottom: 20px;
+    }
+}
 
-.nbCard-to-extend{
-    width:40px;
+.nbCard-to-extend {
+    width: 40px;
     height: 60px;
-    border-radius:5px;
-
+    border-radius: 5px;
     line-height: 60px;
     text-align: center;
-    color:white;
+    color: white;
 }
 
-#pirates-list{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-
-    .pirates-list-elt{
-        width : 50%;
-    }
-
-    padding-bottom: 20px;
+.info-main {
+    display: inline-block;
+    width: 65%;
 }
 
-.info-main{
-    width:100%;
+.info-main-content {
+    width: 100%;
+    // display: none;
     display: flex;
     justify-content: space-between;
-
-    .info-main-elt{
-        width:20%;
-        
-        .info-main-value{
-           margin: 0 auto;
+    .info-main-elt {
+        width: 20%;
+        .info-main-value {
+            margin: 0 auto;
         }
-
-        .info-main-subject{
+        .info-main-subject {
             text-align: center;
         }
     }
 }
 
-#level{
-    color:white;
-    
-    width:60px;
+#level {
+    color: white;
+    width: 60px;
     height: 60px;
-    border-radius:5px;
-
+    border-radius: 5px;
     line-height: 60px;
     text-align: center;
 }
 
-.level-value-1{ background-color: $level-1; }
-.level-value-2{ background-color: $level-2; }
-.level-value-3{ background-color: $level-3; }
-.level-value-pirates{ background-color: $level-pirates; }
+.level-value-1 {
+    background-color: $level-1;
+}
 
-#pv{
-    width:60px;
-    height:60px;
+.level-value-2 {
+    background-color: $level-2;
+}
+
+.level-value-3 {
+    background-color: $level-3;
+}
+
+.level-value-pirates {
+    background-color: $level-pirates;
+}
+
+#pv {
+    width: 60px;
+    height: 60px;
     line-height: 60px;
     text-align: center;
-    margin:auto;
-    color:white;    
-    
-    background-image: url("../images/coeur.jpg"); 
-    background-size:     cover;                      /* <------ */
-    background-repeat:   no-repeat;
+    margin: auto;
+    color: white;
+    background-image: url("../images/coeur.jpg");
+    background-size: cover;
+    /* <------ */
+    background-repeat: no-repeat;
     background-position: center center;
 }
 
-#nbFightCards{
+#nbFightCards {
     @extend .nbCard-to-extend;
     background-color: green;
 }
 
-#nbDangerCards{
+#nbDangerCards {
     @extend .nbCard-to-extend;
     background-color: brown;
 }
 
-#nbAgingCards{
+#nbAgingCards {
     @extend .nbCard-to-extend;
     background-color: black;
 }
