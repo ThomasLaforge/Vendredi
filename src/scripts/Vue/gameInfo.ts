@@ -3,10 +3,7 @@ import { PirateCard } from '../modules/PirateCard'
 import { discard } from './discard'
 
 let template = `
-<div class="game-info navbar navbar-inverse bg-inverse top-fixed">
-    <div class="container">
-        <h1 class="navbar-brand">Vendredi</h1>
-
+    <div>
         <div id="pirates-list">
             <div class="pirates-list-elt" v-for="pirate in pirateList">
                 <pirate-card :pirate="pirate" />
