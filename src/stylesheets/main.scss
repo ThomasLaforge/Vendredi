@@ -3,10 +3,12 @@
 @import "colors";
 @import "gameover";
 @import "modal";
-body {
+html, body {
     box-sizing: border-box !important;
     // background-color: rgba(black, 0.5) !important;
     padding-bottom: 50px;
+    height: 100%;
+    overflow: hidden;
 }
 
 .navbar-brand {

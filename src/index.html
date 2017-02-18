@@ -6,11 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Vendredi</title>
-    <link rel="stylesheet" href="libs/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <!--<link rel="stylesheet" href="libs/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="libs/css/vue-material.css">
     <link rel="stylesheet" href="stylesheets/main.css">
 </head>
 
-<body class="bg-inverse">
+<body class="md-theme-green">
     <!--[if lt IE 8]>
     <p class="browsehappy">
       You are using an <strong>outdated</strong> browser.
@@ -18,31 +21,42 @@
       to improve your experience.
     </p><![endif]-->
     <div id="app">
-        <div class="game-info navbar navbar-inverse bg-success top-fixed">
-            <div class="container">
-                <h1 class="navbar-brand">Vendredi</h1>
+        <md-toolbar>
+            <md-button class="md-icon-button">
+                <md-icon>menu</md-icon>
+            </md-button>
+
+            <h1 class="md-title" style="flex:1">Vendredi</h1>
+            
+            <md-button class="md-icon-button">
+                <md-icon>favorite</md-icon>
+            </md-button>
+        </md-toolbar>
+
+        <md-layout md-gutter>
+            <md-layout md-flex="100">
                 <game-info :game="game"></game-info>
-            </div>
-        </div>
+            </md-layout>
+            <md-layout md-flex="100">
+                <game-over v-if="game.isGameOver()" :player-name="game.robinson.pseudo"></game-over>
+                <div v-if="game.isWon()">C'est gagné !</div>
 
-        <div class="container game-content">
-            <game-over v-if="game.isGameOver()" :player-name="game.robinson.pseudo"></game-over>
-            <div v-if="game.isWon()">C'est gagné !</div>
+                <game-danger-choice v-if="( !game.fight && !game.isGameOver() && !game.isWon() )" :danger-choice="game.dangerChoiceCards" @chose="startFight"></game-danger-choice>
 
-            <game-danger-choice v-if="( !game.fight && !game.isGameOver() && !game.isWon() )" :danger-choice="game.dangerChoiceCards" @chose="startFight"></game-danger-choice>
+                <game-fight v-if="(game.fight && !game.isGameOver() && !game.isWon() )" :fight="game.fight" :next-three-cards="game.getThreeFisrtFightCards()" @stop="stopFight" @draw="addCardToFight" @fight-closed="endFightLost" @use-power="useMyPower" @use-two-step-power="useTwoStepPower"></game-fight>
 
-            <game-fight v-if="(game.fight && !game.isGameOver() && !game.isWon() )" :fight="game.fight" :next-three-cards="game.getThreeFisrtFightCards()" @stop="stopFight" @draw="addCardToFight" @fight-closed="endFightLost" @use-power="useMyPower" @use-two-step-power="useTwoStepPower"></game-fight>
+                <hr>
 
-            <hr>
-
-            <game-save-manager @save="save" @load="load"></game-save-manager>
-        </div>
+                <game-save-manager @save="save" @load="load"></game-save-manager>
+            </md-layout>
+        </md-layout>
     </div>
 
     <!-- - - - - - - - -->
     <!--    Scripts    -->
     <!-- - - - - - - - -->
     <script src="libs/js/vue.js"></script>
+    <script src="libs/js/vue-material.debug.js"></script>
     <script src="scripts/app.js"></script>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.-->
     <!--<script>

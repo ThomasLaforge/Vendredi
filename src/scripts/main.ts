@@ -24,7 +24,16 @@
     import { gameOver }         from './Vue/gameOver';
     import { gameSaveManager } from './Vue/gameSaveManager';
     import { sortThreeCards } from './Vue/components/sortThreeCards';
+
 // Main
+Vue.use(VueMaterial)
+
+Vue.material.registerTheme('default', {
+  primary: 'blue',
+//   warn: 'red',
+//   background: 'black'
+})
+// Vue.material.setCurrentTheme('about')
 
 let app = new Vue({
     el: '#app',
