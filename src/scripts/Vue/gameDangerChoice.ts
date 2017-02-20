@@ -11,11 +11,9 @@ let template = `
     </div>
 
     <div class="danger-choice-actions">
-        <button id="btn-action-chose-danger" class="btn btn-success"
-            @click="chose"
-        >
+        <md-button class="md-raised md-primary" id="btn-action-chose-danger" @click.native="chose">
             Choisir !
-        </button>
+        </md-button>
     </div>
 </div>
 `

@@ -47,7 +47,7 @@ class DangerCard implements DangerCardInterface {
                     default: throw new Error(this.constructor.name + ' => getStrength(THIRD_ROUND) with freeCards ' + (this.freeCards > 5 ? '> 5' : '< 1') );
 
                 }
-            default: throw new Error(this.constructor.name + ' => getStrength(NOT_VALID_ROUND)');
+            default: throw new Error(this.constructor.name + ' => getStrength(NOT_VALID_ROUND) level=' + lvl);
         }
     }
 

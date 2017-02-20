@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Vendredi</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
@@ -13,7 +14,7 @@
     <link rel="stylesheet" href="stylesheets/main.css">
 </head>
 
-<body class="md-theme-green">
+<body>
     <!--[if lt IE 8]>
     <p class="browsehappy">
       You are using an <strong>outdated</strong> browser.
@@ -22,34 +23,48 @@
     </p><![endif]-->
     <div id="app">
         <md-toolbar>
-            <md-button class="md-icon-button">
-                <md-icon>menu</md-icon>
-            </md-button>
+            <div class="md-toolbar-container">
+                <md-button class="md-icon-button">
+                    <md-icon>menu</md-icon>
+                </md-button>
 
-            <h1 class="md-title" style="flex:1">Vendredi</h1>
+                <h1 class="md-title" style="flex:1">Vendredi</h1>
+
+                <!--<div id="nbFightCards" class="info-main-value" title="Fight cards">{{ game.fightDeck.length() }}</div>
+
+                <div id="nbDangerCards" class='info-main-value' title="Danger cards">{{ game.dangerDeck.length() }}</div>
+                
+                <div id="nbAgingCards" title="Aging cards" class="info-main-value">{{ game.agingDeck.length() }}</div>
+                -->
+                <!--<md-icon class="md-size-2x">delete</md-icon>                -->
+
+                <md-button class="md-icon-button">
+                    <md-icon class="md-size-2x" :class="game.level < 3 ? 'level-value-' + (game.level + 1) : 'level-value-pirates'">flag</md-icon>
+                </md-button>
+
+                <div class="pv">
+                    <md-icon class="md-size-2x md-accent">favorite</md-icon>
+                    <div class="pv-value">{{game.robinson.PV}}</div>
+                </div>
+            </div>
             
-            <md-button class="md-icon-button">
-                <md-icon>favorite</md-icon>
-            </md-button>
         </md-toolbar>
 
-        <md-layout md-gutter>
-            <md-layout md-flex="100">
-                <game-info :game="game"></game-info>
-            </md-layout>
-            <md-layout md-flex="100">
-                <game-over v-if="game.isGameOver()" :player-name="game.robinson.pseudo"></game-over>
-                <div v-if="game.isWon()">C'est gagné !</div>
+        <game-info :game="game"></game-info>
 
-                <game-danger-choice v-if="( !game.fight && !game.isGameOver() && !game.isWon() )" :danger-choice="game.dangerChoiceCards" @chose="startFight"></game-danger-choice>
+        <hr>
 
-                <game-fight v-if="(game.fight && !game.isGameOver() && !game.isWon() )" :fight="game.fight" :next-three-cards="game.getThreeFisrtFightCards()" @stop="stopFight" @draw="addCardToFight" @fight-closed="endFightLost" @use-power="useMyPower" @use-two-step-power="useTwoStepPower"></game-fight>
+        <md-layout md-flex="100" class="router">
+            <game-over v-if="game.isGameOver()" :player-name="game.robinson.pseudo"></game-over>
+            <div v-if="game.isWon()">C'est gagné !</div>
 
-                <hr>
+            <game-danger-choice v-if="( !game.fight && !game.isGameOver() && !game.isWon() )" :danger-choice="game.dangerChoiceCards" @chose="startFight"></game-danger-choice>
 
-                <game-save-manager @save="save" @load="load"></game-save-manager>
-            </md-layout>
+            <game-fight v-if="(game.fight && !game.isGameOver() && !game.isWon() )" :fight="game.fight" :next-three-cards="game.getThreeFisrtFightCards()" @stop="stopFight" @draw="addCardToFight" @fight-closed="endFightLost" @use-power="useMyPower" @use-two-step-power="useTwoStepPower"></game-fight>
         </md-layout>
+        <!--<md-layout md-flex="100">            
+            <game-save-manager @save="save" @load="load"></game-save-manager>
+        </md-layout>-->
     </div>
 
     <!-- - - - - - - - -->

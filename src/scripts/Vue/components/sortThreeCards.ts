@@ -10,7 +10,7 @@ let template = `
     <draggable :list="cardList">
         <playable-card v-for="card in cardList" :card="card" />
     </draggable>
-    <button @click="logList">Log the list</button>
+    <md-button class="md-raised" @click="logList">Log the list</md-button>
 </div>
 `;
 
