@@ -24,6 +24,7 @@
     import { gameOver }         from './Vue/gameOver';
     import { gameSaveManager } from './Vue/gameSaveManager';
     import { sortThreeCards } from './Vue/components/sortThreeCards';
+    import { modal } from './Vue/components/modal';
 
 // Main
 Vue.use(VueMaterial)
@@ -42,18 +43,22 @@ let app = new Vue({
             gamesavemanager : gsm,
             initialgame : gsm.game,
             testingHistory : true,
+            piratesOpen: false
         }
     },
     computed: {
         gsm : function() { return this.gamesavemanager }, 
-        game : function() { return this.gsm.game }, 
+        game : function() { return this.gsm.game },
+        pirateList : function(){ return this.game.getListOfPirateToFight() }
     },
     components:{
         gameInfo,
         gameDangerChoice,
         gameFight,
         gameOver,
-        gameSaveManager
+        gameSaveManager,
+        pirateCard,
+        modal
     },
     methods: {
         addCardToFight(){
@@ -79,6 +84,12 @@ let app = new Vue({
         },
         load(slotName:null|string){
             this.gsm.load(slotName)
+        },
+        showPirates(){
+            this.piratesOpen = true
+        },
+        closePirates(){
+            this.piratesOpen = false
         }
     }
 })

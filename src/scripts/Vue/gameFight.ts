@@ -39,38 +39,37 @@ let template = `
             </div>
 
             <div class="fight-danger-actions">
-                <button 
-                    class="fight-danger-action" id="btn-pick-fight-card" 
-                    @click="pickFightCard" 
+                <md-button 
+                    class="md-primary md-dense md-raised fight-danger-action" id="btn-pick-fight-card" 
+                    @click.native="pickFightCard" 
                     v-if="( !fight.finished && !forcedToStop )"
                 >
-                    Piocher ( {{this.fight.freeCards > 0 ? 'encore ' + this.fight.freeCards : 'contre ' + this.fight.costOfCardsNotFree + ' PV'}} )
-                </button>
+                    Piocher ( {{this.fight.freeCards > 0 ? this.fight.freeCards : this.fight.costOfCardsNotFree + ' PV'}} )
+                </md-button>
                 
-                <button 
-                    class="fight-danger-action" id="btn-stop-fight" 
-                    @click="stopFight" 
+                <md-button 
+                    class="md-primary md-dense md-raised fight-danger-action" id="btn-stop-fight" 
+                    @click.native="stopFight" 
                     v-if="(!fight.finished)"
                 >
                     Stop
-                </button>
+                </md-button>
                 
-                <button 
-                    class="fight-danger-action" id="btn-delete-fight-cards" 
-                    @click="deleteCards" 
+                <md-button 
+                    class="md-primary md-dense md-raised fight-danger-action" id="btn-delete-fight-cards" 
+                    @click.native="deleteCards" 
                     v-if="fight.finished"
-                    :disabled="cardsToDelete.length === 0"
                 >
                     Delete Card(s)
-                </button>
+                </md-button>
                 
-                <button 
-                    class="fight-danger-action" id="btn-dont-delete-fight-cards" 
-                    @click="dontDelete" 
+                <md-button 
+                    class="md-primary md-dense md-raised fight-danger-action" id="btn-dont-delete-fight-cards" 
+                    @click.native="dontDelete" 
                     v-if="fight.finished"
                 >
                     Keep all
-                </button>
+                </md-button>
             </div>
         </div>
 
@@ -147,7 +146,9 @@ const gameFight = {
             this.$emit('stop')
         },
         deleteCards(){
-            this.$emit('fight-closed', this.cardsToDelete.slice())
+            if(this.cardsToDelete.length > 0) {
+                this.$emit('fight-closed', this.cardsToDelete.slice())
+            }
         },
         dontDelete(){
             this.$emit('fight-closed', [])            
