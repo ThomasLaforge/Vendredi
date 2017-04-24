@@ -3,8 +3,10 @@
 @import "colors";
 @import "gameover";
 @import "modal";
-html, body, #app {
+html, body, #app, * {
     box-sizing: border-box !important;
+}
+html, body, #app {
     background-color: rgba(black, 0.42) !important;
     height: 100%;
     overflow: hidden;
@@ -59,7 +61,6 @@ html, body, #app {
         margin: 20px auto;
     }
     .fight-player-interface {
-        margin-top: 30px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -67,14 +68,16 @@ html, body, #app {
         .fight-danger-fight-cards-used {
             display: flex;
             flex-direction: column;
-            width: 38%;
+            width: 20%;
+            max-height: 100%;
+            padding-bottom: 40px;
         }
         .fight-result-info-and-actions {
-            width: 20%;
+            width: 40%;
             text-align: center;
             #fight-danger-temporary-result {
                 font-weight: bold;
-                font-size: 20px;
+                font-size: 25px;
             }
             .fight-danger-temporary-result-success {
                 color: $success;

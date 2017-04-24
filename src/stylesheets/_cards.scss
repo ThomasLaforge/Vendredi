@@ -1,9 +1,9 @@
 @import 'colors';
 // Pirates
-$heightPirateCard: 200px;
-$heightPirateCardMission: 40px;
+$heightPirateCard: 180px;
+$heightPirateCardMission: 30px;
 .pirate-card {
-    width: 350px;
+    width: 275px;
     height: $heightPirateCard;
     border: 5px solid rgba(gray, 0.15);
     border-radius: 5px;
@@ -47,7 +47,6 @@ $heightPirateCardMission: 40px;
         }
     }
     .pirate-card-mission {
-        height: $heightPirateCardMission;
         line-height: $heightPirateCardMission;
         text-align: center;
         font-style: italic;
@@ -58,7 +57,8 @@ $heightPirateCardMission: 40px;
 
 // Aging
 .aging-card {
-    border: 1px orange solid;
+    background-color: white;    
+    border: 3px orange solid;
     display: flex;
     .fight-card-strength {
         width: 30%;
@@ -71,8 +71,9 @@ $heightPirateCardMission: 40px;
 
 // Fight
 .fight-card {
-    border: 1px lightgreen solid;
+    background-color: white;
     display: flex;
+    margin-bottom: 1px;
     .fight-card-strength {
         width: 30%;
         text-align: center;
@@ -83,8 +84,10 @@ $heightPirateCardMission: 40px;
 }
 
 .fight-danger-fight-cards {
+    overflow-y: auto;
+
     .fight-card {
-        border: 1px lightblue solid;
+        border: 3px lightblue solid;
         flex-direction: row-reverse;
         .figth-card-power-bonus {
             color: lightblue;
@@ -94,7 +97,7 @@ $heightPirateCardMission: 40px;
         }
     }
     .aging-card {
-        border: 1px orange solid;
+        border: 3px orange solid;
         flex-direction: row-reverse;
         .figth-card-power-bonus {
             color: lightblue;
@@ -128,7 +131,6 @@ $heightPirateCardMission: 40px;
         background-repeat: no-repeat;
         background-position: center center;
         .card-danger-name {
-            height: 20px;
             line-height: 20px;
             width: 90%;
             margin: 0 auto;
@@ -141,7 +143,6 @@ $heightPirateCardMission: 40px;
             align-items: flex-end;
             .card-danger-strength {
                 .card-danger-strength-lvl {
-                    height: 25px;
                     line-height: 25px;
                     width: 25px;
                     margin-bottom: 5px;
@@ -162,7 +163,6 @@ $heightPirateCardMission: 40px;
             }
             .card-danger-freecards {
                 width: 30px;
-                height: 30px;
                 line-height: 30px;
                 background-color: rgba(#FFFFFF, 0.7);
                 text-align: center;
@@ -201,7 +201,6 @@ $heightPirateCardMission: 40px;
                 margin-top: 5px;
                 font-weight: bold;
                 width: 30px;
-                height: 30px;
                 line-height: 30px;
                 background-color: rgba(#FFFFFF, 0.7);
                 font-size: 20px;
@@ -212,13 +211,12 @@ $heightPirateCardMission: 40px;
                 width: 50%;
                 text-align: center;
                 margin-left: -5px;
-                height: 20px;
+                margin: auto;
                 line-height: 20px;
                 background-color: rgba(#FFFFFF, 0.7);
             }
             .card-danger-fight-destroycost {
                 width: 20px;
-                height: 20px;
                 line-height: 20px;
                 text-align: center;
                 margin-right: 10px;
@@ -236,6 +234,20 @@ $heightPirateCardMission: 40px;
             margin: 0 auto;
             color: blue;
         }
+    }
+}
+
+.fight-danger-card-to-fight .card-danger{
+    display: flex;
+    width:325px;
+    height:150px; 
+    .bambou-separation, .card-danger-fight-definition, .danger-card-definition {
+        height: 100%;
+        width:49%;
+    }
+
+    .bambou-separation{
+        width: 2%;
     }
 }
 
