@@ -64,6 +64,9 @@ html, body, #app {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        .fight-danger-infos{
+            color: white;
+        }
         .fight-danger-fight-cards,
         .fight-danger-fight-cards-used {
             display: flex;

@@ -78,6 +78,18 @@ Recréer le projet en Vue js
 
 -----------------------------------------------------------------------------------------
 
+Recréer le projet React ?
+   - installer VueJs
+   - implémenter les templates
+   - créer les templates
+   - implémenter les components
+   - replace let by const on components definitions
+   - exports components in module on directory : /scripts/Vue (change gulpfile/or not)
+   - refactor templates in index.html
+   - test one file components in vue (change gulpfile)
+
+-----------------------------------------------------------------------------------------
+
 Implémenter les capacités des cartes Robinson, des cartes de Vieillissement et des pirates
 
     Fight Cards: 
