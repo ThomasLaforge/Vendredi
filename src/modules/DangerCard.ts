@@ -4,6 +4,14 @@ import { Card } from './Card';
 import { PlayableCard } from './PlayableCard';
 import { DangerCardInterface, FightCardInterface, GameLevel } from './Vendredi';
 
+// Notes:
+//  A partir du nombre de cartes à piocher, il est possible de connaitre la force nécessaire pour chaque niveau:
+//  - freeCards == 1 : lvl1 => 0, lvl2 => 1, lvl3 => 3
+//  - freeCards == 2 : lvl1 => 1, lvl2 => 3, lvl3 => 6
+//  - freeCards == 3 : lvl1 => 2, lvl2 => 5, lvl3 => 8
+//  - freeCards == 4 : lvl1 => 4, lvl2 => 7, lvl3 => 11
+//  - freeCards == 5 : lvl1 => 5, lvl2 => 9, lvl3 => 14
+
 class DangerCard implements DangerCardInterface {
 
     constructor(readonly fightCard: FightCard, readonly name: string, readonly freeCards: number) { }

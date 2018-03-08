@@ -1,9 +1,33 @@
-/node_modules/
-.sass-cache
-bower_components
-.idea
-npm-debug.log
-/dist/
-typings/*
-!typings/ext.d.ts
-*.orig
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+#scans
+src/assets/scans/*.jpg
+src/assets/scans/*.png
+public/img/auto_split_cards/
+src/assets/scans/tests/

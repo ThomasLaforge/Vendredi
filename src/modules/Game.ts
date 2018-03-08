@@ -19,7 +19,7 @@
     import * as _ from 'lodash'
 // -------
 
-class Game {
+export class Game {
 
 	constructor( 
             private _robinson : Robinson = new Robinson(), 
@@ -377,6 +377,10 @@ class Game {
         this.fightDeck.switchFirstCards(cards)
     }
 
+    getDeckScore(){
+        return 0
+    }
+
 //Region : Getters / Setters
     get robinson(){
         return this._robinson;
@@ -459,5 +463,3 @@ class Game {
 //--------------------------
 
 }
-
-export { Game }

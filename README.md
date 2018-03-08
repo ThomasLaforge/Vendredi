@@ -2,10 +2,10 @@
 Web implementation of board game Friday
 
 
-npm install && bower install
+yarn install
 
 
-Then execute gulp serve to compile the app
+Then execute yarn start to compile the app
 
 
 You can contact me for any question about the project
