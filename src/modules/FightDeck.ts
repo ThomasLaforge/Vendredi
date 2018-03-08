@@ -6,7 +6,7 @@ import { jsonDataFight, FightCardPower } from './Vendredi';
 
 class FightDeck extends PlayableDeck {
 	constructor(arrayCard?:Array<PlayableCard>, arrayDiscard?:Array<PlayableCard>){
-        super(arrayCard,arrayDiscard);
+        super(arrayCard, arrayDiscard);
 	}
 
     initDeck(){

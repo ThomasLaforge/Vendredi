@@ -1,5 +1,4 @@
 [
-    // Difficiles (level == 2)
 	{
 		"name" :"Affamé",
 		"power":"-2PV",
@@ -21,7 +20,6 @@
 		"level":2,
 		"number":1
 	},
-    // Normales (level == 1)
 	{
 		"name" :"A faim",
 		"power":"-1PV",

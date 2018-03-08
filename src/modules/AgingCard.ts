@@ -2,7 +2,7 @@ import { PlayableCard } from './PlayableCard';
 import { Tools } from './Tools';
 import { AgingCardInterface, AgingCardPower, AgingLevel, InitialStateInterface } from './Vendredi'
 
-class AgingCard extends PlayableCard implements AgingCardInterface{
+class AgingCard extends PlayableCard implements AgingCardInterface {
 
     constructor(
             name:string, 

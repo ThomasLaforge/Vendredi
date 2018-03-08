@@ -32,7 +32,7 @@ class GameSaveManager {
 
     save() : string {
         let stateToSave : string;
-        this._game.lastChangeDate = Date.now();
+        // this._game.lastChangeDate = Date.now();
         stateToSave = JSON.stringify(_.clone(this._game));
         try {
             localStorage.setItem(config.SAVE_SLOT_DEFAULT_NAME, stateToSave);
@@ -45,7 +45,7 @@ class GameSaveManager {
         return stateToSave;
     }
 
-    load(gameSlotName? : string) : Game {
+    load(gameSlotName? : string) : void {
         let slotName = gameSlotName ? gameSlotName : config.SAVE_SLOT_DEFAULT_NAME;
         let gameSaveStateJson = localStorage.getItem(gameSlotName);
         // console.log('loading game state', gameSaveStateJson);
@@ -182,24 +182,25 @@ class GameSaveManager {
             })
         }
 
-        let newGame = new Game(
-                        p, 
-                        state._difficulty, 
-                        new FightDeck(fightDeck, fightDiscard), 
-                        new DangerDeck(dangerDeck, dangerDiscard), 
-                        new AgingDeck(state._difficulty, agingDeck, agingDiscard), 
-                        new PirateDeck(pirateDeck, pirateDiscard),
-                        state._gameOver,
-                        state._level, 
-                        arrayOfRemovedCards, 
-                        fight, 
-                        dangerChoiceCards, 
-                        state._nbPiratesToFight,
-                        state._startDate,
-                        state._lastChangeDate
-                    );
+        // let newGame = new Game(
+        //                 p, 
+        //                 state._difficulty, 
+        //                 new FightDeck(fightDeck, fightDiscard), 
+        //                 new DangerDeck(dangerDeck, dangerDiscard), 
+        //                 new AgingDeck(state._difficulty, agingDeck, agingDiscard), 
+        //                 new PirateDeck(pirateDeck, pirateDiscard),
+        //                 state._gameOver,
+        //                 state._level, 
+        //                 arrayOfRemovedCards, 
+        //                 fight, 
+        //                 dangerChoiceCards, 
+        //                 state._nbPiratesToFight,
+        //                 state._startDate,
+        //                 state._lastChangeDate
+        //             );
 
-        this.game = newGame;
+        // this.game = newGame;
+        this.game = new Game()
         
     }
 
@@ -217,6 +218,9 @@ class GameSaveManager {
                 return localStorage.getItem('save');
             case GameStateAction.UNDO:
                 return localStorage.getItem('save');
+            default:
+                console.log('no game state action so....')
+                return localStorage.getItem('save'); 
         }
     }
 
