@@ -35,6 +35,10 @@ abstract class PlayableCard extends Card implements PlayableCardInterface {
         this.power = this.initialState.power;
         return this
     }
+
+    get powerName(){
+        return Tools.getFightPowerName(this.power)
+    }
 }
 
 export { PlayableCard }

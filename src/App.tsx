@@ -6,6 +6,7 @@ import DevTools from 'mobx-react-devtools';
 import { Store } from './modules/Store'
 
 import Game from './components/Game';
+import CardSelectorTrainer from './components/CardSelectorTrainer';
 import './styles/main.scss';
 
 @observer
@@ -22,8 +23,8 @@ class App extends React.Component<{}, { store: Store} > {
     return (
       <Provider store={this.state.store} >
           <div className="App">
-            <Game />
-            {/* <CardSelectorTrainer /> */}
+            {/* <Game /> */}
+            <CardSelectorTrainer />
           </div>
       </Provider>
     );

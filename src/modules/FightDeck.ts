@@ -11,7 +11,7 @@ class FightDeck extends PlayableDeck {
 
     initDeck(){
         let arrRes:Array<FightCard> = [];
-        let arrDatas = require('../../datas/fight_cards.json');
+        let arrDatas = require('../datas/fight_cards.json');
         arrDatas.forEach( (obj:jsonDataFight) => {
             let number = obj.number;
             let power = obj.power ? Tools.getFightPowerFromString(obj.power) : null;

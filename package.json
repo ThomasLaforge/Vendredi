@@ -9,6 +9,8 @@
     "@types/node-uuid": "^0.0.28",
     "brain.js": "^1.1.2",
     "lodash": "^4.17.5",
+    "material-ui": "^1.0.0-beta.36",
+    "material-ui-icons": "^1.0.0-beta.36",
     "mobx": "^3.3.3",
     "mobx-react": "^4.3.5",
     "moment": "^2.21.0",

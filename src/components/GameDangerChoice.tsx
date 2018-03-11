@@ -1,61 +1,90 @@
-import { dangerCard } from './dangerCard'
+import * as React from 'react';
+import {observer, inject} from 'mobx-react';
+import { DefaultProps, injector } from '../lib/mobxInjector'
 
-let template = `
-<div class="game-danger-choice" id="zone-danger-choice">
-    <div class="danger-choice-card-slots" id="danger-choice-card-slots">
-        <danger-card v-for="(danger, index) in dangerChoice"
-            :danger="danger" 
-            :selected="index === currentSelected ? true : false" 
-            @select="changeSelectedIndex(index)" 
-        />
-    </div>
+import {DangerCard as DangerCardModel} from '../modules/DangerCard'
 
-    <div class="danger-choice-actions">
-        <md-button class="md-raised md-primary" id="btn-action-chose-danger" @click.native="chose">
-            Choisir !
-        </md-button>
-    </div>
-</div>
-`
+import DangerCard from './DangerCard'
+import Button from 'material-ui/Button';
 
-const gameDangerChoice = {
-    props : ['dangerChoice'],
-    template : template,
-    components:{
-        dangerCard
-    },
-    data : function() {
-        return {
-            currentSelected : 0
-        }
-    },
-    methods:{
-        handleKeyboardEvent(e:KeyboardEvent){
-            if(e.keyCode){
-                if(e.keyCode === 13){
-                    this.chose()
-                }
-                if(e.keyCode === 37){
-                    this.changeSelectedIndex(0)
-                }
-                if(e.keyCode === 39){
-                    this.changeSelectedIndex(1)
-                }
-            }
-        },
-        changeSelectedIndex(index:number){
-            this.currentSelected = index;
-        },
-        chose(){
-            this.$emit('chose', this.currentSelected);
-        }
-    },
-    created: function () {
-        window.addEventListener('keyup', this.handleKeyboardEvent)
-    },
-    beforeDestroy: function () {
-        window.removeEventListener('keyup', this.handleKeyboardEvent);
+interface GameDangerChoiceProps extends DefaultProps {
+    dangers: DangerCardModel[];
+}
+
+interface GameDangerChoiceState {
+    currentSelected: number;
+}
+
+@inject(injector)
+@observer
+export default class GameDangerChoice extends React.Component<GameDangerChoiceProps, GameDangerChoiceState> {
+    constructor(props: GameDangerChoiceProps) {
+        super(props);
+        this.state = {
+            currentSelected : 0            
+        };
     }
-};
 
-export { gameDangerChoice }
+    changeSelectedIndex(index){
+        if(index !== this.state.currentSelected){
+            this.setState({ currentSelected: index })
+        }
+    }
+
+    chose = () => {
+
+    }
+
+    //         handleKeyboardEvent(e:KeyboardEvent){
+//             if(e.keyCode){
+//                 if(e.keyCode === 13){
+//                     this.chose()
+//                 }
+//                 if(e.keyCode === 37){
+//                     this.changeSelectedIndex(0)
+//                 }
+//                 if(e.keyCode === 39){
+//                     this.changeSelectedIndex(1)
+//                 }
+//             }
+//         },
+//         changeSelectedIndex(index:number){
+//             this.currentSelected = index;
+//         },
+//         chose(){
+//             this.$emit('chose', this.currentSelected);
+//         }
+//     },
+//     created: function () {
+//         window.addEventListener('keyup', this.handleKeyboardEvent)
+//     },
+//     beforeDestroy: function () {
+//         window.removeEventListener('keyup', this.handleKeyboardEvent);
+//     }
+
+    renderDangers(){
+        return this.props.dangers.map( (d, i) => 
+            <DangerCard
+                danger={d}
+                selected={i === this.state.currentSelected} 
+                select={() => this.changeSelectedIndex(i)} 
+            />
+        )
+    }
+
+    render() {
+        return <div className="game-danger-choice" id="zone-danger-choice">
+            <div className="danger-choice-card-slots" id="danger-choice-card-slots">
+                {this.renderDangers()}
+            </div>
+
+            <div className="danger-choice-actions">
+                <Button className="md-raised md-primary" id="btn-action-chose-danger"
+                    onClick={() => this.chose()}
+                >
+                    Choisir !
+                </Button>
+            </div>
+        </div>
+    }
+}

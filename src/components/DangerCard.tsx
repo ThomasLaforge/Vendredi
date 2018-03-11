@@ -1,56 +1,51 @@
+import * as React from 'react';
+
 import { GameLevel } from '../modules/Vendredi'
+import {DangerCard as DangerCardModel} from '../modules/DangerCard'
 
-let template = `
-    <div class="card-slot card-danger" :class="selected === true ? 'danger-card-selected' : '' " @click="select">
-        <!-- danger definition -->
-        <div class="danger-card-definition">
-            <div class="card-danger-name">{{danger.name}}</div>
-            <div class="card-danger-details">
-                <div class="card-danger-freecards">{{danger.freeCards}}</div>
-                <div class="card-danger-strength">
-                    <div class="card-danger-strength-lvl card-danger-strength-3">{{danger.getStrength(thirdLevel)}}</div>
-                    <div class="card-danger-strength-lvl card-danger-strength-2">{{danger.getStrength(secondeLevel)}}</div>
-                    <div class="card-danger-strength-lvl card-danger-strength-1">{{danger.getStrength(firstLevel)}}</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="bambou-separation"></div>
-        <!-- fight definition -->
-        <div class="card-danger-fight-definition">
-            <div class="card-danger-fight-main-info">
-                <div class="card-danger-fight-strength">{{danger.fightCard.strength}}</div>
-                <div class="card-danger-fight-name">{{danger.fightCard.name}}</div>
-                <div class="card-danger-fight-destroycost">{{danger.fightCard.costToDelete}}</div>
-            </div>
-            <div class="card-danger-fight-power">{{danger.fightCard.power || danger.fightCard.power === 0 ? danger.powerName : '...'}}</div>
-        </div>
-    </div>
-`;
-
-const dangerCard = {
-    template: template,
-    props : {
-        danger : {
-            type : Object
-        },
-        selected : {
-            type : Boolean,
-            default : () => { return false }
-        }
-    },
-    data : () => {
-        return {
-            firstLevel : GameLevel.FIRST_ROUND,
-            secondeLevel : GameLevel.SECONDE_ROUND,
-            thirdLevel : GameLevel.THIRD_ROUND,
-        }
-    },
-    methods: {
-        select(){
-            this.$emit('select', this.index);
-        }
-    }
+interface DangerCardProps {
+    danger: DangerCardModel;
+    selected: boolean;
+    select: Function;
 }
 
-export { dangerCard }
+export default class DangerCard extends React.Component<DangerCardProps> {
+    constructor(props: DangerCardProps) {
+        super(props);
+        this.state = {
+        };
+    }
+
+    onSelect = () => {
+        this.props.select()
+    }
+
+    render() {
+        let danger = this.props.danger
+
+        return <div className={'card-slot card-danger' + this.props.selected ? ' danger-card-selected' : ''} onClick={() => this.onSelect()}>
+                <div className="danger-card-definition">
+                    <div className="card-danger-name">{danger.name}</div>
+                    <div className="card-danger-details">
+                        <div className="card-danger-freecards">{danger.freeCards}</div>
+                        <div className="card-danger-strength">
+                            <div className="card-danger-strength-lvl card-danger-strength-3">{danger.getStrength(GameLevel.THIRD_ROUND)}</div>
+                            <div className="card-danger-strength-lvl card-danger-strength-2">{danger.getStrength(GameLevel.SECONDE_ROUND)}</div>
+                            <div className="card-danger-strength-lvl card-danger-strength-1">{danger.getStrength(GameLevel.FIRST_ROUND)}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="bambou-separation"></div>
+
+                <div className="card-danger-fight-definition">
+                    <div className="card-danger-fight-main-info">
+                        <div className="card-danger-fight-strength">{danger.fightCard.strength}</div>
+                        <div className="card-danger-fight-name">{danger.fightCard.name}</div>
+                        <div className="card-danger-fight-destroycost">{danger.fightCard.costToDelete}</div>
+                    </div>
+                    <div className="card-danger-fight-power">{danger.fightCard.power || danger.fightCard.power === 0 ? danger.powerName : '...'}</div>
+                </div>
+            </div>
+    }
+}

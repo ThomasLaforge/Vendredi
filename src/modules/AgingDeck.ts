@@ -20,7 +20,7 @@ class AgingDeck extends PlayableDeck{
 
     initDeck(){
         let arrRes : Array<AgingCard> = [];
-        let arrDatas = require( '../../datas/aging_cards.json' );
+        let arrDatas = require( '../datas/aging_cards.json' );
         arrDatas.forEach( (obj: jsonDataAging) => {
             let number = obj.number;
             let power = obj.power ? Tools.getAgingPowerFromString(obj.power) : null;

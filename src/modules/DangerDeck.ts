@@ -11,7 +11,7 @@ class DangerDeck extends Deck {
 
     initDeck(){
         let arrRes:Array<DangerCard> = [];
-        let arrDatas = require('../../datas/dangers_cards.json');
+        let arrDatas = require('../datas/dangers_cards.json');
         arrDatas.forEach( (jsonData:jsonDataDanger) => {
             let number = jsonData.number;
             for ( let i=0; i<number; i++ ) {
