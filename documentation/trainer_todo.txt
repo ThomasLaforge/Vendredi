@@ -1,0 +1,13 @@
+Définition du problème:
+    Le but premier est d'en apprendre un peu plus sur différentes techniques de machine learning, quitte à passer par des pistes non optimisées ou inutiles pour apprendre plus.
+    Le but final est tout de même de trouver une solution automatique avec un indice de performance interressant (supérieur
+
+Jeux équivalent à observer:
+    - 10000
+    - yams
+
+Faible champs d'exploration des solutions:
+    On ne connait pas la totalité des répercutions de nos choix.
+    On ne connait que de façon probabiliste, les cartes que l'ont peut être amené à piocher (cartes danger / cartes de combat)
+
+Calcul de score
