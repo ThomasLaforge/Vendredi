@@ -63,7 +63,7 @@ export default class GameInfo extends React.Component<GameInfoProps, GameInfoSta
     constructor(props: GameInfoProps) {
         super(props);
         this.state = {
-            currentSelected : 0            
+            currentSelected : 0
         };
     }
 
