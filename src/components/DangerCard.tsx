@@ -5,8 +5,8 @@ import {DangerCard as DangerCardModel} from '../modules/DangerCard'
 
 interface DangerCardProps {
     danger: DangerCardModel;
-    selected: boolean;
-    select: Function;
+    selected?: boolean;
+    select?: Function;
 }
 
 export default class DangerCard extends React.Component<DangerCardProps> {

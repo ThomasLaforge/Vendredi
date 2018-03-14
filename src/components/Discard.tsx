@@ -1,38 +1,49 @@
-// // import { playableCard } from './playableCard'
-// import { dangerCard } from './dangerCard'
-// import { modal } from './components/modal'
+import * as React from 'react';
 
-// let template = `
-// <div>
-//     <modal 
-//         :show.sync="show" 
-//         :on-close="close" 
-//     >
-//         <h2>Liste des cartes dans la défausse</h2>
-//         <playable-card v-if="type === 'playable'" v-for="card in cards" 
-//             :card="card"
-//         />
-//         <danger-card v-if="type === 'danger'" v-for="danger in cards" 
-//             :danger="danger"
-//         />
-//     </modal>
-// </div>
-// `
+import DangerCard from './DangerCard'
+import PlayableCard from './PlayableCard'
 
-// const discard = {
-//     template : template,
-//     props : ['cards', 'show', 'type'],
-//     components : {
-//         playableCard,
-//         dangerCard,
-//         modal
-//     },
-//     methods : {
-//         close : function(){
-//             this.cardAssigned = [];
-//             this.$emit('switchShowDiscard');
-//         }
-//     }
-// }
+import {DangerCard as DangerCardModel} from '../modules/DangerCard'
+import {PlayableCard as PlayableCardModel} from '../modules/PlayableCard'
 
-// export { discard }
+export enum DiscardType {
+    Playable,
+    Danger
+}
+
+interface DiscardProps {
+    switchShowDiscard: Function;
+    cards: any;
+    show: boolean;
+    type: DiscardType;
+}
+
+export default class Discard extends React.Component<DiscardProps> {
+    constructor(props: DiscardProps) {
+        super(props);
+        this.state = {
+        };
+    }
+
+    close(){
+        this.setState({cardAssigned: []});
+        this.props.switchShowDiscard();
+    }
+
+    render() {
+
+        return (
+            <div>
+                {/* <modal 
+                    :show.sync="show" 
+                    :on-close="close" 
+                > */}
+                    <h2>Liste des cartes dans la défausse</h2>
+                    {this.props.cards.map( (c, i) => 
+                        this.props.type === DiscardType.Danger ? <DangerCard danger={c} /> : <PlayableCard card={c} />
+                    )}
+                {/* </modal> */}
+            </div>
+        )
+    }
+}

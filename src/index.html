@@ -21,58 +21,7 @@
       to improve your experience.
     </p><![endif]-->
     <div id="app">
-        <md-toolbar>
-            <div class="md-toolbar-container">
-                <md-button class="md-icon-button">
-                    <md-icon>menu</md-icon>
-                </md-button>
-
-                <h1 class="md-title" style="flex:1">Vendredi</h1>
-
-                <!--<div id="nbFightCards" class="info-main-value" title="Fight cards">{{ game.fightDeck.length() }}</div>
-
-                <div id="nbDangerCards" class='info-main-value' title="Danger cards">{{ game.dangerDeck.length() }}</div>
                 
-                <div id="nbAgingCards" title="Aging cards" class="info-main-value">{{ game.agingDeck.length() }}</div>
-                -->
-                <!--<md-icon class="md-size-2x">delete</md-icon>                -->
-
-                <md-button class="md-icon-button" @click.native="showPirates">
-                    <md-icon class="md-size-2x" :class="game.level < 3 ? 'level-value-' + (game.level + 1) : 'level-value-pirates'">flag</md-icon>
-                </md-button>
-
-                <div class="pv">
-                    <md-icon class="md-size-2x md-accent">favorite</md-icon>
-                    <div class="pv-value">{{game.robinson.PV}}</div>
-                </div>
-            </div>
-            
-        </md-toolbar>
-
-        <game-info :game="game"></game-info>
-        
-        <md-layout md-flex="100" class="router">
-            <game-over v-if="game.isGameOver()" :player-name="game.robinson.pseudo"></game-over>
-            <div v-if="game.isWon()">C'est gagné !</div>
-
-            <game-danger-choice v-if="( !game.fight && !game.isGameOver() && !game.isWon() )" :danger-choice="game.dangerChoiceCards" @chose="startFight"></game-danger-choice>
-
-            <game-fight v-if="(game.fight && !game.isGameOver() && !game.isWon() )" :fight="game.fight" :next-three-cards="game.getThreeFisrtFightCards()" @stop="stopFight" @draw="addCardToFight" @fight-closed="endFightLost" @use-power="useMyPower" @use-two-step-power="useTwoStepPower"></game-fight>
-        </md-layout>
-        <!--<md-layout md-flex="100">            
-            <game-save-manager @save="save" @load="load"></game-save-manager>
-        </md-layout>-->
-
-        <modal :show.sync="piratesOpen" :on-close="closePirates">
-            <h2>Pirates</h2>
-            <div id="pirates-list">
-                <div class="pirates-list-elt" v-for="pirate in pirateList">
-                    <pirate-card :pirate="pirate" />
-                <div v-if="(game.fight && game.fight.cardToFight === pirate)">En cours</div>
-            </div>
-        </div>
-        </modal>
-        
     </div>
 
     <!-- - - - - - - - -->

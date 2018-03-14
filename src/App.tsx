@@ -23,8 +23,8 @@ class App extends React.Component<{}, { store: Store} > {
     return (
       <Provider store={this.state.store} >
           <div className="App">
-            {/* <Game /> */}
-            <CardSelectorTrainer />
+            <Game />
+            {/* <CardSelectorTrainer /> */}
           </div>
       </Provider>
     );

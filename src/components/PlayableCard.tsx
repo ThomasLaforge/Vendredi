@@ -5,10 +5,10 @@ import {FightCard as FightCardModel} from '../modules/FightCard'
 
 interface PlayableCardProps {
     card: PlayableCardModel
-    inFight: boolean, 
-    selectedToDelete: boolean, 
-    selectedToTwoStepPowers: boolean,
-    onSelect: Function
+    inFight?: boolean, 
+    selectedToDelete?: boolean, 
+    selectedToTwoStepPowers?: boolean,
+    onSelect?: Function
 }
 
 interface PlayableCardState {

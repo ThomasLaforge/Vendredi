@@ -102,6 +102,11 @@ import { DefaultProps, injector } from '../lib/mobxInjector'
 
 import {Game as GameModel} from '../modules/Game'
 
+import GameInfo from './GameInfo'
+import GameOver from './GameOver'
+import GameDangerChoice from './GameDangerChoice'
+// import GameFight from './GameFight'
+
 interface GameProps extends DefaultProps {
 }
 
@@ -115,10 +120,74 @@ class Game extends React.Component <GameProps> {
         }
     }
 
+    startFight = () => {}
+    stopFight = () => {}
+    addCardToFight = () => {}
+    endFightLost = () => {}
+    useMyPower = () => {}
+    useTwoStepPower = () => {}
+
     render() {
+        let game = this.props.game
         return (
             <div className="game">
-                game
+                {/* <md-toolbar> 
+                    <div class="md-toolbar-container">
+                <md- class="md-icon-button">
+                    <md-icon>menu</md-icon>
+                </md-button>
+
+                <h1 class="md-title" style="flex:1">Vendredi</h1>
+
+                <!--<div id="nbFightCards" class="info-main-value" title="Fight cards">{{ game.fightDeck.length() }}</div> */}
+
+                <div id="nbDangerCards" className='info-main-value' title="Danger cards">{ game.dangerDeck.length() }}</div>
+                
+                <div id="nbAgingCards" title="Aging cards" className="info-main-value">{ game.agingDeck.length() }</div>
+                {/* --> */}
+                {/* <!--<md-icon class="md-size-2x">delete</md-icon>                --> */}
+
+                {/* <md-button class="md-icon-button" @click.native="showPirates">
+                    <md-icon class="md-size-2x" :class="game.level < 3 ? 'level-value-' + (game.level + 1) : 'level-value-pirates'">flag</md-icon>
+                </md-button> */}
+
+                <div className="pv">
+                    {/* <md-icon className="md-size-2x md-accent">favorite</md-icon> */}
+                    <div className="pv-value">{game.robinson.PV}</div>
+                </div>
+
+                <GameInfo />
+                {/* <GameOver playerName={game.robinson.pseudo} /> */}
+                {/*<div v-if="game.isWon()">C'est gagné !</div>*/}
+                
+                {/*<GameDangerChoice v-if="( !game.fight && !game.isGameOver() && !game.isWon() )" :danger-choice="game.dangerChoiceCards" @chose="startFight" />*/}
+                {/* <GameDangerChoice dangerChoice={game.dangerChoiceCards} chose={this.startFight} /> */}
+
+                {/*<GameFight v-if="(game.fight && !game.isGameOver() && !game.isWon() )" :fight="game.fight" :next-three-cards="game.getThreeFisrtFightCards()" @stop="stopFight" @draw="addCardToFight" @fight-closed="endFightLost" @use-power="useMyPower" @use-two-step-power="useTwoStepPower" />*/}
+                {/* <GameFight 
+                    fight={game.fight} 
+                    nextThreeCards={game.getThreeFisrtFightCards()} 
+                    stop={this.stopFight} 
+                    draw={this.addCardToFight}
+                    fightClosed={this.endFightLost} 
+                    usePower={this.useMyPower}
+                    useTwoStepPower={this.useTwoStepPower} 
+                /> */}
+        {/*</md-layout>
+        <!--<md-layout md-flex="100">            
+            <game-save-manager @save="save" @load="load"></game-save-manager>
+        </md-layout>-->
+
+        <modal :show.sync="piratesOpen" :on-close="closePirates">
+            <h2>Pirates</h2>
+            <div id="pirates-list">
+                <div class="pirates-list-elt" v-for="pirate in pirateList">
+                    <pirate-card :pirate="pirate" />
+                    <div v-if="(game.fight && game.fight.cardToFight === pirate)">En cours</div>
+                </div>
+            </div>
+        </modal>
+        */}
             </div>
         );
     }
