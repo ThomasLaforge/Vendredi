@@ -9,6 +9,7 @@ import Button from 'material-ui/Button';
 
 interface GameDangerChoiceProps extends DefaultProps {
     dangers: DangerCardModel[];
+    chose: Function;
 }
 
 interface GameDangerChoiceState {
@@ -27,12 +28,14 @@ export default class GameDangerChoice extends React.Component<GameDangerChoicePr
 
     changeSelectedIndex(index){
         if(index !== this.state.currentSelected){
-            this.setState({ currentSelected: index })
+            this.setState({ currentSelected: index }, () => console.log('new index', this.state.currentSelected))
         }
     }
 
     chose = () => {
-
+        let selectedCard = this.props.dangers[this.state.currentSelected]
+        // console.log('chose card', selectedCard)
+        this.props.chose(selectedCard)
     }
 
     //         handleKeyboardEvent(e:KeyboardEvent){
@@ -67,7 +70,8 @@ export default class GameDangerChoice extends React.Component<GameDangerChoicePr
             <DangerCard
                 danger={d}
                 selected={i === this.state.currentSelected} 
-                select={() => this.changeSelectedIndex(i)} 
+                select={() => this.changeSelectedIndex(i)}
+                key={i}
             />
         )
     }

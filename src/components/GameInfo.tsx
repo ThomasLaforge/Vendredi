@@ -6,10 +6,12 @@ import {observer, inject} from 'mobx-react';
 import { DefaultProps, injector } from '../lib/mobxInjector'
 
 import {DangerCard as DangerCardModel} from '../modules/DangerCard'
+import {DiscardType} from './Discard'
 
 import DangerCard from './DangerCard'
 import PirateCard from './PirateCard'
-// import Discard from './Discard'
+import Discard from './Discard'
+
 import Button from 'material-ui/Button';
 
 interface GameInfoProps extends DefaultProps {
@@ -45,7 +47,7 @@ export default class GameInfo extends React.Component<GameInfoProps, GameInfoSta
         })
     }
 
-    switchDiscardPlayable(){
+    switchDiscardPlayable = () => {
         console.log('switch discard playable')
         this.setState({
             discardPlayableOpen: !this.state.discardPlayableOpen,           
@@ -54,7 +56,7 @@ export default class GameInfo extends React.Component<GameInfoProps, GameInfoSta
         })
     }
 
-    switchDiscardDanger(){
+    switchDiscardDanger = () => {
         console.log('switch discard danger') 
         this.setState({        
             discardDangerOpen: !this.state.discardDangerOpen,
@@ -63,7 +65,7 @@ export default class GameInfo extends React.Component<GameInfoProps, GameInfoSta
         })
     }
 
-    switchDiscardGlobal(){
+    switchDiscardGlobal = () => {
         console.log('switch discard global')             
         this.setState({        
             discardGlobalOpen: !this.state.discardGlobalOpen,
@@ -76,8 +78,8 @@ export default class GameInfo extends React.Component<GameInfoProps, GameInfoSta
         const game = this.props.game
         return <div className="game-info">
             <div id="pirates-list">
-                {game.getListOfPirateToFight().map( (pirate, k) =>
-                    <div className="pirates-list-elt">
+                {this.pirateList.map( (pirate, k) =>
+                    <div className="pirates-list-elt" key={k}>
                         <PirateCard pirate={pirate} />
                         {(game.fight && game.fight.cardToFight === pirate) && <div>En cours</div>}
                     </div>
@@ -90,7 +92,7 @@ export default class GameInfo extends React.Component<GameInfoProps, GameInfoSta
                         title="Fight cards"
                         onClick={this.switchDiscardPlayable} 
                     >
-                        { game.fightDeck.length() }
+                        { game.fightDeck.length }
                     </div>
                 </div>
                 
@@ -99,38 +101,38 @@ export default class GameInfo extends React.Component<GameInfoProps, GameInfoSta
                         title="Danger cards"
                         onClick={this.switchDiscardDanger} 
                     >
-                        {game.dangerDeck.length()}
+                        {game.dangerDeck.length}
                     </div>
                 </div>
                 
                 <div className="info-main-aging-cards info-main-elt">
-                    <div id="nbAgingCards" title="Aging cards" className="info-main-value">{ game.agingDeck.length() }</div>
+                    <div id="nbAgingCards" title="Aging cards" className="info-main-value">{ game.agingDeck.length }</div>
                 </div>
                 
                 <Button className="md-raised md-primary info-main-elt" onClick={this.switchDiscardGlobal}>
                     Discard
                 </Button>
             </div>
-            {/*         
+                    
             <Discard 
-                :cards="game.fightDeck.arrayDiscard" 
-                :show="discardPlayableOpen" 
-                :type="'playable'" 
-                @switchShowDiscard="switchDiscardPlayable"
+                cards={game.fightDeck.arrayDiscard} 
+                show={this.state.discardPlayableOpen} 
+                type={DiscardType.Playable} 
+                switchShowDiscard={this.switchDiscardPlayable}
             />
             <Discard 
-                :cards="game.dangerDeck.arrayDiscard" 
-                :show="discardDangerOpen" 
-                :type="'danger'" 
-                @switchShowDiscard="switchDiscardDanger"
+                cards={game.dangerDeck.arrayDiscard}
+                show={this.state.discardDangerOpen} 
+                type={DiscardType.Danger} 
+                switchShowDiscard={this.switchDiscardDanger}
             />
         
             <Discard
-                :cards="game.arrayOfRemovedCards"
-                :show="discardGlobalOpen"
-                :type="'playable'"
-                @switchShowDiscard="switchDiscardGlobal"
-            /> */}
+                cards={game.arrayOfRemovedCards}
+                show={this.state.discardGlobalOpen}
+                type={DiscardType.Playable} 
+                switchShowDiscard={this.switchDiscardGlobal}
+            />
         </div>
     }
 }

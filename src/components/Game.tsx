@@ -47,52 +47,6 @@
 //         }
 //     },
 //     computed: {
-//         gsm : function() { return this.gamesavemanager }, 
-//         game : function() { return this.gsm.game },
-//         pirateList : function(){ return this.game.getListOfPirateToFight() }
-//     },
-//     components:{
-//         gameInfo,
-//         gameDangerChoice,
-//         gameFight,
-//         gameOver,
-//         gameSaveManager,
-//         pirateCard,
-//         modal
-//     },
-//     methods: {
-//         addCardToFight(){
-//             this.game.addPlayableCardToFight();
-//         },
-//         startFight(index:number){
-//             this.game.startFight(this.game.dangerChoiceCards[index]);
-//         },
-//         stopFight(){
-//             this.game.stopFight();
-//         },
-//         endFightLost(arrOfCardsToDelete:Array<PlayableCard>){
-//             this.game.endFightLost(arrOfCardsToDelete);
-//         },
-//         useMyPower(card:FightCard){
-//             this.game.usePower(card)
-//         },
-//         useTwoStepPower(data:{ usedCard:FightCard, assignedCards: Array<PlayableCard>}){
-//             this.game.usePower(data.usedCard, data.assignedCards)
-//         },
-//         save(){
-//             this.gsm.save();
-//         },
-//         load(slotName:null|string){
-//             this.gsm.load(slotName)
-//         },
-//         showPirates(){
-//             this.piratesOpen = true
-//         },
-//         closePirates(){
-//             this.piratesOpen = false
-//         }
-//     }
-// })
 
 
 
@@ -101,11 +55,13 @@ import {observer, inject} from 'mobx-react';
 import { DefaultProps, injector } from '../lib/mobxInjector'
 
 import {Game as GameModel} from '../modules/Game'
+import {PlayableCard as PlayableCardModel} from '../modules/PlayableCard'
+import {FightCard as FightCardModel} from '../modules/FightCard'
 
 import GameInfo from './GameInfo'
 import GameOver from './GameOver'
 import GameDangerChoice from './GameDangerChoice'
-// import GameFight from './GameFight'
+import GameFight from './GameFight'
 
 interface GameProps extends DefaultProps {
 }
@@ -120,12 +76,40 @@ class Game extends React.Component <GameProps> {
         }
     }
 
-    startFight = () => {}
-    stopFight = () => {}
-    addCardToFight = () => {}
-    endFightLost = () => {}
-    useMyPower = () => {}
-    useTwoStepPower = () => {}
+    // get gsm : function() { return this.gamesavemanager }, 
+    // get game : function() { return this.gsm.game },
+    // get pirateList : function(){ return this.game.getListOfPirateToFight() }
+
+    startFight = (card) => {
+        this.props.game.startFight(card);        
+    }
+    stopFight = () => {
+        this.props.game.stopFight();        
+    }
+    addCardToFight = () => {
+        this.props.game.addPlayableCardToFight();
+    }
+    endFightLost = (arrOfCardsToDelete: PlayableCardModel[]) => {
+        this.props.game.endFightLost(arrOfCardsToDelete);
+    }
+    useMyPower = (card) => {
+        this.props.game.usePower(card)        
+    }
+    useTwoStepPower = (data:{ usedCard:FightCardModel, assignedCards: PlayableCardModel[]}) => {
+        this.props.game.usePower(data.usedCard, data.assignedCards)
+    }
+//         save(){
+//             this.gsm.save();
+//         },
+//         load(slotName:null|string){
+//             this.gsm.load(slotName)
+//         },
+//         showPirates(){
+//             this.piratesOpen = true
+//         },
+//         closePirates(){
+//             this.piratesOpen = false
+//         }
 
     render() {
         let game = this.props.game
@@ -141,9 +125,9 @@ class Game extends React.Component <GameProps> {
 
                 <!--<div id="nbFightCards" class="info-main-value" title="Fight cards">{{ game.fightDeck.length() }}</div> */}
 
-                <div id="nbDangerCards" className='info-main-value' title="Danger cards">{ game.dangerDeck.length() }}</div>
+                {/* <div id="nbDangerCards" className='info-main-value' title="Danger cards">{ game.dangerDeck.length }}</div>
                 
-                <div id="nbAgingCards" title="Aging cards" className="info-main-value">{ game.agingDeck.length() }</div>
+                <div id="nbAgingCards" title="Aging cards" className="info-main-value">{ game.agingDeck.length }</div> */}
                 {/* --> */}
                 {/* <!--<md-icon class="md-size-2x">delete</md-icon>                --> */}
 
@@ -151,28 +135,41 @@ class Game extends React.Component <GameProps> {
                     <md-icon class="md-size-2x" :class="game.level < 3 ? 'level-value-' + (game.level + 1) : 'level-value-pirates'">flag</md-icon>
                 </md-button> */}
 
-                <div className="pv">
-                    {/* <md-icon className="md-size-2x md-accent">favorite</md-icon> */}
+                {/* <div className="pv">
+                    <md-icon className="md-size-2x md-accent">favorite</md-icon>
                     <div className="pv-value">{game.robinson.PV}</div>
-                </div>
+                </div> 
+                */}
 
                 <GameInfo />
-                {/* <GameOver playerName={game.robinson.pseudo} /> */}
-                {/*<div v-if="game.isWon()">C'est gagné !</div>*/}
                 
-                {/*<GameDangerChoice v-if="( !game.fight && !game.isGameOver() && !game.isWon() )" :danger-choice="game.dangerChoiceCards" @chose="startFight" />*/}
-                {/* <GameDangerChoice dangerChoice={game.dangerChoiceCards} chose={this.startFight} /> */}
+                {this.props.game.isGameOver() && 
+                    <GameOver playerName={game.robinson.pseudo} />
+                }
+                
+                {this.props.game.isWon() && 
+                    <div>C'est gagné !</div>
+                }
+                
+                { !this.props.game.fight && !this.props.game.isGameOver() && !this.props.game.isWon() && 
+                    <GameDangerChoice 
+                        dangers={game.dangerChoiceCards} 
+                        chose={this.startFight} 
+                    />
+                }
 
-                {/*<GameFight v-if="(game.fight && !game.isGameOver() && !game.isWon() )" :fight="game.fight" :next-three-cards="game.getThreeFisrtFightCards()" @stop="stopFight" @draw="addCardToFight" @fight-closed="endFightLost" @use-power="useMyPower" @use-two-step-power="useTwoStepPower" />*/}
-                {/* <GameFight 
-                    fight={game.fight} 
-                    nextThreeCards={game.getThreeFisrtFightCards()} 
-                    stop={this.stopFight} 
-                    draw={this.addCardToFight}
-                    fightClosed={this.endFightLost} 
-                    usePower={this.useMyPower}
-                    useTwoStepPower={this.useTwoStepPower} 
-                /> */}
+                {/*<GameFight v-if="()" :fight="game.fight" :next-three-cards="game.getThreeFisrtFightCards()" @stop="stopFight" @draw="addCardToFight" @fight-closed="endFightLost" @use-power="useMyPower" @use-two-step-power="useTwoStepPower" />*/}
+                {this.props.game.fight && !this.props.game.isGameOver() && !this.props.game.isWon() &&
+                    <GameFight 
+                        fight={game.fight} 
+                        nextThreeCards={game.getThreeFisrtFightCards()} 
+                        stop={this.stopFight} 
+                        draw={this.addCardToFight}
+                        fightClosed={this.endFightLost} 
+                        usePower={this.useMyPower}
+                        useTwoStepPower={this.useTwoStepPower} 
+                    />
+                }
         {/*</md-layout>
         <!--<md-layout md-flex="100">            
             <game-save-manager @save="save" @load="load"></game-save-manager>
