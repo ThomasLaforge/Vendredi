@@ -23,6 +23,10 @@ class Robinson implements RobinsonInterface {
         return this.PV < 0;
     }
 
+    get pseudo(){
+        return 'Robinson'
+    }
+
 }
 
 export {Robinson}

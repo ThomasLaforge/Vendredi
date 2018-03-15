@@ -1,3 +1,5 @@
+import {observable} from 'mobx'
+
 import { PlayableCard } from './PlayableCard';
 import { PirateCard } from './PirateCard';
 import { DangerCard } from './DangerCard';
@@ -7,14 +9,22 @@ import { FightInterface, FightCardPower, AgingCardPower } from './Vendredi';
 
 abstract class Fight implements FightInterface {
 
-    constructor( 
-        public cardToFight : any, 
-        public arrayFightCard : Array<PlayableCard> = [], 
-        public arrayFightCardUsed : Array<PlayableCard> = [], 
-        public finished : boolean = false,
-        public freeCards: number = cardToFight.freeCards,
-        public costOfCardsNotFree = 1
-    ){}
+    @observable private _cardToFight: any;
+    @observable private _arrayFightCard: PlayableCard[];
+    @observable private _arrayFightCardUsed: PlayableCard[];
+    @observable private _finished: boolean;
+    @observable private _freeCards: number;
+    @observable private _costOfCardsNotFree: number;
+
+
+    constructor( cardToFight : any, arrayFightCard : PlayableCard[] = [], arrayFightCardUsed : PlayableCard[] = [], finished : boolean = false, freeCards: number = cardToFight.freeCards, costOfCardsNotFree = 1) {
+        this.cardToFight = cardToFight
+        this.arrayFightCard = arrayFightCard
+        this.arrayFightCardUsed = arrayFightCardUsed
+        this.finished = finished
+        this.freeCards = freeCards
+        this.costOfCardsNotFree = costOfCardsNotFree
+    }
 
     addFreeCards(cardInAddition : number) {
         this.freeCards += cardInAddition;
@@ -159,6 +169,43 @@ abstract class Fight implements FightInterface {
     hasStopCard() : boolean {
         return this.getAllCards().filter( (card:PlayableCard) => { return card instanceof AgingCard && card.power === AgingCardPower.STOP}).length > 0
     }
+
+	public get cardToFight(): any {
+		return this._cardToFight;
+	}
+	public set cardToFight(value: any) {
+		this._cardToFight = value;
+	}
+	public get arrayFightCard(): PlayableCard[] {
+		return this._arrayFightCard;
+	}
+	public set arrayFightCard(value: PlayableCard[]) {
+		this._arrayFightCard = value;
+	}
+	public get arrayFightCardUsed(): PlayableCard[] {
+		return this._arrayFightCardUsed;
+	}
+	public set arrayFightCardUsed(value: PlayableCard[]) {
+		this._arrayFightCardUsed = value;
+	}
+	public get finished(): boolean {
+		return this._finished;
+	}
+	public set finished(value: boolean) {
+		this._finished = value;
+	}
+	public get freeCards(): number {
+		return this._freeCards;
+	}
+	public set freeCards(value: number) {
+		this._freeCards = value;
+	}
+	public get costOfCardsNotFree(): number {
+		return this._costOfCardsNotFree;
+	}
+	public set costOfCardsNotFree(value: number) {
+		this._costOfCardsNotFree = value;
+	}
 }
 
 export { Fight }

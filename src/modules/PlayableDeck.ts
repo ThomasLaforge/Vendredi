@@ -6,7 +6,7 @@ import * as _ from 'lodash'
 
 abstract class PlayableDeck extends Deck {
 
-    discard( arrayOfCard: Array<PlayableCard> ){
+    discard( arrayOfCard: PlayableCard[] ){
         arrayOfCard.forEach( card => {
             this.arrayDiscard.push( card.restore() )
         });

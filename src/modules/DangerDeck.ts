@@ -5,12 +5,12 @@ import {Tools} from './Tools';
 import {jsonDataDanger} from './Vendredi';
 
 class DangerDeck extends Deck {
-	constructor(arrayCard?:Array<DangerCard>, arrayDiscard?:Array<DangerCard>){
+	constructor(arrayCard?:DangerCard[], arrayDiscard?:DangerCard[]){
         super(arrayCard,arrayDiscard);
 	}
 
     initDeck(){
-        let arrRes:Array<DangerCard> = [];
+        let arrRes:DangerCard[] = [];
         let arrDatas = require('../datas/dangers_cards.json');
         arrDatas.forEach( (jsonData:jsonDataDanger) => {
             let number = jsonData.number;

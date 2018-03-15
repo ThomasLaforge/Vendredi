@@ -1,10 +1,12 @@
+import {observable} from 'mobx'
+
 import {DEFAULT_USER_PSEUDO} from './Configuration'
 
 class User {
 
-    private _pseudo:string;
-    private _password:string;
-    private _createDate:number;    
+    @observable private _pseudo:string;
+    @observable private _password:string;
+    @observable private _createDate:number;    
 
     constructor(pseudo = DEFAULT_USER_PSEUDO, pass = '', date?:number){
         this.pseudo     = pseudo;

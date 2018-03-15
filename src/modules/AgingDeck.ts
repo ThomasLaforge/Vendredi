@@ -6,7 +6,7 @@ import {GameDifficulty, jsonDataAging, AgingLevel} from './Vendredi';
 
 class AgingDeck extends PlayableDeck{
 
-    constructor(difficulty : GameDifficulty, arrayCard?:Array<AgingCard>, arrayDiscard?:Array<AgingCard>){
+    constructor(difficulty : GameDifficulty, arrayCard?:AgingCard[], arrayDiscard?: AgingCard[]){
         super(arrayCard,arrayDiscard);
         
         if(!this.arrayDeck || !this.arrayDiscard){
@@ -19,7 +19,7 @@ class AgingDeck extends PlayableDeck{
     }
 
     initDeck(){
-        let arrRes : Array<AgingCard> = [];
+        let arrRes : AgingCard[] = [];
         let arrDatas = require( '../datas/aging_cards.json' );
         arrDatas.forEach( (obj: jsonDataAging) => {
             let number = obj.number;

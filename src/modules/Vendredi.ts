@@ -87,7 +87,6 @@ export interface RobinsonInterface {
 export interface CardInterface{
     name: string
     strength : number
-    show():void
 }
 
 export interface InitialStateInterface {

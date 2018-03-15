@@ -1,3 +1,5 @@
+import {observable} from 'mobx'
+
 // imports
     import { Deck }         from './Deck';
     import { Card }         from './Card';
@@ -20,23 +22,52 @@
 // -------
 
 export class Game {
+    @observable private _robinson : Robinson;
+    @observable private _difficulty;
+    @observable private _fightDeck: FightDeck;
+    @observable private _dangerDeck: DangerDeck;
+    @observable private _agingDeck: AgingDeck;
+    @observable private _pirateDeck: PirateDeck;
+    @observable private _gameOver: boolean;
+    @observable private _level: number;
+    @observable private _arrayOfRemovedCards: Array<PlayableCard>;
+    @observable private _fight: Fight;
+    @observable private _dangerChoiceCards: Array<DangerCard>;
+    @observable private _nbPiratesToFight: number;
+    @observable private _startDate: number;
+    @observable private _lastChangeDate: number;
 
 	constructor( 
-            private _robinson : Robinson = new Robinson(), 
-            private _difficulty = GameDifficulty.EASY,
-            private _fightDeck: FightDeck = new FightDeck(),
-            private _dangerDeck: DangerDeck = new DangerDeck(),
-            private _agingDeck: AgingDeck = new AgingDeck( _difficulty ),
-            private _pirateDeck: PirateDeck = new PirateDeck(),
-            private _gameOver: boolean = false, //Cause if pirateFight is lost => gameOver
-            private _level: number = GameLevel.FIRST_ROUND,
-            private _arrayOfRemovedCards: Array<PlayableCard> = [],
-            private _fight: Fight = null,
-            private _dangerChoiceCards: Array<DangerCard> = null,
-            private _nbPiratesToFight = 2,
-            private _startDate = Date.now(),
-            private _lastChangeDate = Date.now()
+        robinson : Robinson = new Robinson(), 
+        difficulty = GameDifficulty.EASY,
+        fightDeck: FightDeck = new FightDeck(),
+        dangerDeck: DangerDeck = new DangerDeck(),
+        agingDeck: AgingDeck = new AgingDeck( difficulty ),
+        pirateDeck: PirateDeck = new PirateDeck(),
+        gameOver: boolean = false, //Cause if pirateFight is lost => gameOver
+        level: number = GameLevel.FIRST_ROUND,
+        arrayOfRemovedCards: Array<PlayableCard> = [],
+        fight: Fight = null,
+        dangerChoiceCards: Array<DangerCard> = null,
+        nbPiratesToFight = 2,
+        startDate = Date.now(),
+        lastChangeDate = Date.now()
      ){
+        this.robinson = robinson  
+        this.difficulty = difficulty
+        this.fightDeck = fightDeck
+        this.dangerDeck = dangerDeck
+        this.agingDeck = agingDeck
+        this.pirateDeck = pirateDeck
+        this.gameOver = gameOver
+        this.level = level
+        this.arrayOfRemovedCards = arrayOfRemovedCards
+        this.fight = fight
+        this.dangerChoiceCards = dangerChoiceCards
+        this.nbPiratesToFight = nbPiratesToFight
+        this.startDate = startDate
+        this.lastChangeDate = lastChangeDate 
+
         // Si la difficulté est de 4 alors la partie commence avec 18 PV au lieu de 20 => on perd 2 PV
         if(this.difficulty > 1){
             if(this.difficulty === 4){
@@ -128,8 +159,8 @@ export class Game {
                     break;
                     
                 case PirateMission.ADD_TWO_DANGER_POINT_BY_AGING_CARD_IN_FIGHT_ADDED_TO_FIGHT_DECK:
-                    let currentAgingDeckLength = this.agingDeck.length();
-                    let initialLength = (new AgingDeck(this.difficulty)).length(); 
+                    let currentAgingDeckLength = this.agingDeck.length;
+                    let initialLength = (new AgingDeck(this.difficulty)).length; 
                     card.strength = ( initialLength - currentAgingDeckLength ) * 2;
                     console.log('ADD_TWO_DANGER_POINT_BY_AGING_CARD_IN_FIGHT_ADDED_TO_FIGHT_DECK', card)
                     this.fight = new PirateFight( card )
@@ -460,6 +491,13 @@ export class Game {
     set lastChangeDate(newLastChangeDate) {
         this._lastChangeDate = newLastChangeDate;
     }
+	public get startDate(): number {
+		return this._startDate;
+	}
+	public set startDate(value: number) {
+		this._startDate = value;
+	}
+
 //--------------------------
 
 }

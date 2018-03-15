@@ -1,3 +1,5 @@
+import {observable} from 'mobx'
+
 import { Game } from './Game'
 import { State } from './State'
 import { StateJson } from './Vendredi'
@@ -21,10 +23,10 @@ class SaveSlot {
     *
     */
 
-    private _stateList: Array<State>
-    private _startDate: number
-    private _lastAction: number
-    private _currentState: State
+    @observable private _stateList: State[]
+    @observable private _startDate: number
+    @observable private _lastAction: number
+    @observable private _currentState: State
 
     constructor(stateList:Array<State> = [], startDate = Date.now(), lastAction = Date.now(), currentState:State = null ){
         this.stateList = stateList;

@@ -1,6 +1,8 @@
+import {observable} from 'mobx'
+import * as _ from 'lodash';
+
 import {Card} from './Card';
 import {Tools} from './Tools';
-import * as _ from 'lodash';
 
 abstract class Deck {
     //Constructor   : arrayDeck with all cards, shuffle him, and create a discard array
@@ -9,17 +11,18 @@ abstract class Deck {
     //length        : give the length of the deck
     //drawCards     : return an array with the firts cards of the deck.
 
-    constructor(protected arrayDeck : Array<any> = null, protected arrayDiscard : Array<any> = null) {
-        if(!arrayDeck && !arrayDiscard){
-            this.arrayDeck = []
-            this.arrayDiscard = []
+    protected _arrayDiscard : any[]
+    protected _arrayDeck : any[]
+    constructor(arrayDeck: any[] = [], arrayDiscard : any[] = []) {
+        this.arrayDeck = arrayDeck
+        this.arrayDiscard = arrayDiscard
+        if(!arrayDeck.length && !arrayDiscard.length){
             this.initDeck();
             this.shuffle();
         }
     }
 
     abstract initDeck():void
-
     // States of arrays : deck and discard
 
     isEmpty(){
@@ -34,7 +37,7 @@ abstract class Deck {
         return this.isDiscardEmpty();
     }
 
-    length(){
+    get length(){
         return this.arrayDeck.length;
     }
 
@@ -124,6 +127,11 @@ abstract class Deck {
         }
         return this.arrayDeck[index]
     }
+
+    get arrayDeck(){ return this._arrayDeck }
+    set arrayDeck(newArr){ this._arrayDeck = newArr }
+    get arrayDiscard(){ return this._arrayDiscard }
+    set arrayDiscard(newArr){ this._arrayDiscard = newArr }
 
 }
 

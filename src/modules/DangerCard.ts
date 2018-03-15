@@ -1,3 +1,5 @@
+import {observable} from 'mobx'
+
 import { FightCard } from './FightCard';
 import { Tools } from './Tools';
 import { Card } from './Card';
@@ -14,12 +16,14 @@ import { DangerCardInterface, FightCardInterface, GameLevel } from './Vendredi';
 
 class DangerCard implements DangerCardInterface {
 
-    constructor(readonly fightCard: FightCard, readonly name: string, readonly freeCards: number) { }
+    @observable private readonly _fightCard: FightCard; 
+    @observable private readonly _name: string;
+    @observable private readonly _freeCards: number;
 
-    // Console debug
-    show() {
-        // console.log('Card Danger : name => ' + this.name + ', strength => 1 : ' + this.getStrength(1) + ', 2 : ' + this.getStrength(2) + ', 3 : ' + this.getStrength(3));
-        this.fightCard.show();
+    constructor(fightCard: FightCard, name: string, freeCards: number) {
+        this._fightCard = fightCard
+        this._name = name
+        this._freeCards = freeCards
     }
 
     getStrength(lvl: GameLevel) {
@@ -62,6 +66,17 @@ class DangerCard implements DangerCardInterface {
     get powerName(){
         return this.fightCard.powerName;
     }
+
+	public get fightCard(): FightCard {
+		return this._fightCard;
+	}
+	public get name(): string {
+		return this._name;
+	}
+	public get freeCards(): number {
+		return this._freeCards;
+	}
+
 
 }
 
