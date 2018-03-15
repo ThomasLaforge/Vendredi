@@ -117,6 +117,7 @@ abstract class Fight implements FightInterface {
     abstract getStrengthCardToFight() : number
 
     getResult(){
+        console.log('result')
         // >= 0 if robinson win ; < 0 if robinson lose fight
         let fightPoints = this.getStrengthCardToFight();
         let robinsonForce = this.getRobinsonForce();

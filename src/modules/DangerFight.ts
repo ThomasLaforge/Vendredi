@@ -18,6 +18,7 @@ class DangerFight extends Fight implements DangerFightInterface {
         freeCards: number = cardToFight.freeCards
     ){
         super(cardToFight, arrayFightCard, arrayFightCardUsed, finished, freeCards);
+        this.level = level
     }
 
     getStrengthCardToFight(){

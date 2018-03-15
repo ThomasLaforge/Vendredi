@@ -39,7 +39,7 @@ export default class PlayableCard extends React.Component<PlayableCardProps, Pla
         let card = this.props.card
         
         return (
-            <div onClick={this.props.onSelect()} className={this.selectedClass()}>
+            <div onClick={() => this.props.onSelect()} className={this.selectedClass()}>
                 <div className="fight-card-strength">{card.strength}</div>
                 <div className="fight-card-power">{card.power || card.power === 0 ? card.powerName : ''}</div>
             </div>

@@ -16,14 +16,10 @@ export default class DangerCard extends React.Component<DangerCardProps> {
         };
     }
 
-    onSelect = () => {
-        this.props.select()
-    }
-
     render() {
         let danger = this.props.danger
-
-        return <div className={'card-slot card-danger' + this.props.selected ? ' danger-card-selected' : ''} onClick={() => this.onSelect()}>
+        
+        return <div className={'card-slot card-danger' + (this.props.selected ? ' danger-card-selected' : '')} onClick={() => this.props.select && this.props.select()}>
                 <div className="danger-card-definition">
                     <div className="card-danger-name">{danger.name}</div>
                     <div className="card-danger-details">

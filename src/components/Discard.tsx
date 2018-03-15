@@ -44,7 +44,7 @@ export default class Discard extends React.Component<DiscardProps> {
                     <div>
                         <h2>Liste des cartes dans la défausse</h2>
                         {this.props.cards.map( (c, i) => 
-                            this.props.type === DiscardType.Danger ? <DangerCard danger={c} /> : <PlayableCard card={c} />
+                            this.props.type === DiscardType.Danger ? <DangerCard danger={c} key={i} /> : <PlayableCard card={c} key={i} />
                         )}
                     </div>
                 </Modal>
