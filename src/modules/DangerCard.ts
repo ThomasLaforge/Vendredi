@@ -2,7 +2,6 @@ import {observable} from 'mobx'
 
 import { FightCard } from './FightCard';
 import { Tools } from './Tools';
-import { Card } from './Card';
 import { PlayableCard } from './PlayableCard';
 import { DangerCardInterface, FightCardInterface, GameLevel } from './Vendredi';
 

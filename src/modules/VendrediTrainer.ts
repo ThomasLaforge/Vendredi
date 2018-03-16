@@ -1,5 +1,6 @@
 import { Game } from './Game'
 import brain from 'brain.js'
+import { DangerCard } from './DangerCard';
 
 class VendrediTrainer {
 
@@ -34,7 +35,12 @@ class VendrediTrainer {
         //         - delete cards (algo) => autoDeleteCards() => delete big cards first, then cards with 0 and no powers, then cards with smallest powers
     }
 
-    choseCard(){
+    choseCard(cardA: DangerCard, cardB: DangerCard){
+        return {
+            scoreA: 0,
+            scoreB: 3,
+            result: 1// 0 = cardA, 1 = cardB
+        }
     }
 
 }
