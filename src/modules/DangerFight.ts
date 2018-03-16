@@ -31,14 +31,6 @@ class DangerFight extends Fight implements DangerFightInterface {
         }
     }
 
-    getResult(){
-        // >= 0 if robinson win ; < 0 if robinson lose fight
-        let fightPoints = this.getStrengthCardToFight();
-        let robinsonForce = this.getRobinsonForce();
-
-        return robinsonForce - fightPoints;   
-    }
-
 	public get level(): GameLevel {
 		return this._level;
 	}

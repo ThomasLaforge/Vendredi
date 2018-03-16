@@ -35,7 +35,6 @@ abstract class Fight implements FightInterface {
             this.arrayFightCard.push( playableCard )
         }
         else{
-            // console.log('Error : try to add undefined to Fight:arrayFightCard', playableCard)
             Error('Error : try to add undefined to Fight:arrayFightCard' + JSON.stringify(playableCard))
         }
     }
@@ -117,7 +116,6 @@ abstract class Fight implements FightInterface {
     abstract getStrengthCardToFight() : number
 
     getResult(){
-        console.log('result')
         // >= 0 if robinson win ; < 0 if robinson lose fight
         let fightPoints = this.getStrengthCardToFight();
         let robinsonForce = this.getRobinsonForce();
@@ -142,13 +140,7 @@ abstract class Fight implements FightInterface {
     }
 
     getSumOfCostToDelete(){
-        let sum = 0;
-
-        this.arrayFightCard.forEach( (card : PlayableCard) => {
-            sum += card.costToDelete;
-        });
-
-        return sum;
+        return this.arrayFightCard.reduce( (sum, card) => sum + card.costToDelete, 0);
     }
 
     getCardToFight(){
