@@ -38,6 +38,11 @@ class FightCard extends PlayableCard implements FightCardInterface {
         }
     }
 
+    get hiddenStrength(){
+        let powerStrength = this.power ? 1 : 0
+        return this.strength
+    }
+
     get powerName(){
         return Tools.getFightPowerName(this.power)
     }
