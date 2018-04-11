@@ -1,3 +1,5 @@
+import {observable} from 'mobx'
+
 import { RobinsonInterface } from './Vendredi';
 import { DEFAULT_USER_PSEUDO } from './Configuration';
 
@@ -5,7 +7,11 @@ const MAX_PV = 22;
 
 class Robinson implements RobinsonInterface {
 
-    constructor(public PV = 20){}
+    @observable private _PV: number;
+
+    constructor(PV = 20){
+        this.PV = PV
+    }
 
     addPV(nbPV: number):void{
         this.PV += nbPV;
@@ -26,6 +32,14 @@ class Robinson implements RobinsonInterface {
     get pseudo(){
         return 'Robinson'
     }
+
+	public get PV(): number {
+		return this._PV;
+	}
+	public set PV(value: number) {
+		this._PV = value;
+	}
+    
 
 }
 

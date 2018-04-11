@@ -84,7 +84,8 @@ export default class GameDangerChoice extends React.Component<GameDangerChoicePr
 
             <div className="danger-choice-actions">
                 <Button className="md-raised md-primary" id="btn-action-chose-danger"
-                    onClick={() => this.chose()}
+                    variant="raised"
+                    onClick={this.chose}
                 >
                     Choisir !
                 </Button>

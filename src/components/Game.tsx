@@ -115,31 +115,6 @@ class Game extends React.Component <GameProps> {
         let game = this.props.game
         return (
             <div className="game">
-                {/* <md-toolbar> 
-                    <div class="md-toolbar-container">
-                <md- class="md-icon-button">
-                    <md-icon>menu</md-icon>
-                </md-button>
-
-                <h1 class="md-title" style="flex:1">Vendredi</h1>
-
-                <!--<div id="nbFightCards" class="info-main-value" title="Fight cards">{{ game.fightDeck.length() }}</div> */}
-
-                {/* <div id="nbDangerCards" className='info-main-value' title="Danger cards">{ game.dangerDeck.length }}</div>
-                
-                <div id="nbAgingCards" title="Aging cards" className="info-main-value">{ game.agingDeck.length }</div> */}
-                {/* --> */}
-                {/* <!--<md-icon class="md-size-2x">delete</md-icon>                --> */}
-
-                {/* <md-button class="md-icon-button" @click.native="showPirates">
-                    <md-icon class="md-size-2x" :class="game.level < 3 ? 'level-value-' + (game.level + 1) : 'level-value-pirates'">flag</md-icon>
-                </md-button> */}
-
-                {/* <div className="pv">
-                    <md-icon className="md-size-2x md-accent">favorite</md-icon>
-                    <div className="pv-value">{game.robinson.PV}</div>
-                </div> 
-                */}
 
                 <GameInfo />
                 

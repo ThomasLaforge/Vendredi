@@ -412,6 +412,14 @@ export class Game {
         return 0
     }
 
+    getDeckStrength(){
+        return this.fightDeck.getStrength()
+    }
+
+    getDiscardStrength(){
+        return this.fightDeck.getDiscardStrength()
+    }
+
 //Region : Getters / Setters
     get robinson(){
         return this._robinson;

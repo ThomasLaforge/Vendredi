@@ -34,6 +34,26 @@ class FightDeck extends PlayableDeck {
         let args:Array<number|PlayableCard> = spliceArgs.concat(cards);
         Array.prototype.splice.apply(this.arrayDeck, args);
     }
+
+    getStrength(){
+        return (this.getDiscardStrength() + this.getDeckStrength()) / 2
+    }
+
+    getTotalStrength(){
+        return this.getDeckTotalStrength() + this.getDiscardTotalStrength()
+    }
+    getDeckTotalStrength(){
+        return this.arrayDeck.reduce( (sum, fightCard) => sum + fightCard.strength, 0)
+    }
+    getDeckStrength(){
+        return this.getDeckTotalStrength() / this.arrayDeck.length
+    }
+    getDiscardTotalStrength(){
+        return this.arrayDiscard.reduce( (sum, fightCard) => sum + fightCard.strength, 0)
+    }
+    getDiscardStrength(){
+        return this.getDiscardTotalStrength() / this.arrayDiscard.length
+    }
 }
 
 export {FightDeck}

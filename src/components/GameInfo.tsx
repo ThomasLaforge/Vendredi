@@ -1,6 +1,3 @@
-
-//     computed : {
-
 import * as React from 'react';
 import {observer, inject} from 'mobx-react';
 import { DefaultProps, injector } from '../lib/mobxInjector'
@@ -109,7 +106,10 @@ export default class GameInfo extends React.Component<GameInfoProps, GameInfoSta
                     <div id="nbAgingCards" title="Aging cards" className="info-main-value">{ game.agingDeck.length }</div>
                 </div>
                 
-                <Button className="md-raised md-primary info-main-elt" onClick={this.switchDiscardGlobal}>
+                <Button className="md-raised md-primary info-main-elt" 
+                    variant="raised"
+                    onClick={this.switchDiscardGlobal}
+                >
                     Discard
                 </Button>
             </div>
