@@ -98,6 +98,11 @@ export class Game {
         return this.pirateDeck.getNumberOfCardsInDiscard() >= this.nbPiratesToFight
     }
 
+    shouldAiDraw(a: number, b: number, c: number, d:number, e: number){
+        let f = this.fight
+        return f && f.isLost() && f.getNumberOfCards() < f.freeCards
+    }
+
     drawFightCard(free:boolean = false) : PlayableCard {
         if(!free){
             if ( this.fight.freeCards > 0 ){            
@@ -114,6 +119,10 @@ export class Game {
             this.fightDeck.discard( newArrayAgingCard );
             // On ajoute la défausse au deck et on mélange
             this.fightDeck.discardToDeck();
+            if(this.fightDeck.isEmpty()) {
+                console.error('after discard to deck, deck still empty')
+                this.fightDeck = new FightDeck()
+            }
         }
 
         return this.fightDeck.drawOneCard();
@@ -215,14 +224,25 @@ export class Game {
         }
     }
 
+    autoStopFight(){
+        let fightWon = this.fight.isWon()
+        this.stopFight()
+        if(fightWon){
+            this.endFightWon()
+        }
+        else {
+            this.endFightLost()
+        }
+    }
+
     endFightWon(){
-        console.log('type of won fight : Danger?, Pirate?', this.fight instanceof DangerFight, this.fight instanceof PirateFight )
+        // console.log('type of won fight : Danger?, Pirate?', this.fight instanceof DangerFight, this.fight instanceof PirateFight )
         if(this.fight instanceof DangerFight ){
-            console.log('Game : danger fight won');
+            // console.log('Game : danger fight won');
             this.fight.arrayFightCard.push( this.fight.cardToFight.fightCard );       
         }
         else{ //PirateFight
-            console.log('pirate fight won')
+            // console.log('pirate fight won')
             this.pirateDeck.discard( [this.fight.cardToFight] )
             if(this.isWon()){ return }
         }
@@ -232,7 +252,7 @@ export class Game {
         this.resetFight();
     }
 
-    endFightLost( cardsToDelete : Array<PlayableCard> ){
+    endFightLost( cardsToDelete : PlayableCard[] = []){
         if(this.fight instanceof DangerFight){        
             // Delete cards at initialState from game
             this.discard( [].concat( this.fight.getAllCardsToDestroy(), cardsToDelete) );
@@ -249,7 +269,7 @@ export class Game {
 
     resetFight() : void {
         this.fight = null;
-        console.log('level on reset Fitght', this.level)
+        // console.log('level on reset Fitght', this.level)
         if(this.level > GameLevel.THIRD_ROUND){
             console.log('start of pirate Fight')
             this.startFight(this.pirateDeck.drawOneCard())
@@ -259,7 +279,7 @@ export class Game {
     discard( arrayOfCards : Array<PlayableCard> ) : void {
         arrayOfCards.forEach( card => {
             let restoredCard = card.restore();
-            console.log('restoredCard', restoredCard)
+            // console.log('restoredCard', restoredCard)
             this.arrayOfRemovedCards.push( restoredCard );
         })
     }

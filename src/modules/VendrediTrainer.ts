@@ -1,5 +1,5 @@
 import { Game } from './Game'
-import brain from 'brain.js'
+// import brain from 'brain.js'
 import { DangerCard } from './DangerCard';
 
 class VendrediTrainer {
@@ -58,8 +58,8 @@ class ChoseCardTrainer {
 
     constructor(trainDataSet: ChoseCardTrainDataSet){
         console.log('starting training', trainDataSet)
-        this.net = brain.NeuralNetwork()
-        this.net.train(trainDataSet)
+        // this.net = brain.NeuralNetwork()
+        // this.net.train(trainDataSet)
     }
 
     getFunction(){

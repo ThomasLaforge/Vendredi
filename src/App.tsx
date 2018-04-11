@@ -14,7 +14,7 @@ import Typography from 'material-ui/Typography'
 
 
 import Game from './components/Game';
-import CardSelectorTrainer from './components/CardSelectorTrainer';
+import Trainer from './components/MachineLearning/Trainer';
 import './styles/main.scss';
 
 @observer
@@ -44,7 +44,7 @@ class App extends React.Component<{}, { store: Store} > {
             </AppBar>
 
             <Game />
-            {/* <CardSelectorTrainer /> */}
+            <Trainer />
           </div>
       </Provider>
     );

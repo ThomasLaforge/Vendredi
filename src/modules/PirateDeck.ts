@@ -25,12 +25,7 @@ class PirateDeck extends Deck{
         let arr:Array<PirateCard> = [];
 
         if(nb > 0){
-            if(nb > this.arrayDeck.length){
-                arr = this.arrayDeck;
-            }
-            else{
-                return this.arrayDeck.slice(0, nb);
-            }
+            arr = nb > this.arrayDeck.length ? this.arrayDeck : this.arrayDeck.slice(0, nb);
         }
 
         return arr;
