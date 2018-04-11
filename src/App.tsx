@@ -7,7 +7,7 @@ import { Store } from './modules/Store'
 
 import Game from './components/Game';
 import VendrediAppBar from './components/VendrediAppBar'
-import CardSelectorTrainer from './components/CardSelectorTrainer';
+import Trainer from './components/MachineLearning/Trainer';
 import './styles/main.scss';
 
 @observer
@@ -26,7 +26,7 @@ class App extends React.Component<{}, { store: Store} > {
           <div className="App">
             <VendrediAppBar />
             <Game />
-            {/* <CardSelectorTrainer /> */}
+            <Trainer />
           </div>
       </Provider>
     );
