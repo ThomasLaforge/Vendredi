@@ -4,7 +4,7 @@ import {FightCard} from "./FightCard";
 import {Tools} from './Tools';
 import {jsonDataDanger} from './Vendredi';
 
-class DangerDeck extends Deck {
+class DangerDeck extends Deck <DangerCard> {
 	constructor(arrayCard?:DangerCard[], arrayDiscard?:DangerCard[]){
         super(arrayCard,arrayDiscard);
 	}
@@ -21,7 +21,6 @@ class DangerDeck extends Deck {
                 arrRes.push(newDanger);
             }
         });
-
         this.arrayDeck = arrRes;
     }
 

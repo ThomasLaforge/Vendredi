@@ -62,26 +62,27 @@ class GeneticTrainer {
         };
             
         this.trainer.fitness = (entity) => {
-            // let game = new Game();
-            // game.fight = new DangerFight(game.dangerDeck.drawOneCard(), game.level)
-            // let deckEmpty = false
+            let game = new Game();
+            game.fight = new DangerFight(game.dangerDeck.drawOneCard(), game.level)
+            
+            let deckEmpty = false
 
-            // while(!game.isGameOver() && game.level === GameLevel.FIRST_ROUND && !deckEmpty){
-            //     if(game.shouldAiDraw(entity[0], entity[1], entity[2], entity[3], entity[4])){
-            //         game.drawFightCard()
-            //     }
-            //     else {
-            //         game.autoStopFight()
-            //         // game .autoResolveFight();
-            //         if(game.dangerDeck.isEmpty()){
-            //             deckEmpty = true
-            //         }
-            //         else {
-            //             game.fight = new DangerFight(game.dangerDeck.drawOneCard(), game.level)
-            //         }
-            //     }
-            // }
-            // return game.level + game.robinson.PV;
+            while(!game.isGameOver() && game.level === GameLevel.FIRST_ROUND && !deckEmpty){
+                if(game.shouldAiDraw(entity[0], entity[1], entity[2], entity[3], entity[4])){
+                    game.drawFightCard()
+                }
+                else {
+                    game.autoStopFight()
+                    // game .autoResolveFight();
+                    if(game.dangerDeck.isEmpty()){
+                        deckEmpty = true
+                    }
+                    else {
+                        game.fight = new DangerFight(game.dangerDeck.drawOneCard(), game.level)
+                    }
+                }
+            }
+            return game.level * 5 + game.robinson.PV;
         }
 
         this.trainer.generation = function(pop, generation, stats) {};
@@ -119,8 +120,8 @@ class Trainer extends React.Component <TrainerProps, TrainerState> {
 
     onClick = () => {
         var config = {
-            iterations: 1000, 
-            size: 250, 
+            iterations: 50, 
+            size: 100, 
             crossover: 0.9, 
             mutation: 0.2, 
             skip: 20

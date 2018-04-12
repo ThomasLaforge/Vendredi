@@ -4,7 +4,7 @@ import {AgingCard} from './AgingCard'
 import {FightCard} from './FightCard'
 import * as _ from 'lodash'
 
-abstract class PlayableDeck extends Deck {
+abstract class PlayableDeck extends Deck <PlayableCard> {
 
     discard( arrayOfCard: PlayableCard[] ){
         arrayOfCard.forEach( card => {

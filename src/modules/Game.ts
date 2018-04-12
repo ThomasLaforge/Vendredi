@@ -100,7 +100,8 @@ export class Game {
 
     shouldAiDraw(a: number, b: number, c: number, d:number, e: number){
         let f = this.fight
-        return f && f.isLost() && f.getNumberOfCards() < f.freeCards
+        let activation = this.robinson.PV * a + this.fightDeck.getDeckStrength() * b > 1
+        return f.getNumberOfCards() === 0 || (f && f.isLost() && f.getNumberOfCards() < f.freeCards) || activation
     }
 
     drawFightCard(free:boolean = false) : PlayableCard {
@@ -225,13 +226,24 @@ export class Game {
     }
 
     autoStopFight(){
-        let fightWon = this.fight.isWon()
+        let fightLost = this.fight.isLost()
         this.stopFight()
-        if(fightWon){
-            this.endFightWon()
-        }
-        else {
-            this.endFightLost()
+        if(!fightLost){
+            let amountToRemove = this.fight.getResult() * -1
+            let destroyableCards = this.fight.getAllCards().filter(c => c.strength < 0 || (c.strength === 0 && !c.power && c.power !== 0) )
+            let destroyableCardsSorted = destroyableCards.sort( (a, b) => b.costToDelete - a.costToDelete)
+            let cardsToDestroy = []
+
+            let i = 0
+            while(i < destroyableCardsSorted.length && amountToRemove > 0){
+                if(amountToRemove >= destroyableCardsSorted[i].costToDelete){
+                    cardsToDestroy.push(destroyableCardsSorted[i])
+                    amountToRemove -= destroyableCardsSorted[i].costToDelete
+                }
+                i++
+            }
+
+            this.endFightLost(cardsToDestroy)
         }
     }
 

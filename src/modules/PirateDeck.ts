@@ -3,7 +3,8 @@ import {PirateCard} from "./PirateCard";
 import {Tools} from './Tools';
 import {jsonDataPirate} from './Vendredi';
 
-class PirateDeck extends Deck{
+class PirateDeck extends Deck <PirateCard> {
+    
     constructor(arrayCard?:Array<PirateCard>, arrayDiscard?:Array<PirateCard>){
         super(arrayCard,arrayDiscard);
     }

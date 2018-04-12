@@ -9,7 +9,7 @@ import * as uuid from 'node-uuid'
 abstract class PlayableCard extends Card implements PlayableCardInterface {
 
     @observable private _costToDelete: number; 
-    @observable private _power: any;
+    @observable private _power: number;
     @observable private _powerUsed : boolean;
     @observable private _toDestroyAtEndOfFight: boolean;
     @observable private _initialState: InitialStateInterface;
@@ -19,7 +19,7 @@ abstract class PlayableCard extends Card implements PlayableCardInterface {
             name:string, 
             strength:number, 
             costToDelete: number, 
-            power: any, 
+            power: number, 
             powerUsed : boolean = false,
             toDestroyAtEndOfFight:boolean = false,
             initialState: InitialStateInterface = { strength : strength, power : power},
@@ -61,10 +61,10 @@ abstract class PlayableCard extends Card implements PlayableCardInterface {
 	public set costToDelete(value: number) {
 		this._costToDelete = value;
 	}
-	public get power(): any {
+	public get power(): number {
 		return this._power;
 	}
-	public set power(value: any) {
+	public set power(value: number) {
 		this._power = value;
 	}
 	public get powerUsed(): boolean {

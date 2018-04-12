@@ -4,7 +4,7 @@ import * as _ from 'lodash';
 import {AgingCard} from './AgingCard';
 import {GameDifficulty, jsonDataAging, AgingLevel} from './Vendredi';
 
-class AgingDeck extends PlayableDeck{
+class AgingDeck extends PlayableDeck {
 
     constructor(difficulty : GameDifficulty, arrayCard?:AgingCard[], arrayDiscard?: AgingCard[]){
         super(arrayCard,arrayDiscard);
@@ -34,8 +34,8 @@ class AgingDeck extends PlayableDeck{
     }
 
     shuffle(){
-        let arrEasy = this.arrayDeck.filter( agingCard => { return agingCard.level <= AgingLevel.UNCOMFORTABLE} );
-        let arrHard = this.arrayDeck.filter( agingCard => { return agingCard.level >= AgingLevel.EVIL });
+        let arrEasy = this.arrayDeck.filter( (agingCard: AgingCard) => { return agingCard.level <= AgingLevel.UNCOMFORTABLE} );
+        let arrHard = this.arrayDeck.filter( (agingCard: AgingCard) => { return agingCard.level >= AgingLevel.EVIL });
 
         arrEasy = _.shuffle( arrEasy );
         arrHard = _.shuffle( arrHard );
